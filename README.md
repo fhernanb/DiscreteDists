@@ -1,3 +1,7 @@
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/fhernanb/DiscreteDists/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/fhernanb/DiscreteDists/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 # DiscreteDists <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 In this package are available Discrete statistical distributions. With this package it is possible to estimate parameters and fit regression models within GAMLSS framework.
