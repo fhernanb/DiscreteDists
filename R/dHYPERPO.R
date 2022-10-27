@@ -73,7 +73,7 @@ pHYPERPO <- function(q, mu=1, sigma=1, lower.tail = TRUE, log.p = FALSE){
 #' @importFrom stats runif
 #' @export
 #' @rdname dHYPERPO
-rHYPERPO <- function(n, mu, sigma) {
+rHYPERPO <- function(n, mu=1, sigma=1) {
   if (any(sigma <= 0))  stop("parameter gamma has to be positive!")
   if (any(mu <= 0)) stop("parameter lambda has to be positive!")
   if (any(n <= 0)) stop(paste("n must be a positive integer", "\n", ""))

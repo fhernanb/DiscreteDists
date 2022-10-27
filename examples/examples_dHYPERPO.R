@@ -38,7 +38,7 @@ x_max <- 15
 probs1 <- dHYPERPO(x=0:x_max, mu=3, sigma=1.1)
 names(probs1) <- 0:x_max
 
-x <- rHYPERPO(n=10000, mu=3, sigma=1.1)
+x <- rHYPERPO(n=1000, mu=3, sigma=1.1)
 probs2 <- prop.table(table(x))
 
 cn <- union(names(probs1), names(probs2))

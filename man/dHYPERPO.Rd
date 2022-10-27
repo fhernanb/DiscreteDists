@@ -10,7 +10,7 @@ dHYPERPO(x, mu = 1, sigma = 1, log = FALSE)
 
 pHYPERPO(q, mu = 1, sigma = 1, lower.tail = TRUE, log.p = FALSE)
 
-rHYPERPO(n, mu, sigma)
+rHYPERPO(n, mu = 1, sigma = 1)
 }
 \arguments{
 \item{x, q}{vector of (non-negative integer) quantiles.}
@@ -76,7 +76,7 @@ x_max <- 15
 probs1 <- dHYPERPO(x=0:x_max, mu=3, sigma=1.1)
 names(probs1) <- 0:x_max
 
-x <- rHYPERPO(n=10000, mu=3, sigma=1.1)
+x <- rHYPERPO(n=1000, mu=3, sigma=1.1)
 probs2 <- prop.table(table(x))
 
 cn <- union(names(probs1), names(probs2))
