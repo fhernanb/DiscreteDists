@@ -3,6 +3,7 @@
 export(add)
 export(dHYPERPO)
 export(pHYPERPO)
+export(qHYPERPO)
 export(rHYPERPO)
 importFrom(stats,runif)
 importFrom(utils,tail)

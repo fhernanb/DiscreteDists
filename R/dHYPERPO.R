@@ -6,6 +6,7 @@
 #' with parameters \code{mu} and \code{sigma}.
 #'
 #' @param x,q vector of (non-negative integer) quantiles.
+#' @param p vector of probabilities.
 #' @param mu vector of positive values of this parameter.
 #' @param sigma vector of positive values of this parameter.
 #' @param n number of random values to return
@@ -78,7 +79,7 @@ rHYPERPO <- function(n, mu=1, sigma=1) {
   if (any(mu <= 0)) stop("parameter lambda has to be positive!")
   if (any(n <= 0)) stop(paste("n must be a positive integer", "\n", ""))
   # Begin auxiliar function
-  one_hyperpo <- function(u, mu, sigma) {
+  one_random_hyperpo <- function(u, mu, sigma) {
     p <- dHYPERPO(x=0, mu=mu, sigma=sigma, log=FALSE)
     F <- p
     i <- 0
@@ -89,7 +90,43 @@ rHYPERPO <- function(n, mu=1, sigma=1) {
     }
     return(i)
   }
-  one_hyperpo <- Vectorize(one_hyperpo)
+  one_random_hyperpo <- Vectorize(one_random_hyperpo)
   # End auxiliar function
-  one_hyperpo(runif(n), mu, sigma)
+  one_random_hyperpo(u=runif(n), mu, sigma)
+}
+#' @export
+#' @rdname dHYPERPO
+qHYPERPO <- function(p, mu = 1, sigma = 1, lower.tail = TRUE,
+                     log.p = FALSE) {
+  if (any(mu <= 0))
+    stop(paste("mu must be greater than 0 ", "\n", ""))
+  if (any(sigma <= 0))
+    stop(paste("sigma must be greater than 0 ", "\n", ""))
+  if (any(p < 0) | any(p > 1.0001))
+    stop(paste("p must be between 0 and 1", "\n", ""))
+  if (log.p == TRUE)
+    p <- exp(p)
+  else p <- p
+  if (lower.tail == TRUE)
+    p <- p
+  else p <- 1 - p
+  # Begin auxiliar function
+  one_quantile_hyperpo <- function(p, mu, sigma) {
+    if (p + 1e-09 >= 1)
+      i <- Inf
+    else {
+      prob <- dHYPERPO(x=0, mu=mu, sigma=sigma, log=FALSE)
+      F <- prob
+      i <- 0
+      while (p >= F) {
+        i <- i + 1
+        prob <- dHYPERPO(x=i, mu=mu, sigma, log=FALSE)
+        F <- F + prob
+      }
+    }
+    return(i)
+  }
+  one_quantile_hyperpo <- Vectorize(one_quantile_hyperpo)
+  # End auxiliar function
+  one_quantile_hyperpo(p=p, mu=mu, sigma=sigma)
 }
