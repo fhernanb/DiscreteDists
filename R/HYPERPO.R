@@ -12,9 +12,9 @@
 #' The hyper Poisson with parameters \code{mu} and \code{sigma}
 #' has mass function given by
 #' 
-#' \eqn{f(x) = (\mu + \sigma/x^2) exp(\mu x - \sigma/x) exp(-exp(\mu x-\sigma/x))}
+#' \eqn{f(x) = bla bla bla}
 #' 
-#' for x=0, 1, 2, ....
+#' for x = 0, 1, 2, ....
 #' 
 #' @example examples/examples_HYPERPO.R
 #' 
