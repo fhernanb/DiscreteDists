@@ -2,4 +2,7 @@
 
 export(add)
 export(dHYPERPO)
+export(pHYPERPO)
+export(rHYPERPO)
+importFrom(stats,runif)
 importFrom(utils,tail)
