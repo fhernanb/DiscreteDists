@@ -101,4 +101,13 @@ plot(x=qHYPERPO(p, mu=5, sigma=1.5), y=p, xlab="Quantile",
      las=1, ylab="Probability")
 curve(pHYPERPO(x, mu=5, sigma=1.5), from=0, add=TRUE, col="red")
 
+# Example 5
+p <- seq(0,1, by = 0.01)
+mu <- 3
+sigma<-3
+qxx <- qHYPERPO(p, mu, sigma, lower.tail = TRUE, log.p = FALSE)
+plot(p, qxx, type="s", lwd=2, col="darkred", ylab="quantiles",
+     main="Quantiles of HP(mu = sigma = 3)")
+
+
 }
