@@ -40,6 +40,19 @@ Those functions define the density, distribution function, quantile
 function and random generation for the hyper-Poisson, HYPERPO(), distribution
 with parameters \code{mu} and \code{sigma}.
 }
+\details{
+The hyper-Poisson distribution with parameters \code{mu} and \code{sigma}
+has density given by
+
+\eqn{f(x | \mu, \sigma) = \frac{\mu^x}{_1F_1(1;\mu;\sigma)}\frac{\Gamma(\sigma)}{\Gamma(x+\sigma)}}
+
+where the function \eqn{_1F_1(a;c;z)} is defined as
+
+\eqn{_1F_1(a;c;z) = \sum_{r=0}^{\infty}\frac{(a)_r}{(c)_r}\frac{z^r}{r!}}
+
+Note: in this implementation we changed the original parameters \eqn{\lambda} and \eqn{\gamma}
+for \eqn{\mu} and \eqn{\sigma} respectively, to implement this distribution within gamlss framework.
+}
 \examples{
 # Example 1
 x_max <- 30

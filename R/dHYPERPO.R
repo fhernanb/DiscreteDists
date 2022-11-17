@@ -13,6 +13,19 @@
 #' @param log,log.p logical; if TRUE, probabilities p are given as log(p).
 #' @param lower.tail logical; if TRUE (default), probabilities are \code{P[X <= x]}, otherwise, \code{P[X > x]}.
 #'
+#' @details
+#' The hyper-Poisson distribution with parameters \code{mu} and \code{sigma}
+#' has density given by
+#'
+#' \eqn{f(x | \mu, \sigma) = \frac{\mu^x}{_1F_1(1;\mu;\sigma)}\frac{\Gamma(\sigma)}{\Gamma(x+\sigma)}}
+#'
+#' where the function \eqn{_1F_1(a;c;z)} is defined as
+#'
+#' \eqn{_1F_1(a;c;z) = \sum_{r=0}^{\infty}\frac{(a)_r}{(c)_r}\frac{z^r}{r!}}
+#'
+#' Note: in this implementation we changed the original parameters \eqn{\lambda} and \eqn{\gamma}
+#' for \eqn{\mu} and \eqn{\sigma} respectively, to implement this distribution within gamlss framework.
+#'
 #' @return
 #' \code{dHYPERPO} gives the density, \code{pHYPERPO} gives the distribution
 #' function, \code{qHYPERPO} gives the quantile function, \code{rHYPERPO}

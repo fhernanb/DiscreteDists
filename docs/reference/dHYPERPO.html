@@ -97,6 +97,16 @@ function, <code>qHYPERPO</code> gives the quantile function, <code>rHYPERPO</cod
 
 <p>generates random deviates.</p>
     </div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>The hyper-Poisson distribution with parameters <code>mu</code> and <code>sigma</code>
+has density given by</p>
+<p>\(f(x | \mu, \sigma) = \frac{\mu^x}{_1F_1(1;\mu;\sigma)}\frac{\Gamma(\sigma)}{\Gamma(x+\sigma)}\)</p>
+<p>where the function \(_1F_1(a;c;z)\) is defined as</p>
+<p>\(_1F_1(a;c;z) = \sum_{r=0}^{\infty}\frac{(a)_r}{(c)_r}\frac{z^r}{r!}\)</p>
+<p>Note: in this implementation we changed the original parameters \(\lambda\) and \(\gamma\)
+for \(\mu\) and \(\sigma\) respectively, to implement this distribution within gamlss framework.</p>
+    </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
