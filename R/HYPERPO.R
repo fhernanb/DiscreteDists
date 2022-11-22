@@ -8,15 +8,25 @@
 #' @param mu.link defines the mu.link, with "log" link as the default for the mu parameter.
 #' @param sigma.link defines the sigma.link, with "log" link as the default for the sigma.
 #'
+#' @seealso \link{dHYPERPO}.
+#'
 #' @details
-#' The hyper Poisson with parameters \code{mu} and \code{sigma}
-#' has mass function given by
+#' The hyper-Poisson distribution with parameters \code{mu} and \code{sigma}
+#' has a support \code{0, 1, 2, ...} and density given by
 #'
-#' \eqn{f(x) = bla bla bla}
+#' \eqn{f(x | \mu, \sigma) = \frac{\mu^x}{_1F_1(1;\mu;\sigma)}\frac{\Gamma(\sigma)}{\Gamma(x+\sigma)}}
 #'
-#' for x = 0, 1, 2, ....
+#' where the function \eqn{_1F_1(a;c;z)} is defined as
+#'
+#' \eqn{_1F_1(a;c;z) = \sum_{r=0}^{\infty}\frac{(a)_r}{(c)_r}\frac{z^r}{r!}}
+#'
+#' Note: in this implementation we changed the original parameters \eqn{\lambda} and \eqn{\gamma}
+#' for \eqn{\mu} and \eqn{\sigma} respectively, to implement this distribution within gamlss framework.
 #'
 #' @example examples/examples_HYPERPO.R
+#'
+#' @references
+#' \insertRef{saez2013hyperpo}{DiscreteDists}
 #'
 #' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot

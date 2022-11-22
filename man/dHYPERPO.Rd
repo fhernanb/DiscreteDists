@@ -42,7 +42,7 @@ with parameters \code{mu} and \code{sigma}.
 }
 \details{
 The hyper-Poisson distribution with parameters \code{mu} and \code{sigma}
-has density given by
+has a support \code{0, 1, 2, ...} and density given by
 
 \eqn{f(x | \mu, \sigma) = \frac{\mu^x}{_1F_1(1;\mu;\sigma)}\frac{\Gamma(\sigma)}{\Gamma(x+\sigma)}}
 
@@ -123,4 +123,10 @@ plot(p, qxx, type="s", lwd=2, col="darkred", ylab="quantiles",
      main="Quantiles of HP(mu = sigma = 3)")
 
 
+}
+\references{
+\insertRef{saez2013hyperpo}{DiscreteDists}
+}
+\seealso{
+\link{HYPERPO}.
 }

@@ -17,12 +17,17 @@ distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
 using the function \code{gamlss()}.
 }
 \details{
-The hyper Poisson with parameters \code{mu} and \code{sigma}
-has mass function given by
+The hyper-Poisson distribution with parameters \code{mu} and \code{sigma}
+has a support \code{0, 1, 2, ...} and density given by
 
-\eqn{f(x) = bla bla bla}
+\eqn{f(x | \mu, \sigma) = \frac{\mu^x}{_1F_1(1;\mu;\sigma)}\frac{\Gamma(\sigma)}{\Gamma(x+\sigma)}}
 
-for x = 0, 1, 2, ....
+where the function \eqn{_1F_1(a;c;z)} is defined as
+
+\eqn{_1F_1(a;c;z) = \sum_{r=0}^{\infty}\frac{(a)_r}{(c)_r}\frac{z^r}{r!}}
+
+Note: in this implementation we changed the original parameters \eqn{\lambda} and \eqn{\gamma}
+for \eqn{\mu} and \eqn{\sigma} respectively, to implement this distribution within gamlss framework.
 }
 \examples{
 # Example 1
@@ -57,4 +62,10 @@ mod2 <- gamlss(x~x1, sigma.fo=~x2, family=HYPERPO,
 coef(mod2, what="mu")
 coef(mod2, what="sigma")
 }
+}
+\references{
+\insertRef{saez2013hyperpo}{DiscreteDists}
+}
+\seealso{
+\link{dHYPERPO}.
 }
