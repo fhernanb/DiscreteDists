@@ -11,8 +11,8 @@
 #' @seealso \link{dHYPERPO}.
 #'
 #' @details
-#' The hyper-Poisson distribution with parameters \code{mu} and \code{sigma}
-#' has a support \code{0, 1, 2, ...} and density given by
+#' The hyper-Poisson distribution with parameters \eqn{mu} and \eqn{sigma}
+#' has a support \eqn{0, 1, 2, ...} and density given by
 #'
 #' \eqn{f(x | \mu, \sigma) = \frac{\mu^x}{_1F_1(1;\mu;\sigma)}\frac{\Gamma(\sigma)}{\Gamma(x+\sigma)}}
 #'

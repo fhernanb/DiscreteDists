@@ -3,7 +3,7 @@
 #' @description
 #' Those functions define the density, distribution function, quantile
 #' function and random generation for the hyper-Poisson, HYPERPO(), distribution
-#' with parameters \code{mu} and \code{sigma}.
+#' with parameters \eqn{mu} and \eqn{sigma}.
 #'
 #' @param x,q vector of (non-negative integer) quantiles.
 #' @param p vector of probabilities.
@@ -11,12 +11,12 @@
 #' @param sigma vector of positive values of this parameter.
 #' @param n number of random values to return
 #' @param log,log.p logical; if TRUE, probabilities p are given as log(p).
-#' @param lower.tail logical; if TRUE (default), probabilities are \code{P[X <= x]}, otherwise, \code{P[X > x]}.
+#' @param lower.tail logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \code{P[X > x]}.
 #'
 #' @seealso \link{HYPERPO}.
 #'
 #' @details
-#' The hyper-Poisson distribution with parameters \code{mu} and \code{sigma}
+#' The hyper-Poisson distribution with parameters \eqn{mu} and \eqn{sigma}
 #' has a support \code{0, 1, 2, ...} and density given by
 #'
 #' \eqn{f(x | \mu, \sigma) = \frac{\mu^x}{_1F_1(1;\mu;\sigma)}\frac{\Gamma(\sigma)}{\Gamma(x+\sigma)}}
