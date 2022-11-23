@@ -3,7 +3,7 @@
 #' @description
 #' Those functions define the density, distribution function, quantile
 #' function and random generation for the hyper-Poisson, HYPERPO(), distribution
-#' with parameters \eqn{mu} and \eqn{sigma}.
+#' with parameters \eqn{\mu} and \eqn{\sigma}.
 #'
 #' @param x,q vector of (non-negative integer) quantiles.
 #' @param p vector of probabilities.
