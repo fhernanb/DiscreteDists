@@ -16,7 +16,7 @@ exp(coef(mod1, what='sigma'))
 # Example 2
 # Generating random values under some model
 
-\dontrun{
+#\dontrun{
 n <- 200
 x1 <- runif(n)
 x2 <- runif(n)
@@ -29,4 +29,4 @@ mod2 <- gamlss(x~x1, sigma.fo=~x2, family=HYPERPO,
 
 coef(mod2, what="mu")
 coef(mod2, what="sigma")
-}
+#}
