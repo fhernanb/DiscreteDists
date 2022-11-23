@@ -5,8 +5,7 @@ y <- rHYPERPO(n=300, mu=5, sigma=1.5)
 
 # Fitting the model
 library(gamlss)
-mod1 <- gamlss(y~1, sigma.fo=~1, family=HYPERPO,
-              control=gamlss.control(n.cyc=5000, trace=FALSE))
+mod1 <- gamlss(y~1, sigma.fo=~1, family=HYPERPO)
 
 # Extracting the fitted values for mu and sigma
 # using the inverse link function
@@ -25,7 +24,7 @@ sigma <- exp(1.26 - 2 * x2)
 y <- rHYPERPO(n=n, mu, sigma)
 
 mod2 <- gamlss(y ~ x1, sigma.fo=~x2, family=HYPERPO,
-              control=gamlss.control(n.cyc=5000, trace=FALSE))
+              control=gamlss.control(n.cyc=5000, trace=TRUE))
 
 coef(mod2, what="mu")
 coef(mod2, what="sigma")

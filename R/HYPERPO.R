@@ -11,8 +11,8 @@
 #' @seealso \link{dHYPERPO}.
 #'
 #' @details
-#' The hyper-Poisson distribution with parameters \eqn{mu} and \eqn{sigma}
-#' has a support \eqn{0, 1, 2, ...} and density given by
+#' The hyper-Poisson distribution with parameters \eqn{\mu} and \eqn{\sigma}
+#' has a support 0, 1, 2, ... and density given by
 #'
 #' \eqn{f(x | \mu, \sigma) = \frac{\mu^x}{_1F_1(1;\mu;\sigma)}\frac{\Gamma(\sigma)}{\Gamma(x+\sigma)}}
 #'
@@ -21,7 +21,7 @@
 #' \eqn{_1F_1(a;c;z) = \sum_{r=0}^{\infty}\frac{(a)_r}{(c)_r}\frac{z^r}{r!}}
 #'
 #' Note: in this implementation we changed the original parameters \eqn{\lambda} and \eqn{\gamma}
-#' for \eqn{\mu} and \eqn{\sigma} respectively, to implement this distribution within gamlss framework.
+#' for \eqn{\mu} and \eqn{\sigma} respectively, we did it to implement this distribution within gamlss framework.
 #'
 #' @example examples/examples_HYPERPO.R
 #'
@@ -55,13 +55,17 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
                  # Primeras derivadas, por ahora son computacionales
 
                  dldm = function(y, mu, sigma) {
-                   dm   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE), "mu", delta=1e-04)
+                   dm   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE),
+                                                 theta="mu",
+                                                 delta=1e-04)
                    dldm <- as.vector(attr(dm, "gradient"))
                    dldm
                  },
 
                  dldd = function(y, mu, sigma) {
-                   dd   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE), "sigma", delta=1e-04)
+                   dd   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE),
+                                                 theta="sigma",
+                                                 delta=1e-04)
                    dldd <- as.vector(attr(dd, "gradient"))
                    dldd
                  },
@@ -69,23 +73,31 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
                  # Segundas derivadas, por ahora son computacionales
 
                  d2ldm2 = function(y, mu, sigma) {
-                   dm   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE), "mu", delta=1e-04)
+                   dm   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE),
+                                                 theta="mu",
+                                                 delta=1e-04)
                    dldm <- as.vector(attr(dm, "gradient"))
                    d2ldm2 <- - dldm * dldm
                    d2ldm2
                  },
 
                  d2ldmdd = function(y, mu, sigma) {
-                   dm   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE), "mu", delta=1e-04)
+                   dm   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE),
+                                                 theta="mu",
+                                                 delta=1e-04)
                    dldm <- as.vector(attr(dm, "gradient"))
-                   dd   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE), "sigma", delta=1e-04)
+                   dd   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE),
+                                                 theta="sigma",
+                                                 delta=1e-04)
                    dldd <- as.vector(attr(dd, "gradient"))
                    d2ldmdd <- - dldm * dldd
                    d2ldmdd
                  },
 
                  d2ldd2  = function(y, mu, sigma) {
-                   dd   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE), "sigma", delta=1e-04)
+                   dd   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE),
+                                                 theta="sigma",
+                                                 delta=1e-04)
                    dldd <- as.vector(attr(dd, "gradient"))
                    d2ldd2 <- - dldd * dldd
                    d2ldd2

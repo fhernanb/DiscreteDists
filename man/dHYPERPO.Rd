@@ -41,8 +41,8 @@ function and random generation for the hyper-Poisson, HYPERPO(), distribution
 with parameters \eqn{\mu} and \eqn{\sigma}.
 }
 \details{
-The hyper-Poisson distribution with parameters \eqn{mu} and \eqn{sigma}
-has a support \code{0, 1, 2, ...} and density given by
+The hyper-Poisson distribution with parameters \eqn{\mu} and \eqn{\sigma}
+has a support 0, 1, 2, ... and density given by
 
 \eqn{f(x | \mu, \sigma) = \frac{\mu^x}{_1F_1(1;\mu;\sigma)}\frac{\Gamma(\sigma)}{\Gamma(x+\sigma)}}
 
@@ -51,7 +51,7 @@ where the function \eqn{_1F_1(a;c;z)} is defined as
 \eqn{_1F_1(a;c;z) = \sum_{r=0}^{\infty}\frac{(a)_r}{(c)_r}\frac{z^r}{r!}}
 
 Note: in this implementation we changed the original parameters \eqn{\lambda} and \eqn{\gamma}
-for \eqn{\mu} and \eqn{\sigma} respectively, to implement this distribution within gamlss framework.
+for \eqn{\mu} and \eqn{\sigma} respectively, we did it to implement this distribution within gamlss framework.
 }
 \examples{
 # Example 1

@@ -17,8 +17,8 @@ distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
 using the function \code{gamlss()}.
 }
 \details{
-The hyper-Poisson distribution with parameters \eqn{mu} and \eqn{sigma}
-has a support \eqn{0, 1, 2, ...} and density given by
+The hyper-Poisson distribution with parameters \eqn{\mu} and \eqn{\sigma}
+has a support 0, 1, 2, ... and density given by
 
 \eqn{f(x | \mu, \sigma) = \frac{\mu^x}{_1F_1(1;\mu;\sigma)}\frac{\Gamma(\sigma)}{\Gamma(x+\sigma)}}
 
@@ -27,7 +27,7 @@ where the function \eqn{_1F_1(a;c;z)} is defined as
 \eqn{_1F_1(a;c;z) = \sum_{r=0}^{\infty}\frac{(a)_r}{(c)_r}\frac{z^r}{r!}}
 
 Note: in this implementation we changed the original parameters \eqn{\lambda} and \eqn{\gamma}
-for \eqn{\mu} and \eqn{\sigma} respectively, to implement this distribution within gamlss framework.
+for \eqn{\mu} and \eqn{\sigma} respectively, we did it to implement this distribution within gamlss framework.
 }
 \examples{
 # Example 1
@@ -37,8 +37,7 @@ y <- rHYPERPO(n=300, mu=5, sigma=1.5)
 
 # Fitting the model
 library(gamlss)
-mod1 <- gamlss(y~1, sigma.fo=~1, family=HYPERPO,
-              control=gamlss.control(n.cyc=5000, trace=FALSE))
+mod1 <- gamlss(y~1, sigma.fo=~1, family=HYPERPO)
 
 # Extracting the fitted values for mu and sigma
 # using the inverse link function
@@ -57,7 +56,7 @@ sigma <- exp(1.26 - 2 * x2)
 y <- rHYPERPO(n=n, mu, sigma)
 
 mod2 <- gamlss(y ~ x1, sigma.fo=~x2, family=HYPERPO,
-              control=gamlss.control(n.cyc=5000, trace=FALSE))
+              control=gamlss.control(n.cyc=5000, trace=TRUE))
 
 coef(mod2, what="mu")
 coef(mod2, what="sigma")

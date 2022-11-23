@@ -63,19 +63,13 @@ using the function <code>gamlss()</code>.</p>
 </dl></div>
     <div id="details">
     <h2>Details</h2>
-    <p>The hyper-Poisson distribution with parameters \(mu\) and \(sigma\)
-has a support \(0, 1, 2, ...\) and density given by</p>
+    <p>The hyper-Poisson distribution with parameters \(\mu\) and \(\sigma\)
+has a support 0, 1, 2, ... and density given by</p>
 <p>\(f(x | \mu, \sigma) = \frac{\mu^x}{_1F_1(1;\mu;\sigma)}\frac{\Gamma(\sigma)}{\Gamma(x+\sigma)}\)</p>
 <p>where the function \(_1F_1(a;c;z)\) is defined as</p>
 <p>\(_1F_1(a;c;z) = \sum_{r=0}^{\infty}\frac{(a)_r}{(c)_r}\frac{z^r}{r!}\)</p>
 <p>Note: in this implementation we changed the original parameters \(\lambda\) and \(\gamma\)
-for \(\mu\) and \(\sigma\) respectively, to implement this distribution within gamlss framework.</p>
-    </div>
-    <div id="references">
-    <h2>References</h2>
-    <p>Sáez-Castillo AJ, Conde-Sánchez A (2013).
-“A hyper-Poisson regression model for overdispersed and underdispersed count data.”
-<em>Computational Statistics &amp; Data Analysis</em>, <b>61</b>, 148--157.</p>
+for \(\mu\) and \(\sigma\) respectively, we did it to implement this distribution within gamlss framework.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -105,17 +99,35 @@ for \(\mu\) and \(\sigma\) respectively, to implement this distribution within g
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  **********   GAMLSS Version 5.4-10  ********** </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> For more on GAMLSS look at https://www.gamlss.com/</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Type gamlssNews() to see new features/changes/bug fixes.</span>
-<span class="r-in"><span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="fl">1</span>, sigma.fo<span class="op">=</span><span class="op">~</span><span class="fl">1</span>, family<span class="op">=</span><span class="va">HYPERPO</span>,</span></span>
-<span class="r-in"><span>              control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">5000</span>, trace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="fl">1</span>, sigma.fo<span class="op">=</span><span class="op">~</span><span class="fl">1</span>, family<span class="op">=</span><span class="va">HYPERPO</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 1: Global Deviance = 1960.004 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 2: Global Deviance = 1959.933 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 3: Global Deviance = 1959.88 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 4: Global Deviance = 1959.839 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 5: Global Deviance = 1959.809 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 6: Global Deviance = 1959.786 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 7: Global Deviance = 1959.768 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 8: Global Deviance = 1959.754 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 9: Global Deviance = 1959.744 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 10: Global Deviance = 1959.736 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 11: Global Deviance = 1959.729 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 12: Global Deviance = 1959.725 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 13: Global Deviance = 1959.721 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 14: Global Deviance = 1959.718 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 15: Global Deviance = 1959.716 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 16: Global Deviance = 1959.714 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 17: Global Deviance = 1959.712 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 18: Global Deviance = 1959.711 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 19: Global Deviance = 1959.71 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Extracting the fitted values for mu and sigma</span></span></span>
 <span class="r-in"><span><span class="co"># using the inverse link function</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">'mu'</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    4.724006 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    4.767715 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">'sigma'</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    1.243442 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    1.178851 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 2</span></span></span>
 <span class="r-in"><span><span class="co"># Generating random values under some model</span></span></span>
@@ -126,10 +138,10 @@ for \(\mu\) and \(\sigma\) respectively, to implement this distribution within g
 <span class="r-in"><span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fl">1.21</span> <span class="op">-</span> <span class="fl">3</span> <span class="op">*</span> <span class="va">x1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fl">1.26</span> <span class="op">-</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">x2</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="dHYPERPO.html">rHYPERPO</a></span><span class="op">(</span>n<span class="op">=</span><span class="va">n</span>, <span class="va">mu</span>, <span class="va">sigma</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="dHYPERPO.html">rHYPERPO</a></span><span class="op">(</span>n<span class="op">=</span><span class="va">n</span>, <span class="va">mu</span>, <span class="va">sigma</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">x</span><span class="op">~</span><span class="va">x1</span>, sigma.fo<span class="op">=</span><span class="op">~</span><span class="va">x2</span>, family<span class="op">=</span><span class="va">HYPERPO</span>,</span></span>
-<span class="r-in"><span>              control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">5000</span>, trace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x1</span>, sigma.fo<span class="op">=</span><span class="op">~</span><span class="va">x2</span>, family<span class="op">=</span><span class="va">HYPERPO</span>,</span></span>
+<span class="r-in"><span>              control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">5000</span>, trace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod2</span>, what<span class="op">=</span><span class="st">"mu"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod2</span>, what<span class="op">=</span><span class="st">"sigma"</span><span class="op">)</span></span></span>
