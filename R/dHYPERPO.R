@@ -35,9 +35,6 @@
 #'
 #' @example  examples/examples_dHYPERPO.R
 #'
-#' @references
-#' \insertRef{saez2013hyperpo}{DiscreteDists}
-#'
 #' @export
 #'
 dHYPERPO <- function(x, mu=1, sigma=1, log=FALSE){

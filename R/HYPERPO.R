@@ -25,9 +25,6 @@
 #'
 #' @example examples/examples_HYPERPO.R
 #'
-#' @references
-#' \insertRef{saez2013hyperpo}{DiscreteDists}
-#'
 #' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @export

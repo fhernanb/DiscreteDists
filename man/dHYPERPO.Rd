@@ -38,7 +38,7 @@ generates random deviates.
 \description{
 Those functions define the density, distribution function, quantile
 function and random generation for the hyper-Poisson, HYPERPO(), distribution
-with parameters \eqn{mu} and \eqn{sigma}.
+with parameters \eqn{\mu} and \eqn{\sigma}.
 }
 \details{
 The hyper-Poisson distribution with parameters \eqn{mu} and \eqn{sigma}
@@ -123,9 +123,6 @@ plot(p, qxx, type="s", lwd=2, col="darkred", ylab="quantiles",
      main="Quantiles of HP(mu = sigma = 3)")
 
 
-}
-\references{
-\insertRef{saez2013hyperpo}{DiscreteDists}
 }
 \seealso{
 \link{HYPERPO}.
