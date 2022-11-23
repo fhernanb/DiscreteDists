@@ -38,8 +38,8 @@
 #' @export
 #'
 dHYPERPO <- function(x, mu=1, sigma=1, log=FALSE){
-  if (any(sigma <= 0))  stop("parameter gamma has to be positive!")
-  if (any(mu <= 0)) stop("parameter lambda has to be positive!")
+  if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
+  if (any(mu <= 0))     stop("parameter mu has to be positive!")
   if (any(x < 0)) stop(paste("x must be >=0", "\n", ""))
   # Begin auxiliar function
   F11 <- function(x, a, c, z) {
@@ -60,8 +60,8 @@ dHYPERPO <- function(x, mu=1, sigma=1, log=FALSE){
 #' @export
 #' @rdname dHYPERPO
 pHYPERPO <- function(q, mu=1, sigma=1, lower.tail = TRUE, log.p = FALSE){
-  if (any(sigma <= 0))  stop("parameter gamma has to be positive!")
-  if (any(mu <= 0)) stop("parameter lambda has to be positive!")
+  if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
+  if (any(mu <= 0))     stop("parameter mu has to be positive!")
   if (any(q < 0)) stop(paste("x must be >=0", "\n", ""))
   ly <- max(length(q), length(mu), length(sigma))
   q <- rep(q, length = ly)
@@ -90,8 +90,8 @@ pHYPERPO <- function(q, mu=1, sigma=1, lower.tail = TRUE, log.p = FALSE){
 #' @export
 #' @rdname dHYPERPO
 rHYPERPO <- function(n, mu=1, sigma=1) {
-  if (any(sigma <= 0))  stop("parameter gamma has to be positive!")
-  if (any(mu <= 0)) stop("parameter lambda has to be positive!")
+  if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
+  if (any(mu <= 0))     stop("parameter mu has to be positive!")
   if (any(n <= 0)) stop(paste("n must be a positive integer", "\n", ""))
   # Begin auxiliar function
   one_random_hyperpo <- function(u, mu, sigma) {
@@ -113,10 +113,8 @@ rHYPERPO <- function(n, mu=1, sigma=1) {
 #' @rdname dHYPERPO
 qHYPERPO <- function(p, mu = 1, sigma = 1, lower.tail = TRUE,
                      log.p = FALSE) {
-  if (any(mu <= 0))
-    stop(paste("mu must be greater than 0 ", "\n", ""))
-  if (any(sigma <= 0))
-    stop(paste("sigma must be greater than 0 ", "\n", ""))
+  if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
+  if (any(mu <= 0))     stop("parameter mu has to be positive!")
   if (any(p < 0) | any(p > 1.0001))
     stop(paste("p must be between 0 and 1", "\n", ""))
   if (log.p == TRUE)
