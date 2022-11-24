@@ -124,6 +124,9 @@ plot(p, qxx, type="s", lwd=2, col="darkred", ylab="quantiles",
 
 
 }
+\references{
+\insertRef{saez2013hyperpo}{DiscreteDists}
+}
 \seealso{
 \link{HYPERPO}.
 }

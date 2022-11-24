@@ -62,6 +62,9 @@ coef(mod2, what="mu")
 coef(mod2, what="sigma")
 }
 }
+\references{
+\insertRef{saez2013hyperpo}{DiscreteDists}
+}
 \seealso{
 \link{dHYPERPO}.
 }
