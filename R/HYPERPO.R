@@ -111,8 +111,11 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
                  G.dev.incr = function(y, mu, sigma, ...) -2*dHYPERPO(y, mu, sigma, log=TRUE),
                  rqres      = expression(rqres(pfun="pHYPERPO", type="Discrete", ymin = 0, y = y, mu = mu, sigma = sigma)),
 
-                 mu.initial    = expression({ mu <- (y + mean(y))/2 }),
-                 sigma.initial = expression(sigma <- rep(1, length(y))),
+                 #mu.initial    = expression({ mu <- (y + mean(y))/2 }),
+                 #sigma.initial = expression(sigma <- rep(1, length(y))),
+
+                 mu.initial    = expression(mu    <- rep(estim_mu_sigma_HYPERPO(y)[1], length(y)) ),
+                 sigma.initial = expression(sigma <- rep(estim_mu_sigma_HYPERPO(y)[2], length(y)) ),
 
                  mu.valid    = function(mu)    all(mu > 0),
                  sigma.valid = function(sigma) all(sigma > 0),
@@ -122,3 +125,21 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
   class=c("gamlss.family", "family"))
 }
 
+logLik_HYPERPO <- function(logparam=c(0, 0), x){
+  return(sum(dHYPERPO(x     = x,
+                      mu    = exp(logparam[1]),
+                      sigma = exp(logparam[2]),
+                      log=TRUE)))
+}
+
+estim_mu_sigma_HYPERPO <- function(y) {
+  mod <- optim(par=c(0, 0),
+               fn=logLik_HYPERPO,
+               method="Nelder-Mead",
+               control=list(fnscale=-1, maxit=100000),
+               x=y)
+  res <- c(mu_hat    = exp(mod$par[1]),
+           sigma_hat = exp(mod$par[2]))
+  names(res) <- c("mu_hat", "sigma_hat")
+  return(res)
+}
