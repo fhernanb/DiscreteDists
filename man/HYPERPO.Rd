@@ -68,3 +68,4 @@ coef(mod2, what="sigma")
 \seealso{
 \link{dHYPERPO}.
 }
+\keyword{internal}
