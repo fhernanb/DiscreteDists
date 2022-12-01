@@ -22,9 +22,15 @@
     <loc>/reference/dHYPERPO.html</loc>
   </url>
   <url>
+    <loc>/reference/estim_mu_sigma_HYPERPO.html</loc>
+  </url>
+  <url>
     <loc>/reference/HYPERPO.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/logLik_HYPERPO.html</loc>
   </url>
 </urlset>

@@ -46,16 +46,8 @@ dHYPERPO <- function(x, mu=1, sigma=1, log=FALSE){
   if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
   if (any(x < 0))       stop(paste("x must be >=0", "\n", ""))
-  # Begin auxiliar function
-  F11 <- function(x, a, c, z) {
-    p1 <- gamma(a+x) / gamma(a)
-    p2 <- gamma(c+x) / gamma(c)
-    p1 * z^x / (p2 * factorial(x))
-  }
-  F11 <- Vectorize(F11)
-  # End auxiliar function
-  p1 <- x * log(mu) + lgamma(sigma) - lgamma(sigma + x)
-  f11 <- add(f=F11, lower=0, upper=99, a=1, c=sigma, z=mu)$value
+  p1 <- x * log(mu) - log(AR(a=sigma, r=x)) # AR is an util function
+  f11 <- F11(a=1, c=sigma, z=mu) # F11 is an util function
   p2 <- log(f11)
   res <- p1 - p2
   if(log)

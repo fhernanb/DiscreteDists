@@ -27,3 +27,25 @@ estim_mu_sigma_HYPERPO <- function(y) {
   names(res) <- c("mu_hat", "sigma_hat")
   return(res)
 }
+#' Auxiliar function for hyper Poisson
+#' @description This function is used inside density function of Hyper Poisson.
+#' @param a,c,z values for F11.
+#' @keywords internal
+#' @export
+F11 <- function(a, c, z) {
+  r <- 0:99
+  num <- AR(a=a, r=r) * z^r
+  den <- AR(a=c, r=r) * factorial(r)
+  sum(num / den)
+}
+F11 <- Vectorize(F11)
+#' Auxiliar function for hyper Poisson
+#' @description This function is used to calculate (a)r.
+#' @param a first value.
+#' @param r second value.
+#' @keywords internal
+#' @export
+AR <- function(a, r) {
+    res <- gamma(a+r) / gamma(a)
+  res
+}
