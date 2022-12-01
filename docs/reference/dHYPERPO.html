@@ -104,6 +104,7 @@ has a support 0, 1, 2, ... and density given by</p>
 <p>\(f(x | \mu, \sigma) = \frac{\mu^x}{_1F_1(1;\mu;\sigma)}\frac{\Gamma(\sigma)}{\Gamma(x+\sigma)}\)</p>
 <p>where the function \(_1F_1(a;c;z)\) is defined as</p>
 <p>\(_1F_1(a;c;z) = \sum_{r=0}^{\infty}\frac{(a)_r}{(c)_r}\frac{z^r}{r!}\)</p>
+<p>and \((a)r = \frac{\gamma(a+r)}{\gamma(a)}\) for \(a&gt;0\) and \(r\) positive integer.</p>
 <p>Note: in this implementation we changed the original parameters \(\lambda\) and \(\gamma\)
 for \(\mu\) and \(\sigma\) respectively, we did it to implement this distribution within gamlss framework.</p>
     </div>

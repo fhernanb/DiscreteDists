@@ -26,6 +26,8 @@ where the function \eqn{_1F_1(a;c;z)} is defined as
 
 \eqn{_1F_1(a;c;z) = \sum_{r=0}^{\infty}\frac{(a)_r}{(c)_r}\frac{z^r}{r!}}
 
+and \eqn{(a)r = \frac{\gamma(a+r)}{\gamma(a)}} for \eqn{a>0} and \eqn{r} positive integer.
+
 Note: in this implementation we changed the original parameters \eqn{\lambda} and \eqn{\gamma}
 for \eqn{\mu} and \eqn{\sigma} respectively, we did it to implement this distribution within gamlss framework.
 }
@@ -37,7 +39,8 @@ y <- rHYPERPO(n=300, mu=5, sigma=1.5)
 
 # Fitting the model
 library(gamlss)
-mod1 <- gamlss(y~1, sigma.fo=~1, family=HYPERPO)
+mod1 <- gamlss(y~1, sigma.fo=~1, family=HYPERPO,
+               control=gamlss.control(n.cyc=500, trace=FALSE))
 
 # Extracting the fitted values for mu and sigma
 # using the inverse link function
@@ -48,18 +51,24 @@ exp(coef(mod1, what='sigma'))
 # Generating random values under some model
 
 \dontrun{
-n <- 200
-x1 <- runif(n)
-x2 <- runif(n)
-mu <- exp(1.21 - 3 * x1)
-sigma <- exp(1.26 - 2 * x2)
-y <- rHYPERPO(n=n, mu, sigma)
+  # A function to simulate a data set with Y ~ HYPERPO
+  gendat <- function(n) {
+    x1 <- runif(n)
+    x2 <- runif(n)
+    mu    <- exp(1.21 - 3 * x1) # 0.75 en promedio
+    sigma <- exp(1.26 - 2 * x2) # 1.30 en promedio
+    y <- rHYPERPO(n=n, mu=mu, sigma=sigma)
+    data.frame(y=y, x1=x1,x2=x2)
+  }
 
-mod2 <- gamlss(y ~ x1, sigma.fo=~x2, family=HYPERPO,
-              control=gamlss.control(n.cyc=5000, trace=TRUE))
+  set.seed(1235)
+  datos <- gendat(n=150)
 
-coef(mod2, what="mu")
-coef(mod2, what="sigma")
+  mod2 <- NULL
+  mod2 <- gamlss(y~x1, sigma.fo=~x2, family=HYPERPO, data=datos,
+                 control=gamlss.control(n.cyc=500, trace=TRUE))
+
+  summary(mod2)
 }
 }
 \references{
