@@ -30,6 +30,8 @@
 #'
 #' \eqn{_1F_1(a;c;z) = \sum_{r=0}^{\infty}\frac{(a)_r}{(c)_r}\frac{z^r}{r!}}
 #'
+#' and \eqn{(a)r = \frac{\gamma(a+r)}{\gamma(a)}} for \eqn{a>0} and \eqn{r} positive integer.
+#'
 #' Note: in this implementation we changed the original parameters \eqn{\lambda} and \eqn{\gamma}
 #' for \eqn{\mu} and \eqn{\sigma} respectively, we did it to implement this distribution within gamlss framework.
 #'

@@ -25,6 +25,8 @@
 #'
 #' \eqn{_1F_1(a;c;z) = \sum_{r=0}^{\infty}\frac{(a)_r}{(c)_r}\frac{z^r}{r!}}
 #'
+#' and \eqn{(a)r = \frac{\gamma(a+r)}{\gamma(a)}} for \eqn{a>0} and \eqn{r} positive integer.
+#'
 #' Note: in this implementation we changed the original parameters \eqn{\lambda} and \eqn{\gamma}
 #' for \eqn{\mu} and \eqn{\sigma} respectively, we did it to implement this distribution within gamlss framework.
 #'
@@ -117,9 +119,6 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
 
                  mu.initial    = expression(mu    <- rep(estim_mu_sigma_HYPERPO(y)[1], length(y)) ),
                  sigma.initial = expression(sigma <- rep(estim_mu_sigma_HYPERPO(y)[2], length(y)) ),
-
-                 #mu.initial    = expression(mu    <- rep(0.75, length(y)) ),
-                 #sigma.initial = expression(sigma <- rep(1.30, length(y)) ),
 
                  mu.valid    = function(mu)    all(mu > 0),
                  sigma.valid = function(sigma) all(sigma > 0),
