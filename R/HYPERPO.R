@@ -124,7 +124,17 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
                  mu.valid    = function(mu)    all(mu > 0),
                  sigma.valid = function(sigma) all(sigma > 0),
 
-                 y.valid = function(y) all(y >= 0)
+                 y.valid = function(y) all(y >= 0),
+
+                 mean = function(mu, sigma) {
+                   mu - (sigma - 1) * (F11(1,sigma,mu)-1) / F11(1,sigma,mu)
+                 },
+                 variance = function(mu, sigma) {
+                   media <- mu - (sigma - 1) * (F11(1,sigma,mu)-1) / F11(1,sigma,mu)
+                   varianza <- mu + (mu-(sigma-1)) * media - media^2
+                   return(varianza)
+                 }
+
   ),
   class=c("gamlss.family", "family"))
 }
