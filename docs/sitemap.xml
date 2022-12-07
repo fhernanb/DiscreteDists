@@ -25,7 +25,13 @@
     <loc>/reference/dHYPERPO.html</loc>
   </url>
   <url>
+    <loc>/reference/dHYPERPO2.html</loc>
+  </url>
+  <url>
     <loc>/reference/estim_mu_sigma_HYPERPO.html</loc>
+  </url>
+  <url>
+    <loc>/reference/estim_mu_sigma_HYPERPO2.html</loc>
   </url>
   <url>
     <loc>/reference/F11.html</loc>
@@ -34,9 +40,18 @@
     <loc>/reference/HYPERPO.html</loc>
   </url>
   <url>
+    <loc>/reference/HYPERPO2.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
     <loc>/reference/logLik_HYPERPO.html</loc>
+  </url>
+  <url>
+    <loc>/reference/logLik_HYPERPO2.html</loc>
+  </url>
+  <url>
+    <loc>/reference/obtaining_lambda.html</loc>
   </url>
 </urlset>
