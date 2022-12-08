@@ -13,15 +13,17 @@
 #'
 #' @importFrom Rdpack reprompt
 #'
-#' @seealso \link{dHYPERPO2}.
+#' @seealso \link{dHYPERPO2}, \link{HYPERPO}.
 #'
 #' @details
 #' The hyper-Poisson distribution with parameters \eqn{\mu} and \eqn{\sigma}
 #' has a support 0, 1, 2, ...
 #'
-#' Note: in this implementation the parameter \eqn{\mu} is the mean 
-#' of the distribution and \eqn{\sigma} corresponds to 
-#' the dispersion parameter.
+#' Note: in this implementation the parameter \eqn{\mu} is the mean
+#' of the distribution and \eqn{\sigma} corresponds to
+#' the dispersion parameter. If you fit a model with this parameterization,
+#' the time will increase because an internal procedure to convert \eqn{\mu}
+#' to \eqn{\lambda} parameter.
 #'
 #' @example examples/examples_HYPERPO2.R
 #'
@@ -29,31 +31,31 @@
 #' @importFrom gamlss rqres.plot
 #' @export
 HYPERPO2 <- function (mu.link="log", sigma.link="log") {
-  
+
   mstats <- checklink("mu.link", "HYPERPO2",
                       substitute(mu.link), c("log"))
   dstats <- checklink("sigma.link", "HYPERPO2",
                       substitute(sigma.link), c("log"))
-  
+
   structure(list(family=c("HYPERPO2", "Hyper-Poisson-2"),
                  parameters=list(mu=TRUE, sigma=TRUE),
                  nopar=2,
                  type="Discrete",
-                 
+
                  mu.link    = as.character(substitute(mu.link)),
                  sigma.link = as.character(substitute(sigma.link)),
-                 
+
                  mu.linkfun    = mstats$linkfun,
                  sigma.linkfun = dstats$linkfun,
-                 
+
                  mu.linkinv    = mstats$linkinv,
                  sigma.linkinv = dstats$linkinv,
-                 
+
                  mu.dr    = mstats$mu.eta,
                  sigma.dr = dstats$mu.eta,
-                 
+
                  # Primeras derivadas, por ahora son computacionales
-                 
+
                  dldm = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dHYPERPO2(y, mu, sigma, log=TRUE),
                                                  theta="mu",
@@ -61,7 +63,7 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                    dldm <- as.vector(attr(dm, "gradient"))
                    dldm
                  },
-                 
+
                  dldd = function(y, mu, sigma) {
                    dd   <- gamlss::numeric.deriv(dHYPERPO2(y, mu, sigma, log=TRUE),
                                                  theta="sigma",
@@ -69,9 +71,9 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                    dldd <- as.vector(attr(dd, "gradient"))
                    dldd
                  },
-                 
+
                  # Segundas derivadas, por ahora son computacionales
-                 
+
                  d2ldm2 = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dHYPERPO2(y, mu, sigma, log=TRUE),
                                                  theta="mu",
@@ -81,7 +83,7 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                    d2ldm2 <- ifelse(d2ldm2 < -1e-15, d2ldm2, -1e-15)
                    d2ldm2
                  },
-                 
+
                  d2ldmdd = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dHYPERPO2(y, mu, sigma, log=TRUE),
                                                  theta="mu",
@@ -95,7 +97,7 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                    d2ldmdd <- ifelse(d2ldmdd < -1e-15, d2ldmdd, -1e-15)
                    d2ldmdd
                  },
-                 
+
                  d2ldd2  = function(y, mu, sigma) {
                    dd   <- gamlss::numeric.deriv(dHYPERPO2(y, mu, sigma, log=TRUE),
                                                  theta="sigma",
@@ -105,19 +107,19 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                    d2ldd2 <- ifelse(d2ldd2 < -1e-15, d2ldd2, -1e-15)
                    d2ldd2
                  },
-                 
+
                  G.dev.incr = function(y, mu, sigma, pw = 1, ...) -2*dHYPERPO2(y, mu, sigma, log=TRUE),
                  rqres      = expression(rqres(pfun="pHYPERPO2", type="Discrete",
                                                ymin = 0, y = y, mu = mu, sigma = sigma)),
-                 
+
                  mu.initial    = expression(mu    <- rep(estim_mu_sigma_HYPERPO2(y)[1], length(y)) ),
                  sigma.initial = expression(sigma <- rep(estim_mu_sigma_HYPERPO2(y)[2], length(y)) ),
-                 
+
                  mu.valid    = function(mu)    all(mu > 0),
                  sigma.valid = function(sigma) all(sigma > 0),
-                 
+
                  y.valid = function(y) all(y >= 0),
-                 
+
                  mean = function(mu, sigma) {
                    mu - (sigma - 1) * (F11(1,sigma,mu)-1) / F11(1,sigma,mu)
                  },
@@ -126,7 +128,7 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                    varianza <- mu + (mu-(sigma-1)) * media - media^2
                    return(varianza)
                  }
-                 
+
   ),
   class=c("gamlss.family", "family"))
 }

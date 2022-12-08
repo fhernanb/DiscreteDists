@@ -3,7 +3,8 @@
 #' @description
 #' These functions define the density, distribution function, quantile
 #' function and random generation for the hyper-Poisson in
-#' the second parameterization with parameters \eqn{\mu} and \eqn{\sigma}.
+#' the second parameterization with parameters \eqn{\mu} (as mean) and
+#' \eqn{\sigma} as the dispersion parameter.
 #'
 #' @param x,q vector of (non-negative integer) quantiles.
 #' @param p vector of probabilities.
@@ -18,19 +19,21 @@
 #'
 #' @importFrom Rdpack reprompt
 #'
-#' @seealso \link{HYPERPO2}.
+#' @seealso \link{HYPERPO2}, \link{HYPERPO}.
 #'
 #' @details
 #' The hyper-Poisson distribution with parameters \eqn{\mu} and \eqn{\sigma}
 #' has a support 0, 1, 2, ...
 #'
-#' Note: in this implementation the parameter \eqn{\mu} is the mean 
-#' of the distribution and \eqn{\sigma} corresponds to 
-#' the dispersion parameter.
+#' Note: in this implementation the parameter \eqn{\mu} is the mean
+#' of the distribution and \eqn{\sigma} corresponds to
+#' the dispersion parameter. If you fit a model with this parameterization,
+#' the time will increase because an internal procedure to convert \eqn{\mu}
+#' to \eqn{\lambda} parameter.
 #'
 #' @return
-#' \code{dHYPERPO} gives the density, \code{pHYPERPO} gives the distribution
-#' function, \code{qHYPERPO} gives the quantile function, \code{rHYPERPO}
+#' \code{dHYPERPO2} gives the density, \code{pHYPERPO2} gives the distribution
+#' function, \code{qHYPERPO2} gives the quantile function, \code{rHYPERPO2}
 #' generates random deviates.
 #'
 #' @example  examples/examples_dHYPERPO2.R

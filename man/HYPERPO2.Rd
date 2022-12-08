@@ -22,7 +22,9 @@ has a support 0, 1, 2, ...
 
 Note: in this implementation the parameter \eqn{\mu} is the mean
 of the distribution and \eqn{\sigma} corresponds to
-the dispersion parameter.
+the dispersion parameter. If you fit a model with this parameterization,
+the time will increase because an internal procedure to convert \eqn{\mu}
+to \eqn{\lambda} parameter.
 }
 \examples{
 # Example 1
@@ -68,5 +70,5 @@ exp(coef(mod1, what='sigma'))
 \insertRef{saez2013hyperpo}{DiscreteDists}
 }
 \seealso{
-\link{dHYPERPO2}.
+\link{dHYPERPO2}, \link{HYPERPO}.
 }
