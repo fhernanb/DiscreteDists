@@ -126,10 +126,10 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
                  y.valid = function(y) all(y >= 0),
 
                  mean = function(mu, sigma) {
-                   mu - (sigma - 1) * (F11(1,sigma,mu)-1) / F11(1,sigma,mu)
+                   mu - (sigma - 1) * (F11(sigma,mu)-1) / F11(sigma,mu)
                  },
                  variance = function(mu, sigma) {
-                   media <- mu - (sigma - 1) * (F11(1,sigma,mu)-1) / F11(1,sigma,mu)
+                   media <- mu - (sigma - 1) * (F11(sigma,mu)-1) / F11(sigma,mu)
                    varianza <- mu + (mu-(sigma-1)) * media - media^2
                    return(varianza)
                  }

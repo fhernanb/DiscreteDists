@@ -47,7 +47,7 @@ dHYPERPO2 <- function(x, mu=1, sigma=1, log=FALSE){
   # To obtain the mu in the older parameterization
   mu <- obtaining_lambda(media=mu, gamma=sigma)
   p1 <- x * log(mu) - log(AR(a=sigma, r=x)) # AR is an util function
-  f11 <- F11(a=1, c=sigma, z=mu) # F11 is an util function
+  f11 <- F11(c=sigma, z=mu) # F11 is an util function
   p2 <- log(f11)
   res <- p1 - p2
   if(log)

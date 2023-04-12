@@ -4,10 +4,10 @@
 \alias{F11}
 \title{Auxiliar function for hyper Poisson}
 \usage{
-F11(a, c, z)
+F11(c, z)
 }
 \arguments{
-\item{a, c, z}{values for F11.}
+\item{c, z}{values for F11.}
 }
 \description{
 This function is used inside density function of Hyper Poisson.

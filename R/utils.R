@@ -29,14 +29,14 @@ estim_mu_sigma_HYPERPO <- function(y) {
 }
 #' Auxiliar function for hyper Poisson
 #' @description This function is used inside density function of Hyper Poisson.
-#' @param a,c,z values for F11.
+#' @param c,z values for F11.
 #' @keywords internal
 #' @export
-F11 <- function(a, c, z) {
-  r <- 0:99
-  num <- AR(a=a, r=r) * z^r
-  den <- AR(a=c, r=r) * factorial(r)
-  sum(num / den)
+F11 <- function(c, z) {
+  k <- 0:99
+  res <- lgamma(c) + k*log(z) - lgamma(c+k)
+  res <- exp(res)
+  sum(res)
 }
 F11 <- Vectorize(F11)
 #' Auxiliar function for hyper Poisson
@@ -46,7 +46,7 @@ F11 <- Vectorize(F11)
 #' @keywords internal
 #' @export
 AR <- function(a, r) {
-    res <- gamma(a+r) / gamma(a)
+  res <- gamma(a+r) / gamma(a)
   res
 }
 #' logLik function for hyper Poisson in second parameterization
@@ -85,8 +85,10 @@ estim_mu_sigma_HYPERPO2 <- function(y) {
 #' @keywords internal
 #' @export
 obtaining_lambda <- function(media, gamma) {
-  # Aux function
-  fun <- function(x) x-(gamma-1)*(F11(1,gamma,x)-1)/F11(1,gamma,x)-media
+  # Begin aux function
+  fun <- function(x) x-(gamma-1)*(F11(gamma,x)-1)/F11(gamma,x)-media
+  fun <- Vectorize(fun)
+  # End aux function
   if (gamma == 1)
     result <- media
   else {

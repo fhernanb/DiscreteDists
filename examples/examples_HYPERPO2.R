@@ -1,7 +1,7 @@
 # Example 1
 # Generating some random values with
 # known mu and sigma
-y <- rHYPERPO2(n=300, mu=5, sigma=1.5)
+y <- rHYPERPO2(n=100, mu=5, sigma=1.5)
 
 # Fitting the model
 library(gamlss)
