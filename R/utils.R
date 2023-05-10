@@ -33,7 +33,7 @@ estim_mu_sigma_HYPERPO <- function(y) {
 #' @keywords internal
 #' @export
 F11 <- function(c, z) {
-  k <- 0:99
+  k <- 0:999
   res <- lgamma(c) + k*log(z) - lgamma(c+k)
   res <- exp(res)
   sum(res)

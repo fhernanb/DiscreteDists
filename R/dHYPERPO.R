@@ -48,7 +48,7 @@ dHYPERPO <- function(x, mu=1, sigma=1, log=FALSE){
   if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
   if (any(x < 0))       stop(paste("x must be >=0", "\n", ""))
-  p1 <- x * log(mu) - log(AR(a=sigma, r=x)) # AR is an util function
+  p1 <- x * log(mu) - lgamma(sigma+x) + lgamma(sigma)
   f11 <- F11(c=sigma, z=mu) # F11 is an util function
   p2 <- log(f11)
   res <- p1 - p2
