@@ -39,19 +39,16 @@ function and random generation for the Discrete Burr Hatke distribution
 with parameter \eqn{\mu}.
 }
 \details{
-The hyper-Poisson distribution with parameters \eqn{\mu} and \eqn{\sigma}
-has a support 0, 1, 2, ... and density given by
+The Discrete Burr-Hatke distribution with parameters \eqn{\mu} has a support
+0, 1, 2, ... and density given by
 
-\eqn{f(x | \mu, \sigma) = \frac{\mu^x}{_1F_1(1;\mu;\sigma)}\frac{\Gamma(\sigma)}{\Gamma(x+\sigma)}}
+\eqn{f(x | \mu) = (\frac{1}{x+1}-\frac{\mu}{x+2})\mu^{x}}
 
-where the function \eqn{_1F_1(a;c;z)} is defined as
+The pmf is log-convex for all values of \eqn{0 < \mu < 1}, where \eqn{\frac{f(x+1;\mu)}{f(x;\mu)}}
+is an increasing function in \eqn{x} for all values of the parameter \eqn{\mu}.
 
-\eqn{_1F_1(a;c;z) = \sum_{r=0}^{\infty}\frac{(a)_r}{(c)_r}\frac{z^r}{r!}}
-
-and \eqn{(a)_r = \frac{\gamma(a+r)}{\gamma(a)}} for \eqn{a>0} and \eqn{r} positive integer.
-
-Note: in this implementation we changed the original parameters \eqn{\lambda} and \eqn{\gamma}
-for \eqn{\mu} and \eqn{\sigma} respectively, we did it to implement this distribution within gamlss framework.
+Note: in this implementation we changed the original parameters \eqn{\lambda} for \eqn{\mu},
+we did it to implement this distribution within gamlss framework.
 }
 \examples{
 # Example 1
@@ -132,5 +129,8 @@ plot(p, qxx, type="s", lwd=2, col="darkred", ylab="quantiles",
 \insertRef{el2020discrete}{DiscreteDists}
 }
 \seealso{
-\link{HYPERPO}.
+\link{DBH}.
+}
+\author{
+Valentina Hurtado Sepulveda, \email{vhurtados@unal.edu.co}
 }

@@ -95,14 +95,13 @@ function, <code>qHYPERPO</code> gives the quantile function, <code>rHYPERPO</cod
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>The hyper-Poisson distribution with parameters \(\mu\) and \(\sigma\)
-has a support 0, 1, 2, ... and density given by</p>
-<p>\(f(x | \mu, \sigma) = \frac{\mu^x}{_1F_1(1;\mu;\sigma)}\frac{\Gamma(\sigma)}{\Gamma(x+\sigma)}\)</p>
-<p>where the function \(_1F_1(a;c;z)\) is defined as</p>
-<p>\(_1F_1(a;c;z) = \sum_{r=0}^{\infty}\frac{(a)_r}{(c)_r}\frac{z^r}{r!}\)</p>
-<p>and \((a)_r = \frac{\gamma(a+r)}{\gamma(a)}\) for \(a&gt;0\) and \(r\) positive integer.</p>
-<p>Note: in this implementation we changed the original parameters \(\lambda\) and \(\gamma\)
-for \(\mu\) and \(\sigma\) respectively, we did it to implement this distribution within gamlss framework.</p>
+    <p>The Discrete Burr-Hatke distribution with parameters \(\mu\) has a support
+0, 1, 2, ... and density given by</p>
+<p>\(f(x | \mu) = (\frac{1}{x+1}-\frac{\mu}{x+2})\mu^{x}\)</p>
+<p>The pmf is log-convex for all values of \(0 &lt; \mu &lt; 1\), where \(\frac{f(x+1;\mu)}{f(x;\mu)}\)
+is an increasing function in \(x\) for all values of the parameter \(\mu\).</p>
+<p>Note: in this implementation we changed the original parameters \(\lambda\) for \(\mu\),
+we did it to implement this distribution within gamlss framework.</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -112,7 +111,11 @@ for \(\mu\) and \(\sigma\) respectively, we did it to implement this distributio
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><a href="HYPERPO.html">HYPERPO</a>.</p></div>
+    <div class="dont-index"><p><a href="DBH.html">DBH</a>.</p></div>
+    </div>
+    <div id="author">
+    <h2>Author</h2>
+    <p>Valentina Hurtado Sepulveda, <a href="mailto:vhurtados@unal.edu.co">vhurtados@unal.edu.co</a></p>
     </div>
 
     <div id="ref-examples">

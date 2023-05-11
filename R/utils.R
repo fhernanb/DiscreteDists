@@ -100,3 +100,26 @@ obtaining_lambda <- function(media, gamma) {
   result
 }
 obtaining_lambda <- Vectorize(obtaining_lambda)
+
+#' logLik function for Discrete Burr Hatke
+#' @description Calculates logLik for Discrete Burr Hatke  distribution.
+#' @param param value for mu.
+#' @param x vector with the response variable.
+#' @keywords internal
+#' @export
+logLik_DBH <- function(param=0.5, x){
+  mu <- param
+  minus_ll <- -sum(dDBH(x=x, mu=mu, log=TRUE))
+  return(minus_ll)
+}
+#' Initial values for Discrete Burr Hatke
+#' @description This function generates initial values for the parameter mu.
+#' @param y vector with the response variable.
+#' @keywords internal
+#' @export
+#' @importFrom stats optimize
+estim_mu_DBH <- function(y){
+  mod <- optimize(f=logLik_DBH, interval=c(0, 1), x=y)
+  res <- mod$minimum
+  return(res)
+}

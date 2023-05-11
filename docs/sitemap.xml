@@ -22,6 +22,9 @@
     <loc>/reference/AR.html</loc>
   </url>
   <url>
+    <loc>/reference/DBH.html</loc>
+  </url>
+  <url>
     <loc>/reference/dDBH.html</loc>
   </url>
   <url>
@@ -29,6 +32,9 @@
   </url>
   <url>
     <loc>/reference/dHYPERPO2.html</loc>
+  </url>
+  <url>
+    <loc>/reference/estim_mu_DBH.html</loc>
   </url>
   <url>
     <loc>/reference/estim_mu_sigma_HYPERPO.html</loc>
@@ -47,6 +53,9 @@
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/logLik_DBH.html</loc>
   </url>
   <url>
     <loc>/reference/logLik_HYPERPO.html</loc>
