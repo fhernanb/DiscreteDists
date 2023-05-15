@@ -29,8 +29,8 @@ rDBH(n, mu = 1)
 \item{n}{number of random values to return}
 }
 \value{
-\code{dHYPERPO} gives the density, \code{pHYPERPO} gives the distribution
-function, \code{qHYPERPO} gives the quantile function, \code{rHYPERPO}
+\code{dDBH} gives the density, \code{pDBH} gives the distribution
+function, \code{qDBH} gives the quantile function, \code{rDBH}
 generates random deviates.
 }
 \description{

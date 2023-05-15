@@ -31,13 +31,12 @@
 #' The pmf is log-convex for all values of \eqn{0 < \mu < 1}, where \eqn{\frac{f(x+1;\mu)}{f(x;\mu)}}
 #' is an increasing function in \eqn{x} for all values of the parameter \eqn{\mu}.
 #'
-#'
 #' Note: in this implementation we changed the original parameters \eqn{\lambda} for \eqn{\mu},
 #' we did it to implement this distribution within gamlss framework.
 #'
 #' @return
-#' \code{dHYPERPO} gives the density, \code{pHYPERPO} gives the distribution
-#' function, \code{qHYPERPO} gives the quantile function, \code{rHYPERPO}
+#' \code{dDBH} gives the density, \code{pDBH} gives the distribution
+#' function, \code{qDBH} gives the quantile function, \code{rDBH}
 #' generates random deviates.
 #'
 #' @example  examples/examples_dDBH.R
@@ -48,13 +47,12 @@ dDBH <- function(x, mu, log = FALSE) {
   if (any(mu <= 0)) stop("parameter mu has to be positive!")
   if (any(x < 0)) stop(paste("x must be >=0", "\n", ""))
 
-  p <- (1/(x+1)-mu/(x+2))*mu^x
-  log_f <- log(p)
+  res <- log(1/(x+1)-mu/(x+2)) + x * log(mu)
 
   if (log) {
-    return(log_f)
+    return(res)
   } else {
-    return(exp(log_f))
+    return(exp(res))
   }
 }
 #' @export
