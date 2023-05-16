@@ -18,15 +18,15 @@ qHYPERPO(p, mu = 1, sigma = 1, lower.tail = TRUE, log.p = FALSE)
 \arguments{
 \item{x, q}{vector of (non-negative integer) quantiles.}
 
-\item{mu}{vector of positive values of this parameter.}
+\item{mu}{vector of the mu parameter.}
 
-\item{sigma}{vector of positive values of this parameter.}
+\item{sigma}{vector of the sigma parameter.}
 
 \item{log, log.p}{logical; if TRUE, probabilities p are given as log(p).}
 
 \item{lower.tail}{logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \code{P[X > x]}.}
 
-\item{n}{number of random values to return}
+\item{n}{number of random values to return.}
 
 \item{p}{vector of probabilities.}
 }

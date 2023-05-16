@@ -17,6 +17,7 @@ RdMacros: Rdpack
 Imports: 
     gamlss,
     gamlss.dist,
+    dplyr,
     Rdpack
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

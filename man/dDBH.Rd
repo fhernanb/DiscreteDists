@@ -18,7 +18,7 @@ rDBH(n, mu = 1)
 \arguments{
 \item{x, q}{vector of (non-negative integer) quantiles.}
 
-\item{mu}{vector of positive values of this parameter.}
+\item{mu}{vector of the mu parameter.}
 
 \item{log, log.p}{logical; if TRUE, probabilities p are given as log(p).}
 

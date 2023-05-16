@@ -7,9 +7,9 @@
 #'
 #' @param x,q vector of (non-negative integer) quantiles.
 #' @param p vector of probabilities.
-#' @param mu vector of positive values of this parameter.
-#' @param sigma vector of positive values of this parameter.
-#' @param n number of random values to return
+#' @param mu vector of the mu parameter.
+#' @param sigma vector of the sigma parameter.
+#' @param n number of random values to return.
 #' @param log,log.p logical; if TRUE, probabilities p are given as log(p).
 #' @param lower.tail logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \code{P[X > x]}.
 #'
