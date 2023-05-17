@@ -48,25 +48,18 @@ DBH <- function (mu.link="logit") {
                  mu.linkinv = mstats$linkinv,
                  mu.dr      = mstats$mu.eta,
 
-                 # Primeras derivadas, por ahora son computacionales
+                 # Primeras derivadas, se usaron las deriv manuales
 
                  dldm = function(y, mu) {
-                   dm   <- gamlss::numeric.deriv(dDBH(y, mu, log=TRUE),
-                                                 theta="mu",
-                                                 delta=0.01)
-                   dldm <- as.vector(attr(dm, "gradient"))
+                   dldm <- (-y^2*mu+y^2-2*y*mu+2*y-mu)/(mu*(y+2-mu*(y+1)))
                    dldm
                  },
 
-                 # Segundas derivadas, por ahora son computacionales
+                 # Segundas derivadas, se usaron las deriva manuales
 
                  d2ldm2 = function(y, mu) {
-                   dm   <- gamlss::numeric.deriv(dDBH(y, mu, log=TRUE),
-                                                 theta="mu",
-                                                 delta=0.01)
-                   dldm <- as.vector(attr(dm, "gradient"))
+                   dldm <- (-y^2*mu+y^2-2*y*mu+2*y-mu)/(mu*(y+2-mu*(y+1)))
                    d2ldm2 <- - dldm * dldm
-                   d2ldm2 <- ifelse(d2ldm2 < -1e-15, d2ldm2, -1e-15)
                    d2ldm2
                  },
 
