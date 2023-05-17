@@ -1,38 +1,33 @@
 # Example 1
 # Generating some random values with
-# known mu and sigma
-y <- rHYPERPO(n=300, mu=5, sigma=1.5)
+# known mu
+y <- rDBH(n=1000, mu=0.74)
 
 # Fitting the model
 library(gamlss)
-mod1 <- gamlss(y~1, sigma.fo=~1, family=HYPERPO,
+mod1 <- gamlss(y~1, family=DBH,
                control=gamlss.control(n.cyc=500, trace=FALSE))
 
-# Extracting the fitted values for mu and sigma
-# using the inverse link function
-exp(coef(mod1, what='mu'))
-exp(coef(mod1, what='sigma'))
+# Extracting the fitted values for mu
+# using the inverse logit function
+inv_logit <- function(x) exp(x) / (1+exp(x))
+inv_logit(coef(mod1, parameter = 'mu'))
 
 # Example 2
 # Generating random values under some model
 
-\dontrun{
-  # A function to simulate a data set with Y ~ HYPERPO
-  gendat <- function(n) {
-    x1 <- runif(n)
-    x2 <- runif(n)
-    mu    <- exp(1.21 - 3 * x1) # 0.75 en promedio
-    sigma <- exp(1.26 - 2 * x2) # 1.30 en promedio
-    y <- rHYPERPO(n=n, mu=mu, sigma=sigma)
-    data.frame(y=y, x1=x1,x2=x2)
-  }
-
-  set.seed(1235)
-  datos <- gendat(n=150)
-
-  mod2 <- NULL
-  mod2 <- gamlss(y~x1, sigma.fo=~x2, family=HYPERPO, data=datos,
-                 control=gamlss.control(n.cyc=500, trace=TRUE))
-
-  summary(mod2)
+# A function to simulate a data set with Y ~ DBH
+gendat <- function(n) {
+  x1 <- runif(n)
+  mu    <- inv_logit(-3 + 5 * x1)
+  y <- rDBH(n=n, mu=mu)
+  data.frame(y=y, x1=x1)
 }
+
+datos <- gendat(n=150)
+
+mod2 <- NULL
+mod2 <- gamlss(y~x1, family=DBH, data=datos,
+               control=gamlss.control(n.cyc=500, trace=TRUE))
+
+summary(mod2)
