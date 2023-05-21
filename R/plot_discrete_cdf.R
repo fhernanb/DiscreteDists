@@ -1,4 +1,4 @@
-#' Drae the CDF for a discrete random variables
+#' Draw the CDF for a discrete random variables
 #'
 #' @author Freddy Hernandez, \email{fhernanb@unal.edu.co}
 #'
@@ -25,6 +25,7 @@ plot_discrete_cdf <- function(x, fx, ...) {
 
   points(x=x[-n], y=Fx[-1], pch=19)
   points(x=x[-1], y=Fx[-1], pch=1)
+
   for(i in 1:(n-1))
-    points(x=x[i+0:1], y=Fx[c(i,i)+1], type="l")
+    points(x=x[i+0:1], y=Fx[c(i,i)+1], type="l", ...)
 }

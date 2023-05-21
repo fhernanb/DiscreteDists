@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_discrete_cdf.R
 \name{plot_discrete_cdf}
 \alias{plot_discrete_cdf}
-\title{Drae the CDF for a discrete random variables}
+\title{Draw the CDF for a discrete random variables}
 \usage{
 plot_discrete_cdf(x, fx, ...)
 }
@@ -17,7 +17,7 @@ plot_discrete_cdf(x, fx, ...)
 A plot with the cumulative density function.
 }
 \description{
-Drae the CDF for a discrete random variables
+Draw the CDF for a discrete random variables
 }
 \examples{
 # Example 1
@@ -26,7 +26,8 @@ Drae the CDF for a discrete random variables
 x <- 0:6
 fx <- c(0, 0.19, 0.21, 0.4, 0.12, 0.05, 0.03)
 plot_discrete_cdf(x, fx, las=1,
-                  xlab="X", ylab="Probability")
+                  xlab="X",
+                  ylab="Probability")
 
 # Example 2
 # for a Poisson distribution
