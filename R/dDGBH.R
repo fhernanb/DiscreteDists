@@ -112,7 +112,25 @@ qDGBH <- function(p, mu = mu, sigma = sigma, lower.tail = TRUE) {
 #' @importFrom dplyr between
 #' @export
 #' @rdname dDGBH
-rDGBH <- function(n,  mu = 0.999 , sigma = 100){
-  runif(n=n)
+rDGBH <- function(n, mu = 0.999, sigma = 100){
+  if(any( n <= 0 ))   stop(paste("n must be integer a positive integer", ""))
+  if (any(!between(mu,0,1) ))   stop(paste("mu must be between 0 and 1", "\n", ""))
+  if (any(sigma <= 0))           stop(paste("sigma must be positive", "\n", ""))
+
+  # Function to simulate one random value
+  one_random_DGBH <- function(u,  mu , sigma ) {
+    aux <- dDGBH(x = 0, mu = mu, sigma = sigma)
+    F <- aux
+    i <- 0
+    while (u >= F) {
+      i <- i + 1
+      aux <- dDGBH(x = i, mu = mu, sigma = sigma)
+      F <- F + aux
+    }
+    return(i)
+  }
+  one_random_DGBH <- Vectorize(one_random_DGBH)
+  ## End auxiliar function
+
+  one_random_DGBH(u=runif(n), mu=mu, sigma=sigma)
 }
-rDGBH <- Vectorize(rDGBH)

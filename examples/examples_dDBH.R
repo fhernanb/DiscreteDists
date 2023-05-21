@@ -1,4 +1,6 @@
 # Example 1
+# Plotting the mass function for diferent parameter values
+
 par(mfrow=c(1, 3))
 plot(x=0:5, y=dDBH(x=0:5, mu=0.1),
      type="h", lwd=2, col="dodgerblue", las=1,
@@ -17,7 +19,8 @@ plot(x=0:15, y=dDBH(x=0:15, mu=0.9),
 
 
 # Example 2
-# Checking if curves go to 1
+# Checking if the cumulative curves converge to 1
+
 x_max <- 15
 cumulative_probs1 <- pDBH(q=0:x_max, mu=0.1)
 cumulative_probs2 <- pDBH(q=0:x_max, mu=0.5)
@@ -36,7 +39,8 @@ legend("bottomright", col=c("dodgerblue", "tomato", "green4"), lwd=3,
                 "mu=0.9"))
 
 # Example 3
-# Some tests to compare the simulator with theoretical probabilities
+# Comparing the random generator output with the theoretical probabilities
+
 mu <- 0.4
 x_max <- 10
 probs1 <- dDBH(x=0:x_max, mu=mu)
@@ -57,17 +61,22 @@ legend('topright',
        col=c('dodgerblue3','firebrick3'), lty=1)
 
 # Example 4
-mu <- 0.9
-p <- seq(from=0, to=0.99999, length.out=100)
+# Checking if the quantile function generates an
+# appropriate shape of the cumulative distribution.
+
+mu <- 0.97
+p <- seq(from=0, to=0.99, length.out=100)
 plot(x=qDBH(p, mu=mu), y=p, xlab="Quantile",
      las=1, ylab="Probability")
 curve(pDBH(x, mu=mu), from=0, add=TRUE, col="red")
 
 # Example 5
-p <- seq(0, 1, by = 0.01)
-mu <- 0.9
+# Checking the quantile function
+
+mu <- 0.97
+p <- seq(from=0, to=1, by = 0.01)
 qxx <- qDBH(p, mu, lower.tail = TRUE, log.p = FALSE)
-plot(p, qxx, type="s", lwd=2, col="darkred", ylab="quantiles",
-     main="Quantiles of BH(mu=0.9)")
+plot(p, qxx, type="s", lwd=2, col="green3", ylab="quantiles",
+     main="Quantiles of BH(mu=0.97)")
 
 
