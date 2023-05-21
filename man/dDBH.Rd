@@ -22,7 +22,7 @@ rDBH(n, mu = 1)
 
 \item{log, log.p}{logical; if TRUE, probabilities p are given as log(p).}
 
-\item{lower.tail}{logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \code{P[X > x]}.}
+\item{lower.tail}{logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.}
 
 \item{p}{vector of probabilities.}
 
@@ -114,16 +114,6 @@ legend('topright',
        col=c('dodgerblue3','firebrick3'), lty=1)
 
 # Example 4
-# Checking if the quantile function generates an
-# appropriate shape of the cumulative distribution.
-
-mu <- 0.97
-p <- seq(from=0, to=0.99, length.out=100)
-plot(x=qDBH(p, mu=mu), y=p, xlab="Quantile",
-     las=1, ylab="Probability")
-curve(pDBH(x, mu=mu), from=0, add=TRUE, col="red")
-
-# Example 5
 # Checking the quantile function
 
 mu <- 0.97

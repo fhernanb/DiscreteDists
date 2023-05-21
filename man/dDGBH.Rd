@@ -24,7 +24,7 @@ rDGBH(n, mu = 0.999, sigma = 100)
 
 \item{log, log.p}{logical; if TRUE, probabilities p are given as log(p).}
 
-\item{lower.tail}{logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \code{P[X > x]}.}
+\item{lower.tail}{logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.}
 
 \item{p}{vector of probabilities.}
 

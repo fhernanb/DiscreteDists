@@ -24,7 +24,7 @@ qHYPERPO2(p, mu = 1, sigma = 1, lower.tail = TRUE, log.p = FALSE)
 
 \item{log, log.p}{logical; if TRUE, probabilities p are given as log(p).}
 
-\item{lower.tail}{logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \code{P[X > x]}.}
+\item{lower.tail}{logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.}
 
 \item{n}{number of random values to return}
 
@@ -111,17 +111,6 @@ legend('topright',
        col=c('dodgerblue3','firebrick3'), lty=1)
 
 # Example 4
-# Checking if the quantile function generates an
-# appropriate shape of the cumulative distribution.
-
-mu <- 5
-sigma <- 1.5
-p <- seq(from=0, to=0.999, length.out=100)
-plot(x=qHYPERPO2(p=p, mu=mu, sigma=sigma), y=p, xlab="Quantile",
-     las=1, ylab="Probability")
-curve(pHYPERPO2(x, mu=mu, sigma=sigma), from=0, add=TRUE, col="red")
-
-# Example 5
 # Checking the quantile function
 
 mu <- 3

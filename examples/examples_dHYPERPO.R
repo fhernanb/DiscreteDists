@@ -58,17 +58,6 @@ legend('topright',
        col=c('dodgerblue3','firebrick3'), lty=1)
 
 # Example 4
-# Checking if the quantile function generates an
-# appropriate shape of the cumulative distribution.
-
-mu <- 5
-sigma <- 1.5
-p <- seq(from=0, to=0.999, length.out=100)
-plot(x=qHYPERPO(p=p, mu=mu, sigma=sigma), y=p, xlab="Quantile",
-     las=1, ylab="Probability")
-curve(pHYPERPO(x, mu=mu, sigma=sigma), from=0, add=TRUE, col="red")
-
-# Example 5
 # Checking the quantile function
 
 mu <- 3
@@ -77,5 +66,6 @@ p <- seq(from=0, to=1, by=0.01)
 qxx <- qHYPERPO(p=p, mu=mu, sigma=sigma, lower.tail=TRUE, log.p=FALSE)
 plot(p, qxx, type="s", lwd=2, col="green3", ylab="quantiles",
      main="Quantiles of HP(mu = sigma = 3)")
+
 
 

@@ -31,6 +31,9 @@
     <loc>/reference/dDGBH.html</loc>
   </url>
   <url>
+    <loc>/reference/dDLD.html</loc>
+  </url>
+  <url>
     <loc>/reference/DGBH.html</loc>
   </url>
   <url>
@@ -40,7 +43,13 @@
     <loc>/reference/dHYPERPO2.html</loc>
   </url>
   <url>
+    <loc>/reference/DLD.html</loc>
+  </url>
+  <url>
     <loc>/reference/estim_mu_DBH.html</loc>
+  </url>
+  <url>
+    <loc>/reference/estim_mu_DLD.html</loc>
   </url>
   <url>
     <loc>/reference/estim_mu_sigma_HYPERPO.html</loc>
@@ -64,6 +73,9 @@
     <loc>/reference/logLik_DBH.html</loc>
   </url>
   <url>
+    <loc>/reference/logLik_DLD.html</loc>
+  </url>
+  <url>
     <loc>/reference/logLik_HYPERPO.html</loc>
   </url>
   <url>
@@ -71,5 +83,8 @@
   </url>
   <url>
     <loc>/reference/obtaining_lambda.html</loc>
+  </url>
+  <url>
+    <loc>/reference/plot_discrete_cdf.html</loc>
   </url>
 </urlset>

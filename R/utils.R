@@ -123,3 +123,26 @@ estim_mu_DBH <- function(y){
   res <- mod$minimum
   return(res)
 }
+#' logLik function for Discrete Lindley distribution
+#' @description Calculates logLik for Discrete Lindley  distribution.
+#' @param param value for mu.
+#' @param x vector with the response variable.
+#' @keywords internal
+#' @export
+logLik_DLD <- function(param=0.5, x){
+  mu <- param
+  minus_ll <- -sum(dDLD(x=x, mu=mu, log=TRUE))
+  return(minus_ll)
+}
+#' Initial values for Discrete Lindley
+#' @description This function generates initial values for the parameter mu.
+#' @param y vector with the response variable.
+#' @keywords internal
+#' @export
+#' @importFrom stats optim
+estim_mu_DLD <- function(y){
+  res1 <- optim(par=0.5, fn=logLik_DLD, method='L-BFGS-B',
+                lower=1e-10, upper=Inf, x = y)
+  res <- res1$par
+  return(res)
+}
