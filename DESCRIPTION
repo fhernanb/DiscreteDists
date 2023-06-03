@@ -17,7 +17,6 @@ RdMacros: Rdpack
 Imports: 
     gamlss,
     gamlss.dist,
-    dplyr,
     pracma,
     Rdpack
 Encoding: UTF-8

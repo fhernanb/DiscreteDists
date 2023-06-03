@@ -1,4 +1,4 @@
-#' Draw the CDF for a discrete random variables
+#' Draw the CDF for a discrete random variable
 #'
 #' @author Freddy Hernandez, \email{fhernanb@unal.edu.co}
 #'
