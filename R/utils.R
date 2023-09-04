@@ -146,3 +146,32 @@ estim_mu_DLD <- function(y){
   res <- res1$par
   return(res)
 }
+#' logLik function for DMOLBE
+#' @description Calculates logLik for DMOLBE distribution.
+#' @param logparam vector with parameters in log scale.
+#' @param x vector with the response variable.
+#' @keywords internal
+#' @export
+logLik_DMOLBE <- function(logparam=c(0, 0), x){
+  return(sum(dDMOLBE(x     = x,
+                     mu    = exp(logparam[1]),
+                     sigma = exp(logparam[2]),
+                     log=TRUE)))
+}
+#' Initial values for DMOLBE
+#' @description This function generates initial values for the parameters.
+#' @param y vector with the response variable.
+#' @keywords internal
+#' @export
+#' @importFrom stats optim
+estim_mu_sigma_DMOLBE <- function(y) {
+  mod <- optim(par=c(0, 0),
+               fn=logLik_DMOLBE,
+               method="Nelder-Mead",
+               control=list(fnscale=-1, maxit=100000),
+               x=y)
+  res <- c(mu_hat    = exp(mod$par[1]),
+           sigma_hat = exp(mod$par[2]))
+  names(res) <- c("mu_hat", "sigma_hat")
+  return(res)
+}
