@@ -79,7 +79,7 @@ cumulative_probs3 <- pDMOLBE(q=0:x_max, mu=1, sigma=2)
 
 plot(x=0:x_max, y=cumulative_probs1, col="dodgerblue",
      type="o", las=1, ylim=c(0, 1),
-     main="Cumulative probability for hyper-Poisson",
+     main="Cumulative probability for DMOLBE",
      xlab="X", ylab="Probability")
 points(x=0:x_max, y=cumulative_probs2, type="o", col="tomato")
 points(x=0:x_max, y=cumulative_probs3, type="o", col="green4")
