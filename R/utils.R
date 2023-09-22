@@ -175,3 +175,33 @@ estim_mu_sigma_DMOLBE <- function(y) {
   names(res) <- c("mu_hat", "sigma_hat")
   return(res)
 }
+#' logLik function for discrete Inverted Kumaraswamy
+#' @description Calculates logLik for discrete Inverted Kumaraswamy distribution.
+#' @param logparam vector with parameters in log scale.
+#' @param y vector with the response variable.
+#' @keywords internal
+#' @export
+logLik_DIKUM <- function(param=c(0, 0), x){
+  return(sum(dDIKUM(x = x,
+                   mu = exp(param[1]),
+                   sigma = exp(param[2]),
+                   log=TRUE)))
+}
+#' Initial values for discrete Inverted Kumaraswamy
+#' @description This function generates initial values for the parameters.
+#' @param y vector with the response variable.
+#' @keywords internal
+#' @export
+#' @importFrom stats optim
+estim_mu_sigma_DIKUM <- function(y) {
+  mod <- optim(par=c(0, 0),
+               fn=logLik_DIKUM,
+               method="Nelder-Mead",
+               control=list(fnscale=-1, maxit=100000),
+               x=y)
+  res <- c(mu_hat    = exp(mod$par[1]),
+           sigma_hat = exp(mod$par[2]))
+  names(res) <- c("mu_hat", "sigma_hat")
+  return(res)
+}
+

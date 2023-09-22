@@ -31,6 +31,9 @@
     <loc>/reference/dDGBH.html</loc>
   </url>
   <url>
+    <loc>/reference/dDIKUM.html</loc>
+  </url>
+  <url>
     <loc>/reference/dDLD.html</loc>
   </url>
   <url>
@@ -46,6 +49,9 @@
     <loc>/reference/dHYPERPO2.html</loc>
   </url>
   <url>
+    <loc>/reference/DIKUM.html</loc>
+  </url>
+  <url>
     <loc>/reference/DLD.html</loc>
   </url>
   <url>
@@ -56,6 +62,9 @@
   </url>
   <url>
     <loc>/reference/estim_mu_DLD.html</loc>
+  </url>
+  <url>
+    <loc>/reference/estim_mu_sigma_DIKUM.html</loc>
   </url>
   <url>
     <loc>/reference/estim_mu_sigma_DMOLBE.html</loc>
@@ -80,6 +89,9 @@
   </url>
   <url>
     <loc>/reference/logLik_DBH.html</loc>
+  </url>
+  <url>
+    <loc>/reference/logLik_DIKUM.html</loc>
   </url>
   <url>
     <loc>/reference/logLik_DLD.html</loc>
