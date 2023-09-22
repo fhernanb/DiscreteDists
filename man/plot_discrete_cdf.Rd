@@ -4,12 +4,16 @@
 \alias{plot_discrete_cdf}
 \title{Draw the CDF for a discrete random variable}
 \usage{
-plot_discrete_cdf(x, fx, ...)
+plot_discrete_cdf(x, fx, col = "blue", lwd = 3, ...)
 }
 \arguments{
-\item{x}{vector with the values of the random variable.}
+\item{x}{vector with the values of the random variable \eqn{X}.}
 
-\item{fx}{vector with the probabilities of x.}
+\item{fx}{vector with the probabilities of \eqn{X}.}
+
+\item{col}{color for the line.}
+
+\item{lwd}{line width.}
 
 \item{...}{further arguments and graphical parameters.}
 }
@@ -23,11 +27,10 @@ Draw the CDF for a discrete random variable
 # Example 1
 # for a particular distribution
 
-x <- 0:6
-fx <- c(0, 0.19, 0.21, 0.4, 0.12, 0.05, 0.03)
+x <- 1:6
+fx <- c(0.19, 0.21, 0.4, 0.12, 0.05, 0.03)
 plot_discrete_cdf(x, fx, las=1,
-                  xlab="X",
-                  ylab="Probability")
+                  xlab="X", ylab="Probability")
 
 # Example 2
 # for a Poisson distribution
@@ -37,8 +40,6 @@ plot_discrete_cdf(x, fx, las=1,
                   xlab="X",
                   ylab="Probability",
                   main="CDF for Poisson")
-
-
 }
 \author{
 Freddy Hernandez, \email{fhernanb@unal.edu.co}

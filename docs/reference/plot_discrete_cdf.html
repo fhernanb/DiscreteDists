@@ -44,17 +44,25 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_discrete_cdf</span><span class="op">(</span><span class="va">x</span>, <span class="va">fx</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_discrete_cdf</span><span class="op">(</span><span class="va">x</span>, <span class="va">fx</span>, col <span class="op">=</span> <span class="st">"blue"</span>, lwd <span class="op">=</span> <span class="fl">3</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
-<dd><p>vector with the values of the random variable.</p></dd>
+<dd><p>vector with the values of the random variable \(X\).</p></dd>
 
 
 <dt>fx</dt>
-<dd><p>vector with the probabilities of x.</p></dd>
+<dd><p>vector with the probabilities of \(X\).</p></dd>
+
+
+<dt>col</dt>
+<dd><p>color for the line.</p></dd>
+
+
+<dt>lwd</dt>
+<dd><p>line width.</p></dd>
 
 
 <dt>...</dt>
@@ -77,11 +85,10 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Example 1</span></span></span>
 <span class="r-in"><span><span class="co"># for a particular distribution</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">6</span></span></span>
-<span class="r-in"><span><span class="va">fx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.19</span>, <span class="fl">0.21</span>, <span class="fl">0.4</span>, <span class="fl">0.12</span>, <span class="fl">0.05</span>, <span class="fl">0.03</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span></span></span>
+<span class="r-in"><span><span class="va">fx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.19</span>, <span class="fl">0.21</span>, <span class="fl">0.4</span>, <span class="fl">0.12</span>, <span class="fl">0.05</span>, <span class="fl">0.03</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">plot_discrete_cdf</span><span class="op">(</span><span class="va">x</span>, <span class="va">fx</span>, las<span class="op">=</span><span class="fl">1</span>,</span></span>
-<span class="r-in"><span>                  xlab<span class="op">=</span><span class="st">"X"</span>,</span></span>
-<span class="r-in"><span>                  ylab<span class="op">=</span><span class="st">"Probability"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>                  xlab<span class="op">=</span><span class="st">"X"</span>, ylab<span class="op">=</span><span class="st">"Probability"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_discrete_cdf-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 2</span></span></span>
@@ -93,8 +100,6 @@
 <span class="r-in"><span>                  ylab<span class="op">=</span><span class="st">"Probability"</span>,</span></span>
 <span class="r-in"><span>                  main<span class="op">=</span><span class="st">"CDF for Poisson"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_discrete_cdf-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
