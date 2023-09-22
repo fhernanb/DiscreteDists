@@ -97,8 +97,8 @@ function, <code>qPOISXL</code> gives the quantile function, <code>rPOISXL</code>
     <h2>Details</h2>
     <p>The Discrete Poisson XLindley distribution with parameters \(\mu\) has a support
 0, 1, 2, ... and mass function given by</p>
-<p>\(f(x | \mu) = \frac{\mu^2(x+\mu^2+3(1+\mu))}{(1+\mu)^{4+x}}\); with \(\mu&gt;0\)</p>
-<p>Note: in this implementation we changed the original parameters \(\lambda\) for \(\mu\),
+<p>\(f(x | \mu) = \frac{\mu^2(x+\mu^2+3(1+\mu))}{(1+\mu)^{4+x}}\); with \(\mu&gt;0\).</p>
+<p>Note: in this implementation we changed the original parameters \(\alpha\) for \(\mu\),
 we did it to implement this distribution within gamlss framework.</p>
     </div>
     <div id="references">
@@ -133,9 +133,7 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="va">x_max</span>, y<span class="op">=</span><span class="va">probs2</span>, type<span class="op">=</span><span class="st">"o"</span>, lwd<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"tomato"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="va">x_max</span>, y<span class="op">=</span><span class="va">probs3</span>, type<span class="op">=</span><span class="st">"o"</span>, lwd<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"green4"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dodgerblue"</span>, <span class="st">"tomato"</span>, <span class="st">"green4"</span><span class="op">)</span>, lwd<span class="op">=</span><span class="fl">3</span>,</span></span>
-<span class="r-in"><span>       legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mu=0.2"</span>,</span></span>
-<span class="r-in"><span>                <span class="st">"mu=0.3"</span>,</span></span>
-<span class="r-in"><span>                <span class="st">"mu=1.0"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>       legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mu=0.2"</span>, <span class="st">"mu=0.5"</span>, <span class="st">"mu=1.0"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="dPOISXL-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 2</span></span></span>

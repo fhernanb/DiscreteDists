@@ -61,8 +61,8 @@ using the function <code><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" cl
     <h2>Details</h2>
     <p>The Discrete Poisson XLindley distribution with parameters \(\mu\) has a support
 0, 1, 2, ... and mass function given by</p>
-<p>\(f(x | \mu) = \frac{\mu^2(x+\mu^2+3(1+\mu))}{(1+\mu)^{4+x}}\); with \(\mu&gt;0\)
-Note: in this implementation we changed the original parameters \(\theta\) for \(\mu\),
+<p>\(f(x | \mu) = \frac{\mu^2(x+\mu^2+3(1+\mu))}{(1+\mu)^{4+x}}\); with \(\mu&gt;0\).</p>
+<p>Note: in this implementation we changed the original parameters \(\alpha\) for \(\mu\),
 we did it to implement this distribution within gamlss framework.</p>
     </div>
     <div id="references">
@@ -87,10 +87,6 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-in"><span><span class="co"># known mu</span></span></span>
 <span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="dPOISXL.html">rPOISXL</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>, mu<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="estim_mu_POISXL.html">estim_mu_POISXL</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mu_hat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1.051904 </span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Fitting the model</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.gamlss.com/" class="external-link">gamlss</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="fl">1</span>, family<span class="op">=</span><span class="va">POISXL</span>,</span></span>
@@ -102,6 +98,54 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    1.046917 </span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Example 2</span></span></span>
+<span class="r-in"><span><span class="co"># Generating random values under some model</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># A function to simulate a data set with Y ~ POISXL</span></span></span>
+<span class="r-in"><span><span class="va">gendat</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, min<span class="op">=</span><span class="fl">0.4</span>, max<span class="op">=</span><span class="fl">0.6</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">mu</span>    <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fl">1.21</span> <span class="op">-</span> <span class="fl">3</span> <span class="op">*</span> <span class="va">x1</span><span class="op">)</span> <span class="co"># 0.75 en promedio</span></span></span>
+<span class="r-in"><span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="dPOISXL.html">rPOISXL</a></span><span class="op">(</span>n<span class="op">=</span><span class="va">n</span>, mu<span class="op">=</span><span class="va">mu</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">y</span>, x1<span class="op">=</span><span class="va">x1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">gendat</span><span class="op">(</span>n<span class="op">=</span><span class="fl">1500</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Fitting the model</span></span></span>
+<span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></span>
+<span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="va">x1</span>, family<span class="op">=</span><span class="va">POISXL</span>, data<span class="op">=</span><span class="va">dat</span>,</span></span>
+<span class="r-in"><span>               control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">500</span>, trace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod2</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>summary: vcov has failed, option qr is used instead</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ******************************************************************</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Family:  c("POISXL", "Poisson-XLindley") </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gamlss(formula = y ~ x1, family = POISXL, data = dat, control = gamlss.control(n.cyc = 500,  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     trace = FALSE)) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fitting method: RS() </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mu link function:  log</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mu Coefficients:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   0.8459     0.2313   3.657 0.000264 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x1           -2.2026     0.4597  -4.791 1.82e-06 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> No. of observations in the fit:  1500 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom for the fit:  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Residual Deg. of Freedom:  1498 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       at cycle:  4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Global Deviance:     5316.109 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             AIC:     5320.109 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             SBC:     5330.735 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ******************************************************************</span>
 </code></pre></div>
     </div>
   </div>

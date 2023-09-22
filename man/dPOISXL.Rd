@@ -42,9 +42,9 @@ with parameter \eqn{\mu}.
 The Discrete Poisson XLindley distribution with parameters \eqn{\mu} has a support
 0, 1, 2, ... and mass function given by
 
-\eqn{f(x | \mu) = \frac{\mu^2(x+\mu^2+3(1+\mu))}{(1+\mu)^{4+x}}}; with \eqn{\mu>0}
+\eqn{f(x | \mu) = \frac{\mu^2(x+\mu^2+3(1+\mu))}{(1+\mu)^{4+x}}}; with \eqn{\mu>0}.
 
-Note: in this implementation we changed the original parameters \eqn{\lambda} for \eqn{\mu},
+Note: in this implementation we changed the original parameters \eqn{\alpha} for \eqn{\mu},
 we did it to implement this distribution within gamlss framework.
 }
 \examples{
@@ -63,9 +63,7 @@ plot(x=0:x_max, y=probs1, type="o", lwd=2, col="dodgerblue", las=1,
 points(x=0:x_max, y=probs2, type="o", lwd=2, col="tomato")
 points(x=0:x_max, y=probs3, type="o", lwd=2, col="green4")
 legend("topright", col=c("dodgerblue", "tomato", "green4"), lwd=3,
-       legend=c("mu=0.2",
-                "mu=0.3",
-                "mu=1.0"))
+       legend=c("mu=0.2", "mu=0.5", "mu=1.0"))
 
 # Example 2
 # Checking if the cumulative curves converge to 1

@@ -25,9 +25,9 @@
 #' The Discrete Poisson XLindley distribution with parameters \eqn{\mu} has a support
 #' 0, 1, 2, ... and mass function given by
 #'
-#' \eqn{f(x | \mu) = \frac{\mu^2(x+\mu^2+3(1+\mu))}{(1+\mu)^{4+x}}}; with \eqn{\mu>0}
+#' \eqn{f(x | \mu) = \frac{\mu^2(x+\mu^2+3(1+\mu))}{(1+\mu)^{4+x}}}; with \eqn{\mu>0}.
 #'
-#' Note: in this implementation we changed the original parameters \eqn{\lambda} for \eqn{\mu},
+#' Note: in this implementation we changed the original parameters \eqn{\alpha} for \eqn{\mu},
 #' we did it to implement this distribution within gamlss framework.
 #'
 #' @return
