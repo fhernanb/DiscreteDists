@@ -177,7 +177,7 @@ estim_mu_sigma_DMOLBE <- function(y) {
 }
 #' logLik function for discrete Inverted Kumaraswamy
 #' @description Calculates logLik for discrete Inverted Kumaraswamy distribution.
-#' @param logparam vector with parameters in log scale.
+#' @param param vector with parameters in log scale.
 #' @param y vector with the response variable.
 #' @keywords internal
 #' @export
@@ -205,3 +205,37 @@ estim_mu_sigma_DIKUM <- function(y) {
   return(res)
 }
 
+
+
+
+
+#' logLik function for Poisson XLindley distribution
+#' @description Calculates logLik for Poisson XLindley distribution distribution.
+#' @param param parameter mu in log scale.
+#' @param y vector with the response variable.
+#' @keywords internal
+#' @export
+logLik_POISXL <- function(param=0, x){
+  return(sum(dPOISXL(x = x,
+                     mu = exp(param),
+                     log=TRUE)))
+}
+
+
+#' Initial values for discrete Poisson XLindley distribution
+#' @description This function generates initial values for the parameters.
+#' @param y vector with the response variable.
+#' @keywords internal
+#' @export
+#' @importFrom stats optim
+estim_mu_POISXL <- function(y) {
+  mod <- optim(par=c(0),
+               fn=logLik_POISXL,
+               method="Brent",
+               control=list(fnscale=-1, maxit=100000),
+               x=y,
+               lower=-100, upper=100)
+  res <- exp(mod$par)
+  names(res) <- c("mu_hat")
+  return(res)
+}

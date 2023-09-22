@@ -7,7 +7,7 @@
 logLik_DIKUM(param = c(0, 0), x)
 }
 \arguments{
-\item{logparam}{vector with parameters in log scale.}
+\item{param}{vector with parameters in log scale.}
 
 \item{y}{vector with the response variable.}
 }

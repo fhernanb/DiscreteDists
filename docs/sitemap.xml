@@ -58,10 +58,16 @@
     <loc>/reference/DMOLBE.html</loc>
   </url>
   <url>
+    <loc>/reference/dPOISXL.html</loc>
+  </url>
+  <url>
     <loc>/reference/estim_mu_DBH.html</loc>
   </url>
   <url>
     <loc>/reference/estim_mu_DLD.html</loc>
+  </url>
+  <url>
+    <loc>/reference/estim_mu_POISXL.html</loc>
   </url>
   <url>
     <loc>/reference/estim_mu_sigma_DIKUM.html</loc>
@@ -106,9 +112,15 @@
     <loc>/reference/logLik_HYPERPO2.html</loc>
   </url>
   <url>
+    <loc>/reference/logLik_POISXL.html</loc>
+  </url>
+  <url>
     <loc>/reference/obtaining_lambda.html</loc>
   </url>
   <url>
     <loc>/reference/plot_discrete_cdf.html</loc>
+  </url>
+  <url>
+    <loc>/reference/POISXL.html</loc>
   </url>
 </urlset>

@@ -18,7 +18,7 @@ plot_discrete_cdf(x, fx, col = "blue", lwd = 3, ...)
 \item{...}{further arguments and graphical parameters.}
 }
 \value{
-A plot with the cumulative density function.
+A plot with the cumulative distribution function.
 }
 \description{
 Draw the CDF for a discrete random variable
@@ -29,16 +29,13 @@ Draw the CDF for a discrete random variable
 
 x <- 1:6
 fx <- c(0.19, 0.21, 0.4, 0.12, 0.05, 0.03)
-plot_discrete_cdf(x, fx, las=1,
-                  xlab="X", ylab="Probability")
+plot_discrete_cdf(x, fx, las=1)
 
 # Example 2
 # for a Poisson distribution
 x <- 0:10
 fx <- dpois(x, lambda=3)
 plot_discrete_cdf(x, fx, las=1,
-                  xlab="X",
-                  ylab="Probability",
                   main="CDF for Poisson")
 }
 \author{

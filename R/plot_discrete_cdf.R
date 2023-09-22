@@ -9,10 +9,11 @@
 #' @param ... further arguments and graphical parameters.
 #'
 #' @return
-#' A plot with the cumulative density function.
+#' A plot with the cumulative distribution function.
 #'
 #' @example  examples/examples_plot_cdf.R
-#' @importFrom graphics abline points
+#' @importFrom stats stepfun
+#' @importFrom graphics grid
 #' @export
 #'
 plot_discrete_cdf <- function(x, fx,
@@ -23,7 +24,7 @@ plot_discrete_cdf <- function(x, fx,
   # Para dibujar la funcion F(x)
   plot(F, verticals=FALSE,
        lwd=lwd, col=col, las=1,
-       xlab="X", ylab="F(X=x)", main="")
+       xlab="X", ylab="F(X=x)", ...)
 
   grid()   # Para incluir una rejilla
 }
