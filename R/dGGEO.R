@@ -26,12 +26,12 @@
 #' The GGEO distribution with parameters \eqn{\mu} and \eqn{\sigma}
 #' has a support 0, 1, 2, ... and mass function given by
 #'
-#' \eqn{f(x | \mu, \sigma) = \frac{\mu \sigma^x (1-sigma)}{(1-(1-mu) \sigma^{x+1})(1-(1-mu) \sigma^{x})}}
+#' \eqn{f(x | \mu, \sigma) = \frac{\mu \sigma^x (1-\sigma)}{(1-(1-\mu) \sigma^{x+1})(1-(1-\mu) \sigma^{x})}}
 #'
 #' with \eqn{\mu > 0} and \eqn{0 < \sigma < 1}
 #'
 #'
-#'#' Note: in this implementation we changed the original parameters
+#' Note: in this implementation we changed the original parameters
 #' \eqn{\alpha} for \eqn{\mu} and \eqn{\theta} for \eqn{\sigma}
 #' we did it to implement this distribution within gamlss framework.
 #'
