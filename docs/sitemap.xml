@@ -43,6 +43,9 @@
     <loc>/reference/DGBH.html</loc>
   </url>
   <url>
+    <loc>/reference/dGGEO.html</loc>
+  </url>
+  <url>
     <loc>/reference/dHYPERPO.html</loc>
   </url>
   <url>
@@ -76,6 +79,9 @@
     <loc>/reference/estim_mu_sigma_DMOLBE.html</loc>
   </url>
   <url>
+    <loc>/reference/estim_mu_sigma_GGEO.html</loc>
+  </url>
+  <url>
     <loc>/reference/estim_mu_sigma_HYPERPO.html</loc>
   </url>
   <url>
@@ -83,6 +89,9 @@
   </url>
   <url>
     <loc>/reference/F11.html</loc>
+  </url>
+  <url>
+    <loc>/reference/GGEO.html</loc>
   </url>
   <url>
     <loc>/reference/HYPERPO.html</loc>
@@ -104,6 +113,9 @@
   </url>
   <url>
     <loc>/reference/logLik_DMOLBE.html</loc>
+  </url>
+  <url>
+    <loc>/reference/logLik_GGEO.html</loc>
   </url>
   <url>
     <loc>/reference/logLik_HYPERPO.html</loc>

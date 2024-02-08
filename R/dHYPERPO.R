@@ -47,11 +47,11 @@
 dHYPERPO <- function(x, mu=1, sigma=1, log=FALSE){
   if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
-  if (any(x < 0))       stop(paste("x must be >=0", "\n", ""))
   p1 <- x * log(mu) - lgamma(sigma+x) + lgamma(sigma)
   f11 <- F11(c=sigma, z=mu) # F11 is an util function
   p2 <- log(f11)
   res <- p1 - p2
+  res[x < 0] <- -Inf
   if(log)
     return(res)
   else
@@ -62,7 +62,6 @@ dHYPERPO <- function(x, mu=1, sigma=1, log=FALSE){
 pHYPERPO <- function(q, mu=1, sigma=1, lower.tail = TRUE, log.p = FALSE){
   if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
-  if (any(q < 0))       stop(paste("x must be >=0", "\n", ""))
   ly <- max(length(q), length(mu), length(sigma))
   q <- rep(q, length = ly)
   mu <- rep(mu, length = ly)
@@ -71,7 +70,7 @@ pHYPERPO <- function(q, mu=1, sigma=1, lower.tail = TRUE, log.p = FALSE){
   aux_func <- function(q, mu, sigma) {
     cdf <- numeric(length(q))
     for (i in 1:length(q)) {
-      res <- dHYPERPO(x=0:q[i], mu=mu[i], sigma=sigma[i], log=FALSE)
+      res <- dHYPERPO(x=-1:q[i], mu=mu[i], sigma=sigma[i], log=FALSE)
       cdf[i] <- sum(res)
     }
     cdf

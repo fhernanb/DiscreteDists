@@ -239,3 +239,34 @@ estim_mu_POISXL <- function(y) {
   names(res) <- c("mu_hat")
   return(res)
 }
+#' logLik function for GGEO
+#' @description Calculates logLik for GGEO distribution.
+#' @param param vector with parameters in log and logit scale.
+#' @param x vector with the response variable.
+#' @keywords internal
+#' @export
+logLik_GGEO <- function(param=c(0, 0), x){
+  inv_logit <- function(x) 1/(1 + exp(-x))
+  return(sum(dGGEO(x,
+                   mu    = exp(param[1]),
+                   sigma = inv_logit(param[2]),
+                   log=TRUE)))
+}
+#' Initial values for GGEO
+#' @description This function generates initial values for the parameters.
+#' @param y vector with the response variable.
+#' @keywords internal
+#' @export
+#' @importFrom stats optim
+estim_mu_sigma_GGEO <- function(y) {
+  inv_logit <- function(x) 1/(1 + exp(-x))
+  mod <- optim(par=c(0, 0),
+               fn=logLik_GGEO,
+               method="Nelder-Mead",
+               control=list(fnscale=-1, maxit=100000),
+               x=y)
+  res <- c(mu_hat    = exp(mod$par[1]),
+           sigma_hat = inv_logit(mod$par[2]))
+  names(res) <- c("mu_hat", "sigma_hat")
+  return(res)
+}
