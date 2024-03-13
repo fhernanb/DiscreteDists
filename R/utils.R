@@ -270,3 +270,34 @@ estim_mu_sigma_GGEO <- function(y) {
   names(res) <- c("mu_hat", "sigma_hat")
   return(res)
 }
+#' logLik function for DGEII
+#' @description Calculates logLik for DGEII distribution.
+#' @param param vector with parameters in log and logit scale.
+#' @param x vector with the response variable.
+#' @keywords internal
+#' @export
+logLik_DGEII <- function(transf_param=c(0, 0), x){
+  inv_logit <- function(x) 1/(1 + exp(-x))
+  return(sum(dDGEII(x,
+                    mu    = exp(transf_param[1]),
+                    sigma = inv_logit(transf_param[2]),
+                    log=TRUE)))
+}
+#' Initial values for DGEII
+#' @description This function generates initial values for the parameters.
+#' @param y vector with the response variable.
+#' @keywords internal
+#' @export
+#' @importFrom stats optim
+estim_mu_sigma_DGEII <- function(y) {
+  inv_logit <- function(x) 1/(1 + exp(-x))
+  mod <- optim(par=c(0, 1 - 1/(1+mean(y))),
+               fn=logLik_DGEII,
+               method="Nelder-Mead",
+               control=list(fnscale=-1, maxit=100000),
+               x=y)
+  res <- c(mu_hat    = exp(mod$par[1]),
+           sigma_hat = inv_logit(mod$par[2]))
+  names(res) <- c("mu_hat", "sigma_hat")
+  return(res)
+}

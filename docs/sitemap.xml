@@ -31,6 +31,9 @@
     <loc>/reference/dDGBH.html</loc>
   </url>
   <url>
+    <loc>/reference/dDGEII.html</loc>
+  </url>
+  <url>
     <loc>/reference/dDIKUM.html</loc>
   </url>
   <url>
@@ -41,6 +44,9 @@
   </url>
   <url>
     <loc>/reference/DGBH.html</loc>
+  </url>
+  <url>
+    <loc>/reference/DGEII.html</loc>
   </url>
   <url>
     <loc>/reference/dGGEO.html</loc>
@@ -71,6 +77,9 @@
   </url>
   <url>
     <loc>/reference/estim_mu_POISXL.html</loc>
+  </url>
+  <url>
+    <loc>/reference/estim_mu_sigma_DGEII.html</loc>
   </url>
   <url>
     <loc>/reference/estim_mu_sigma_DIKUM.html</loc>
@@ -104,6 +113,9 @@
   </url>
   <url>
     <loc>/reference/logLik_DBH.html</loc>
+  </url>
+  <url>
+    <loc>/reference/logLik_DGEII.html</loc>
   </url>
   <url>
     <loc>/reference/logLik_DIKUM.html</loc>
