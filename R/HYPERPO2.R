@@ -59,7 +59,7 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                  dldm = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dHYPERPO2(y, mu, sigma, log=TRUE),
                                                  theta="mu",
-                                                 delta=0.01)
+                                                 delta=0.001)
                    dldm <- as.vector(attr(dm, "gradient"))
                    dldm
                  },
@@ -67,7 +67,7 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                  dldd = function(y, mu, sigma) {
                    dd   <- gamlss::numeric.deriv(dHYPERPO2(y, mu, sigma, log=TRUE),
                                                  theta="sigma",
-                                                 delta=0.01)
+                                                 delta=0.001)
                    dldd <- as.vector(attr(dd, "gradient"))
                    dldd
                  },
@@ -77,7 +77,7 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                  d2ldm2 = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dHYPERPO2(y, mu, sigma, log=TRUE),
                                                  theta="mu",
-                                                 delta=0.01)
+                                                 delta=0.001)
                    dldm <- as.vector(attr(dm, "gradient"))
                    d2ldm2 <- - dldm * dldm
                    d2ldm2 <- ifelse(d2ldm2 < -1e-15, d2ldm2, -1e-15)
@@ -87,11 +87,11 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                  d2ldmdd = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dHYPERPO2(y, mu, sigma, log=TRUE),
                                                  theta="mu",
-                                                 delta=0.01)
+                                                 delta=0.001)
                    dldm <- as.vector(attr(dm, "gradient"))
                    dd   <- gamlss::numeric.deriv(dHYPERPO2(y, mu, sigma, log=TRUE),
                                                  theta="sigma",
-                                                 delta=0.01)
+                                                 delta=0.001)
                    dldd <- as.vector(attr(dd, "gradient"))
                    d2ldmdd <- - dldm * dldd
                    d2ldmdd <- ifelse(d2ldmdd < -1e-15, d2ldmdd, -1e-15)
@@ -101,7 +101,7 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                  d2ldd2  = function(y, mu, sigma) {
                    dd   <- gamlss::numeric.deriv(dHYPERPO2(y, mu, sigma, log=TRUE),
                                                  theta="sigma",
-                                                 delta=0.01)
+                                                 delta=0.001)
                    dldd <- as.vector(attr(dd, "gradient"))
                    d2ldd2 <- - dldd * dldd
                    d2ldd2 <- ifelse(d2ldd2 < -1e-15, d2ldd2, -1e-15)
@@ -118,17 +118,7 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                  mu.valid    = function(mu)    all(mu > 0),
                  sigma.valid = function(sigma) all(sigma > 0),
 
-                 y.valid = function(y) all(y >= 0),
-
-                 mean = function(mu, sigma) {
-                   mu
-                 },
-                 variance = function(mu, sigma) {
-                   media <- mu
-                   lambda <- obtaining_lambda(media=mu, gamma=sigma)
-                   varianza <- lambda + (lambda-(sigma-1)) * media - media^2
-                   return(varianza)
-                 }
+                 y.valid = function(y) all(y >= 0)
 
   ),
   class=c("gamlss.family", "family"))

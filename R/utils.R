@@ -59,8 +59,6 @@ F11 <- function(z, c, maxiter_series = 10000, tol = 1.0e-10) {
   if (tol >= 0)
     return(Re(series))
 }
-
-
 F11 <- Vectorize(F11)
 #' Auxiliar function for hyper Poisson
 #' @description This function is used to calculate (a)r.
@@ -126,7 +124,7 @@ estim_mu_sigma_HYPERPO2 <- function(y) {
 #' @export
 obtaining_lambda <- function(media, gamma) {
   # Begin aux function
-  fun <- function(x) x-(gamma-1)*(F11(gamma,x)-1)/F11(gamma,x)-media
+  fun <- function(x) x-(gamma-1)*(F11(c=gamma, z=x)-1)/F11(c=gamma, z=x)-media
   fun <- Vectorize(fun)
   # End aux function
   if (gamma == 1)
@@ -140,7 +138,6 @@ obtaining_lambda <- function(media, gamma) {
   result
 }
 obtaining_lambda <- Vectorize(obtaining_lambda)
-
 #' logLik function for Discrete Burr Hatke
 #' @description Calculates logLik for Discrete Burr Hatke  distribution.
 #' @param param value for mu.

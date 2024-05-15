@@ -65,3 +65,4 @@ p <- seq(from=0, to=1, by=0.01)
 qxx <- qHYPERPO2(p=p, mu=mu, sigma=sigma, lower.tail=TRUE, log.p=FALSE)
 plot(p, qxx, type="s", lwd=2, col="green3", ylab="quantiles",
      main="Quantiles of HP2(mu = sigma = 3)")
+

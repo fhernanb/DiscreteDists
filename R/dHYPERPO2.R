@@ -46,15 +46,17 @@ dHYPERPO2 <- function(x, mu=1, sigma=1, log=FALSE){
   if (any(x < 0))       stop(paste("x must be >=0", "\n", ""))
   # To obtain the mu in the older parameterization
   mu <- obtaining_lambda(media=mu, gamma=sigma)
-  p1 <- x * log(mu) - log(AR(a=sigma, r=x)) # AR is an util function
+  p1 <- x * log(mu) - lgamma(sigma+x) + lgamma(sigma)
   f11 <- F11(c=sigma, z=mu) # F11 is an util function
   p2 <- log(f11)
   res <- p1 - p2
+  res[x < 0] <- -Inf
   if(log)
     return(res)
   else
     return(exp(res))
 }
+Vectorize(dHYPERPO2)
 #' @export
 #' @rdname dHYPERPO2
 pHYPERPO2 <- function(q, mu=1, sigma=1, lower.tail = TRUE, log.p = FALSE){
@@ -71,7 +73,7 @@ pHYPERPO2 <- function(q, mu=1, sigma=1, lower.tail = TRUE, log.p = FALSE){
   aux_func <- function(q, mu, sigma) {
     cdf <- numeric(length(q))
     for (i in 1:length(q)) {
-      res <- dHYPERPO(x=0:q[i], mu=mu[i], sigma=sigma[i], log=FALSE)
+      res <- dHYPERPO(x=-1:q[i], mu=mu[i], sigma=sigma[i], log=FALSE)
       cdf[i] <- sum(res)
     }
     cdf
@@ -95,21 +97,27 @@ rHYPERPO2 <- function(n, mu=1, sigma=1) {
   if (any(n <= 0))      stop(paste("n must be a positive integer", "\n", ""))
   # To obtain the mu in the older parameterization
   mu <- obtaining_lambda(media=mu, gamma=sigma)
-  # Begin auxiliar function
-  one_random_hyperpo <- function(u, mu, sigma) {
-    p <- dHYPERPO(x=0, mu=mu, sigma=sigma, log=FALSE)
-    F <- p
-    i <- 0
-    while (u >= F) {
-      i <- i + 1
-      p <- dHYPERPO(x=i, mu=mu, sigma=sigma, log=FALSE)
-      F <- F + p
+  if (!is.numeric(n) || length(n) != 1 || n < 0)
+    stop("invalid arguments")
+  if (!(is.double(sigma) || is.integer(sigma)) || !(is.double(mu) ||
+                                                    is.integer(mu)))
+    stop("Non-numeric argument to mathematical function")
+  sigma <- rep(sigma, length.out = n)
+  mu <- rep(mu, length.out = n)
+  result <- numeric(length = n)
+  warn <- FALSE
+  for (ind in seq_len(n)) {
+    if (sigma[ind] <= 0 || mu[ind] <= 0) {
+      result[ind] <- NaN
+      warn <- TRUE
     }
-    return(i)
+    else {
+      result[ind] <- simulate_hp(sigma[ind], mu[ind])
+    }
   }
-  one_random_hyperpo <- Vectorize(one_random_hyperpo)
-  # End auxiliar function
-  one_random_hyperpo(u=runif(n), mu, sigma)
+  if (warn)
+    warning("NaN(s) produced: sigma and mu must be strictly positive")
+  result
 }
 #' @export
 #' @rdname dHYPERPO2

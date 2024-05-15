@@ -59,7 +59,7 @@ exp(coef(mod1, what='sigma'))
     mu    <- exp(1.21 - 3 * x1) # 0.75 en promedio
     sigma <- exp(1.26 - 2 * x2) # 1.30 en promedio
     y <- rHYPERPO(n=n, mu=mu, sigma=sigma)
-    data.frame(y=y, x1=x1,x2=x2)
+    data.frame(y=y, x1=x1, x2=x2)
   }
 
   set.seed(1235)
