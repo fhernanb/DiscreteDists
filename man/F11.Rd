@@ -4,10 +4,14 @@
 \alias{F11}
 \title{Auxiliar function for hyper Poisson}
 \usage{
-F11(c, z)
+F11(z, c, maxiter_series = 10000, tol = 1e-10)
 }
 \arguments{
-\item{c, z}{values for F11.}
+\item{z, c}{values for F11.}
+
+\item{maxiter_series}{maximum value to obtain F11}
+
+\item{tol}{this is the tolerance of the infinite sum}
 }
 \description{
 This function is used inside density function of Hyper Poisson.

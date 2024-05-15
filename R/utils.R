@@ -27,17 +27,40 @@ estim_mu_sigma_HYPERPO <- function(y) {
   names(res) <- c("mu_hat", "sigma_hat")
   return(res)
 }
-#' Auxiliar function for hyper Poisson
-#' @description This function is used inside density function of Hyper Poisson.
-#' @param c,z values for F11.
+#' Auxiliar function for F11
+#' @description This function is used inside F11 function.
+#' @param x vector
+#' @param tol this is the tolerance of the infinite sum
 #' @keywords internal
 #' @export
-F11 <- function(c, z) {
-  k <- 0:999
-  res <- lgamma(c) + k*log(z) - lgamma(c+k)
-  res <- exp(res)
-  sum(res)
+stopping <- function (x, tol) {
+  all(abs(x) <= tol, na.rm = TRUE)
 }
+#' Auxiliar function for hyper Poisson
+#' @description This function is used inside density function of Hyper Poisson.
+#' @param z,c values for F11.
+#' @param maxiter_series maximum value to obtain F11
+#' @param tol this is the tolerance of the infinite sum
+#' @keywords internal
+#' @export
+F11 <- function(z, c, maxiter_series = 10000, tol = 1.0e-10) {
+  fac  <- 1
+  temp <- 1
+  L    <- c
+  for (n in seq_len(maxiter_series)) {
+    fac    <- fac * z / L
+    series <- temp + fac
+    if (stopping(series - temp, tol)){
+      return(Re(series))
+    }
+    temp   <- series
+    L      <- L + 1
+  }
+  if (tol >= 0)
+    return(Re(series))
+}
+
+
 F11 <- Vectorize(F11)
 #' Auxiliar function for hyper Poisson
 #' @description This function is used to calculate (a)r.
@@ -48,6 +71,23 @@ F11 <- Vectorize(F11)
 AR <- function(a, r) {
   res <- gamma(a+r) / gamma(a)
   res
+}
+#' Auxiliar function to generate values for hyper Poisson
+#' @description This function is used inside random function of Hyper Poisson.
+#' @param sigma,mu values to simulate.
+#' @keywords internal
+#' @export
+simulate_hp <- function(sigma, mu) {
+  pochammer <- function(a, r) if (r == 0) 1 else prod(a:(a + r - 1))
+  u <- runif(1)
+  y <- 0
+  p <- 0
+  value <- F11(mu, sigma)
+  while (p < u) {
+    p <- p + mu ^ y / (value * pochammer(sigma, y))
+    y <- y + 1
+  }
+  y - 1
 }
 #' logLik function for hyper Poisson in second parameterization
 #' @description Calculates logLik for hyper Poisson distribution.

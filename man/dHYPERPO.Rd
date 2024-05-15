@@ -125,8 +125,6 @@ qxx <- qHYPERPO(p=p, mu=mu, sigma=sigma, lower.tail=TRUE, log.p=FALSE)
 plot(p, qxx, type="s", lwd=2, col="green3", ylab="quantiles",
      main="Quantiles of HP(mu = sigma = 3)")
 
-
-
 }
 \references{
 \insertRef{saez2013hyperpo}{DiscreteDists}
