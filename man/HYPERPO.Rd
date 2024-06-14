@@ -36,7 +36,7 @@ for \eqn{\mu} and \eqn{\sigma} respectively, we did it to implement this distrib
 # Generating some random values with
 # known mu and sigma
 set.seed(1234)
-y <- rHYPERPO(n=500, mu=10, sigma=7)
+y <- rHYPERPO(n=500, mu=10, sigma=1.5)
 
 # Fitting the model
 library(gamlss)

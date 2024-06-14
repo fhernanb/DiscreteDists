@@ -22,21 +22,22 @@
 #' The GGEO distribution with parameters \eqn{\mu} and \eqn{\sigma}
 #' has a support 0, 1, 2, ... and mass function given by
 #'
-#' \eqn{f(x | \mu, \sigma) = \frac{\mu \sigma^x (1-\sigma)}{(1-(1-\mu) \sigma^{x+1})(1-(1-\mu) \sigma^{x})}}
+#' \eqn{f(x | \mu, \sigma) = \frac{\sigma \mu^x (1-\mu)}{(1-(1-\sigma) \mu^{x+1})(1-(1-\sigma) \mu^{x})}}
 #'
-#' with \eqn{\mu > 0} and \eqn{0 < \sigma < 1}
+#' with \eqn{0 < \mu < 1} and \eqn{\sigma > 0}. If \eqn{\sigma=1}, the GGEO distribution
+#' reduces to the geometric distribution with success probability \eqn{1-\mu}.
 #'
 #' @example examples/examples_GGEO.R
 #'
 #' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @export
-GGEO <- function (mu.link="log", sigma.link="logit") {
+GGEO <- function (mu.link="logit", sigma.link="log") {
 
   mstats <- checklink("mu.link", "GGEO",
-                      substitute(mu.link), c("log"))
+                      substitute(mu.link), c("logit", "probit", "cloglog", "cauchit"))
   dstats <- checklink("sigma.link", "GGEO",
-                      substitute(sigma.link), c("logit", "probit", "cloglog", "cauchit"))
+                      substitute(sigma.link), c("log"))
 
   structure(list(family=c("GGEO", "Generalized geometric"),
                  parameters=list(mu=TRUE, sigma=TRUE),
@@ -58,32 +59,38 @@ GGEO <- function (mu.link="log", sigma.link="logit") {
                  # Primeras derivadas manuales
 
                  dldm = function(y, mu, sigma) {
-                   dldm<- (-sigma^(y+1)/(1-(1-mu)*sigma^(y+1)))-(sigma^y/(1-(1-mu)*sigma^y))+1/mu
+                   part1 <- (y+1)*(sigma-1)*mu^y / ((sigma-1)*mu^(y+1)+1)
+                   part2 <-     y*(sigma-1)*mu^(y-1) / ((sigma-1)*mu^y+1)
+                   dldm <- y/mu - 1/(1-mu) - part1 - part2
                    dldm
                  },
 
                  dldd = function(y, mu, sigma) {
-                   dldd <- (1-mu)*y*sigma^(y-1)/(1-(1-mu)*sigma^y)+(1-mu)*(y+1)*sigma^y/((1-(1-mu)*sigma^(y+1)))+y/sigma-1/(1-sigma)
+                   dldd <- 1/sigma-(mu^(y+1))/(1-(mu^(y+1))*(1-sigma))-(mu^y)/(1-(mu^y)*(1-sigma))
                    dldd
                  },
 
                  # Segundas derivadas manuales
 
                  d2ldm2 = function(y, mu, sigma) {
-                   dldm <- (-sigma^(y+1)/(1-(1-mu)*sigma^(y+1)))-(sigma^y/(1-(1-mu)*sigma^y))+1/mu
+                   part1 <- (y+1)*(sigma-1)*mu^y / ((sigma-1)*mu^(y+1)+1)
+                   part2 <-     y*(sigma-1)*mu^(y-1) / ((sigma-1)*mu^y+1)
+                   dldm <- y/mu - 1/(1-mu) - part1 - part2
                    d2ldm2 <- - dldm * dldm
                    d2ldm2
                  },
                  d2ldmdd = function(y, mu, sigma) {
-                   dldm <- (-sigma^(y+1)/(1-(1-mu)*sigma^(y+1)))-(sigma^y/(1-(1-mu)*sigma^y))+1/mu
+                   part1 <- (y+1)*(sigma-1)*mu^y / ((sigma-1)*mu^(y+1)+1)
+                   part2 <-     y*(sigma-1)*mu^(y-1) / ((sigma-1)*mu^y+1)
+                   dldm <- y/mu - 1/(1-mu) - part1 - part2
 
-                   dldd <- (1-mu)*y*sigma^(y-1)/(1-(1-mu)*sigma^y)+(1-mu)*(y+1)*sigma^y/((1-(1-mu)*sigma^(y+1)))+y/sigma-1/(1-sigma)
+                   dldd <- 1/sigma-(mu^(y+1))/(1-(mu^(y+1))*(1-sigma))-(mu^y)/(1-(mu^y)*(1-sigma))
 
                    d2ldmdd <- - dldm * dldd
                    d2ldmdd
                  },
                  d2ldd2  = function(y, mu, sigma) {
-                   dldd <- (1-mu)*y*sigma^(y-1)/(1-(1-mu)*sigma^y)+(1-mu)*(y+1)*sigma^y/((1-(1-mu)*sigma^(y+1)))+y/sigma-1/(1-sigma)
+                   dldd <- 1/sigma-(mu^(y+1))/(1-(mu^(y+1))*(1-sigma))-(mu^y)/(1-(mu^y)*(1-sigma))
                    d2ldd2 <- - dldd * dldd
                    d2ldd2
                  },
@@ -95,8 +102,8 @@ GGEO <- function (mu.link="log", sigma.link="logit") {
                  mu.initial    = expression(mu    <- rep(estim_mu_sigma_GGEO(y)[1], length(y)) ),
                  sigma.initial = expression(sigma <- rep(estim_mu_sigma_GGEO(y)[2], length(y)) ),
 
-                 mu.valid    = function(mu)    all(mu > 0),
-                 sigma.valid = function(sigma) all(0 < sigma & sigma < 1),
+                 mu.valid    = function(mu)    all(0 < mu & mu < 1),
+                 sigma.valid = function(sigma) all(sigma > 0),
 
                  y.valid = function(y) all(y >= 0)
 

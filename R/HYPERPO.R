@@ -59,7 +59,7 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
                  mu.dr    = mstats$mu.eta,
                  sigma.dr = dstats$mu.eta,
 
-                 # Primeras derivadas, por ahora son computacionales
+                 # First derivates
 
                  dldm = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE),
@@ -77,7 +77,7 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
                    dldd
                  },
 
-                 # Segundas derivadas, por ahora son computacionales
+                 # Second derivates
 
                  d2ldm2 = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE),

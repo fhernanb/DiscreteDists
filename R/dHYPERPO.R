@@ -57,6 +57,7 @@ dHYPERPO <- function(x, mu=1, sigma=1, log=FALSE){
   else
     return(exp(res))
 }
+dHYPERPO <- Vectorize(dHYPERPO)
 #' @export
 #' @rdname dHYPERPO
 pHYPERPO <- function(q, mu=1, sigma=1, lower.tail = TRUE, log.p = FALSE){
@@ -104,7 +105,7 @@ rHYPERPO <- function(n, mu=1, sigma=1) {
       warn <- TRUE
     }
     else {
-      result[ind] <- simulate_hp(sigma[ind], mu[ind])
+      result[ind] <- simulate_hp(sigma=sigma[ind], mu=mu[ind])
     }
   }
   if (warn)

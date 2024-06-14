@@ -4,7 +4,7 @@
 \alias{GGEO}
 \title{The GGEO family}
 \usage{
-GGEO(mu.link = "log", sigma.link = "logit")
+GGEO(mu.link = "logit", sigma.link = "log")
 }
 \arguments{
 \item{mu.link}{defines the mu.link, with "log" link as the default for the mu parameter.}
@@ -21,50 +21,68 @@ using the function \code{gamlss()}.
 The GGEO distribution with parameters \eqn{\mu} and \eqn{\sigma}
 has a support 0, 1, 2, ... and mass function given by
 
-\eqn{f(x | \mu, \sigma) = \frac{\mu \sigma^x (1-\sigma)}{(1-(1-\mu) \sigma^{x+1})(1-(1-\mu) \sigma^{x})}}
+\eqn{f(x | \mu, \sigma) = \frac{\sigma \mu^x (1-\mu)}{(1-(1-\sigma) \mu^{x+1})(1-(1-\sigma) \mu^{x})}}
 
-with \eqn{\mu > 0} and \eqn{0 < \sigma < 1}
+with \eqn{0 < \mu < 1} and \eqn{\sigma > 0}. If \eqn{\sigma=1}, the GGEO distribution
+reduces to the geometric distribution with success probability \eqn{1-\mu}.
 }
 \examples{
 # Example 1
 # Generating some random values with
 # known mu and sigma
 set.seed(123)
-y <- rGGEO(n=5000, mu=1.7, sigma=0.3)
+y <- rGGEO(n=1000, mu=0.95, sigma=1.5)
 
 # Fitting the model
 library(gamlss)
-mod1 <- gamlss(y~1, family=GGEO, 
+
+mod1 <- gamlss(y~1, family=GGEO,
                control=gamlss.control(n.cyc=500, trace=TRUE))
 
 # Extracting the fitted values for mu and sigma
 # using the inverse link function
 inv_logit <- function(x) 1/(1 + exp(-x))
-exp(coef(mod1, what='mu'))
-inv_logit(coef(mod1, what='sigma'))
+
+inv_logit(coef(mod1, what="mu"))
+exp(coef(mod1, what="sigma"))
+
 
 # Example 2
 # Generating random values under some model
 
 # A function to simulate a data set with Y ~ GGEO
-gendat <- function(n) { #----------------------------
-  x1 <- runif(n, min=0.40, max=0.6)
-  x2 <- runif(n,min=0.40, max=0.6)
-  mu    <- exp(1.7 - 2.8*x1) 
-  sigma <- inv_logit(0.73 - 3*x2) 
+gendat <- function(n) {
+  x1 <- runif(n)
+  x2 <- runif(n)
+  mu    <- inv_logit(1.7 - 2.8*x1)
+  sigma <- exp(0.73 + 1*x2)
   y <- rGGEO(n=n, mu=mu, sigma=sigma)
-  data.frame(y=y, x1=x1,x2=x2)
+  data.frame(y=y, x1=x1, x2=x2, mu, sigma)
 }
 
-set.seed(7835)
+set.seed(78353)
+datos <- gendat(n=200)
 
-datos <- gendat(n=2000)
-
-mod2 <- NULL
 mod2 <- gamlss(y~x1, sigma.fo=~x2, family=GGEO, data=datos,
                control=gamlss.control(n.cyc=500, trace=TRUE))
 
 summary(mod2)
+
+# Example 3
+# Number of accidents to 647 women working on H. E. Shells
+# for 5 weeks. Taken from Gomez-Deniz (2010) page 411.
+
+y <- rep(x=0:5, times=c(447, 132, 42, 21, 3, 2))
+
+mod3 <- gamlss(y~1, family=GGEO,
+               control=gamlss.control(n.cyc=500, trace=TRUE))
+
+# Extracting the fitted values for mu and sigma
+# using the inverse link function
+inv_logit <- function(x) 1/(1 + exp(-x))
+
+inv_logit(coef(mod3, what="mu"))
+exp(coef(mod3, what="sigma"))
 }
 \references{
 \insertRef{gomez2010}{DiscreteDists}

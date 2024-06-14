@@ -285,8 +285,8 @@ estim_mu_POISXL <- function(y) {
 logLik_GGEO <- function(param=c(0, 0), x){
   inv_logit <- function(x) 1/(1 + exp(-x))
   return(sum(dGGEO(x,
-                   mu    = exp(param[1]),
-                   sigma = inv_logit(param[2]),
+                   mu    = inv_logit(param[1]),
+                   sigma = exp(param[2]),
                    log=TRUE)))
 }
 #' Initial values for GGEO
@@ -302,8 +302,8 @@ estim_mu_sigma_GGEO <- function(y) {
                method="Nelder-Mead",
                control=list(fnscale=-1, maxit=100000),
                x=y)
-  res <- c(mu_hat    = exp(mod$par[1]),
-           sigma_hat = inv_logit(mod$par[2]))
+  res <- c(mu_hat    = inv_logit(mod$par[1]),
+           sigma_hat = exp(mod$par[2]))
   names(res) <- c("mu_hat", "sigma_hat")
   return(res)
 }

@@ -26,13 +26,14 @@
 #' The GGEO distribution with parameters \eqn{\mu} and \eqn{\sigma}
 #' has a support 0, 1, 2, ... and mass function given by
 #'
-#' \eqn{f(x | \mu, \sigma) = \frac{\mu \sigma^x (1-\sigma)}{(1-(1-\mu) \sigma^{x+1})(1-(1-\mu) \sigma^{x})}}
+#' \eqn{f(x | \mu, \sigma) = \frac{\sigma \mu^x (1-\mu)}{(1-(1-\sigma) \mu^{x+1})(1-(1-\sigma) \mu^{x})}}
 #'
-#' with \eqn{\mu > 0} and \eqn{0 < \sigma < 1}
+#' with \eqn{0 < \mu < 1} and \eqn{\sigma > 0}. If \eqn{\sigma=1}, the GGEO distribution
+#' reduces to the geometric distribution with success probability \eqn{1-\mu}.
 #'
 #'
 #' Note: in this implementation we changed the original parameters
-#' \eqn{\alpha} for \eqn{\mu} and \eqn{\theta} for \eqn{\sigma}
+#' \eqn{\theta} for \eqn{\mu} and \eqn{\alpha} for \eqn{\sigma},
 #' we did it to implement this distribution within gamlss framework.
 #'
 #' @return
@@ -44,28 +45,36 @@
 #'
 #' @export
 #'
-dGGEO <- function(x, mu=.5, sigma=.5, log=FALSE){
-  if (any(mu <= 0))     stop("parameter mu has to be positive!")
-  if (any(sigma <= 0) | any(sigma >= 1))  stop("parameter sigma has to be positive!")
-  if (any(x < 0))       stop(paste("x must be >=0", "\n", ""))
-  p <- log(mu) + x*log(sigma) + log(1-sigma)-log(1-(1-mu)*sigma^(x+1))-log(1-(1-mu)*sigma^x)
+dGGEO <- function(x, mu=0.5, sigma=1, log=FALSE){
+  if (any(mu <= 0) | any(mu >= 1))  stop("parameter mu must be in (0, 1)")
+  if (any(sigma <= 0))              stop("parameter sigma has to be positive!")
+
+  res <- ifelse(x < 0,
+                -Inf,
+                log(sigma) + x*log(mu) + log(1-mu)-log(1-(1-sigma)*mu^(x+1))-log(1-(1-sigma)*mu^x))
+
   if(log){
-    return(p)}
+    return(res)}
   else{
-    return(exp(p))}
+    return(exp(res))}
 }
+dGGEO <- Vectorize(dGGEO)
 #' @export
 #' @rdname dGGEO
-pGGEO <- function(q, mu=.5, sigma=.5, lower.tail = TRUE, log.p = FALSE){
-  if (any(mu <= 0))     stop("parameter mu has to be positive!")
-  if (any(sigma <= 0) | any(sigma >= 1))  stop("parameter sigma has to be positive!")
-  if (any(q < 0))       stop(paste("x must be >=0", "\n", ""))
-  ly <- max(length(q), length(mu))
-  q <- rep(q, length = ly)
-  mu <- rep(mu, length = ly)
-  fn <- function(q, mu) sum(dGGEO(0:q, mu = mu))
+pGGEO <- function(q, mu=0.5, sigma=1, lower.tail = TRUE, log.p = FALSE){
+  if (any(mu <= 0) | any(mu >= 1))  stop("parameter mu must be in (0, 1)")
+  if (any(sigma <= 0))              stop("parameter sigma has to be positive!")
+
+  ly <- max(length(q), length(mu), length(sigma))
+  q <- rep(q, length=ly)
+  mu    <- rep(mu, length = ly)
+  sigma <- rep(sigma, length = ly)
+
+  fn <- function(q, mu, sigma) sum(dGGEO(x=0:q, mu=mu, sigma=sigma))
   Vcdf <- Vectorize(fn)
-  cdf <- Vcdf(q = q, mu = mu)
+  cdf <- Vcdf(q=q, mu=mu, sigma=sigma)
+  cdf <- ifelse(q < 0, 0, cdf)
+
   if (lower.tail == TRUE)
     cdf <- cdf
   else cdf = 1 - cdf
@@ -77,10 +86,11 @@ pGGEO <- function(q, mu=.5, sigma=.5, lower.tail = TRUE, log.p = FALSE){
 #' @importFrom stats runif
 #' @export
 #' @rdname dGGEO
-rGGEO <- function(n, mu=.5, sigma=.5) {
-  if (any(mu <= 0))     stop("parameter mu has to be positive!")
-  if (any(sigma <= 0) | any(sigma >= 1))  stop("parameter sigma has to be positive!")
-  if (any(n <= 0))      stop(paste("n must be a positive integer", "\n", ""))
+rGGEO <- function(n, mu=0.5, sigma=1) {
+  if (any(mu <= 0) | any(mu >= 1))  stop("parameter mu must be in (0, 1)")
+  if (any(sigma <= 0))              stop("parameter sigma has to be positive!")
+  if (any(n <= 0))                  stop(paste("n must be a positive integer", "\n", ""))
+
   # Begin auxiliar function
   one_random_GGEO <- function(u, mu, sigma) {
     p <- dGGEO(x=0, mu=mu, sigma=sigma, log=FALSE)
@@ -95,22 +105,25 @@ rGGEO <- function(n, mu=.5, sigma=.5) {
   }
   one_random_GGEO <- Vectorize(one_random_GGEO)
   # End auxiliar function
+
   one_random_GGEO(u=runif(n), mu, sigma)
 }
 #' @export
 #' @rdname dGGEO
-qGGEO <- function(p, mu = .5, sigma = .5, lower.tail = TRUE,
-                  log.p = FALSE) {
-  if (any(mu <= 0))     stop("parameter mu has to be positive!")
-  if (any(sigma <= 0) | any(sigma >= 1))  stop("parameter sigma has to be positive!")
+qGGEO <- function(p, mu=0.5, sigma=1, lower.tail=TRUE,
+                  log.p=FALSE) {
+  if (any(mu <= 0) | any(mu >= 1))  stop("parameter mu must be in (0, 1)")
+  if (any(sigma <= 0))              stop("parameter sigma has to be positive!")
   if (any(p < 0) | any(p > 1.0001))
     stop(paste("p must be between 0 and 1", "\n", ""))
+
   if (log.p == TRUE)
     p <- exp(p)
   else p <- p
   if (lower.tail == TRUE)
     p <- p
   else p <- 1 - p
+
   # Begin auxiliar function
   one_quantile_GGEO <- function(p, mu, sigma) {
     if (p + 1e-09 >= 1)
@@ -129,5 +142,6 @@ qGGEO <- function(p, mu = .5, sigma = .5, lower.tail = TRUE,
   }
   one_quantile_GGEO <- Vectorize(one_quantile_GGEO)
   # End auxiliar function
+
   one_quantile_GGEO(p=p, mu=mu, sigma=sigma)
 }

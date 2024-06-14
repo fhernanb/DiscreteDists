@@ -34,13 +34,14 @@ y <- rDGEII(n=500, mu=10, sigma=0.25)
 
 # Fitting the model
 library(gamlss)
-mod1 <- NULL
+
 mod1 <- gamlss(y~1, family=DGEII,
                control=gamlss.control(n.cyc=500, trace=TRUE))
 
 # Extracting the fitted values for mu and sigma
 # using the inverse link function
 inv_logit <- function(x) 1/(1 + exp(-x))
+
 exp(coef(mod1, what="mu"))
 inv_logit(coef(mod1, what="sigma"))
 
@@ -50,8 +51,8 @@ inv_logit(coef(mod1, what="sigma"))
 
 # A function to simulate a data set with Y ~ DGEII
 gendat <- function(n) {
-  x1 <- runif(n, min=0.10, max=0.80)
-  x2 <- runif(n, min=0.10, max=0.80)
+  x1 <- runif(n)
+  x2 <- runif(n)
   mu    <- exp(1.7 - 2.8*x1)
   sigma <- inv_logit(0.73 - 3*x2)
   y <- rDGEII(n=n, mu=mu, sigma=sigma)
@@ -59,14 +60,29 @@ gendat <- function(n) {
 }
 
 set.seed(654)
-
 datos <- gendat(n=2000)
 
-mod2 <- NULL
 mod2 <- gamlss(y~x1, sigma.fo=~x2, family=DGEII, data=datos,
                control=gamlss.control(n.cyc=500, trace=TRUE))
 
 summary(mod2)
+
+
+# Example 3
+# Number of accidents to 647 women working on H. E. Shells
+# for 5 weeks. Taken from
+# Nekoukhou V, Alamatsaz MH, Bidram H (2013) page 886.
+
+y <- rep(x=0:5, times=c(447, 132, 42, 21, 3, 2))
+
+mod3 <- gamlss(y~1, family=DGEII,
+               control=gamlss.control(n.cyc=500, trace=TRUE))
+
+# Extracting the fitted values for mu and sigma
+# using the inverse link function
+inv_logit <- function(x) 1/(1 + exp(-x))
+exp(coef(mod3, what="mu"))
+inv_logit(coef(mod3, what="sigma"))
 
 }
 \references{
