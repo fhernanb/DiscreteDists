@@ -57,7 +57,7 @@ gendat <- function(n) {
   mu    <- inv_logit(1.7 - 2.8*x1)
   sigma <- exp(0.73 + 1*x2)
   y <- rGGEO(n=n, mu=mu, sigma=sigma)
-  data.frame(y=y, x1=x1, x2=x2, mu, sigma)
+  data.frame(y=y, x1=x1, x2=x2)
 }
 
 set.seed(78353)

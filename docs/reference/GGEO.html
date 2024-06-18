@@ -75,7 +75,7 @@ reduces to the geometric distribution with success probability \(1-\mu\).</p>
     <h2>References</h2>
     <p>Gómez-Déniz E (2010).
 “Another generalization of the geometric distribution.”
-<em>Test</em>, <b>19</b>, 399--415.</p>
+<em>Test</em>, <b>19</b>, 399-415.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -123,7 +123,7 @@ reduces to the geometric distribution with success probability \(1-\mu\).</p>
 <span class="r-in"><span>  <span class="va">mu</span>    <span class="op">&lt;-</span> <span class="fu">inv_logit</span><span class="op">(</span><span class="fl">1.7</span> <span class="op">-</span> <span class="fl">2.8</span><span class="op">*</span><span class="va">x1</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fl">0.73</span> <span class="op">+</span> <span class="fl">1</span><span class="op">*</span><span class="va">x2</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="dGGEO.html">rGGEO</a></span><span class="op">(</span>n<span class="op">=</span><span class="va">n</span>, mu<span class="op">=</span><span class="va">mu</span>, sigma<span class="op">=</span><span class="va">sigma</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">y</span>, x1<span class="op">=</span><span class="va">x1</span>, x2<span class="op">=</span><span class="va">x2</span>, <span class="va">mu</span>, <span class="va">sigma</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">y</span>, x1<span class="op">=</span><span class="va">x1</span>, x2<span class="op">=</span><span class="va">x2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">78353</span><span class="op">)</span></span></span>

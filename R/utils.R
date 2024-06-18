@@ -316,8 +316,8 @@ estim_mu_sigma_GGEO <- function(y) {
 logLik_DGEII <- function(transf_param=c(0, 0), x){
   inv_logit <- function(x) 1/(1 + exp(-x))
   return(sum(dDGEII(x,
-                    mu    = exp(transf_param[1]),
-                    sigma = inv_logit(transf_param[2]),
+                    mu    = inv_logit(transf_param[1]),
+                    sigma = exp(transf_param[2]),
                     log=TRUE)))
 }
 #' Initial values for DGEII
@@ -328,13 +328,13 @@ logLik_DGEII <- function(transf_param=c(0, 0), x){
 #' @importFrom stats optim
 estim_mu_sigma_DGEII <- function(y) {
   inv_logit <- function(x) 1/(1 + exp(-x))
-  mod <- optim(par=c(0, 1 - 1/(1+mean(y))),
+  mod <- optim(par=c(1 - 1/(1+mean(y)), 0),
                fn=logLik_DGEII,
                method="Nelder-Mead",
                control=list(fnscale=-1, maxit=100000),
                x=y)
-  res <- c(mu_hat    = exp(mod$par[1]),
-           sigma_hat = inv_logit(mod$par[2]))
+  res <- c(mu_hat    = inv_logit(mod$par[1]),
+           sigma_hat = exp(mod$par[2]))
   names(res) <- c("mu_hat", "sigma_hat")
   return(res)
 }
