@@ -32,7 +32,6 @@ we did it to implement this distribution within gamlss framework.
 # known mu
 y <- rDBH(n=1000, mu=0.74)
 
-# Fitting the model
 library(gamlss)
 mod1 <- gamlss(y~1, family=DBH,
                control=gamlss.control(n.cyc=500, trace=FALSE))
@@ -40,7 +39,7 @@ mod1 <- gamlss(y~1, family=DBH,
 # Extracting the fitted values for mu
 # using the inverse logit function
 inv_logit <- function(x) exp(x) / (1+exp(x))
-inv_logit(coef(mod1, parameter = 'mu'))
+inv_logit(coef(mod1, parameter="mu"))
 
 # Example 2
 # Generating random values under some model
@@ -60,6 +59,20 @@ mod2 <- gamlss(y~x1, family=DBH, data=datos,
                control=gamlss.control(n.cyc=500, trace=TRUE))
 
 summary(mod2)
+
+# Example 3
+# number of carious teeth among the four deciduous molars.
+# Taken from EL-MORSHEDY (2020) page 74364.
+
+y <- rep(0:4, times=c(64, 17, 10, 6, 3))
+
+mod3 <- gamlss(y~1, family=DBH,
+               control=gamlss.control(n.cyc=500, trace=TRUE))
+
+# Extracting the fitted values for mu
+# using the inverse link function
+inv_logit <- function(x) 1/(1 + exp(-x))
+inv_logit(coef(mod3, what="mu"))
 }
 \references{
 \insertRef{el2020discrete}{DiscreteDists}
