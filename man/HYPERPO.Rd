@@ -78,3 +78,6 @@ exp(coef(mod1, what='sigma'))
 \seealso{
 \link{dHYPERPO}.
 }
+\author{
+Freddy Hernandez, \email{fhernanb@unal.edu.co}
+}

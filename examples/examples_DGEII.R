@@ -2,7 +2,7 @@
 # Generating some random values with
 # known mu and sigma
 set.seed(189)
-y <- rDGEII(n=500, mu=0.75, sigma=0.5)
+y <- rDGEII(n=300, mu=0.75, sigma=0.5)
 
 # Fitting the model
 library(gamlss)

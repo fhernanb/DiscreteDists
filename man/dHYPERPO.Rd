@@ -132,3 +132,6 @@ plot(p, qxx, type="s", lwd=2, col="green3", ylab="quantiles",
 \seealso{
 \link{HYPERPO}.
 }
+\author{
+Freddy Hernandez, \email{fhernanb@unal.edu.co}
+}

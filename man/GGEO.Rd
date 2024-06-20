@@ -31,7 +31,7 @@ reduces to the geometric distribution with success probability \eqn{1-\mu}.
 # Generating some random values with
 # known mu and sigma
 set.seed(123)
-y <- rGGEO(n=1000, mu=0.95, sigma=1.5)
+y <- rGGEO(n=200, mu=0.95, sigma=1.5)
 
 # Fitting the model
 library(gamlss)

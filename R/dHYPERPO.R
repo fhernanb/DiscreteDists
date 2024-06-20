@@ -1,5 +1,7 @@
 #' The hyper-Poisson distribution
 #'
+#' @author Freddy Hernandez, \email{fhernanb@unal.edu.co}
+#'
 #' @description
 #' These functions define the density, distribution function, quantile
 #' function and random generation for the hyper-Poisson, HYPERPO(), distribution
@@ -40,29 +42,24 @@
 #' function, \code{qHYPERPO} gives the quantile function, \code{rHYPERPO}
 #' generates random deviates.
 #'
-#' @example  examples/examples_dHYPERPO.R
+#' @example examples/examples_dHYPERPO.R
 #'
 #' @export
-#'
+#' @useDynLib DiscreteDists
+#' @importFrom Rcpp sourceCpp
 dHYPERPO <- function(x, mu=1, sigma=1, log=FALSE){
   if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
-  p1 <- x * log(mu) - lgamma(sigma+x) + lgamma(sigma)
-  f11 <- F11(c=sigma, z=mu) # F11 is an util function
-  p2 <- log(f11)
-  res <- p1 - p2
-  res[x < 0] <- -Inf
-  if(log)
-    return(res)
-  else
-    return(exp(res))
+
+  temp <- cbind(x, mu, sigma, log)
+  dHYPERPO_vec(x=temp[, 1], mu=temp[, 2], sigma=temp[, 3], log=temp[,4])
 }
-dHYPERPO <- Vectorize(dHYPERPO)
 #' @export
 #' @rdname dHYPERPO
 pHYPERPO <- function(q, mu=1, sigma=1, lower.tail = TRUE, log.p = FALSE){
   if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
+
   ly <- max(length(q), length(mu), length(sigma))
   q <- rep(q, length = ly)
   mu <- rep(mu, length = ly)
@@ -92,8 +89,7 @@ pHYPERPO <- function(q, mu=1, sigma=1, lower.tail = TRUE, log.p = FALSE){
 rHYPERPO <- function(n, mu=1, sigma=1) {
   if (!is.numeric(n) || length(n) != 1 || n < 0)
     stop("invalid arguments")
-  if (!(is.double(sigma) || is.integer(sigma)) || !(is.double(mu) ||
-                                                    is.integer(mu)))
+  if (!(is.double(sigma) || is.integer(sigma)) || !(is.double(mu) || is.integer(mu)))
     stop("Non-numeric argument to mathematical function")
   sigma <- rep(sigma, length.out = n)
   mu <- rep(mu, length.out = n)
@@ -105,7 +101,7 @@ rHYPERPO <- function(n, mu=1, sigma=1) {
       warn <- TRUE
     }
     else {
-      result[ind] <- simulate_hp(sigma=sigma[ind], mu=mu[ind])
+      result[ind] <- simulate_hp(sigma[ind], mu[ind])
     }
   }
   if (warn)
@@ -120,6 +116,7 @@ qHYPERPO <- function(p, mu = 1, sigma = 1, lower.tail = TRUE,
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
   if (any(p < 0) | any(p > 1.0001))
     stop(paste("p must be between 0 and 1", "\n", ""))
+
   if (log.p == TRUE)
     p <- exp(p)
   else p <- p

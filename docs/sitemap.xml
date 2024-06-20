@@ -58,6 +58,12 @@
     <loc>/reference/dHYPERPO2.html</loc>
   </url>
   <url>
+    <loc>/reference/dHYPERPO_single.html</loc>
+  </url>
+  <url>
+    <loc>/reference/dHYPERPO_vec.html</loc>
+  </url>
+  <url>
     <loc>/reference/DIKUM.html</loc>
   </url>
   <url>
@@ -98,6 +104,9 @@
   </url>
   <url>
     <loc>/reference/F11.html</loc>
+  </url>
+  <url>
+    <loc>/reference/f11_cpp.html</loc>
   </url>
   <url>
     <loc>/reference/GGEO.html</loc>
