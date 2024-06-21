@@ -124,7 +124,7 @@ estim_mu_sigma_HYPERPO2 <- function(y) {
 #' @export
 obtaining_lambda <- function(media, gamma) {
   # Begin aux function
-  fun <- function(x) x-(gamma-1)*(F11(c=gamma, z=x)-1)/F11(c=gamma, z=x)-media
+  fun <- function(x) x-(gamma-1)*(1-1/f11_cpp(gamma, x))-media
   fun <- Vectorize(fun)
   # End aux function
   if (gamma == 1)
@@ -241,10 +241,6 @@ estim_mu_sigma_DIKUM <- function(y) {
   names(res) <- c("mu_hat", "sigma_hat")
   return(res)
 }
-
-
-
-
 
 #' logLik function for Poisson XLindley distribution
 #' @description Calculates logLik for Poisson XLindley distribution distribution.

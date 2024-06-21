@@ -60,9 +60,9 @@ for \eqn{\mu} and \eqn{\sigma} respectively, we did it to implement this distrib
 # Plotting the mass function for diferent parameter values
 
 x_max <- 30
-probs1 <- dHYPERPO(x=0:x_max,mu=5, sigma=0.1)
-probs2 <- dHYPERPO(x=0:x_max,mu=5, sigma=1.0)
-probs3 <- dHYPERPO(x=0:x_max,mu=5, sigma=1.8)
+probs1 <- dHYPERPO(x=0:x_max, mu=5, sigma=0.1)
+probs2 <- dHYPERPO(x=0:x_max, mu=5, sigma=1.0)
+probs3 <- dHYPERPO(x=0:x_max, mu=5, sigma=1.8)
 
 # To plot the first k values
 plot(x=0:x_max, y=probs1, type="o", lwd=2, col="dodgerblue", las=1,
@@ -108,12 +108,12 @@ cn <- union(names(probs1), names(probs2))
 height <- rbind(probs1[cn], probs2[cn])
 nombres <- cn
 mp <- barplot(height, beside = TRUE, names.arg = nombres,
-              col=c('dodgerblue3','firebrick3'), las=1,
-              xlab='X', ylab='Proportion')
-legend('topright',
-       legend=c('Theoretical', 'Simulated'),
-       bty='n', lwd=3,
-       col=c('dodgerblue3','firebrick3'), lty=1)
+              col=c("dodgerblue3","firebrick3"), las=1,
+              xlab="X", ylab="Proportion")
+legend("topright",
+       legend=c("Theoretical", "Simulated"),
+       bty="n", lwd=3,
+       col=c("dodgerblue3","firebrick3"), lty=1)
 
 # Example 4
 # Checking the quantile function
@@ -121,9 +121,10 @@ legend('topright',
 mu <- 3
 sigma <-3
 p <- seq(from=0, to=1, by=0.01)
-qxx <- qHYPERPO(p=p, mu=mu, sigma=sigma, lower.tail=TRUE, log.p=FALSE)
+qxx <- qHYPERPO(p=p, mu=mu, sigma=sigma,
+                lower.tail=TRUE, log.p=FALSE)
 plot(p, qxx, type="s", lwd=2, col="green3", ylab="quantiles",
-     main="Quantiles of HP(mu = sigma = 3)")
+     main="Quantiles of HP(mu=3, sigma=3)")
 
 }
 \references{

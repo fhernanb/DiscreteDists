@@ -93,7 +93,7 @@ for \(\mu\) and \(\sigma\) respectively, we did it to implement this distributio
 <span class="r-in"><span><span class="co"># Generating some random values with</span></span></span>
 <span class="r-in"><span><span class="co"># known mu and sigma</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="dHYPERPO.html">rHYPERPO</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">500</span>, mu<span class="op">=</span><span class="fl">10</span>, sigma<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="dHYPERPO.html">rHYPERPO</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">200</span>, mu<span class="op">=</span><span class="fl">10</span>, sigma<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Fitting the model</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.gamlss.com/" class="external-link">gamlss</a></span><span class="op">)</span></span></span>
@@ -102,36 +102,71 @@ for \(\mu\) and \(\sigma\) respectively, we did it to implement this distributio
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Extracting the fitted values for mu and sigma</span></span></span>
 <span class="r-in"><span><span class="co"># using the inverse link function</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">'mu'</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">"mu"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    9.980767 </span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">'sigma'</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     9.66078 </span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">"sigma"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    1.386422 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    1.281153 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 2</span></span></span>
 <span class="r-in"><span><span class="co"># Generating random values under some model</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="co"># A function to simulate a data set with Y ~ HYPERPO</span></span></span>
-<span class="r-in"><span>  <span class="va">gendat</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>    <span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span></span>
-<span class="r-in"><span>    <span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span></span>
-<span class="r-in"><span>    <span class="va">mu</span>    <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fl">1.21</span> <span class="op">-</span> <span class="fl">3</span> <span class="op">*</span> <span class="va">x1</span><span class="op">)</span> <span class="co"># 0.75 en promedio</span></span></span>
-<span class="r-in"><span>    <span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fl">1.26</span> <span class="op">-</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">x2</span><span class="op">)</span> <span class="co"># 1.30 en promedio</span></span></span>
-<span class="r-in"><span>    <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="dHYPERPO.html">rHYPERPO</a></span><span class="op">(</span>n<span class="op">=</span><span class="va">n</span>, mu<span class="op">=</span><span class="va">mu</span>, sigma<span class="op">=</span><span class="va">sigma</span><span class="op">)</span></span></span>
-<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">y</span>, x1<span class="op">=</span><span class="va">x1</span>, x2<span class="op">=</span><span class="va">x2</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="op">}</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1235</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu">gendat</span><span class="op">(</span>n<span class="op">=</span><span class="fl">150</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="va">mod2</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></span>
-<span class="r-in"><span>  <span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="va">x1</span>, sigma.fo<span class="op">=</span><span class="op">~</span><span class="va">x2</span>, family<span class="op">=</span><span class="va">HYPERPO</span>, data<span class="op">=</span><span class="va">datos</span>,</span></span>
-<span class="r-in"><span>                 control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">500</span>, trace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># A function to simulate a data set with Y ~ HYPERPO</span></span></span>
+<span class="r-in"><span><span class="va">gendat</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">mu</span>    <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fl">1.21</span> <span class="op">-</span> <span class="fl">3</span> <span class="op">*</span> <span class="va">x1</span><span class="op">)</span> <span class="co"># 0.75 en promedio</span></span></span>
+<span class="r-in"><span>  <span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fl">1.26</span> <span class="op">-</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">x2</span><span class="op">)</span> <span class="co"># 1.30 en promedio</span></span></span>
+<span class="r-in"><span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="dHYPERPO.html">rHYPERPO</a></span><span class="op">(</span>n<span class="op">=</span><span class="va">n</span>, mu<span class="op">=</span><span class="va">mu</span>, sigma<span class="op">=</span><span class="va">sigma</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">y</span>, x1<span class="op">=</span><span class="va">x1</span>, x2<span class="op">=</span><span class="va">x2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1235</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu">gendat</span><span class="op">(</span>n<span class="op">=</span><span class="fl">150</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></span>
+<span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="va">x1</span>, sigma.fo<span class="op">=</span><span class="op">~</span><span class="va">x2</span>, family<span class="op">=</span><span class="va">HYPERPO</span>, data<span class="op">=</span><span class="va">datos</span>,</span></span>
+<span class="r-in"><span>                 control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">500</span>, trace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod2</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>summary: vcov has failed, option qr is used instead</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ******************************************************************</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Family:  c("HYPERPO", "Hyper-Poisson") </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  gamlss(formula = y ~ x1, sigma.formula = ~x2, family = HYPERPO,  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     data = datos, control = gamlss.control(n.cyc = 500, trace = FALSE)) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fitting method: RS() </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mu link function:  log</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mu Coefficients:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   1.0859     0.1554   6.988 8.82e-11 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x1           -3.6229     0.4252  -8.520 1.68e-14 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sigma link function:  log</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sigma Coefficients:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   0.7293     0.3288   2.218 0.028065 *  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x2           -2.1551     0.5807  -3.711 0.000291 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> No. of observations in the fit:  150 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom for the fit:  4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Residual Deg. of Freedom:  146 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       at cycle:  66 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Global Deviance:     301.8221 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             AIC:     309.8221 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             SBC:     321.8646 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ******************************************************************</span>
 </code></pre></div>
     </div>
   </div>
