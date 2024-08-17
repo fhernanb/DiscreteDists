@@ -14,6 +14,7 @@ mod1 <- gamlss(y~1, sigma.fo=~1, family=HYPERPO2,
 exp(coef(mod1, what='mu'))
 exp(coef(mod1, what='sigma'))
 
+\dontrun{
 # Example 2
 # Generating random values under some model
 
@@ -28,10 +29,11 @@ gendat <- function(n) {
 }
 
 set.seed(12356)
-datos <- gendat(n=150)
+datos <- gendat(n=50)
 
 mod2 <- NULL
 mod2 <- gamlss(y~x1, sigma.fo=~x2, family=HYPERPO2, data=datos,
                control=gamlss.control(n.cyc=500, trace=FALSE))
 
 summary(mod2)
+}

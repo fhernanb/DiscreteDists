@@ -2,7 +2,7 @@
 # Generating some random values with
 # known mu and sigma
 set.seed(189)
-y <- rDGEII(n=300, mu=0.75, sigma=0.5)
+y <- rDGEII(n=100, mu=0.75, sigma=0.5)
 
 # Fitting the model
 library(gamlss)
@@ -16,7 +16,6 @@ inv_logit <- function(x) 1/(1 + exp(-x))
 
 inv_logit(coef(mod1, what="mu"))
 exp(coef(mod1, what="sigma"))
-
 
 # Example 2
 # Generating random values under some model
@@ -32,13 +31,12 @@ gendat <- function(n) {
 }
 
 set.seed(1234)
-datos <- gendat(n=200)
+datos <- gendat(n=100)
 
 mod2 <- gamlss(y~x1, sigma.fo=~x2, family=DGEII, data=datos,
                control=gamlss.control(n.cyc=500, trace=TRUE))
 
 summary(mod2)
-
 
 # Example 3
 # Number of accidents to 647 women working on H. E. Shells

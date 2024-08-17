@@ -18,7 +18,7 @@ hyper-Poisson distribution with parameters \(\mu\) and \(\sigma\)."><meta proper
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DiscreteDists</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
@@ -26,7 +26,13 @@ hyper-Poisson distribution with parameters \(\mu\) and \(\sigma\)."><meta proper
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-      </ul><ul class="nav navbar-nav navbar-right"></ul></div><!--/.nav-collapse -->
+      </ul><ul class="nav navbar-nav navbar-right"><li>
+  <a href="https://github.com/fhernanb/DiscreteDists/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
@@ -36,7 +42,7 @@ hyper-Poisson distribution with parameters \(\mu\) and \(\sigma\)."><meta proper
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Mean and variance for hyper-Poisson distribution</h1>
-    
+    <small class="dont-index">Source: <a href="https://github.com/fhernanb/DiscreteDists/blob/HEAD/R/mean_var_hp.R" class="external-link"><code>R/mean_var_hp.R</code></a></small>
     <div class="hidden name"><code>mean_var_hp.Rd</code></div>
     </div>
 
@@ -108,9 +114,9 @@ has a support 0, 1, 2, ... and density given by</p>
 <span class="r-in"><span><span class="co"># Using simulated values</span></span></span>
 <span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="dHYPERPO.html">rHYPERPO</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>, mu<span class="op">=</span><span class="fl">5.5</span>, sigma<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6.407</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6.423</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5.572924</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5.519591</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 2</span></span></span>
@@ -127,9 +133,9 @@ has a support 0, 1, 2, ... and density given by</p>
 <span class="r-in"><span><span class="co"># Using simulated values</span></span></span>
 <span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="dHYPERPO2.html">rHYPERPO2</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>, mu<span class="op">=</span><span class="fl">5.5</span>, sigma<span class="op">=</span><span class="fl">1.9</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5.497</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5.429</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6.926918</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5.882842</span>
 </code></pre></div>
     </div>
   </div>
@@ -140,7 +146,7 @@ has a support 0, 1, 2, ... and density given by</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Freddy Hernandez-Barajas, Fernando Marmolejo-Ramos, Jamiu Olumoh, Osho Ajayi.</p>
+  <p></p><p>Developed by Freddy Hernandez-Barajas, Fernando Marmolejo-Ramos, Jamiu Olumoh, Osho Ajayi, Olga Usuga-Manco.</p>
 </div>
 
 <div class="pkgdown">

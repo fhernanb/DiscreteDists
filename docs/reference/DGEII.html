@@ -20,7 +20,7 @@ using the function gamlss()."><meta property="og:image" content="/logo.png"><!--
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DiscreteDists</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
@@ -28,7 +28,13 @@ using the function gamlss()."><meta property="og:image" content="/logo.png"><!--
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-      </ul><ul class="nav navbar-nav navbar-right"></ul></div><!--/.nav-collapse -->
+      </ul><ul class="nav navbar-nav navbar-right"><li>
+  <a href="https://github.com/fhernanb/DiscreteDists/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
@@ -38,7 +44,7 @@ using the function gamlss()."><meta property="og:image" content="/logo.png"><!--
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>The DGEII distribution</h1>
-    
+    <small class="dont-index">Source: <a href="https://github.com/fhernanb/DiscreteDists/blob/HEAD/R/DGEII.R" class="external-link"><code>R/DGEII.R</code></a></small>
     <div class="hidden name"><code>DGEII.Rd</code></div>
     </div>
 
@@ -95,14 +101,14 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-in"><span><span class="co"># Generating some random values with</span></span></span>
 <span class="r-in"><span><span class="co"># known mu and sigma</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">189</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="dDGEII.html">rDGEII</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">300</span>, mu<span class="op">=</span><span class="fl">0.75</span>, sigma<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="dDGEII.html">rDGEII</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">100</span>, mu<span class="op">=</span><span class="fl">0.75</span>, sigma<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Fitting the model</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.gamlss.com/" class="external-link">gamlss</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="fl">1</span>, family<span class="op">=</span><span class="va">DGEII</span>,</span></span>
 <span class="r-in"><span>               control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">500</span>, trace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 1: Global Deviance = 1063.603 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 1: Global Deviance = 339.2316 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Extracting the fitted values for mu and sigma</span></span></span>
 <span class="r-in"><span><span class="co"># using the inverse link function</span></span></span>
@@ -110,11 +116,10 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">inv_logit</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">"mu"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7673958 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.6624943 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">"sigma"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.4798704 </span>
-<span class="r-in"><span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7371248 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 2</span></span></span>
 <span class="r-in"><span><span class="co"># Generating random values under some model</span></span></span>
@@ -130,25 +135,25 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu">gendat</span><span class="op">(</span>n<span class="op">=</span><span class="fl">200</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu">gendat</span><span class="op">(</span>n<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="va">x1</span>, sigma.fo<span class="op">=</span><span class="op">~</span><span class="va">x2</span>, family<span class="op">=</span><span class="va">DGEII</span>, data<span class="op">=</span><span class="va">datos</span>,</span></span>
 <span class="r-in"><span>               control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">500</span>, trace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 1: Global Deviance = 900.8303 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 2: Global Deviance = 888.5771 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 3: Global Deviance = 883.3226 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 4: Global Deviance = 881.0165 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 5: Global Deviance = 879.9632 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 6: Global Deviance = 879.4864 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 7: Global Deviance = 879.2652 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 8: Global Deviance = 879.1661 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 9: Global Deviance = 879.1236 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 10: Global Deviance = 879.1031 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 11: Global Deviance = 879.0932 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 12: Global Deviance = 879.0885 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 13: Global Deviance = 879.0862 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 14: Global Deviance = 879.0851 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 15: Global Deviance = 879.0846 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 1: Global Deviance = 435.3935 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 2: Global Deviance = 429.577 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 3: Global Deviance = 426.8387 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 4: Global Deviance = 425.5342 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 5: Global Deviance = 424.88 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 6: Global Deviance = 424.5617 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 7: Global Deviance = 424.4058 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 8: Global Deviance = 424.3277 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 9: Global Deviance = 424.2892 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 10: Global Deviance = 424.2696 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 11: Global Deviance = 424.2595 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 12: Global Deviance = 424.2544 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 13: Global Deviance = 424.2518 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 14: Global Deviance = 424.2504 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 15: Global Deviance = 424.2498 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod2</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>summary: vcov has failed, option qr is used instead</span>
@@ -164,8 +169,8 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Mu link function:  logit</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Mu Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   1.7598     0.1139   15.45   &lt;2e-16 ***</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x1           -2.6866     0.2217  -12.12   &lt;2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   1.3850     0.1247   11.10  &lt; 2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x1           -2.3913     0.2807   -8.52 1.95e-13 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -173,22 +178,21 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sigma link function:  log</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sigma Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   0.7258     0.1615   4.493 1.19e-05 ***</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x2            1.0001     0.2986   3.349 0.000971 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   0.9022     0.2130   4.235 5.16e-05 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x2            1.1367     0.3155   3.603 0.000496 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> No. of observations in the fit:  200 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> No. of observations in the fit:  100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom for the fit:  4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       Residual Deg. of Freedom:  196 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Residual Deg. of Freedom:  96 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                       at cycle:  15 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Global Deviance:     879.0846 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             AIC:     887.0846 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             SBC:     900.2778 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Global Deviance:     424.2498 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             AIC:     432.2498 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             SBC:     442.6704 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ******************************************************************</span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 3</span></span></span>
 <span class="r-in"><span><span class="co"># Number of accidents to 647 women working on H. E. Shells</span></span></span>
@@ -221,7 +225,7 @@ we did it to implement this distribution within gamlss framework.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Freddy Hernandez-Barajas, Fernando Marmolejo-Ramos, Jamiu Olumoh, Osho Ajayi.</p>
+  <p></p><p>Developed by Freddy Hernandez-Barajas, Fernando Marmolejo-Ramos, Jamiu Olumoh, Osho Ajayi, Olga Usuga-Manco.</p>
 </div>
 
 <div class="pkgdown">
