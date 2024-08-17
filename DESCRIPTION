@@ -9,9 +9,14 @@ Authors@R: c(
     person("Jamiu", "Olumoh", , "jamiu.olumoh@aun.edu.ng", role = c("aut"),
            comment = c(ORCID = "0000-0002-7371-3920")),       
     person("Osho", "Ajayi", , "osho.ajayi@aun.edu.ng", role = c("aut"),
-           comment = c(ORCID = "0000-0002-2436-3338"))       
+           comment = c(ORCID = "0000-0002-2436-3338")),
+    person("Olga", "Usuga-Manco", , "olga.usuga@udea.edu.co", role = c("aut"),
+           comment = c(ORCID = "0000-0003-3062-1820"))       
            )
-Description: This package implements Discrete statistical distributions.
+Description: Implementation of new discrete statistical distributions. 
+    Each distribution includes the traditional functions as well as an 
+    additional function called the "family function," which can be used 
+    to estimate parameters within the GAMLSS framework.
 License: MIT + file LICENSE
 RdMacros: Rdpack
 Imports: 
@@ -29,3 +34,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/fhernanb/DiscreteDists
+BugReports: https://github.com/fhernanb/DiscreteDists/issues
