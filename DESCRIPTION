@@ -1,5 +1,5 @@
 Package: DiscreteDists
-Title: Discrete statistical distributions
+Title: Discrete Statistical Distributions
 Version: 1.0.0
 Authors@R: c(
     person("Freddy", "Hernandez-Barajas", , "fhernanb@unal.edu.co", role = c("aut", "cre"),
@@ -13,10 +13,7 @@ Authors@R: c(
     person("Olga", "Usuga-Manco", , "olga.usuga@udea.edu.co", role = c("aut"),
            comment = c(ORCID = "0000-0003-3062-1820"))       
            )
-Description: Implementation of new discrete statistical distributions. 
-    Each distribution includes the traditional functions as well as an 
-    additional function called the "family function," which can be used 
-    to estimate parameters within the GAMLSS framework.
+Description: Implementation of new discrete statistical distributions. Each distribution includes the traditional functions as well as an additional function called the family function, which can be used to estimate parameters within the 'gamlss' framework.
 License: MIT + file LICENSE
 RdMacros: Rdpack
 Imports: 
@@ -33,6 +30,5 @@ RoxygenNote: 7.3.1
 Suggests: 
     knitr,
     rmarkdown
-VignetteBuilder: knitr
 URL: https://github.com/fhernanb/DiscreteDists
 BugReports: https://github.com/fhernanb/DiscreteDists/issues

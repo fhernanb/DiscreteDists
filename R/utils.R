@@ -72,7 +72,8 @@ AR <- function(a, r) {
 }
 #' Auxiliar function to generate values for hyper Poisson
 #' @description This function is used inside random function of Hyper Poisson.
-#' @param sigma,mu values to simulate.
+#' @param sigma value for sigma parameter.
+#' @param mu value for mu parameter.
 #' @keywords internal
 #' @export
 simulate_hp <- function(sigma, mu) {
@@ -215,7 +216,7 @@ estim_mu_sigma_DMOLBE <- function(y) {
 #' logLik function for discrete Inverted Kumaraswamy
 #' @description Calculates logLik for discrete Inverted Kumaraswamy distribution.
 #' @param param vector with parameters in log scale.
-#' @param y vector with the response variable.
+#' @param x vector with the response variable.
 #' @keywords internal
 #' @export
 logLik_DIKUM <- function(param=c(0, 0), x){
@@ -245,7 +246,7 @@ estim_mu_sigma_DIKUM <- function(y) {
 #' logLik function for Poisson XLindley distribution
 #' @description Calculates logLik for Poisson XLindley distribution distribution.
 #' @param param parameter mu in log scale.
-#' @param y vector with the response variable.
+#' @param x vector with the response variable.
 #' @keywords internal
 #' @export
 logLik_POISXL <- function(param=0, x){
@@ -253,8 +254,6 @@ logLik_POISXL <- function(param=0, x){
                      mu = exp(param),
                      log=TRUE)))
 }
-
-
 #' Initial values for discrete Poisson XLindley distribution
 #' @description This function generates initial values for the parameters.
 #' @param y vector with the response variable.
@@ -305,7 +304,7 @@ estim_mu_sigma_GGEO <- function(y) {
 }
 #' logLik function for DGEII
 #' @description Calculates logLik for DGEII distribution.
-#' @param param vector with parameters in log and logit scale.
+#' @param transf_param vector with parameters in log and logit scale.
 #' @param x vector with the response variable.
 #' @keywords internal
 #' @export

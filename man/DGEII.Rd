@@ -67,7 +67,7 @@ set.seed(1234)
 datos <- gendat(n=100)
 
 mod2 <- gamlss(y~x1, sigma.fo=~x2, family=DGEII, data=datos,
-               control=gamlss.control(n.cyc=500, trace=TRUE))
+               control=gamlss.control(n.cyc=500, trace=FALSE))
 
 summary(mod2)
 

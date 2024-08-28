@@ -9,7 +9,7 @@ logLik_DIKUM(param = c(0, 0), x)
 \arguments{
 \item{param}{vector with parameters in log scale.}
 
-\item{y}{vector with the response variable.}
+\item{x}{vector with the response variable.}
 }
 \description{
 Calculates logLik for discrete Inverted Kumaraswamy distribution.

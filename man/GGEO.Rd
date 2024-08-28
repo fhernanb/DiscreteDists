@@ -46,7 +46,6 @@ inv_logit <- function(x) 1/(1 + exp(-x))
 inv_logit(coef(mod1, what="mu"))
 exp(coef(mod1, what="sigma"))
 
-
 # Example 2
 # Generating random values under some model
 
@@ -61,7 +60,7 @@ gendat <- function(n) {
 }
 
 set.seed(78353)
-datos <- gendat(n=200)
+datos <- gendat(n=100)
 
 mod2 <- gamlss(y~x1, sigma.fo=~x2, family=GGEO, data=datos,
                control=gamlss.control(n.cyc=500, trace=TRUE))

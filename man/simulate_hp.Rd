@@ -9,11 +9,9 @@ simulate_hp(sigma, mu)
 simulate_hp(sigma, mu)
 }
 \arguments{
-\item{sigma}{a single value of the sigma parameter.}
+\item{sigma}{value for sigma parameter.}
 
-\item{mu}{a single value of the mu parameter.}
-
-\item{sigma, mu}{values to simulate.}
+\item{mu}{value for mu parameter.}
 }
 \value{
 a single value for the HYPERPO distribution.

@@ -12,8 +12,8 @@ To install the `DiscreteDists` package you need to install `devtools`
 package before, follow the instructions below:
 
 ```r
-if (!require('devtools')) install.packages('devtools')
-devtools::install_github('fhernanb/DiscreteDists', force=TRUE)
+if (!require("devtools")) install.packages("devtools")
+devtools::install_github("fhernanb/DiscreteDists", force=TRUE)
 library(DiscreteDists)
 ```
 

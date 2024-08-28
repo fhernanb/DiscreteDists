@@ -127,27 +127,29 @@ we did it to implement this distribution within gamlss framework.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Example 1</span></span></span>
 <span class="r-in"><span><span class="co"># Plotting the mass function for diferent parameter values</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">25</span>, y<span class="op">=</span><span class="fu">dDLD</span><span class="op">(</span>x<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">25</span>, mu<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>     type<span class="op">=</span><span class="st">"h"</span>, lwd<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"dodgerblue"</span>, las<span class="op">=</span><span class="fl">1</span>,</span></span>
 <span class="r-in"><span>     ylab<span class="op">=</span><span class="st">"P(X=x)"</span>, xlab<span class="op">=</span><span class="st">"X"</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.1</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>     main<span class="op">=</span><span class="st">"Probability mu=0.2"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="dDLD-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">15</span>, y<span class="op">=</span><span class="fu">dDLD</span><span class="op">(</span>x<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">15</span>, mu<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>     type<span class="op">=</span><span class="st">"h"</span>, lwd<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"tomato"</span>, las<span class="op">=</span><span class="fl">1</span>,</span></span>
 <span class="r-in"><span>     ylab<span class="op">=</span><span class="st">"P(X=x)"</span>, xlab<span class="op">=</span><span class="st">"X"</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.25</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>     main<span class="op">=</span><span class="st">"Probability mu=0.5"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="dDLD-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">8</span>, y<span class="op">=</span><span class="fu">dDLD</span><span class="op">(</span>x<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">8</span>, mu<span class="op">=</span><span class="fl">1</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>     type<span class="op">=</span><span class="st">"h"</span>, lwd<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"green4"</span>, las<span class="op">=</span><span class="fl">1</span>,</span></span>
 <span class="r-in"><span>     ylab<span class="op">=</span><span class="st">"P(X=x)"</span>, xlab<span class="op">=</span><span class="st">"X"</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>     main<span class="op">=</span><span class="st">"Probability mu=1"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="dDLD-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">5</span>, y<span class="op">=</span><span class="fu">dDLD</span><span class="op">(</span>x<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">5</span>, mu<span class="op">=</span><span class="fl">2</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>     type<span class="op">=</span><span class="st">"h"</span>, lwd<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"red"</span>, las<span class="op">=</span><span class="fl">1</span>,</span></span>
 <span class="r-in"><span>     ylab<span class="op">=</span><span class="st">"P(X=x)"</span>, xlab<span class="op">=</span><span class="st">"X"</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>     main<span class="op">=</span><span class="st">"Probability mu=2"</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="dDLD-1.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="dDLD-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 2</span></span></span>
 <span class="r-in"><span><span class="co"># Checking if the cumulative curves converge to 1</span></span></span>
@@ -158,7 +160,6 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-in"><span><span class="va">cumulative_probs3</span> <span class="op">&lt;-</span> <span class="fu">pDLD</span><span class="op">(</span>q<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="va">x_max</span>, mu<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">cumulative_probs4</span> <span class="op">&lt;-</span> <span class="fu">pDLD</span><span class="op">(</span>q<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="va">x_max</span>, mu<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="va">x_max</span>, y<span class="op">=</span><span class="va">cumulative_probs1</span>, col<span class="op">=</span><span class="st">"dodgerblue"</span>,</span></span>
 <span class="r-in"><span>     type<span class="op">=</span><span class="st">"o"</span>, las<span class="op">=</span><span class="fl">1</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>     main<span class="op">=</span><span class="st">"Cumulative probability for Lindley"</span>,</span></span>
@@ -172,7 +173,7 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-in"><span>                <span class="st">"mu=0.5"</span>,</span></span>
 <span class="r-in"><span>                <span class="st">"mu=1"</span>,</span></span>
 <span class="r-in"><span>                <span class="st">"mu=2"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="dDLD-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="dDLD-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 3</span></span></span>
 <span class="r-in"><span><span class="co"># Comparing the random generator output with the theoretical probabilities</span></span></span>
@@ -196,7 +197,7 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-in"><span>       legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Theoretical'</span>, <span class="st">'Simulated'</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>       bty<span class="op">=</span><span class="st">'n'</span>, lwd<span class="op">=</span><span class="fl">3</span>,</span></span>
 <span class="r-in"><span>       col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'dodgerblue3'</span>,<span class="st">'firebrick3'</span><span class="op">)</span>, lty<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="dDLD-3.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="dDLD-6.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 4</span></span></span>
 <span class="r-in"><span><span class="co"># Checking the quantile function</span></span></span>
@@ -206,7 +207,7 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-in"><span><span class="va">qxx</span> <span class="op">&lt;-</span> <span class="fu">qDLD</span><span class="op">(</span><span class="va">p</span>, <span class="va">mu</span>, lower.tail <span class="op">=</span> <span class="cn">TRUE</span>, log.p <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">qxx</span>, type<span class="op">=</span><span class="st">"S"</span>, lwd<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"green3"</span>, ylab<span class="op">=</span><span class="st">"quantiles"</span>,</span></span>
 <span class="r-in"><span>     main<span class="op">=</span><span class="st">"Quantiles of DL(mu=0.9)"</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="dDLD-4.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="dDLD-7.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

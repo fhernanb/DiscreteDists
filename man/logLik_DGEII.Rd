@@ -7,9 +7,9 @@
 logLik_DGEII(transf_param = c(0, 0), x)
 }
 \arguments{
-\item{x}{vector with the response variable.}
+\item{transf_param}{vector with parameters in log and logit scale.}
 
-\item{param}{vector with parameters in log and logit scale.}
+\item{x}{vector with the response variable.}
 }
 \description{
 Calculates logLik for DGEII distribution.

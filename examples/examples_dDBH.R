@@ -1,7 +1,6 @@
 # Example 1
 # Plotting the mass function for diferent parameter values
 
-par(mfrow=c(1, 3))
 plot(x=0:5, y=dDBH(x=0:5, mu=0.1),
      type="h", lwd=2, col="dodgerblue", las=1,
      ylab="P(X=x)", xlab="X", ylim=c(0, 1),
@@ -16,7 +15,6 @@ plot(x=0:15, y=dDBH(x=0:15, mu=0.9),
      type="h", lwd=2, col="green4", las=1,
      ylab="P(X=x)", xlab="X", ylim=c(0, 1),
      main="Probability mu=0.9")
-
 
 # Example 2
 # Checking if the cumulative curves converge to 1
@@ -53,12 +51,12 @@ cn <- union(names(probs1), names(probs2))
 height <- rbind(probs1[cn], probs2[cn])
 nombres <- cn
 mp <- barplot(height, beside = TRUE, names.arg = nombres,
-              col=c('dodgerblue3','firebrick3'), las=1,
-              xlab='X', ylab='Proportion')
-legend('topright',
-       legend=c('Theoretical', 'Simulated'),
-       bty='n', lwd=3,
-       col=c('dodgerblue3','firebrick3'), lty=1)
+              col=c("dodgerblue3","firebrick3"), las=1,
+              xlab="X", ylab="Proportion")
+legend("topright",
+       legend=c("Theoretical", "Simulated"),
+       bty="n", lwd=3,
+       col=c("dodgerblue3","firebrick3"), lty=1)
 
 # Example 4
 # Checking the quantile function
@@ -68,5 +66,4 @@ p <- seq(from=0, to=1, by = 0.01)
 qxx <- qDBH(p, mu, lower.tail = TRUE, log.p = FALSE)
 plot(p, qxx, type="s", lwd=2, col="green3", ylab="quantiles",
      main="Quantiles of BH(mu=0.97)")
-
 

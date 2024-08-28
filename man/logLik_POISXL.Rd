@@ -9,7 +9,7 @@ logLik_POISXL(param = 0, x)
 \arguments{
 \item{param}{parameter mu in log scale.}
 
-\item{y}{vector with the response variable.}
+\item{x}{vector with the response variable.}
 }
 \description{
 Calculates logLik for Poisson XLindley distribution distribution.

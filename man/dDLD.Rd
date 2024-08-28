@@ -51,7 +51,6 @@ we did it to implement this distribution within gamlss framework.
 # Example 1
 # Plotting the mass function for diferent parameter values
 
-par(mfrow=c(2, 2))
 plot(x=0:25, y=dDLD(x=0:25, mu=0.2),
      type="h", lwd=2, col="dodgerblue", las=1,
      ylab="P(X=x)", xlab="X", ylim=c(0, 0.1),
@@ -81,7 +80,6 @@ cumulative_probs2 <- pDLD(q=0:x_max, mu=0.5)
 cumulative_probs3 <- pDLD(q=0:x_max, mu=1)
 cumulative_probs4 <- pDLD(q=0:x_max, mu=2)
 
-par(mfrow=c(1, 1))
 plot(x=0:x_max, y=cumulative_probs1, col="dodgerblue",
      type="o", las=1, ylim=c(0, 1),
      main="Cumulative probability for Lindley",
