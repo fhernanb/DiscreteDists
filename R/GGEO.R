@@ -27,6 +27,11 @@
 #' with \eqn{0 < \mu < 1} and \eqn{\sigma > 0}. If \eqn{\sigma=1}, the GGEO distribution
 #' reduces to the geometric distribution with success probability \eqn{1-\mu}.
 #'
+#' @return
+#' Returns a \code{gamlss.family} object which can be used
+#' to fit a GGEO distribution
+#' in the \code{gamlss()} function.
+#'
 #' @example examples/examples_GGEO.R
 #'
 #' @importFrom gamlss.dist checklink

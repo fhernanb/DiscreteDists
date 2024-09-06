@@ -9,7 +9,10 @@ stopping(x, tol)
 \arguments{
 \item{x}{vector}
 
-\item{tol}{this is the tolerance of the infinite sum}
+\item{tol}{this is the tolerance of the infinite sum.}
+}
+\value{
+returns a logical value if the tolerance level is met.
 }
 \description{
 This function is used inside F11 function.

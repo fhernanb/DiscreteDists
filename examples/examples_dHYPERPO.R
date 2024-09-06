@@ -1,5 +1,5 @@
 # Example 1
-# Plotting the mass function for diferent parameter values
+# Plotting the mass function for different parameter values
 
 x_max <- 30
 probs1 <- dHYPERPO(x=0:x_max, mu=5, sigma=0.1)
@@ -37,7 +37,8 @@ legend("bottomright", col=c("dodgerblue", "tomato", "green4"), lwd=3,
                 "mu=5, sigma=1.8"))
 
 # Example 3
-# Comparing the random generator output with the theoretical probabilities
+# Comparing the random generator output with
+# the theoretical probabilities
 
 x_max <- 15
 probs1 <- dHYPERPO(x=0:x_max, mu=3, sigma=1.1)

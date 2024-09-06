@@ -52,7 +52,8 @@ Note: in this implementation we changed the original parameters \eqn{\alpha} and
 for \eqn{\mu} and \eqn{\sigma} respectively, we did it to implement this distribution within gamlss framework.
 }
 \examples{
-# Example 1 ---------------------------------------------------------------
+# Example 1
+# Plotting the mass function for different parameter values
 
 x_max <- 30
 
@@ -71,9 +72,9 @@ legend("topright", col=c("dodgerblue", "tomato", "green4"), lwd=3,
                 "mu=1, sigma=20",
                 "mu=1, sigma=50"))
 
-# Example 2 ---------------------------------------------------------------
+# Example 2
+# Checking if the cumulative curves converge to 1
 
-# Checking if curves go to 1
 x_max <- 500
 
 cumulative_probs1 <- pDIKUM(q=0:x_max, mu=1, sigma=5)
@@ -91,9 +92,10 @@ legend("bottomright", col=c("dodgerblue", "tomato", "green4"), lwd=3,
                 "mu=1, sigma=20",
                 "mu=1, sigma=50"))
 
-# Example 3 ---------------------------------------------------------------
+# Example 3
+# Comparing the random generator output with
+# the theoretical probabilities
 
-# Some tests to compare the simulator with theoretical probabilities
 x_max <- 20
 probs1 <- dDIKUM(x=0:x_max, mu=3, sigma=20)
 names(probs1) <- 0:x_max
@@ -112,7 +114,8 @@ legend('topright',
        bty='n', lwd=3,
        col=c('dodgerblue3','firebrick3'), lty=1)
 
-# Example 4 ---------------------------------------------------------------
+# Example 4
+# Checking the quantile function
 
 mu <- 1
 sigma <- 5

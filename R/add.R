@@ -1,16 +1,16 @@
 #' Sum of One-Dimensional Functions
 #'
+#' @author Freddy Hernandez, \email{fhernanb@unal.edu.co}
+#'
 #' @param f an R function taking a numeric first argument and returning a numeric vector of the same length.
 #' @param lower the lower limit of sum. Can be infinite.
 #' @param upper the upper limit of sum. Can be infinite.
 #' @param ... additional arguments to be passed to f.
 #' @param abs.tol absolute accuracy requested.
 #'
-#' @return This function returns a value.
+#' @return This function returns the sum value.
 #'
 #' @example  examples/examples_add.R
-#'
-
 #'
 #' @importFrom utils tail
 #' @export

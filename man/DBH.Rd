@@ -9,6 +9,11 @@ DBH(mu.link = "logit")
 \arguments{
 \item{mu.link}{defines the mu.link, with "logit" link as the default for the mu parameter. Other links are "probit" and "cloglog"'(complementary log-log)}
 }
+\value{
+Returns a \code{gamlss.family} object which can be used
+to fit a Discrete Burr-Hatke distribution
+in the \code{gamlss()} function.
+}
 \description{
 The function \code{DBH()} defines the Discrete Burr Hatke distribution, one-parameter
 discrete distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
@@ -56,7 +61,7 @@ datos <- gendat(n=150)
 
 mod2 <- NULL
 mod2 <- gamlss(y~x1, family=DBH, data=datos,
-               control=gamlss.control(n.cyc=500, trace=TRUE))
+               control=gamlss.control(n.cyc=500, trace=FALSE))
 
 summary(mod2)
 
@@ -67,7 +72,7 @@ summary(mod2)
 y <- rep(0:4, times=c(64, 17, 10, 6, 3))
 
 mod3 <- gamlss(y~1, family=DBH,
-               control=gamlss.control(n.cyc=500, trace=TRUE))
+               control=gamlss.control(n.cyc=500, trace=FALSE))
 
 # Extracting the fitted values for mu
 # using the inverse link function

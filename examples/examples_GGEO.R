@@ -6,9 +6,8 @@ y <- rGGEO(n=200, mu=0.95, sigma=1.5)
 
 # Fitting the model
 library(gamlss)
-
 mod1 <- gamlss(y~1, family=GGEO,
-               control=gamlss.control(n.cyc=500, trace=TRUE))
+               control=gamlss.control(n.cyc=500, trace=FALSE))
 
 # Extracting the fitted values for mu and sigma
 # using the inverse link function
@@ -34,7 +33,7 @@ set.seed(78353)
 datos <- gendat(n=100)
 
 mod2 <- gamlss(y~x1, sigma.fo=~x2, family=GGEO, data=datos,
-               control=gamlss.control(n.cyc=500, trace=TRUE))
+               control=gamlss.control(n.cyc=500, trace=FALSE))
 
 summary(mod2)
 

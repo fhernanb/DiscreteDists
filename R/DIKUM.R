@@ -28,6 +28,11 @@
 #' Note: in this implementation we changed the original parameters \eqn{\alpha} and \eqn{\beta}
 #' for \eqn{\mu} and \eqn{\sigma} respectively, we did it to implement this distribution within gamlss framework.
 #'
+#' @return
+#' Returns a \code{gamlss.family} object which can be used
+#' to fit a discrete Inverted Kumaraswamy distribution
+#' in the \code{gamlss()} function.
+#'
 #' @example examples/examples_DIKUM.R
 #'
 #' @importFrom gamlss.dist checklink

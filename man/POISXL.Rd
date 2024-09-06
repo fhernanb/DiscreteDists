@@ -9,6 +9,11 @@ POISXL(mu.link = "log")
 \arguments{
 \item{mu.link}{defines the mu.link, with "log" link as the default for the mu parameter.}
 }
+\value{
+Returns a \code{gamlss.family} object which can be used
+to fit a Discrete Poisson XLindley distribution
+in the \code{gamlss()} function.
+}
 \description{
 The function \code{POISXL()} defines  the Discrete Poisson XLindley distribution, one-parameter
 discrete distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
@@ -44,7 +49,7 @@ exp(coef(mod1, what='mu'))
 # A function to simulate a data set with Y ~ POISXL
 gendat <- function(n) {
   x1 <- runif(n, min=0.4, max=0.6)
-  mu    <- exp(1.21 - 3 * x1) # 0.75 en promedio
+  mu <- exp(1.21 - 3 * x1) # 0.75 approximately
   y <- rPOISXL(n=n, mu=mu)
   data.frame(y=y, x1=x1)
 }

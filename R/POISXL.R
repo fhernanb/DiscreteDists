@@ -25,6 +25,11 @@
 #' Note: in this implementation we changed the original parameters \eqn{\alpha} for \eqn{\mu},
 #' we did it to implement this distribution within gamlss framework.
 #'
+#' @return
+#' Returns a \code{gamlss.family} object which can be used
+#' to fit a Discrete Poisson XLindley distribution
+#' in the \code{gamlss()} function.
+#'
 #' @example examples/examples_POISXL.R
 #'
 #' @importFrom gamlss.dist checklink

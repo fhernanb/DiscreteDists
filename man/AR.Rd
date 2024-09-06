@@ -11,6 +11,9 @@ AR(a, r)
 
 \item{r}{second value.}
 }
+\value{
+returns the value for the a(r) function.
+}
 \description{
 This function is used to calculate (a)r.
 }

@@ -49,7 +49,7 @@ we did it to implement this distribution within gamlss framework.
 }
 \examples{
 # Example 1
-# Plotting the mass function for diferent parameter values
+# Plotting the mass function for different parameter values
 
 plot(x=0:25, y=dDLD(x=0:25, mu=0.2),
      type="h", lwd=2, col="dodgerblue", las=1,
@@ -95,7 +95,8 @@ legend("bottomright",
                 "mu=2"))
 
 # Example 3
-# Comparing the random generator output with the theoretical probabilities
+# Comparing the random generator output with
+# the theoretical probabilities
 
 mu <- 0.6
 x <- rDLD(n = 1000, mu = mu)

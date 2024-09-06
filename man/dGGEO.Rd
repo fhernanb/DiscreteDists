@@ -76,7 +76,6 @@ legend("topright", col=c("dodgerblue", "tomato", "green4"), lwd=3,
 # Example 2
 # Checking if the cumulative curves converge to 1
 
-#plot1
 x_max <- 10
 plot_discrete_cdf(x=0:x_max,
                   fx=dGGEO(x=0:x_max, mu=0.3, sigma=15),
@@ -86,7 +85,6 @@ plot_discrete_cdf(x=0:x_max,
 legend("bottomright", legend="mu=0.3, sigma=15", col="dodgerblue",
        lty=1, lwd=2, cex=0.8)
 
-#plot2
 plot_discrete_cdf(x=0:x_max,
                   fx=dGGEO(x=0:x_max, mu=0.5, sigma=30),
                   col="tomato",
@@ -95,7 +93,6 @@ plot_discrete_cdf(x=0:x_max,
 legend("bottomright", legend="mu=0.5, sigma=30",
        col="tomato", lty=1, lwd=2, cex=0.8)
 
-#plot3
 plot_discrete_cdf(x=0:x_max,
                   fx=dGGEO(x=0:x_max, mu=0.5, sigma=50),
                   col="green4",
@@ -105,7 +102,8 @@ legend("bottomright", legend="mu=0.5, sigma=50",
        col="green4", lty=1, lwd=2, cex=0.8)
 
 # Example 3
-# Comparing the random generator output with the theoretical probabilities
+# Comparing the random generator output with
+# the theoretical probabilities
 
 x_max <- 15
 probs1 <- dGGEO(x=0:x_max, mu=0.5, sigma=5)

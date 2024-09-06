@@ -18,15 +18,12 @@ add(f, lower, upper, ..., abs.tol = .Machine$double.eps)
 \item{abs.tol}{absolute accuracy requested.}
 }
 \value{
-This function returns a value.
+This function returns the sum value.
 }
 \description{
 Sum of One-Dimensional Functions
 }
 \examples{
-###########################################################################
-#                            EXAMPLES
-###########################################################################
 # Poisson expected value
 add(f=function(x, lambda) x*dpois(x, lambda), lower=0, upper=Inf,
     lambda=7.5)
@@ -44,4 +41,7 @@ add(f=function(x) 3*0.7^(x-1), lower=1, upper=Inf) # Ans=10
 add(f=function(x, a, b) a*b^(x-1), lower=1, upper=Inf, a=3, b=0.7) # Ans=10
 add(f=function(x, a=3, b=0.7) a*b^(x-1), lower=1, upper=Inf) # Ans=10
 
+}
+\author{
+Freddy Hernandez, \email{fhernanb@unal.edu.co}
 }

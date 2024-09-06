@@ -69,6 +69,14 @@ using the function <code><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" cl
 <dd><p>defines the sigma.link, with "log" link as the default for the sigma.</p></dd>
 
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    
+
+<p>Returns a <code>gamlss.family</code> object which can be used
+to fit a DGEII distribution
+in the <code><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss()</a></code> function.</p>
+    </div>
     <div id="details">
     <h2>Details</h2>
     <p>The DGEII distribution with parameters \(\mu\) and \(\sigma\)
@@ -105,10 +113,8 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Fitting the model</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.gamlss.com/" class="external-link">gamlss</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="fl">1</span>, family<span class="op">=</span><span class="va">DGEII</span>,</span></span>
-<span class="r-in"><span>               control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">500</span>, trace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 1: Global Deviance = 339.2316 </span>
+<span class="r-in"><span>               control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">500</span>, trace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Extracting the fitted values for mu and sigma</span></span></span>
 <span class="r-in"><span><span class="co"># using the inverse link function</span></span></span>
@@ -187,8 +193,7 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">5</span>, times<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">447</span>, <span class="fl">132</span>, <span class="fl">42</span>, <span class="fl">21</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mod3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="fl">1</span>, family<span class="op">=</span><span class="va">DGEII</span>,</span></span>
-<span class="r-in"><span>               control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">500</span>, trace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 1: Global Deviance = 1184.367 </span>
+<span class="r-in"><span>               control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">500</span>, trace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Extracting the fitted values for mu and sigma</span></span></span>
 <span class="r-in"><span><span class="co"># using the inverse link function</span></span></span>

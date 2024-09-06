@@ -79,15 +79,16 @@
     <h2>Value</h2>
     
 
-<p>This function returns a value.</p>
+<p>This function returns the sum value.</p>
+    </div>
+    <div id="author">
+    <h2>Author</h2>
+    <p>Freddy Hernandez, <a href="mailto:fhernanb@unal.edu.co">fhernanb@unal.edu.co</a></p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">###########################################################################</span></span></span>
-<span class="r-in"><span><span class="co">#                            EXAMPLES</span></span></span>
-<span class="r-in"><span><span class="co">###########################################################################</span></span></span>
-<span class="r-in"><span><span class="co"># Poisson expected value</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Poisson expected value</span></span></span>
 <span class="r-in"><span><span class="fu">add</span><span class="op">(</span>f<span class="op">=</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">lambda</span><span class="op">)</span> <span class="va">x</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html" class="external-link">dpois</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">lambda</span><span class="op">)</span>, lower<span class="op">=</span><span class="fl">0</span>, upper<span class="op">=</span><span class="cn">Inf</span>,</span></span>
 <span class="r-in"><span>    lambda<span class="op">=</span><span class="fl">7.5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $value</span>

@@ -9,6 +9,11 @@ DLD(mu.link = "log")
 \arguments{
 \item{mu.link}{defines the mu.link, with "log" link as the default for the mu parameter.}
 }
+\value{
+Returns a \code{gamlss.family} object which can be used
+to fit a Discrete Lindley distribution
+in the \code{gamlss()} function.
+}
 \description{
 The function \code{DLD()} defines the Discrete Lindley distribution, one-parameter
 discrete distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
@@ -64,7 +69,7 @@ datos <- gendat(n=150)
 
 mod2 <- NULL
 mod2 <- gamlss(y~x1, sigma.fo=~x2, family=DLD, data=datos,
-                 control=gamlss.control(n.cyc=500, trace=TRUE))
+                 control=gamlss.control(n.cyc=500, trace=FALSE))
 
 summary(mod2)
 }

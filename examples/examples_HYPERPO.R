@@ -21,8 +21,8 @@ exp(coef(mod1, what="sigma"))
 gendat <- function(n) {
   x1 <- runif(n)
   x2 <- runif(n)
-  mu    <- exp(1.21 - 3 * x1) # 0.75 en promedio
-  sigma <- exp(1.26 - 2 * x2) # 1.30 en promedio
+  mu    <- exp(1.21 - 3 * x1) # 0.75 approximately
+  sigma <- exp(1.26 - 2 * x2) # 1.30 approximately
   y <- rHYPERPO(n=n, mu=mu, sigma=sigma)
   data.frame(y=y, x1=x1, x2=x2)
 }

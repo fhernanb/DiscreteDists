@@ -11,6 +11,9 @@ logLik_HYPERPO(logparam = c(0, 0), x)
 
 \item{x}{vector with the response variable.}
 }
+\value{
+returns the loglikelihood given the parameters and random sample.
+}
 \description{
 Calculates logLik for hyper Poisson distribution.
 }

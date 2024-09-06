@@ -11,6 +11,9 @@ logLik_DLD(param = 0.5, x)
 
 \item{x}{vector with the response variable.}
 }
+\value{
+returns the loglikelihood given the parameters and random sample.
+}
 \description{
 Calculates logLik for Discrete Lindley  distribution.
 }

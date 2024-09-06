@@ -1,5 +1,5 @@
 # Example 1
-# Plotting the mass function for diferent parameter values
+# Plotting the mass function for different parameter values
 
 x_max <- 40
 probs1 <- dDGEII(x=0:x_max, mu=0.1, sigma=5)

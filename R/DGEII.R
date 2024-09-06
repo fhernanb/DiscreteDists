@@ -31,6 +31,11 @@
 #' \eqn{p} to \eqn{\mu} and \eqn{\alpha} to \eqn{\sigma},
 #' we did it to implement this distribution within gamlss framework.
 #'
+#' @return
+#' Returns a \code{gamlss.family} object which can be used
+#' to fit a DGEII distribution
+#' in the \code{gamlss()} function.
+#'
 #' @example examples/examples_DGEII.R
 #'
 #' @importFrom gamlss.dist checklink

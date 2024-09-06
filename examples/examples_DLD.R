@@ -28,6 +28,6 @@ datos <- gendat(n=150)
 
 mod2 <- NULL
 mod2 <- gamlss(y~x1, sigma.fo=~x2, family=DLD, data=datos,
-                 control=gamlss.control(n.cyc=500, trace=TRUE))
+                 control=gamlss.control(n.cyc=500, trace=FALSE))
 
 summary(mod2)

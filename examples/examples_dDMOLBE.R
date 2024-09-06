@@ -1,5 +1,5 @@
 # Example 1
-# Plotting the mass function for diferent parameter values
+# Plotting the mass function for different parameter values
 
 x_max <- 20
 probs1 <- dDMOLBE(x=0:x_max, mu=0.5, sigma=0.5)
@@ -17,7 +17,7 @@ legend("topright", col=c("dodgerblue", "tomato", "green4"), lwd=3,
                 "mu=5, sigma=0.5",
                 "mu=1, sigma=2"))
 
-# Example
+# Example 2
 # Checking if the cumulative curves converge to 1
 
 x_max <- 20
@@ -37,7 +37,8 @@ legend("bottomright", col=c("dodgerblue", "tomato", "green4"), lwd=3,
                 "mu=1, sigma=2"))
 
 # Example 3
-# Comparing the random generator output with the theoretical probabilities
+# Comparing the random generator output with
+# the theoretical probabilities
 
 x_max <- 15
 probs1 <- dDMOLBE(x=0:x_max, mu=5, sigma=0.5)

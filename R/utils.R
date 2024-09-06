@@ -2,6 +2,7 @@
 #' @description Calculates logLik for hyper Poisson distribution.
 #' @param logparam vector with parameters in log scale.
 #' @param x vector with the response variable.
+#' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
 #' @export
 logLik_HYPERPO <- function(logparam=c(0, 0), x){
@@ -13,6 +14,7 @@ logLik_HYPERPO <- function(logparam=c(0, 0), x){
 #' Initial values for hyper Poisson
 #' @description This function generates initial values for the parameters.
 #' @param y vector with the response variable.
+#' @return returns a vector with the MLE estimations.
 #' @keywords internal
 #' @export
 #' @importFrom stats optim
@@ -30,7 +32,8 @@ estim_mu_sigma_HYPERPO <- function(y) {
 #' Auxiliar function for F11
 #' @description This function is used inside F11 function.
 #' @param x vector
-#' @param tol this is the tolerance of the infinite sum
+#' @param tol this is the tolerance of the infinite sum.
+#' @return returns a logical value if the tolerance level is met.
 #' @keywords internal
 #' @export
 stopping <- function (x, tol) {
@@ -39,8 +42,9 @@ stopping <- function (x, tol) {
 #' Auxiliar function for hyper Poisson
 #' @description This function is used inside density function of Hyper Poisson.
 #' @param z,c values for F11.
-#' @param maxiter_series maximum value to obtain F11
-#' @param tol this is the tolerance of the infinite sum
+#' @param maxiter_series maximum value to obtain F11.
+#' @param tol this is the tolerance of the infinite sum.
+#' @return returns the value for the F11 function.
 #' @keywords internal
 #' @export
 F11 <- function(z, c, maxiter_series = 10000, tol = 1.0e-10) {
@@ -64,6 +68,7 @@ F11 <- Vectorize(F11)
 #' @description This function is used to calculate (a)r.
 #' @param a first value.
 #' @param r second value.
+#' @return returns the value for the a(r) function.
 #' @keywords internal
 #' @export
 AR <- function(a, r) {
@@ -103,6 +108,8 @@ logLik_HYPERPO2 <- function(logparam=c(0, 0), x){
 #' Initial values for hyper Poisson in second parameterization
 #' @description This function generates initial values for the parameters.
 #' @param y vector with the response variable.
+#' @return returns the loglikelihood given the parameters and random sample.
+#' @return returns a vector with the MLE estimations.
 #' @keywords internal
 #' @export
 #' @importFrom stats optim
@@ -121,6 +128,7 @@ estim_mu_sigma_HYPERPO2 <- function(y) {
 #' @description This function implements the procedure given in page 150.
 #' @param media the value for the mean or E(X).
 #' @param gamma the value for the gamma parameter.
+#' @return returns the value of lambda to ensure the mean and gamma.
 #' @keywords internal
 #' @export
 obtaining_lambda <- function(media, gamma) {
@@ -143,6 +151,7 @@ obtaining_lambda <- Vectorize(obtaining_lambda)
 #' @description Calculates logLik for Discrete Burr Hatke  distribution.
 #' @param param value for mu.
 #' @param x vector with the response variable.
+#' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
 #' @export
 logLik_DBH <- function(param=0.5, x){
@@ -153,6 +162,7 @@ logLik_DBH <- function(param=0.5, x){
 #' Initial values for Discrete Burr Hatke
 #' @description This function generates initial values for the parameter mu.
 #' @param y vector with the response variable.
+#' @return returns a scalar with the MLE estimation.
 #' @keywords internal
 #' @export
 #' @importFrom stats optimize
@@ -165,6 +175,7 @@ estim_mu_DBH <- function(y){
 #' @description Calculates logLik for Discrete Lindley  distribution.
 #' @param param value for mu.
 #' @param x vector with the response variable.
+#' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
 #' @export
 logLik_DLD <- function(param=0.5, x){
@@ -175,6 +186,7 @@ logLik_DLD <- function(param=0.5, x){
 #' Initial values for Discrete Lindley
 #' @description This function generates initial values for the parameter mu.
 #' @param y vector with the response variable.
+#' @return returns a scalar with the MLE estimation.
 #' @keywords internal
 #' @export
 #' @importFrom stats optim
@@ -188,6 +200,7 @@ estim_mu_DLD <- function(y){
 #' @description Calculates logLik for DMOLBE distribution.
 #' @param logparam vector with parameters in log scale.
 #' @param x vector with the response variable.
+#' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
 #' @export
 logLik_DMOLBE <- function(logparam=c(0, 0), x){
@@ -199,6 +212,7 @@ logLik_DMOLBE <- function(logparam=c(0, 0), x){
 #' Initial values for DMOLBE
 #' @description This function generates initial values for the parameters.
 #' @param y vector with the response variable.
+#' @return returns a vector with the MLE estimations.
 #' @keywords internal
 #' @export
 #' @importFrom stats optim
@@ -217,6 +231,7 @@ estim_mu_sigma_DMOLBE <- function(y) {
 #' @description Calculates logLik for discrete Inverted Kumaraswamy distribution.
 #' @param param vector with parameters in log scale.
 #' @param x vector with the response variable.
+#' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
 #' @export
 logLik_DIKUM <- function(param=c(0, 0), x){
@@ -228,6 +243,7 @@ logLik_DIKUM <- function(param=c(0, 0), x){
 #' Initial values for discrete Inverted Kumaraswamy
 #' @description This function generates initial values for the parameters.
 #' @param y vector with the response variable.
+#' @return returns a vector with the MLE estimations.
 #' @keywords internal
 #' @export
 #' @importFrom stats optim
@@ -247,6 +263,7 @@ estim_mu_sigma_DIKUM <- function(y) {
 #' @description Calculates logLik for Poisson XLindley distribution distribution.
 #' @param param parameter mu in log scale.
 #' @param x vector with the response variable.
+#' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
 #' @export
 logLik_POISXL <- function(param=0, x){
@@ -257,6 +274,7 @@ logLik_POISXL <- function(param=0, x){
 #' Initial values for discrete Poisson XLindley distribution
 #' @description This function generates initial values for the parameters.
 #' @param y vector with the response variable.
+#' @return returns a scalar with the MLE estimation.
 #' @keywords internal
 #' @export
 #' @importFrom stats optim
@@ -275,6 +293,7 @@ estim_mu_POISXL <- function(y) {
 #' @description Calculates logLik for GGEO distribution.
 #' @param param vector with parameters in log and logit scale.
 #' @param x vector with the response variable.
+#' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
 #' @export
 logLik_GGEO <- function(param=c(0, 0), x){
@@ -287,6 +306,7 @@ logLik_GGEO <- function(param=c(0, 0), x){
 #' Initial values for GGEO
 #' @description This function generates initial values for the parameters.
 #' @param y vector with the response variable.
+#' @return returns a vector with the MLE estimations.
 #' @keywords internal
 #' @export
 #' @importFrom stats optim
@@ -306,6 +326,7 @@ estim_mu_sigma_GGEO <- function(y) {
 #' @description Calculates logLik for DGEII distribution.
 #' @param transf_param vector with parameters in log and logit scale.
 #' @param x vector with the response variable.
+#' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
 #' @export
 logLik_DGEII <- function(transf_param=c(0, 0), x){
@@ -318,6 +339,7 @@ logLik_DGEII <- function(transf_param=c(0, 0), x){
 #' Initial values for DGEII
 #' @description This function generates initial values for the parameters.
 #' @param y vector with the response variable.
+#' @return returns a vector with the MLE estimations.
 #' @keywords internal
 #' @export
 #' @importFrom stats optim

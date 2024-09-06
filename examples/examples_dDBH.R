@@ -1,5 +1,5 @@
 # Example 1
-# Plotting the mass function for diferent parameter values
+# Plotting the mass function for different parameter values
 
 plot(x=0:5, y=dDBH(x=0:5, mu=0.1),
      type="h", lwd=2, col="dodgerblue", las=1,
@@ -24,7 +24,6 @@ cumulative_probs1 <- pDBH(q=0:x_max, mu=0.1)
 cumulative_probs2 <- pDBH(q=0:x_max, mu=0.5)
 cumulative_probs3 <- pDBH(q=0:x_max, mu=0.9)
 
-par(mfrow=c(1, 1))
 plot(x=0:x_max, y=cumulative_probs1, col="dodgerblue",
      type="o", las=1, ylim=c(0, 1),
      main="Cumulative probability for Burr-Hatke",
@@ -37,7 +36,8 @@ legend("bottomright", col=c("dodgerblue", "tomato", "green4"), lwd=3,
                 "mu=0.9"))
 
 # Example 3
-# Comparing the random generator output with the theoretical probabilities
+# Comparing the random generator output with
+# the theoretical probabilities
 
 mu <- 0.4
 x_max <- 10

@@ -27,6 +27,11 @@
 #' the time will increase because an internal procedure to convert \eqn{\mu}
 #' to \eqn{\lambda} parameter.
 #'
+#' @return
+#' Returns a \code{gamlss.family} object which can be used
+#' to fit a hyper-Poisson distribution version 2
+#' in the \code{gamlss()} function.
+#'
 #' @example examples/examples_HYPERPO2.R
 #'
 #' @importFrom gamlss.dist checklink

@@ -9,6 +9,11 @@ estim_mu_sigma_HYPERPO2(y)
 \arguments{
 \item{y}{vector with the response variable.}
 }
+\value{
+returns the loglikelihood given the parameters and random sample.
+
+returns a vector with the MLE estimations.
+}
 \description{
 This function generates initial values for the parameters.
 }

@@ -11,6 +11,11 @@ DGEII(mu.link = "logit", sigma.link = "log")
 
 \item{sigma.link}{defines the sigma.link, with "log" link as the default for the sigma.}
 }
+\value{
+Returns a \code{gamlss.family} object which can be used
+to fit a DGEII distribution
+in the \code{gamlss()} function.
+}
 \description{
 The function \code{DGEII()} defines the Discrete generalized exponential distribution,
 Second type, a two parameter
@@ -39,9 +44,8 @@ y <- rDGEII(n=100, mu=0.75, sigma=0.5)
 
 # Fitting the model
 library(gamlss)
-
 mod1 <- gamlss(y~1, family=DGEII,
-               control=gamlss.control(n.cyc=500, trace=TRUE))
+               control=gamlss.control(n.cyc=500, trace=FALSE))
 
 # Extracting the fitted values for mu and sigma
 # using the inverse link function
@@ -79,7 +83,7 @@ summary(mod2)
 y <- rep(x=0:5, times=c(447, 132, 42, 21, 3, 2))
 
 mod3 <- gamlss(y~1, family=DGEII,
-               control=gamlss.control(n.cyc=500, trace=TRUE))
+               control=gamlss.control(n.cyc=500, trace=FALSE))
 
 # Extracting the fitted values for mu and sigma
 # using the inverse link function

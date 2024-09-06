@@ -32,6 +32,11 @@
 #' Note: in this implementation we changed the original parameters \eqn{\lambda} and \eqn{\gamma}
 #' for \eqn{\mu} and \eqn{\sigma} respectively, we did it to implement this distribution within gamlss framework.
 #'
+#' @return
+#' Returns a \code{gamlss.family} object which can be used
+#' to fit a hyper-Poisson distribution
+#' in the \code{gamlss()} function.
+#'
 #' @example examples/examples_HYPERPO.R
 #'
 #' @importFrom gamlss.dist checklink

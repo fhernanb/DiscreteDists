@@ -11,6 +11,9 @@ obtaining_lambda(media, gamma)
 
 \item{gamma}{the value for the gamma parameter.}
 }
+\value{
+returns the value of lambda to ensure the mean and gamma.
+}
 \description{
 This function implements the procedure given in page 150.
 }

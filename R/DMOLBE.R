@@ -26,6 +26,11 @@
 #'
 #' with \eqn{\mu > 0} and \eqn{\sigma > 0}
 #'
+#' @return
+#' Returns a \code{gamlss.family} object which can be used
+#' to fit a DMOLBE distribution
+#' in the \code{gamlss()} function.
+#'
 #' @example examples/examples_DMOLBE.R
 #'
 #' @importFrom gamlss.dist checklink

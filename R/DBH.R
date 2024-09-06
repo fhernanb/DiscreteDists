@@ -22,13 +22,16 @@
 #'
 #' \eqn{f(x | \mu) = (\frac{1}{x+1}-\frac{\mu}{x+2})\mu^{x}}
 #'
-#'
 #' The pmf is log-convex for all values of \eqn{0 < \mu < 1}, where \eqn{\frac{f(x+1;\mu)}{f(x;\mu)}}
 #' is an increasing function in \eqn{x} for all values of the parameter \eqn{\mu}.
 #'
-#'
 #' Note: in this implementation we changed the original parameters \eqn{\lambda} for \eqn{\mu},
 #' we did it to implement this distribution within gamlss framework.
+#'
+#' @return
+#' Returns a \code{gamlss.family} object which can be used
+#' to fit a Discrete Burr-Hatke distribution
+#' in the \code{gamlss()} function.
 #'
 #' @example  examples/examples_DBH.R
 #'

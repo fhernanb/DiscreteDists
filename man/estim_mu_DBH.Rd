@@ -9,6 +9,9 @@ estim_mu_DBH(y)
 \arguments{
 \item{y}{vector with the response variable.}
 }
+\value{
+returns a scalar with the MLE estimation.
+}
 \description{
 This function generates initial values for the parameter mu.
 }

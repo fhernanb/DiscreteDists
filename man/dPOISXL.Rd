@@ -48,9 +48,9 @@ Note: in this implementation we changed the original parameters \eqn{\alpha} for
 we did it to implement this distribution within gamlss framework.
 }
 \examples{
-
 # Example 1
-# Plotting the mass function for diferent parameter values
+# Plotting the mass function for different parameter values
+
 x_max <- 20
 probs1 <- dPOISXL(x=0:x_max, mu=0.2)
 probs2 <- dPOISXL(x=0:x_max, mu=0.5)
@@ -67,6 +67,7 @@ legend("topright", col=c("dodgerblue", "tomato", "green4"), lwd=3,
 
 # Example 2
 # Checking if the cumulative curves converge to 1
+
 x_max <- 20
 
 plot_discrete_cdf(x=0:x_max,
@@ -82,7 +83,9 @@ plot_discrete_cdf(x=0:x_max,
                   main="CDF for Poisson XLindley with mu=1.0")
 
 # Example 3
-# Comparing the random generator output with the theoretical probabilities
+# Comparing the random generator output with
+# the theoretical probabilities
+
 x_max <- 15
 probs1 <- dPOISXL(x=0:x_max, mu=0.3)
 names(probs1) <- 0:x_max
@@ -103,6 +106,7 @@ legend("topright",
 
 # Example 4
 # Checking the quantile function
+
 mu <- 0.3
 p <- seq(from=0, to=1, by = 0.01)
 qxx <- qPOISXL(p, mu, lower.tail = TRUE, log.p = FALSE)

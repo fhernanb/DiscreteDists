@@ -11,6 +11,11 @@ DMOLBE(mu.link = "log", sigma.link = "log")
 
 \item{sigma.link}{defines the sigma.link, with "log" link as the default for the sigma.}
 }
+\value{
+Returns a \code{gamlss.family} object which can be used
+to fit a DMOLBE distribution
+in the \code{gamlss()} function.
+}
 \description{
 The function \code{DMOLBE()} defines the Discrete Marshall-Olkin Length Biased
 Exponential distribution, a two parameter
@@ -49,8 +54,8 @@ exp(coef(mod1, what='sigma'))
 gendat <- function(n) {
   x1 <- runif(n, min=0.4, max=0.6)
   x2 <- runif(n, min=0.4, max=0.6)
-  mu    <- exp(1.21 - 3 * x1) # 0.75 en promedio
-  sigma <- exp(1.26 - 2 * x2) # 1.30 en promedio
+  mu    <- exp(1.21 - 3 * x1) # 0.75 approximately
+  sigma <- exp(1.26 - 2 * x2) # 1.30 approximately
   y <- rDMOLBE(n=n, mu=mu, sigma=sigma)
   data.frame(y=y, x1=x1,x2=x2)
 }
