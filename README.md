@@ -1,7 +1,7 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/fhernanb/DiscreteDists/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/fhernanb/DiscreteDists/actions/workflows/R-CMD-check.yaml)
 [![CRAN status](https://www.r-pkg.org/badges/version/DiscreteDists)](https://CRAN.R-project.org/package=DiscreteDists)
-[![](http://cranlogs.r-pkg.org/badges/grand-total/badger?color=blue)](https://cran.r-project.org/package=badger)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/DiscreteDists?color=blue)](https://cran.r-project.org/package=DiscreteDists)
 <!-- badges: end -->
 
 # DiscreteDists <img src="man/figures/logo.png" align="right" alt="" width="120" />
