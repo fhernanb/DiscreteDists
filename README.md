@@ -6,7 +6,7 @@
 
 # DiscreteDists <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
-In this package are available Discrete statistical distributions. With this package it is possible to estimate parameters and fit regression models within GAMLSS framework.
+In this package are available new Discrete statistical distributions. With this package it is possible to estimate parameters and fit regression models within GAMLSS framework.
 
 ## Installation
 
