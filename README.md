@@ -1,22 +1,27 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/fhernanb/DiscreteDists/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/fhernanb/DiscreteDists/actions/workflows/R-CMD-check.yaml)
+[![CRAN status](https://www.r-pkg.org/badges/version/DiscreteDists)](https://CRAN.R-project.org/package=DiscreteDists)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/badger?color=blue)](https://cran.r-project.org/package=badger)
 <!-- badges: end -->
 
 # DiscreteDists <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 In this package are available Discrete statistical distributions. With this package it is possible to estimate parameters and fit regression models within GAMLSS framework.
 
-### Installation
+## Installation
 
-To install the `DiscreteDists` package you need to install `devtools`
-package before, follow the instructions below:
+To install the `DiscreteDists` package you can use the following the instructions:
 
 ```r
-if (!require("devtools")) install.packages("devtools")
-devtools::install_github("fhernanb/DiscreteDists", force=TRUE)
-library(DiscreteDists)
+# Installing from CRAN:
+install.packages("DiscreteDists")
+
+# Or the development version from GitHub:
+# install.packages("pak")
+pak::pak("fhernanb/DiscreteDists")
 ```
 
 You can visit the [package
 website](https://fhernanb.github.io/DiscreteDists/) to explore the vignettes
 (articles) and function reference.
+

@@ -97,6 +97,7 @@ simulate_hp <- function(sigma, mu) {
 #' @description Calculates logLik for hyper Poisson distribution.
 #' @param logparam vector with parameters in log scale.
 #' @param x vector with the response variable.
+#' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
 #' @export
 logLik_HYPERPO2 <- function(logparam=c(0, 0), x){
@@ -108,7 +109,6 @@ logLik_HYPERPO2 <- function(logparam=c(0, 0), x){
 #' Initial values for hyper Poisson in second parameterization
 #' @description This function generates initial values for the parameters.
 #' @param y vector with the response variable.
-#' @return returns the loglikelihood given the parameters and random sample.
 #' @return returns a vector with the MLE estimations.
 #' @keywords internal
 #' @export
@@ -258,7 +258,6 @@ estim_mu_sigma_DIKUM <- function(y) {
   names(res) <- c("mu_hat", "sigma_hat")
   return(res)
 }
-
 #' logLik function for Poisson XLindley distribution
 #' @description Calculates logLik for Poisson XLindley distribution distribution.
 #' @param param parameter mu in log scale.
