@@ -17,7 +17,7 @@ A data frame with 62 rows and 3 variables:
 }
 }
 \source{
-\url{https://www.who.int/teams/global-tuberculosis-programme/data}
+\url{https://github.com/rdmatheus/bergreg}
 }
 \usage{
 grazing
@@ -32,5 +32,8 @@ the fence (the Before measurements). Then the herbivores were
 removed, and bird counts done again (the After measurements).
 The measurements are the total number of understorey-foraging
 birds observed in three 20-minute surveys of two hectare quadrats.
+}
+\author{
+Rodrigo Matheus
 }
 \keyword{datasets}

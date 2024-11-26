@@ -18,5 +18,6 @@
 #'   \item{birds}{the number of understorey birds}
 #'   ...
 #' }
-#' @source <https://www.who.int/teams/global-tuberculosis-programme/data>
+#' @source <https://github.com/rdmatheus/bergreg>
+#' @author Rodrigo Matheus
 "grazing"
