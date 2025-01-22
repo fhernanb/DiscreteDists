@@ -12,9 +12,7 @@
 #' @param sigma.link defines the sigma.link, with "logit" link as the default for the sigma. Other links are "probit" and "cloglog"'(complementary log-log)
 #'
 #' @references
-#' \insertRef{gomez2010}{DiscreteDists}
-#'
-#' @importFrom Rdpack reprompt
+#' Gómez-Déniz, E. (2010). Another generalization of the geometric distribution. Test, 19, 399-415.
 #'
 #' @seealso \link{dGGEO}.
 #'

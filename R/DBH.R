@@ -10,9 +10,7 @@
 #' @param mu.link defines the mu.link, with "logit" link as the default for the mu parameter. Other links are "probit" and "cloglog"'(complementary log-log)
 #'
 #' @references
-#' \insertRef{el2020discrete}{DiscreteDists}
-#'
-#' @importFrom Rdpack reprompt
+#' El-Morshedy, M., Eliwa, M. S., & Altun, E. (2020). Discrete Burr-Hatke distribution with properties, estimation methods and regression model. IEEE access, 8, 74359-74370.
 #'
 #' @seealso \link{dDBH}.
 #'

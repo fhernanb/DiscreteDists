@@ -89,7 +89,7 @@ summary(mod3)
 
 }
 \references{
-\insertRef{bourguignon2022}{DiscreteDists}
+Bourguignon, M., & de Medeiros, R. M. (2022). A simple and useful regression model for fitting count data. Test, 31(3), 790-827.
 }
 \seealso{
 \link{dBerG}.

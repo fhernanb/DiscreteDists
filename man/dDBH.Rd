@@ -122,7 +122,7 @@ plot(p, qxx, type="s", lwd=2, col="green3", ylab="quantiles",
 
 }
 \references{
-\insertRef{el2020discrete}{DiscreteDists}
+El-Morshedy, M., Eliwa, M. S., & Altun, E. (2020). Discrete Burr-Hatke distribution with properties, estimation methods and regression model. IEEE access, 8, 74359-74370.
 }
 \seealso{
 \link{DBH}.

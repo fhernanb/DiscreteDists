@@ -135,7 +135,7 @@ plot(p, qxx, type="s", lwd=2, col="green3", ylab="quantiles",
 
 }
 \references{
-\insertRef{gomez2010}{DiscreteDists}
+Gómez-Déniz, E. (2010). Another generalization of the geometric distribution. Test, 19, 399-415.
 }
 \seealso{
 \link{GGEO}.

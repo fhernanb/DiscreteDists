@@ -58,7 +58,7 @@ mean(y)
 var(y)
 }
 \references{
-\insertRef{saez2013hyperpo}{DiscreteDists}
+Sáez-Castillo, A. J., & Conde-Sánchez, A. (2013). A hyper-Poisson regression model for overdispersed and underdispersed count data. Computational Statistics & Data Analysis, 61, 148-157.
 }
 \seealso{
 \link{HYPERPO}.

@@ -12,9 +12,7 @@
 #' @param sigma.link defines the sigma.link, with "log" link as the default for the sigma.
 #'
 #' @references
-#' \insertRef{nekoukhou2013}{DiscreteDists}
-#'
-#' @importFrom Rdpack reprompt
+#' Nekoukhou, V., Alamatsaz, M. H., & Bidram, H. (2013). Discrete generalized exponential distribution of a second type. Statistics, 47(4), 876-887.
 #'
 #' @seealso \link{dDGEII}.
 #'

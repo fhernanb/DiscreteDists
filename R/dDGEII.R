@@ -17,9 +17,7 @@
 #' @param lower.tail logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.
 #'
 #' @references
-#' \insertRef{nekoukhou2013}{DiscreteDists}
-#'
-#' @importFrom Rdpack reprompt
+#' Nekoukhou, V., Alamatsaz, M. H., & Bidram, H. (2013). Discrete generalized exponential distribution of a second type. Statistics, 47(4), 876-887.
 #'
 #' @seealso \link{DGEII}.
 #'

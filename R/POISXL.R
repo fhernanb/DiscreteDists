@@ -10,9 +10,7 @@
 #' @param mu.link defines the mu.link, with "log" link as the default for the mu parameter.
 #'
 #' @references
-#' \insertRef{ahsan2022}{DiscreteDists}
-#'
-#' @importFrom Rdpack reprompt
+#' Ahsan-ul-Haq, M., Al-Bossly, A., El-Morshedy, M., & Eliwa, M. S. (2022). Poisson XLindley distribution for count data: statistical and reliability properties with estimation techniques and inference. Computational Intelligence and neuroscience, 2022(1), 6503670.
 #'
 #' @seealso \link{dPOISXL}.
 #'

@@ -73,7 +73,7 @@ mod2 <- gamlss(y ~ x1, sigma.fo = ~x2, family = "DIKUM", data=dat,
 summary(mod2)
 }
 \references{
-\insertRef{EL_Helbawy2022}{DiscreteDists}
+El-Helbawy, A. A., Hegazy, M. A., Al-Dayian, G. R., & Abd EL-Kader, R. E. (2022). A discrete analog of the inverted Kumaraswamy distribution: properties and estimation with application to COVID-19 data. Pakistan Journal of Statistics and Operation Research, 18(1), 297-328.
 }
 \seealso{
 \link{dDIKUM}.

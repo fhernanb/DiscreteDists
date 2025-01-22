@@ -15,9 +15,7 @@
 #' @param lower.tail logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.
 #'
 #' @references
-#' \insertRef{el2020discrete}{DiscreteDists}
-#'
-#' @importFrom Rdpack reprompt
+#' El-Morshedy, M., Eliwa, M. S., & Altun, E. (2020). Discrete Burr-Hatke distribution with properties, estimation methods and regression model. IEEE access, 8, 74359-74370.
 #'
 #' @seealso \link{DBH}.
 #'

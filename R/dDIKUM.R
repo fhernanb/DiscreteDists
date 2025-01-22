@@ -16,9 +16,7 @@
 #' @param lower.tail logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.
 #'
 #' @references
-#' \insertRef{EL_Helbawy2022}{DiscreteDists}
-#'
-#' @importFrom Rdpack reprompt
+#' El-Helbawy, A. A., Hegazy, M. A., Al-Dayian, G. R., & Abd EL-Kader, R. E. (2022). A discrete analog of the inverted Kumaraswamy distribution: properties and estimation with application to COVID-19 data. Pakistan Journal of Statistics and Operation Research, 18(1), 297-328.
 #'
 #' @seealso \link{DIKUM}.
 #'

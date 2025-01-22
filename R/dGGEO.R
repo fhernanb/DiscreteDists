@@ -16,9 +16,7 @@
 #' @param lower.tail logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.
 #'
 #' @references
-#' \insertRef{gomez2010}{DiscreteDists}
-#'
-#' @importFrom Rdpack reprompt
+#' Gómez-Déniz, E. (2010). Another generalization of the geometric distribution. Test, 19, 399-415.
 #'
 #' @seealso \link{GGEO}.
 #'

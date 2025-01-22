@@ -76,7 +76,7 @@ mod2 <- gamlss(y~x1, sigma.fo=~x2, family=HYPERPO, data=datos,
 summary(mod2)
 }
 \references{
-\insertRef{saez2013hyperpo}{DiscreteDists}
+Sáez-Castillo, A. J., & Conde-Sánchez, A. (2013). A hyper-Poisson regression model for overdispersed and underdispersed count data. Computational Statistics & Data Analysis, 61, 148-157.
 }
 \seealso{
 \link{dHYPERPO}.

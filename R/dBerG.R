@@ -17,9 +17,7 @@
 #' @param lower.tail logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.
 #'
 #' @references
-#' \insertRef{bourguignon2022}{DiscreteDists}
-#'
-#' @importFrom Rdpack reprompt
+#' Bourguignon, M., & de Medeiros, R. M. (2022). A simple and useful regression model for fitting count data. Test, 31(3), 790-827.
 #'
 #' @seealso \link{BerG}.
 #'

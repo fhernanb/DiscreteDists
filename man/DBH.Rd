@@ -80,7 +80,7 @@ inv_logit <- function(x) 1/(1 + exp(-x))
 inv_logit(coef(mod3, what="mu"))
 }
 \references{
-\insertRef{el2020discrete}{DiscreteDists}
+El-Morshedy, M., Eliwa, M. S., & Altun, E. (2020). Discrete Burr-Hatke distribution with properties, estimation methods and regression model. IEEE access, 8, 74359-74370.
 }
 \seealso{
 \link{dDBH}.

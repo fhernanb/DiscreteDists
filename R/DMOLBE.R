@@ -12,9 +12,7 @@
 #' @param sigma.link defines the sigma.link, with "log" link as the default for the sigma.
 #'
 #' @references
-#' \insertRef{Aljohani2023}{DiscreteDists}
-#'
-#' @importFrom Rdpack reprompt
+#' Aljohani, H. M., Ahsan-ul-Haq, M., Zafar, J., Almetwally, E. M., Alghamdi, A. S., Hussam, E., & Muse, A. H. (2023). Analysis of Covid-19 data using discrete Marshall–Olkinin length biased exponential: Bayesian and frequentist approach. Scientific Reports, 13(1), 12243.
 #'
 #' @seealso \link{dDMOLBE}.
 #'

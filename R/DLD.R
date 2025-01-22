@@ -10,9 +10,7 @@
 #' @param mu.link defines the mu.link, with "log" link as the default for the mu parameter.
 #'
 #' @references
-#' \insertRef{bakouch2014new}{DiscreteDists}
-#'
-#' @importFrom Rdpack reprompt
+#' Bakouch, H. S., Jazi, M. A., & Nadarajah, S. (2014). A new discrete distribution. Statistics, 48(1), 200-240.
 #'
 #' @seealso \link{dDLD}.
 #'

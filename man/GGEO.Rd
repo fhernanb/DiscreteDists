@@ -88,7 +88,7 @@ inv_logit(coef(mod3, what="mu"))
 exp(coef(mod3, what="sigma"))
 }
 \references{
-\insertRef{gomez2010}{DiscreteDists}
+Gómez-Déniz, E. (2010). Another generalization of the geometric distribution. Test, 19, 399-415.
 }
 \seealso{
 \link{dGGEO}.

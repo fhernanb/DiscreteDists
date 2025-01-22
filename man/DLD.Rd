@@ -74,7 +74,7 @@ mod2 <- gamlss(y~x1, sigma.fo=~x2, family=DLD, data=datos,
 summary(mod2)
 }
 \references{
-\insertRef{bakouch2014new}{DiscreteDists}
+Bakouch, H. S., Jazi, M. A., & Nadarajah, S. (2014). A new discrete distribution. Statistics, 48(1), 200-240.
 }
 \seealso{
 \link{dDLD}.

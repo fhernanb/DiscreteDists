@@ -11,9 +11,7 @@
 #' @param sigma.link defines the sigma.link, with "log" link as the default for the sigma.
 #'
 #' @references
-#' \insertRef{EL_Helbawy2022}{DiscreteDists}
-#'
-#' @importFrom Rdpack reprompt
+#' El-Helbawy, A. A., Hegazy, M. A., Al-Dayian, G. R., & Abd EL-Kader, R. E. (2022). A discrete analog of the inverted Kumaraswamy distribution: properties and estimation with application to COVID-19 data. Pakistan Journal of Statistics and Operation Research, 18(1), 297-328.
 #'
 #' @seealso \link{dDIKUM}.
 #'
