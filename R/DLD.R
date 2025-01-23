@@ -47,7 +47,7 @@ DLD <- function (mu.link="log") {
   mstats <- checklink("mu.link", "DLD",
                       substitute(mu.link), c("log", "identity"))
 
-  structure(list(family=c("DLD", "Lindley"),
+  structure(list(family=c("DLD", "Discrete Lindley"),
                  parameters=list(mu=TRUE),
                  nopar=1,
                  type="Discrete",

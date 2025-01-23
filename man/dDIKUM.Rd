@@ -107,12 +107,12 @@ cn <- union(names(probs1), names(probs2))
 height <- rbind(probs1[cn], probs2[cn])
 nombres <- cn
 mp <- barplot(height, beside = TRUE, names.arg = nombres,
-              col=c('dodgerblue3','firebrick3'), las=1,
-              xlab='X', ylab='Proportion')
-legend('topright',
-       legend=c('Theoretical', 'Simulated'),
-       bty='n', lwd=3,
-       col=c('dodgerblue3','firebrick3'), lty=1)
+              col=c("dodgerblue3","firebrick3"), las=1,
+              xlab="X", ylab="Proportion")
+legend("topright",
+       legend=c("Theoretical", "Simulated"),
+       bty="n", lwd=3,
+       col=c("dodgerblue3","firebrick3"), lty=1)
 
 # Example 4
 # Checking the quantile function
