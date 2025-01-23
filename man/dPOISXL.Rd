@@ -95,8 +95,7 @@ probs2 <- prop.table(table(x))
 
 cn <- union(names(probs1), names(probs2))
 height <- rbind(probs1[cn], probs2[cn])
-nombres <- cn
-mp <- barplot(height, beside = TRUE, names.arg = nombres,
+mp <- barplot(height, beside = TRUE, names.arg = cn,
               col=c("dodgerblue3","firebrick3"), las=1,
               xlab="X", ylab="Proportion")
 legend("topright",

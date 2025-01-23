@@ -112,10 +112,10 @@ has a support 0, 1, 2, ... and mass function given by</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Extracting the fitted values for mu and sigma</span></span></span>
 <span class="r-in"><span><span class="co"># using the inverse link function</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">'mu'</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">"mu"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    9.042679 </span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">'sigma'</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">"sigma"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    6.713267 </span>
 <span class="r-in"><span></span></span>
@@ -176,6 +176,135 @@ has a support 0, 1, 2, ... and mass function given by</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             AIC:     960.4395 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             SBC:     975.8712 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ******************************************************************</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Example 3</span></span></span>
+<span class="r-in"><span><span class="co"># Data Set I (death due to coronavirus in China). The first data set is the number</span></span></span>
+<span class="r-in"><span><span class="co"># of deaths due to coronavirus in China from 23 January to 28 March.</span></span></span>
+<span class="r-in"><span><span class="co"># The data sets used in the paper was collected from 2020 year. The data set</span></span></span>
+<span class="r-in"><span><span class="co"># is reported in https://www.worldometers.info/coronavirus/country/china/.</span></span></span>
+<span class="r-in"><span><span class="co"># The data are:</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">16</span>, <span class="fl">15</span>, <span class="fl">24</span>, <span class="fl">26</span>, <span class="fl">26</span>, <span class="fl">38</span>, <span class="fl">43</span>, <span class="fl">46</span>, <span class="fl">45</span>, <span class="fl">57</span>, <span class="fl">64</span>, <span class="fl">65</span>, <span class="fl">73</span>, <span class="fl">73</span>, <span class="fl">86</span>, <span class="fl">89</span>, <span class="fl">97</span>,</span></span>
+<span class="r-in"><span>       <span class="fl">108</span>, <span class="fl">97</span>, <span class="fl">146</span>, <span class="fl">121</span>, <span class="fl">143</span>, <span class="fl">142</span>, <span class="fl">105</span>, <span class="fl">98</span>, <span class="fl">136</span>, <span class="fl">114</span>, <span class="fl">118</span>, <span class="fl">109</span>, <span class="fl">97</span>, <span class="fl">150</span>, <span class="fl">71</span>,</span></span>
+<span class="r-in"><span>       <span class="fl">52</span>, <span class="fl">29</span>, <span class="fl">44</span>, <span class="fl">47</span>, <span class="fl">35</span>, <span class="fl">42</span>, <span class="fl">31</span>, <span class="fl">38</span>, <span class="fl">31</span>, <span class="fl">30</span>, <span class="fl">28</span>, <span class="fl">27</span>, <span class="fl">22</span>, <span class="fl">17</span>, <span class="fl">22</span>, <span class="fl">11</span>, <span class="fl">7</span>,</span></span>
+<span class="r-in"><span>       <span class="fl">13</span>, <span class="fl">10</span>, <span class="fl">14</span>, <span class="fl">13</span>, <span class="fl">11</span>, <span class="fl">8</span>, <span class="fl">3</span>, <span class="fl">7</span>, <span class="fl">6</span>, <span class="fl">9</span>, <span class="fl">7</span>, <span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Fitting the model</span></span></span>
+<span class="r-in"><span><span class="va">mod3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="fl">1</span>, sigma.fo<span class="op">=</span><span class="op">~</span><span class="fl">1</span>, family<span class="op">=</span><span class="va">DMOLBE</span>,</span></span>
+<span class="r-in"><span>               control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">500</span>, trace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod3</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ******************************************************************</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Family:  c("DMOLBE", "Discrete Marshall-Olkin Length Biased Exponential" ) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  gamlss(formula = y ~ 1, sigma.formula = ~1, family = DMOLBE,  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     control = gamlss.control(n.cyc = 500, trace = FALSE)) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fitting method: RS() </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mu link function:  log</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mu Coefficients:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   3.6682     0.2663   13.78   &lt;2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sigma link function:  log</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sigma Coefficients:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)  -1.3031     0.5855  -2.226   0.0296 *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> No. of observations in the fit:  66 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom for the fit:  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Residual Deg. of Freedom:  64 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       at cycle:  2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Global Deviance:     654.3575 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             AIC:     658.3575 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             SBC:     662.7368 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ******************************************************************</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Extracting the fitted values for mu and sigma</span></span></span>
+<span class="r-in"><span><span class="co"># using the inverse link function</span></span></span>
+<span class="r-in"><span><span class="va">mu_hat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod3</span>, what<span class="op">=</span><span class="st">"mu"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mu_hat</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    39.18313 </span>
+<span class="r-in"><span><span class="va">sigma_hat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod3</span>, what<span class="op">=</span><span class="st">"sigma"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sigma_hat</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.2716752 </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Example 4</span></span></span>
+<span class="r-in"><span><span class="co"># Data Set II (daily death due to coronavirus in Pakistan). The second data</span></span></span>
+<span class="r-in"><span><span class="co"># set is the daily deaths due to coronavirus in Pakistan from 18 March</span></span></span>
+<span class="r-in"><span><span class="co"># to 30 June. The data sets used in the paper was collected from 2020 year.</span></span></span>
+<span class="r-in"><span><span class="co"># The data is reported in</span></span></span>
+<span class="r-in"><span><span class="co"># https://www.worldometers.info/coronavirus/country/Pakistan.</span></span></span>
+<span class="r-in"><span><span class="co"># The data are:</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">6</span>, <span class="fl">6</span>, <span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">20</span>, <span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">15</span>, <span class="fl">17</span>, <span class="fl">7</span>, <span class="fl">8</span>, <span class="fl">25</span>, <span class="fl">8</span>, <span class="fl">25</span>, <span class="fl">11</span>,</span></span>
+<span class="r-in"><span>       <span class="fl">25</span>, <span class="fl">16</span>, <span class="fl">16</span>, <span class="fl">12</span>, <span class="fl">11</span>, <span class="fl">20</span>, <span class="fl">31</span>, <span class="fl">42</span>, <span class="fl">32</span>, <span class="fl">23</span>, <span class="fl">17</span>, <span class="fl">19</span>, <span class="fl">38</span>, <span class="fl">50</span>, <span class="fl">21</span>, <span class="fl">14</span>,</span></span>
+<span class="r-in"><span>       <span class="fl">37</span>, <span class="fl">23</span>, <span class="fl">47</span>, <span class="fl">31</span>, <span class="fl">24</span>, <span class="fl">9</span>, <span class="fl">64</span>, <span class="fl">39</span>, <span class="fl">30</span>, <span class="fl">36</span>, <span class="fl">46</span>, <span class="fl">32</span>, <span class="fl">50</span>, <span class="fl">34</span>, <span class="fl">32</span>, <span class="fl">34</span>,</span></span>
+<span class="r-in"><span>       <span class="fl">30</span>, <span class="fl">28</span>, <span class="fl">35</span>, <span class="fl">57</span>, <span class="fl">78</span>, <span class="fl">88</span>, <span class="fl">60</span>, <span class="fl">78</span>, <span class="fl">67</span>, <span class="fl">82</span>, <span class="fl">68</span>, <span class="fl">97</span>, <span class="fl">67</span>, <span class="fl">65</span>, <span class="fl">105</span>,</span></span>
+<span class="r-in"><span>       <span class="fl">83</span>, <span class="fl">101</span>, <span class="fl">107</span>, <span class="fl">88</span>, <span class="fl">178</span>, <span class="fl">110</span>, <span class="fl">136</span>, <span class="fl">118</span>, <span class="fl">136</span>, <span class="fl">153</span>, <span class="fl">119</span>, <span class="fl">89</span>, <span class="fl">105</span>,</span></span>
+<span class="r-in"><span>       <span class="fl">60</span>, <span class="fl">148</span>, <span class="fl">59</span>, <span class="fl">73</span>, <span class="fl">83</span>, <span class="fl">49</span>, <span class="fl">137</span>, <span class="fl">91</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Fitting the model</span></span></span>
+<span class="r-in"><span><span class="va">mod4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="fl">1</span>, sigma.fo<span class="op">=</span><span class="op">~</span><span class="fl">1</span>, family<span class="op">=</span><span class="va">DMOLBE</span>,</span></span>
+<span class="r-in"><span>               control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">500</span>, trace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod4</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ******************************************************************</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Family:  c("DMOLBE", "Discrete Marshall-Olkin Length Biased Exponential" ) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  gamlss(formula = y ~ 1, sigma.formula = ~1, family = DMOLBE,  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     control = gamlss.control(n.cyc = 500, trace = FALSE)) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fitting method: RS() </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mu link function:  log</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mu Coefficients:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)    3.558      0.222   16.02   &lt;2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sigma link function:  log</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sigma Coefficients:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)  -0.9268     0.4984   -1.86   0.0664 .</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> No. of observations in the fit:  87 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom for the fit:  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Residual Deg. of Freedom:  85 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       at cycle:  2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Global Deviance:     864.0005 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             AIC:     868.0005 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             SBC:     872.9324 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ******************************************************************</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Extracting the fitted values for mu and sigma</span></span></span>
+<span class="r-in"><span><span class="co"># using the inverse link function</span></span></span>
+<span class="r-in"><span><span class="va">mu_hat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod4</span>, what<span class="op">=</span><span class="st">"mu"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mu_hat</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     35.0795 </span>
+<span class="r-in"><span><span class="va">sigma_hat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod4</span>, what<span class="op">=</span><span class="st">"sigma"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sigma_hat</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.3958021 </span>
 </code></pre></div>
     </div>
   </div>
