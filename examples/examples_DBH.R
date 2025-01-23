@@ -32,7 +32,7 @@ mod2 <- gamlss(y~x1, family=DBH, data=datos,
 summary(mod2)
 
 # Example 3
-# number of carious teeth among the four deciduous molars.
+# Number of carious teeth among the four deciduous molars.
 # Taken from EL-MORSHEDY (2020) page 74364.
 
 y <- rep(0:4, times=c(64, 17, 10, 6, 3))
@@ -44,3 +44,18 @@ mod3 <- gamlss(y~1, family=DBH,
 # using the inverse link function
 inv_logit <- function(x) 1/(1 + exp(-x))
 inv_logit(coef(mod3, what="mu"))
+
+# Example 4
+# Counts of cysts of kidneys using steroids.
+# Taken from EL-MORSHEDY (2020) page 74365.
+
+y <- rep(0:11, times=c(65, 14, 10, 6, 4, 2, 2, 2, 1, 1, 1, 2))
+
+mod4 <- gamlss(y~1, family=DBH,
+               control=gamlss.control(n.cyc=500, trace=FALSE))
+
+# Extracting the fitted values for mu
+# using the inverse link function
+inv_logit <- function(x) 1/(1 + exp(-x))
+inv_logit(coef(mod4, what="mu"))
+

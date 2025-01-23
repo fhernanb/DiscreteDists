@@ -15,8 +15,8 @@
 #' @seealso \link{dDBH}.
 #'
 #' @details
-#' The Discrete Burr-Hatke distribution with parameters \eqn{\mu} has a support
-#' 0, 1, 2, ... and density given by
+#' The Discrete Burr-Hatke distribution with parameter \eqn{\mu} has a support
+#' 0, 1, 2, ... and its probability mass function (pmf) is given by
 #'
 #' \eqn{f(x | \mu) = (\frac{1}{x+1}-\frac{\mu}{x+2})\mu^{x}}
 #'

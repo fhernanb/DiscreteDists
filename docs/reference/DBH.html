@@ -73,8 +73,8 @@ in the <code><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="externa
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>The Discrete Burr-Hatke distribution with parameters \(\mu\) has a support
-0, 1, 2, ... and density given by</p>
+    <p>The Discrete Burr-Hatke distribution with parameter \(\mu\) has a support
+0, 1, 2, ... and its probability mass function (pmf) is given by</p>
 <p>\(f(x | \mu) = (\frac{1}{x+1}-\frac{\mu}{x+2})\mu^{x}\)</p>
 <p>The pmf is log-convex for all values of \(0 &lt; \mu &lt; 1\), where \(\frac{f(x+1;\mu)}{f(x;\mu)}\)
 is an increasing function in \(x\) for all values of the parameter \(\mu\).</p>
@@ -161,7 +161,7 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ******************************************************************</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 3</span></span></span>
-<span class="r-in"><span><span class="co"># number of carious teeth among the four deciduous molars.</span></span></span>
+<span class="r-in"><span><span class="co"># Number of carious teeth among the four deciduous molars.</span></span></span>
 <span class="r-in"><span><span class="co"># Taken from EL-MORSHEDY (2020) page 74364.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">4</span>, times<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">64</span>, <span class="fl">17</span>, <span class="fl">10</span>, <span class="fl">6</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
@@ -175,6 +175,23 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-in"><span><span class="fu">inv_logit</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod3</span>, what<span class="op">=</span><span class="st">"mu"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   0.6712271 </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Example 4</span></span></span>
+<span class="r-in"><span><span class="co"># Counts of cysts of kidneys using steroids.</span></span></span>
+<span class="r-in"><span><span class="co"># Taken from EL-MORSHEDY (2020) page 74365.</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">11</span>, times<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">65</span>, <span class="fl">14</span>, <span class="fl">10</span>, <span class="fl">6</span>, <span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">mod4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="fl">1</span>, family<span class="op">=</span><span class="va">DBH</span>,</span></span>
+<span class="r-in"><span>               control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">500</span>, trace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Extracting the fitted values for mu</span></span></span>
+<span class="r-in"><span><span class="co"># using the inverse link function</span></span></span>
+<span class="r-in"><span><span class="va">inv_logit</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fl">1</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">inv_logit</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod4</span>, what<span class="op">=</span><span class="st">"mu"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8738673 </span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>

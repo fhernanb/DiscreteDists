@@ -39,7 +39,7 @@ we did it to implement this distribution within gamlss framework.
 # Example 1
 # Generating some random values with
 # known mu and sigma
-set.seed(189)
+
 y <- rDGEII(n=100, mu=0.75, sigma=0.5)
 
 # Fitting the model
@@ -67,7 +67,6 @@ gendat <- function(n) {
   data.frame(y=y, x1=x1, x2=x2)
 }
 
-set.seed(1234)
 datos <- gendat(n=100)
 
 mod2 <- gamlss(y~x1, sigma.fo=~x2, family=DGEII, data=datos,
