@@ -86,6 +86,55 @@ inv_logit <- function(x) 1/(1 + exp(-x))
 
 inv_logit(coef(mod3, what="mu"))
 exp(coef(mod3, what="sigma"))
+
+# Example 4
+# Total number of carious teeth among the four deciduous molars
+# Taken from Gomez-Deniz (2010) page 412.
+
+y <- rep(x=0:4, times=c(64, 17, 10, 6, 3))
+
+mod4 <- gamlss(y~1, family=GGEO,
+               control=gamlss.control(n.cyc=500, trace=TRUE))
+
+# Extracting the fitted values for mu and sigma
+# using the inverse link function
+inv_logit <- function(x) 1/(1 + exp(-x))
+
+inv_logit(coef(mod4, what="mu"))
+exp(coef(mod4, what="sigma"))
+
+# Example 5
+# Results of ten shots fired from a rifle at each of 100 targets.
+# Taken from Gomez-Deniz (2010) page 412.
+
+y <- rep(x=0:10, times=c(0, 2, 4, 10, 22, 26, 18, 12, 4, 2, 0))
+
+mod5 <- gamlss(y~1, family=GGEO,
+               control=gamlss.control(n.cyc=500, trace=TRUE))
+
+# Extracting the fitted values for mu and sigma
+# using the inverse link function
+inv_logit <- function(x) 1/(1 + exp(-x))
+
+inv_logit(coef(mod5, what="mu"))
+exp(coef(mod5, what="sigma"))
+
+# Example 6
+# Fish catch data in Kemp (1992).
+# Taken from Gomez-Deniz (2010) page 412.
+
+y <- rep(x=0:9, times=c(1, 2, 11, 20, 29, 23, 10, 3, 1, 0))
+
+mod6 <- gamlss(y~1, family=GGEO,
+               control=gamlss.control(n.cyc=500, trace=TRUE))
+
+# Extracting the fitted values for mu and sigma
+# using the inverse link function
+inv_logit <- function(x) 1/(1 + exp(-x))
+
+inv_logit(coef(mod6, what="mu"))
+exp(coef(mod6, what="sigma"))
+
 }
 \references{
 Gómez-Déniz, E. (2010). Another generalization of the geometric distribution. Test, 19, 399-415.
