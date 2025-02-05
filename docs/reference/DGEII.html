@@ -120,10 +120,10 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">inv_logit</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">"mu"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7277512 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7410638 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">"sigma"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    0.414956 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.6425953 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 2</span></span></span>
 <span class="r-in"><span><span class="co"># Generating random values under some model</span></span></span>
@@ -157,17 +157,17 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Mu link function:  logit</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Mu Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   1.4310     0.1501   9.532 1.26e-15 ***</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x1           -2.7881     0.2876  -9.693 5.62e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   1.7564     0.1505   11.67  &lt; 2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x1           -2.5937     0.3099   -8.37 4.08e-13 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sigma link function:  log</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sigma Coefficients:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   0.7314     0.2088   3.502 0.000696 ***</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x2            1.3794     0.3387   4.073 9.42e-05 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   0.7729     0.2400   3.220  0.00174 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x2            0.7262     0.3903   1.861  0.06581 . </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -175,11 +175,11 @@ we did it to implement this distribution within gamlss framework.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of observations in the fit:  100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom for the fit:  4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Residual Deg. of Freedom:  96 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       at cycle:  16 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       at cycle:  13 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Global Deviance:     394.4924 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             AIC:     402.4924 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             SBC:     412.913 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Global Deviance:     451.5659 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             AIC:     459.5659 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             SBC:     469.9866 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ******************************************************************</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 3</span></span></span>
