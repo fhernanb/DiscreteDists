@@ -15,12 +15,10 @@ Authors@R: c(
            )
 Description: Implementation of new discrete statistical distributions. Each distribution includes the traditional functions as well as an additional function called the family function, which can be used to estimate parameters within the 'gamlss' framework.
 License: MIT + file LICENSE
-RdMacros: Rdpack
 Imports: 
     gamlss,
     gamlss.dist,
     pracma,
-    Rdpack,
     Rcpp
 LinkingTo: 
     Rcpp

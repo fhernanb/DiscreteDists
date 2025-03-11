@@ -52,8 +52,8 @@ exp(coef(mod1, what="sigma"))
 
 # A function to simulate a data set with Y ~ DMOLBE
 gendat <- function(n) {
-  x1 <- runif(n, min=0.4, max=0.6)
-  x2 <- runif(n, min=0.4, max=0.6)
+  x1 <- runif(n)
+  x2 <- runif(n)
   mu    <- exp(1.21 - 3 * x1) # 0.75 approximately
   sigma <- exp(1.26 - 2 * x2) # 1.30 approximately
   y <- rDMOLBE(n=n, mu=mu, sigma=sigma)
@@ -61,7 +61,7 @@ gendat <- function(n) {
 }
 
 set.seed(123)
-dat <- gendat(n=350)
+dat <- gendat(n=200)
 
 # Fitting the model
 mod2 <- NULL
@@ -69,6 +69,7 @@ mod2 <- gamlss(y~x1, sigma.fo=~x2, family=DMOLBE, data=dat,
                  control=gamlss.control(n.cyc=500, trace=FALSE))
 
 summary(mod2)
+
 
 # Example 3
 # Data Set I (death due to coronavirus in China). The first data set is the number

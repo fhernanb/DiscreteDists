@@ -116,8 +116,11 @@ DMOLBE <- function (mu.link="log", sigma.link="log") {
                  rqres      = expression(rqres(pfun="pDMOLBE", type="Discrete",
                                                ymin = 0, y = y, mu = mu, sigma = sigma)),
 
-                 mu.initial    = expression(mu    <- rep(estim_mu_sigma_DMOLBE(y)[1], length(y)) ),
-                 sigma.initial = expression(sigma <- rep(estim_mu_sigma_DMOLBE(y)[2], length(y)) ),
+                 # mu.initial    = expression(mu    <- rep(estim_mu_sigma_DMOLBE(y)[1], length(y)) ),
+                 # sigma.initial = expression(sigma <- rep(estim_mu_sigma_DMOLBE(y)[2], length(y)) ),
+
+                 mu.initial    = expression(mu    <- rep(1, length(y)) ),
+                 sigma.initial = expression(sigma <- rep(1, length(y)) ),
 
                  mu.valid    = function(mu)    all(mu > 0),
                  sigma.valid = function(sigma) all(sigma > 0),
@@ -131,6 +134,7 @@ DMOLBE <- function (mu.link="log", sigma.link="log") {
                    the_mean <- sigma * sum(num/den)
                    return(the_mean)
                  },
+
                  variance = function(mu, sigma, x_max=100) {
                    x <- 1:x_max
                    num <- (1+x/mu) * exp(-x/mu)
@@ -142,4 +146,35 @@ DMOLBE <- function (mu.link="log", sigma.link="log") {
 
   ),
   class=c("gamlss.family", "family"))
+}
+#' logLik function for DMOLBE
+#' @description Calculates logLik for DMOLBE distribution.
+#' @param logparam vector with parameters in log scale.
+#' @param x vector with the response variable.
+#' @return returns the loglikelihood given the parameters and random sample.
+#' @keywords internal
+#' @export
+logLik_DMOLBE <- function(logparam=c(0, 0), x){
+  return(sum(dDMOLBE(x     = x,
+                     mu    = exp(logparam[1]),
+                     sigma = exp(logparam[2]),
+                     log=TRUE)))
+}
+#' Initial values for DMOLBE
+#' @description This function generates initial values for the parameters.
+#' @param y vector with the response variable.
+#' @return returns a vector with the MLE estimations.
+#' @keywords internal
+#' @export
+#' @importFrom stats optim
+estim_mu_sigma_DMOLBE <- function(y) {
+  mod <- optim(par=c(0, 0),
+               fn=logLik_DMOLBE,
+               method="Nelder-Mead",
+               control=list(fnscale=-1, maxit=100000),
+               x=y)
+  res <- c(mu_hat    = exp(mod$par[1]),
+           sigma_hat = exp(mod$par[2]))
+  names(res) <- c("mu_hat", "sigma_hat")
+  return(res)
 }
