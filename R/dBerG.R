@@ -48,8 +48,8 @@ dBerG <- function(x, mu, sigma, log = FALSE){
   x <- as.integer(x + .5)
   if (any(x < 0))
     stop("'x' must be non-negative")
-  if (!any(sigma > abs(mu - 1)))
-    stop("'sigma' must be greater than 'abs(mu - 1)'")
+  # if (!any(sigma > abs(mu - 1)))
+  #   stop("'sigma' must be greater than 'abs(mu - 1)'")
   dBerG <- ifelse(x == 0,
                   (1 - mu + sigma)/(1 + mu + sigma),
                   4*mu*(mu + sigma - 1)^(x - 1)/

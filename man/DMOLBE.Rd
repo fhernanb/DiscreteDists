@@ -57,7 +57,7 @@ gendat <- function(n) {
   mu    <- exp(1.21 - 3 * x1) # 0.75 approximately
   sigma <- exp(1.26 - 2 * x2) # 1.30 approximately
   y <- rDMOLBE(n=n, mu=mu, sigma=sigma)
-  data.frame(y=y, x1=x1,x2=x2)
+  data.frame(y=y, x1=x1, x2=x2)
 }
 
 set.seed(123)
@@ -125,7 +125,10 @@ sigma_hat <- exp(coef(mod4, what="sigma"))
 sigma_hat
 }
 \references{
-Aljohani, H. M., Ahsan-ul-Haq, M., Zafar, J., Almetwally, E. M., Alghamdi, A. S., Hussam, E., & Muse, A. H. (2023). Analysis of Covid-19 data using discrete Marshall–Olkinin length biased exponential: Bayesian and frequentist approach. Scientific Reports, 13(1), 12243.
+Aljohani, H. M., Ahsan-ul-Haq, M., Zafar, J., Almetwally, E. M.,
+Alghamdi, A. S., Hussam, E., & Muse, A. H. (2023). Analysis of
+Covid-19 data using discrete Marshall–Olkinin length biased exponential:
+Bayesian and frequentist approach. Scientific Reports, 13(1), 12243.
 }
 \seealso{
 \link{dDMOLBE}.
