@@ -16,7 +16,8 @@ Imports:
     gamlss.dist,
     pracma,
     Rcpp,
-    COMPoissonReg
+    COMPoissonReg,
+    nleqslv
 LinkingTo: 
     Rcpp
 Encoding: UTF-8

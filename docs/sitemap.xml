@@ -7,9 +7,11 @@
 <url><loc>/reference/add.html</loc></url>
 <url><loc>/reference/AR.html</loc></url>
 <url><loc>/reference/BerG.html</loc></url>
+<url><loc>/reference/COMPO.html</loc></url>
 <url><loc>/reference/COMPO2.html</loc></url>
 <url><loc>/reference/dBerG.html</loc></url>
 <url><loc>/reference/DBH.html</loc></url>
+<url><loc>/reference/dCOMPO.html</loc></url>
 <url><loc>/reference/dCOMPO2.html</loc></url>
 <url><loc>/reference/dDBH.html</loc></url>
 <url><loc>/reference/dDGBH.html</loc></url>
@@ -33,6 +35,7 @@
 <url><loc>/reference/estim_mu_DBH.html</loc></url>
 <url><loc>/reference/estim_mu_DLD.html</loc></url>
 <url><loc>/reference/estim_mu_POISXL.html</loc></url>
+<url><loc>/reference/estim_mu_sigma_COMPO.html</loc></url>
 <url><loc>/reference/estim_mu_sigma_DGEII.html</loc></url>
 <url><loc>/reference/estim_mu_sigma_DIKUM.html</loc></url>
 <url><loc>/reference/estim_mu_sigma_DMOLBE.html</loc></url>
