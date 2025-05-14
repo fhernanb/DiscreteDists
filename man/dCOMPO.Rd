@@ -24,7 +24,8 @@ rCOMPO(n, mu, sigma)
 
 \item{log, log.p}{logical; if TRUE, probabilities p are given as log(p).}
 
-\item{lower.tail}{logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.}
+\item{lower.tail}{logical; if TRUE (default), probabilities are
+\eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.}
 
 \item{p}{vector of probabilities.}
 
@@ -37,7 +38,7 @@ generates random deviates.
 }
 \description{
 These functions define the density, distribution function, quantile
-function and random generation for the Conway-Maxwell-Poisson distribution
+function and random generation for the Comway-Maxwell-Poisson distribution
 with parameters \eqn{\mu} and \eqn{\sigma}.
 }
 \details{
@@ -46,7 +47,7 @@ has a support 0, 1, 2, ... and mass function given by
 
 \eqn{f(x | \mu, \sigma) = \frac{\mu^x}{(x!)^{\sigma} Z(\mu, \sigma)} }
 
-with \eqn{\mu > 0}, \eqn{\sigma > 0} and
+with \eqn{\mu > 0}, \eqn{\sigma \geq 0} and
 
 \eqn{Z(\mu, \sigma)=\sum_{j=0}^{\infty} \frac{\mu^j}{(j!)^\sigma}}.
 
@@ -127,7 +128,7 @@ plot(p, qxx, type="s", lwd=2, col="green3", ylab="quantiles",
 \references{
 Shmueli, G., Minka, T. P., Kadane, J. B., Borle, S., & Boatwright, P. (2005).
 A useful distribution for fitting discrete data: revival of the
-Conway–Maxwell–Poisson distribution. Journal of the Royal Statistical
+Comway–Maxwell–Poisson distribution. Journal of the Royal Statistical
 Society Series C: Applied Statistics, 54(1), 127-142.
 }
 \seealso{

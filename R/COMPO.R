@@ -4,9 +4,8 @@
 #'
 #' @description
 #' The function \code{COMPO()} defines the COM-POISSON
-#' distribution, a two parameter
-#' distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
-#' using the function \code{gamlss()}.
+#' distribution, a two parameter distribution, for a \code{gamlss.family}
+#' object to be used in GAMLSS fitting using the function \code{gamlss()}.
 #'
 #' @param mu.link defines the mu.link, with "log" link as the default for the mu parameter.
 #' @param sigma.link defines the sigma.link, with "log" link as the default for the sigma.
@@ -14,7 +13,7 @@
 #' @references
 #' Shmueli, G., Minka, T. P., Kadane, J. B., Borle, S., & Boatwright, P. (2005).
 #' A useful distribution for fitting discrete data: revival of the
-#' Conway–Maxwell–Poisson distribution. Journal of the Royal Statistical
+#' Comway–Maxwell–Poisson distribution. Journal of the Royal Statistical
 #' Society Series C: Applied Statistics, 54(1), 127-142.
 #'
 #' @seealso \link{dCOMPO}.
@@ -25,7 +24,7 @@
 #'
 #' \eqn{f(x | \mu, \sigma) = \frac{\mu^x}{(x!)^{\sigma} Z(\mu, \sigma)} }
 #'
-#' with \eqn{\mu > 0}, \eqn{\sigma > 0} and
+#' with \eqn{\mu > 0}, \eqn{\sigma \geq 0} and
 #'
 #' \eqn{Z(\mu, \sigma)=\sum_{j=0}^{\infty} \frac{\mu^j}{(j!)^\sigma}}.
 #'
@@ -49,7 +48,7 @@ COMPO <- function (mu.link="log", sigma.link="log") {
   dstats <- checklink("sigma.link", "COMPO",
                       substitute(sigma.link), c("log"))
 
-  structure(list(family=c("COMPO", "Conway-Maxwell-Poisson"),
+  structure(list(family=c("COMPO", "Comway-Maxwell-Poisson"),
                  parameters=list(mu=TRUE, sigma=TRUE),
                  nopar=2,
                  type="Discrete",
@@ -66,7 +65,7 @@ COMPO <- function (mu.link="log", sigma.link="log") {
                  mu.dr    = mstats$mu.eta,
                  sigma.dr = dstats$mu.eta,
 
-                 # Primeras derivadas, por ahora son computacionales
+                 # Primeras derivadas
 
                  dldm = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
@@ -84,7 +83,7 @@ COMPO <- function (mu.link="log", sigma.link="log") {
                    dldd
                  },
 
-                 # Segundas derivadas, por ahora son computacionales
+                 # Segundas derivadas
 
                  d2ldm2 = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
@@ -133,7 +132,10 @@ COMPO <- function (mu.link="log", sigma.link="log") {
                  mu.valid    = function(mu)    all(mu > 0),
                  sigma.valid = function(sigma) all(sigma >= 0),
 
-                 y.valid = function(y) all(y >= 0)
+                 y.valid = function(y) all(y >= 0),
+
+                 mean = function(mu, sigma) {mu^(1/sigma) - (sigma-1)/(2*sigma)},
+                 variance = function(mu, sigma) {mu^(1/sigma) / sigma}
 
   ),
   class=c("gamlss.family", "family"))
@@ -165,4 +167,11 @@ estim_mu_sigma_COMPO <- function(y) {
                  control=list(btol=0.01), y=y)
   res$x
 }
+
+# estim_mu_sigma_COMPO <- function(y) {
+#   fit <- glm.cmp(y ~ 1)
+#   res <- exp(fit$opt.res$par)
+#   return(res)
+# }
+
 

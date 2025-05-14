@@ -9,7 +9,7 @@ COMPO2(mu.link = "log", sigma.link = "identity")
 \arguments{
 \item{mu.link}{defines the mu.link, with "log" link as the default for the mu parameter.}
 
-\item{sigma.link}{defines the sigma.link, with "log" link as the default for the sigma.}
+\item{sigma.link}{defines the sigma.link, with "identity" link as the default for the sigma.}
 }
 \value{
 Returns a \code{gamlss.family} object which can be used
@@ -17,8 +17,8 @@ to fit a COMPO2 distribution
 in the \code{gamlss()} function.
 }
 \description{
-The function \code{COMPO2()} defines the Discrete Marshall-Olkin Length Biased
-Exponential distribution, a two parameter
+The function \code{COMPO2()} defines the COM-POISSON 2
+distribution, a two parameter
 distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
 using the function \code{gamlss()}.
 }

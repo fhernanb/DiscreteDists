@@ -4,7 +4,7 @@
 #'
 #' @description
 #' These functions define the density, distribution function, quantile
-#' function and random generation for the Conway-Maxwell-Poisson distribution
+#' function and random generation for the Comway-Maxwell-Poisson distribution
 #' with parameters \eqn{\mu} and \eqn{\sigma}. This parameterization was
 #' proposed by Ribeiro et al. (2020) and the main
 #' characteristic is that \eqn{E(X)=\mu}.
@@ -15,7 +15,8 @@
 #' @param sigma vector of the sigma parameter.
 #' @param n number of random values to return.
 #' @param log,log.p logical; if TRUE, probabilities p are given as log(p).
-#' @param lower.tail logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.
+#' @param lower.tail logical; if TRUE (default), probabilities are
+#' \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.
 #'
 #' @references
 #' Ribeiro Jr, Eduardo E., et al. "Reparametrization of COM–Poisson regression

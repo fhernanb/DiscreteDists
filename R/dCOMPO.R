@@ -4,7 +4,7 @@
 #'
 #' @description
 #' These functions define the density, distribution function, quantile
-#' function and random generation for the Conway-Maxwell-Poisson distribution
+#' function and random generation for the Comway-Maxwell-Poisson distribution
 #' with parameters \eqn{\mu} and \eqn{\sigma}.
 #'
 #' @param x,q vector of (non-negative integer) quantiles.
@@ -13,12 +13,13 @@
 #' @param sigma vector of the sigma parameter.
 #' @param n number of random values to return.
 #' @param log,log.p logical; if TRUE, probabilities p are given as log(p).
-#' @param lower.tail logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.
+#' @param lower.tail logical; if TRUE (default), probabilities are
+#' \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.
 #'
 #' @references
 #' Shmueli, G., Minka, T. P., Kadane, J. B., Borle, S., & Boatwright, P. (2005).
 #' A useful distribution for fitting discrete data: revival of the
-#' Conway–Maxwell–Poisson distribution. Journal of the Royal Statistical
+#' Comway–Maxwell–Poisson distribution. Journal of the Royal Statistical
 #' Society Series C: Applied Statistics, 54(1), 127-142.
 #'
 #' @seealso \link{COMPO}.
@@ -29,7 +30,7 @@
 #'
 #' \eqn{f(x | \mu, \sigma) = \frac{\mu^x}{(x!)^{\sigma} Z(\mu, \sigma)} }
 #'
-#' with \eqn{\mu > 0}, \eqn{\sigma > 0} and
+#' with \eqn{\mu > 0}, \eqn{\sigma \geq 0} and
 #'
 #' \eqn{Z(\mu, \sigma)=\sum_{j=0}^{\infty} \frac{\mu^j}{(j!)^\sigma}}.
 #'

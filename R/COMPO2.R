@@ -3,13 +3,13 @@
 #' @author Freddy Hernandez, \email{fhernanb@unal.edu.co}
 #'
 #' @description
-#' The function \code{COMPO2()} defines the Discrete Marshall-Olkin Length Biased
-#' Exponential distribution, a two parameter
+#' The function \code{COMPO2()} defines the COM-POISSON 2
+#' distribution, a two parameter
 #' distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
 #' using the function \code{gamlss()}.
 #'
 #' @param mu.link defines the mu.link, with "log" link as the default for the mu parameter.
-#' @param sigma.link defines the sigma.link, with "log" link as the default for the sigma.
+#' @param sigma.link defines the sigma.link, with "identity" link as the default for the sigma.
 #'
 #' @references
 #' Ribeiro Jr, Eduardo E., et al. "Reparametrization of COM–Poisson regression
@@ -65,7 +65,7 @@ COMPO2 <- function (mu.link="log", sigma.link="identity") {
                  mu.dr    = mstats$mu.eta,
                  sigma.dr = dstats$mu.eta,
 
-                 # Primeras derivadas, por ahora son computacionales
+                 # Primeras derivadas
 
                  dldm = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dCOMPO2(y, mu, sigma, log=TRUE),
@@ -83,7 +83,7 @@ COMPO2 <- function (mu.link="log", sigma.link="identity") {
                    dldd
                  },
 
-                 # Segundas derivadas, por ahora son computacionales
+                 # Segundas derivadas
 
                  d2ldm2 = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dCOMPO2(y, mu, sigma, log=TRUE),
@@ -123,14 +123,11 @@ COMPO2 <- function (mu.link="log", sigma.link="identity") {
                  rqres      = expression(rqres(pfun="pCOMPO2", type="Discrete",
                                                ymin = 0, y = y, mu = mu, sigma = sigma)),
 
-                 # mu.initial    = expression(mu    <- rep(estim_mu_sigma_COMPO2(y)[1], length(y)) ),
-                 # sigma.initial = expression(sigma <- rep(estim_mu_sigma_COMPO2(y)[2], length(y)) ),
-
-                 mu.initial    = expression(mu    <- rep(1, length(y)) ),
-                 sigma.initial = expression(sigma <- rep(1, length(y)) ),
+                 mu.initial    = expression(mu    <- rep(mean(y), length(y)) ),
+                 sigma.initial = expression(sigma <- rep(0, length(y)) ),
 
                  mu.valid    = function(mu)    all(mu > 0),
-                 sigma.valid = function(sigma) all(sigma > 0),
+                 sigma.valid = function(sigma) TRUE,
 
                  y.valid = function(y) all(y >= 0),
 
