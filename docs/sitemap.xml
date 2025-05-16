@@ -20,6 +20,7 @@
 <url><loc>/reference/dDLD.html</loc></url>
 <url><loc>/reference/dDMOLBE.html</loc></url>
 <url><loc>/reference/dDP.html</loc></url>
+<url><loc>/reference/dDPERKS.html</loc></url>
 <url><loc>/reference/dDsPA.html</loc></url>
 <url><loc>/reference/DGBH.html</loc></url>
 <url><loc>/reference/DGEII.html</loc></url>
@@ -32,6 +33,7 @@
 <url><loc>/reference/DLD.html</loc></url>
 <url><loc>/reference/DMOLBE.html</loc></url>
 <url><loc>/reference/DP.html</loc></url>
+<url><loc>/reference/DPERKS.html</loc></url>
 <url><loc>/reference/dPOISXL.html</loc></url>
 <url><loc>/reference/DsPA.html</loc></url>
 <url><loc>/reference/estim_mu_DBH.html</loc></url>
@@ -42,6 +44,7 @@
 <url><loc>/reference/estim_mu_sigma_DIKUM.html</loc></url>
 <url><loc>/reference/estim_mu_sigma_DMOLBE.html</loc></url>
 <url><loc>/reference/estim_mu_sigma_DP.html</loc></url>
+<url><loc>/reference/estim_mu_sigma_DPERKS.html</loc></url>
 <url><loc>/reference/estim_mu_sigma_DsPA.html</loc></url>
 <url><loc>/reference/estim_mu_sigma_GGEO.html</loc></url>
 <url><loc>/reference/estim_mu_sigma_HYPERPO.html</loc></url>
@@ -59,6 +62,7 @@
 <url><loc>/reference/logLik_DLD.html</loc></url>
 <url><loc>/reference/logLik_DMOLBE.html</loc></url>
 <url><loc>/reference/logLik_DP.html</loc></url>
+<url><loc>/reference/logLik_DPERKS.html</loc></url>
 <url><loc>/reference/logLik_DsPA.html</loc></url>
 <url><loc>/reference/logLik_GGEO.html</loc></url>
 <url><loc>/reference/logLik_HYPERPO.html</loc></url>
