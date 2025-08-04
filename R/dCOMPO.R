@@ -4,7 +4,8 @@
 #'
 #' @description
 #' These functions define the density, distribution function, quantile
-#' function and random generation for the Comway-Maxwell-Poisson distribution
+#' function and random generation for the
+#' Conway-Maxwell-Poisson distribution
 #' with parameters \eqn{\mu} and \eqn{\sigma}.
 #'
 #' @param x,q vector of (non-negative integer) quantiles.
@@ -19,7 +20,7 @@
 #' @references
 #' Shmueli, G., Minka, T. P., Kadane, J. B., Borle, S., & Boatwright, P. (2005).
 #' A useful distribution for fitting discrete data: revival of the
-#' Comway–Maxwell–Poisson distribution. Journal of the Royal Statistical
+#' Conway–Maxwell–Poisson distribution. Journal of the Royal Statistical
 #' Society Series C: Applied Statistics, 54(1), 127-142.
 #'
 #' @seealso \link{COMPO}.

@@ -4,8 +4,10 @@
 #'
 #' @description
 #' These functions define the density, distribution function, quantile
-#' function and random generation for the Comway-Maxwell-Poisson distribution
-#' with parameters \eqn{\mu} and \eqn{\sigma}. This parameterization was
+#' function and random generation for the
+#' Comway-Maxwell-Poisson distribution
+#' with parameters \eqn{\mu} and \eqn{\sigma}.
+#' This parameterization was
 #' proposed by Ribeiro et al. (2020) and the main
 #' characteristic is that \eqn{E(X)=\mu}.
 #'

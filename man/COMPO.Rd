@@ -17,8 +17,9 @@ to fit a COMPO distribution
 in the \code{gamlss()} function.
 }
 \description{
-The function \code{COMPO()} defines the COM-POISSON
-distribution, a two parameter distribution, for a \code{gamlss.family}
+The function \code{COMPO()} defines the
+Conway-Maxwell-Poisson distribution,
+a two parameter distribution, for a \code{gamlss.family}
 object to be used in GAMLSS fitting using the function \code{gamlss()}.
 }
 \details{
@@ -129,7 +130,7 @@ summary(mod2)
 \references{
 Shmueli, G., Minka, T. P., Kadane, J. B., Borle, S., & Boatwright, P. (2005).
 A useful distribution for fitting discrete data: revival of the
-Comway–Maxwell–Poisson distribution. Journal of the Royal Statistical
+Conway–Maxwell–Poisson distribution. Journal of the Royal Statistical
 Society Series C: Applied Statistics, 54(1), 127-142.
 }
 \seealso{

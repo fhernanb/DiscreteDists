@@ -3,10 +3,14 @@
 #' @author Freddy Hernandez, \email{fhernanb@unal.edu.co}
 #'
 #' @description
-#' The function \code{COMPO2()} defines the COM-POISSON 2
+#' The function \code{COMPO2()} defines the
+#' Conway-Maxwell-Poisson distribution in the
 #' distribution, a two parameter
 #' distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
 #' using the function \code{gamlss()}.
+#' This parameterization was
+#' proposed by Ribeiro et al. (2020) and the main
+#' characteristic is that \eqn{E(X)=\mu}.
 #'
 #' @param mu.link defines the mu.link, with "log" link as the default for the mu parameter.
 #' @param sigma.link defines the sigma.link, with "identity" link as the default for the sigma.
@@ -48,7 +52,7 @@ COMPO2 <- function (mu.link="log", sigma.link="identity") {
   dstats <- checklink("sigma.link", "COMPO2",
                       substitute(sigma.link), c("identity"))
 
-  structure(list(family=c("COMPO2", "Comway Maxwell Poisson second parameterization"),
+  structure(list(family=c("COMPO2", "Conway Maxwell Poisson second parameterization"),
                  parameters=list(mu=TRUE, sigma=TRUE),
                  nopar=2,
                  type="Discrete",

@@ -17,10 +17,14 @@ to fit a COMPO2 distribution
 in the \code{gamlss()} function.
 }
 \description{
-The function \code{COMPO2()} defines the COM-POISSON 2
+The function \code{COMPO2()} defines the
+Conway-Maxwell-Poisson distribution in the
 distribution, a two parameter
 distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
 using the function \code{gamlss()}.
+This parameterization was
+proposed by Ribeiro et al. (2020) and the main
+characteristic is that \eqn{E(X)=\mu}.
 }
 \details{
 The COMPO2 distribution with parameters \eqn{\mu} and \eqn{\sigma}
