@@ -9,10 +9,14 @@
 <url><loc>/reference/BerG.html</loc></url>
 <url><loc>/reference/COMPO.html</loc></url>
 <url><loc>/reference/COMPO2.html</loc></url>
+<url><loc>/reference/d1_dldm_compo_cpp.html</loc></url>
+<url><loc>/reference/d2_dldd_compo_cpp.html</loc></url>
 <url><loc>/reference/dBerG.html</loc></url>
 <url><loc>/reference/DBH.html</loc></url>
 <url><loc>/reference/dCOMPO.html</loc></url>
 <url><loc>/reference/dCOMPO2.html</loc></url>
+<url><loc>/reference/dCOMPO_single.html</loc></url>
+<url><loc>/reference/dCOMPO_vec.html</loc></url>
 <url><loc>/reference/dDBH.html</loc></url>
 <url><loc>/reference/dDGBH.html</loc></url>
 <url><loc>/reference/dDGEII.html</loc></url>
@@ -74,5 +78,6 @@
 <url><loc>/reference/POISXL.html</loc></url>
 <url><loc>/reference/simulate_hp.html</loc></url>
 <url><loc>/reference/stopping.html</loc></url>
+<url><loc>/reference/z_cpp.html</loc></url>
 </urlset>
 
