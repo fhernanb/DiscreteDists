@@ -10,6 +10,112 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// z_cpp
+double z_cpp(double lambda, double nu, int max_terms, double tol);
+RcppExport SEXP _DiscreteDists_z_cpp(SEXP lambdaSEXP, SEXP nuSEXP, SEXP max_termsSEXP, SEXP tolSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< double >::type nu(nuSEXP);
+    Rcpp::traits::input_parameter< int >::type max_terms(max_termsSEXP);
+    Rcpp::traits::input_parameter< double >::type tol(tolSEXP);
+    rcpp_result_gen = Rcpp::wrap(z_cpp(lambda, nu, max_terms, tol));
+    return rcpp_result_gen;
+END_RCPP
+}
+// z_vec_cpp
+NumericVector z_vec_cpp(NumericVector mu, NumericVector sigma);
+RcppExport SEXP _DiscreteDists_z_vec_cpp(SEXP muSEXP, SEXP sigmaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type sigma(sigmaSEXP);
+    rcpp_result_gen = Rcpp::wrap(z_vec_cpp(mu, sigma));
+    return rcpp_result_gen;
+END_RCPP
+}
+// d1_dldm_compo_cpp
+double d1_dldm_compo_cpp(double lambda, double nu, int max_terms, double tol);
+RcppExport SEXP _DiscreteDists_d1_dldm_compo_cpp(SEXP lambdaSEXP, SEXP nuSEXP, SEXP max_termsSEXP, SEXP tolSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< double >::type nu(nuSEXP);
+    Rcpp::traits::input_parameter< int >::type max_terms(max_termsSEXP);
+    Rcpp::traits::input_parameter< double >::type tol(tolSEXP);
+    rcpp_result_gen = Rcpp::wrap(d1_dldm_compo_cpp(lambda, nu, max_terms, tol));
+    return rcpp_result_gen;
+END_RCPP
+}
+// d1_vec_dldm_compo_cpp
+NumericVector d1_vec_dldm_compo_cpp(NumericVector mu, NumericVector sigma);
+RcppExport SEXP _DiscreteDists_d1_vec_dldm_compo_cpp(SEXP muSEXP, SEXP sigmaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type sigma(sigmaSEXP);
+    rcpp_result_gen = Rcpp::wrap(d1_vec_dldm_compo_cpp(mu, sigma));
+    return rcpp_result_gen;
+END_RCPP
+}
+// d2_dldd_compo_cpp
+double d2_dldd_compo_cpp(double lambda, double nu, int max_terms, double tol);
+RcppExport SEXP _DiscreteDists_d2_dldd_compo_cpp(SEXP lambdaSEXP, SEXP nuSEXP, SEXP max_termsSEXP, SEXP tolSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< double >::type nu(nuSEXP);
+    Rcpp::traits::input_parameter< int >::type max_terms(max_termsSEXP);
+    Rcpp::traits::input_parameter< double >::type tol(tolSEXP);
+    rcpp_result_gen = Rcpp::wrap(d2_dldd_compo_cpp(lambda, nu, max_terms, tol));
+    return rcpp_result_gen;
+END_RCPP
+}
+// d2_vec_dldd_compo_cpp
+NumericVector d2_vec_dldd_compo_cpp(NumericVector mu, NumericVector sigma);
+RcppExport SEXP _DiscreteDists_d2_vec_dldd_compo_cpp(SEXP muSEXP, SEXP sigmaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type sigma(sigmaSEXP);
+    rcpp_result_gen = Rcpp::wrap(d2_vec_dldd_compo_cpp(mu, sigma));
+    return rcpp_result_gen;
+END_RCPP
+}
+// dCOMPO_single
+double dCOMPO_single(double x, double mu, double sigma, bool log);
+RcppExport SEXP _DiscreteDists_dCOMPO_single(SEXP xSEXP, SEXP muSEXP, SEXP sigmaSEXP, SEXP logSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< bool >::type log(logSEXP);
+    rcpp_result_gen = Rcpp::wrap(dCOMPO_single(x, mu, sigma, log));
+    return rcpp_result_gen;
+END_RCPP
+}
+// dCOMPO_vec
+NumericVector dCOMPO_vec(NumericVector x, NumericVector mu, NumericVector sigma, LogicalVector log);
+RcppExport SEXP _DiscreteDists_dCOMPO_vec(SEXP xSEXP, SEXP muSEXP, SEXP sigmaSEXP, SEXP logSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< LogicalVector >::type log(logSEXP);
+    rcpp_result_gen = Rcpp::wrap(dCOMPO_vec(x, mu, sigma, log));
+    return rcpp_result_gen;
+END_RCPP
+}
 // f11_cpp
 double f11_cpp(double gamma, double lambda, int maxiter_series, double tol);
 RcppExport SEXP _DiscreteDists_f11_cpp(SEXP gammaSEXP, SEXP lambdaSEXP, SEXP maxiter_seriesSEXP, SEXP tolSEXP) {
@@ -54,6 +160,14 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_DiscreteDists_z_cpp", (DL_FUNC) &_DiscreteDists_z_cpp, 4},
+    {"_DiscreteDists_z_vec_cpp", (DL_FUNC) &_DiscreteDists_z_vec_cpp, 2},
+    {"_DiscreteDists_d1_dldm_compo_cpp", (DL_FUNC) &_DiscreteDists_d1_dldm_compo_cpp, 4},
+    {"_DiscreteDists_d1_vec_dldm_compo_cpp", (DL_FUNC) &_DiscreteDists_d1_vec_dldm_compo_cpp, 2},
+    {"_DiscreteDists_d2_dldd_compo_cpp", (DL_FUNC) &_DiscreteDists_d2_dldd_compo_cpp, 4},
+    {"_DiscreteDists_d2_vec_dldd_compo_cpp", (DL_FUNC) &_DiscreteDists_d2_vec_dldd_compo_cpp, 2},
+    {"_DiscreteDists_dCOMPO_single", (DL_FUNC) &_DiscreteDists_dCOMPO_single, 4},
+    {"_DiscreteDists_dCOMPO_vec", (DL_FUNC) &_DiscreteDists_dCOMPO_vec, 4},
     {"_DiscreteDists_f11_cpp", (DL_FUNC) &_DiscreteDists_f11_cpp, 4},
     {"_DiscreteDists_dHYPERPO_single", (DL_FUNC) &_DiscreteDists_dHYPERPO_single, 4},
     {"_DiscreteDists_dHYPERPO_vec", (DL_FUNC) &_DiscreteDists_dHYPERPO_vec, 4},

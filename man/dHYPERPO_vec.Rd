@@ -9,7 +9,7 @@ dHYPERPO_vec(x, mu, sigma, log)
 \arguments{
 \item{x}{numeric value for x.}
 
-\item{mu}{numeric value for nu.}
+\item{mu}{numeric value for mu.}
 
 \item{sigma}{numeric value for sigma.}
 

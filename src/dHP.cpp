@@ -71,7 +71,7 @@ using namespace Rcpp;
 
 //' Function to obtain the dHYPERPO for a vector x
 //' @param x numeric value for x.
-//' @param mu numeric value for nu.
+//' @param mu numeric value for mu.
 //' @param sigma numeric value for sigma.
 //' @param log logical value for log.
 //' @export

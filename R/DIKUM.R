@@ -3,9 +3,11 @@
 #' @author Daniel Felipe Villa Rengifo, \email{dvilla@unal.edu.co}
 #'
 #' @description
-#' The function \code{DIKUM()} defines the discrete Inverted Kumaraswamy distribution, a two parameter
-#' distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
-#' using the function \code{gamlss()}.
+#' The function \code{DIKUM()} defines the
+#' discrete Inverted Kumaraswamy distribution
+#' - a two parameter distribution -
+#' as a gamlss.family object, allowing it to be used for model
+#' fitting with the \code{gamlss()} function in GAMLSS.
 #'
 #' @param mu.link defines the mu.link, with "log" link as the default for the mu parameter.
 #' @param sigma.link defines the sigma.link, with "log" link as the default for the sigma.

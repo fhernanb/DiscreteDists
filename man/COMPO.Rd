@@ -19,8 +19,11 @@ in the \code{gamlss()} function.
 \description{
 The function \code{COMPO()} defines the
 Conway-Maxwell-Poisson distribution,
-a two parameter distribution, for a \code{gamlss.family}
-object to be used in GAMLSS fitting using the function \code{gamlss()}.
+\itemize{
+\item a two parameter distribution -
+as a gamlss.family object, allowing it to be used for model
+fitting with the \code{gamlss()} function in GAMLSS.
+}
 }
 \details{
 The COMPO distribution with parameters \eqn{\mu} and \eqn{\sigma}
@@ -39,10 +42,10 @@ the COMPoissonReg package.
 # Example 1
 # Generating some random values with
 # known mu and sigma
-set.seed(1234)
-y <- rCOMPO(n=50, mu=15, sigma=1)
-
 \dontrun{
+set.seed(12345)
+y <- rCOMPO(n=5000, mu=5, sigma=3)
+
 # Fitting the model
 library(gamlss)
 mod1 <- gamlss(y~1, sigma.fo=~1, family=COMPO,
@@ -79,53 +82,43 @@ mod2 <- gamlss(y~x1, sigma.fo=~x2, family=COMPO, data=dat,
 summary(mod2)
 }
 
-
 # Example 3
 # Using the data from Shmueli et al. (2005) page 134
 # The dataset consists of quarterly sales of a well-known brand of a
 # particular article of clothing at stores of a large national retailer.
-# values <- 0:30
-# freq <- c(514, 503, 457, 423, 326, 233, 195, 139, 101, 77, 56, 40, 37, 22,
-#           9, 7, 10, 9, 3, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1)
-#
-# y <- rep(x=values, times=freq)
-#
-# mod3 <- gamlss(y~1, sigma.fo=~1, family=COMPO)
-#
-# exp(coef(mod3, what="mu"))
-# exp(coef(mod3, what="sigma"))
-#
-# estim_mu_sigma_COMPO(y)
-#
-# fit <- glm.cmp(y ~ 1)
-# exp(fit$opt.res$par)
+\dontrun{
+values <- 0:30
+freq <- c(514, 503, 457, 423, 326, 233, 195, 139, 101, 77, 56, 40,
+          37, 22, 9, 7, 10, 9, 3, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1)
 
+y <- rep(x=values, times=freq)
 
+mod3 <- gamlss(y~1, sigma.fo=~1, family=COMPO2,
+               control=gamlss.control(n.cyc=500, trace=TRUE))
+
+exp(coef(mod3, what="mu"))
+exp(coef(mod3, what="sigma"))
+}
 
 # Example 4
 # Using the data from Shmueli et al. (2005) page 134
 # The dataset contains lengths of words (numbers of syllables)
 # in a Hungarian dictionary
 
-# # Slovak dictionary
-# y <- rep(x=1:5, times=c(7, 33, 49, 22, 6))
-# # Hungarian dictionary
-# y <- rep(x=1:9, times=c(1421, 12333, 20711, 15590, 5544, 1510, 289, 60, 1))
-#
-# mod4 <- gamlss(y~1, sigma.fo=~1, family=COMPO,
-#                control=gamlss.control(n.cyc=500, trace=TRUE))
-#
-# exp(coef(mod4, what="mu"))
-# exp(coef(mod4, what="sigma"))
-#
-# estim_mu_sigma_COMPO(y)
-#
-# fit <- glm.cmp(y ~ 1)
-# exp(fit$opt.res$par)
-#
-#
-# mod0 <- gamlss(y~1, family=PO)
-# exp(coef(mod0))
+\dontrun{
+# Slovak dictionary
+y <- rep(x=1:5, times=c(7, 33, 49, 22, 6))
+
+# Hungarian dictionary
+y <- rep(x=1:9, times=c(1421, 12333, 20711, 15590, 5544, 1510, 289, 60, 1))
+
+mod4 <- gamlss(y~1, sigma.fo=~1, family=COMPO,
+               control=gamlss.control(n.cyc=500, trace=TRUE))
+
+exp(coef(mod4, what="mu"))
+exp(coef(mod4, what="sigma"))
+
+}
 }
 \references{
 Shmueli, G., Minka, T. P., Kadane, J. B., Borle, S., & Boatwright, P. (2005).

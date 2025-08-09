@@ -3,9 +3,11 @@
 #' @author Valentina Hurtado Sepulveda, \email{vhurtados@unal.edu.co}
 #'
 #' @description
-#' The function \code{DBH()} defines the Discrete Burr Hatke distribution, one-parameter
-#' discrete distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
-#' using the function \code{gamlss()}.
+#' The function \code{DBH()} defines the
+#' Discrete Burr Hatke distribution
+#' - a single parameter distribution -
+#' as a gamlss.family object, allowing it to be used for model
+#' fitting with the \code{gamlss()} function in GAMLSS.
 #'
 #' @param mu.link defines the mu.link, with "logit" link as the default for the mu parameter. Other links are "probit" and "cloglog"'(complementary log-log)
 #'

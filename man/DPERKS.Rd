@@ -12,9 +12,13 @@ DPERKS(mu.link = "log", sigma.link = "log")
 \item{sigma.link}{defines the sigma.link, with "log" link as the default for the sigma.}
 }
 \description{
-The function \code{DPERKS()} defines the Discrete Perks distribution, a two parameter
-distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
-using the function \code{gamlss()}.
+The function \code{DPERKS()} defines the
+Discrete Perks distribution
+\itemize{
+\item a two parameter distribution -
+as a gamlss.family object, allowing it to be used for model
+fitting with the \code{gamlss()} function in GAMLSS.
+}
 }
 \details{
 The discrete Perks distribution with parameters \eqn{\mu > 0} and \eqn{\sigma > 0}

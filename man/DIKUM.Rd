@@ -17,9 +17,13 @@ to fit a discrete Inverted Kumaraswamy distribution
 in the \code{gamlss()} function.
 }
 \description{
-The function \code{DIKUM()} defines the discrete Inverted Kumaraswamy distribution, a two parameter
-distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
-using the function \code{gamlss()}.
+The function \code{DIKUM()} defines the
+discrete Inverted Kumaraswamy distribution
+\itemize{
+\item a two parameter distribution -
+as a gamlss.family object, allowing it to be used for model
+fitting with the \code{gamlss()} function in GAMLSS.
+}
 }
 \details{
 The discrete Inverted Kumaraswamy distribution with parameters \eqn{\mu} and \eqn{\sigma}

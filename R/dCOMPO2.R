@@ -54,14 +54,16 @@ dCOMPO2 <- function(x, mu, sigma, log=FALSE) {
   if (any(x < 0))   stop(paste("x must be >=0", "\n", ""))
 
   par <- mu_phi_2_lambda_nu_COMPO2(mu, sigma)
-  res <- dcmp(x, lambda=par$lambda, nu=par$nu)
+  # res <- dcmp(x, lambda=par$lambda, nu=par$nu)
+  #
+  # if (log)
+  #   res <- log(res)
+  #
+  # return(res)
 
-  if (log)
-    res <- log(res)
-
-  return(res)
+  temp <- cbind(x, par$lambda, par$nu, log)
+  dCOMPO_vec(x=temp[, 1], mu=temp[, 2], sigma=temp[, 3], log=temp[,4])
 }
-dCOMPO2 <- Vectorize(dCOMPO2)
 #' @importFrom COMPoissonReg pcmp
 #' @export
 #' @rdname dCOMPO2

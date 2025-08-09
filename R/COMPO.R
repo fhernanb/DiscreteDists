@@ -5,8 +5,9 @@
 #' @description
 #' The function \code{COMPO()} defines the
 #' Conway-Maxwell-Poisson distribution,
-#' a two parameter distribution, for a \code{gamlss.family}
-#' object to be used in GAMLSS fitting using the function \code{gamlss()}.
+#' - a two parameter distribution -
+#' as a gamlss.family object, allowing it to be used for model
+#' fitting with the \code{gamlss()} function in GAMLSS.
 #'
 #' @param mu.link defines the mu.link, with "log" link as the default for the mu parameter.
 #' @param sigma.link defines the sigma.link, with "log" link as the default for the sigma.
@@ -49,7 +50,7 @@ COMPO <- function (mu.link="log", sigma.link="log") {
   dstats <- checklink("sigma.link", "COMPO",
                       substitute(sigma.link), c("log"))
 
-  structure(list(family=c("COMPO", "Comway-Maxwell-Poisson"),
+  structure(list(family=c("COMPO", "Conway-Maxwell-Poisson"),
                  parameters=list(mu=TRUE, sigma=TRUE),
                  nopar=2,
                  type="Discrete",
@@ -66,55 +67,61 @@ COMPO <- function (mu.link="log", sigma.link="log") {
                  mu.dr    = mstats$mu.eta,
                  sigma.dr = dstats$mu.eta,
 
-                 # Primeras derivadas
+                 # First derivatives
 
                  dldm = function(y, mu, sigma) {
-                   dm   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
-                                                 theta="mu",
-                                                 delta=0.01)
-                   dldm <- as.vector(attr(dm, "gradient"))
+                   dldm <- y/mu - d1_vec_dldm_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
                    dldm
                  },
 
                  dldd = function(y, mu, sigma) {
-                   dd   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
-                                                 theta="sigma",
-                                                 delta=0.01)
-                   dldd <- as.vector(attr(dd, "gradient"))
+                   dldd <- -log(factorial(y)) + d2_vec_dldd_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
                    dldd
                  },
 
-                 # Segundas derivadas
+                 # Second derivatives
 
                  d2ldm2 = function(y, mu, sigma) {
-                   dm   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
-                                                 theta="mu",
-                                                 delta=0.01)
-                   dldm <- as.vector(attr(dm, "gradient"))
+                   # dm   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
+                   #                               theta="mu",
+                   #                               delta=0.001)
+                   #dldm <- as.vector(attr(dm, "gradient"))
+
+                   dldm <- y/mu - d1_vec_dldm_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
+
                    d2ldm2 <- - dldm * dldm
                    d2ldm2 <- ifelse(d2ldm2 < -1e-15, d2ldm2, -1e-15)
                    d2ldm2
                  },
 
                  d2ldmdd = function(y, mu, sigma) {
-                   dm   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
-                                                 theta="mu",
-                                                 delta=0.01)
-                   dldm <- as.vector(attr(dm, "gradient"))
-                   dd   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
-                                                 theta="sigma",
-                                                 delta=0.01)
-                   dldd <- as.vector(attr(dd, "gradient"))
+                   # dm   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
+                   #                               theta="mu",
+                   #                               delta=0.001)
+                   # dldm <- as.vector(attr(dm, "gradient"))
+
+                   dldm <- y/mu - d1_vec_dldm_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
+
+                   # dd   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
+                   #                               theta="sigma",
+                   #                               delta=0.001)
+                   # dldd <- as.vector(attr(dd, "gradient"))
+
+                   dldd <- -log(factorial(y)) + d2_vec_dldd_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
+
                    d2ldmdd <- - dldm * dldd
                    d2ldmdd <- ifelse(d2ldmdd < -1e-15, d2ldmdd, -1e-15)
                    d2ldmdd
                  },
 
                  d2ldd2  = function(y, mu, sigma) {
-                   dd   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
-                                                 theta="sigma",
-                                                 delta=0.01)
-                   dldd <- as.vector(attr(dd, "gradient"))
+                   # dd   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
+                   #                               theta="sigma",
+                   #                               delta=0.001)
+                   # dldd <- as.vector(attr(dd, "gradient"))
+
+                   dldd <- -log(factorial(y)) + d2_vec_dldd_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
+
                    d2ldd2 <- - dldd * dldd
                    d2ldd2 <- ifelse(d2ldd2 < -1e-15, d2ldd2, -1e-15)
                    d2ldd2
@@ -173,6 +180,41 @@ estim_mu_sigma_COMPO <- function(y) {
 #   fit <- glm.cmp(y ~ 1)
 #   res <- exp(fit$opt.res$par)
 #   return(res)
+# }
+
+# estim_mu_sigma_COMPO <- function(y) {
+#   # Esta funcion obtiene valores inciales
+#   # usando el metodo seccion 3.1 de Shmueli (2005) pag 132
+#
+#   # Paso 0: crear la tabla de frecuencias
+#   t1 <- table(y)
+#   # Paso 1: Extraer los nombres de la t1 como enteros
+#   nombres <- as.integer(names(t1))
+#   # Paso 2: Identificar secuencias consecutivas
+#   # Calculamos diferencias entre elementos consecutivos
+#   difs <- c(Inf, diff(nombres))  # Inf al principio para marcar el inicio
+#   # Creamos grupos de consecutivos
+#   grupos <- cumsum(difs != 1)
+#   # Paso 3: Encontrar el grupo más largo (la secuencia más larga de consecutivos)
+#   longitudes <- table(grupos)
+#   grupo_mas_largo <- as.integer(names(longitudes)[which.max(longitudes)])
+#   # Paso 4: Filtrar los elementos del grupo más largo
+#   indices_consecutivos <- grupos == grupo_mas_largo
+#   nombres_validos <- nombres[indices_consecutivos]
+#   # Paso 5: Filtrar la t1 original
+#   t2 <- t1[as.character(nombres_validos)]
+#   # Paso 6: Crear la tabla de frecuencias relativas
+#   t2 <- prop.table(t2)
+#
+#   # Aplicando el metodo seccion 3.1 de Shmueli (2005) pag 132
+#   k <- length(t2)
+#   yy <- log(t2[1:(k-1)] / t2[2:k])
+#   xx <- log(as.numeric(names(t2[2:k])))
+#   mod_temp <- lm(yy ~ xx)
+#   mu_hat <- exp(-coef(mod_temp)[1])
+#   sigma_hat <- coef(mod_temp)[2]
+#   res <- c(mu_hat, sigma_hat)
+#   res
 # }
 
 

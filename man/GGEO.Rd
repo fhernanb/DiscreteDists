@@ -17,10 +17,13 @@ to fit a GGEO distribution
 in the \code{gamlss()} function.
 }
 \description{
-The function \code{GGEO()} defines the Generalized Geometric distribution,
-a two parameter distribution,
-for a \code{gamlss.family} object to be used in GAMLSS fitting
-using the function \code{gamlss()}.
+The function \code{GGEO()} defines the
+Generalized Geometric distribution
+\itemize{
+\item a two parameter distribution -
+as a gamlss.family object, allowing it to be used for model
+fitting with the \code{gamlss()} function in GAMLSS.
+}
 }
 \details{
 The GGEO distribution with parameters \eqn{\mu} and \eqn{\sigma}

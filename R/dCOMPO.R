@@ -50,16 +50,10 @@
 dCOMPO <- function(x, mu, sigma, log=FALSE) {
   if (any(mu <= 0))    stop("parameter mu has to be positive!")
   if (any(sigma < 0))  stop("parameter sigma has to be no negative!")
-  if (any(x < 0))      stop(paste("x must be >=0", "\n", ""))
 
-  res <- dcmp(x, lambda=mu, nu=sigma)
-
-  if (log)
-    res <- log(res)
-
-  return(res)
+  temp <- cbind(x, mu, sigma, log)
+  dCOMPO_vec(x=temp[, 1], mu=temp[, 2], sigma=temp[, 3], log=temp[,4])
 }
-dCOMPO <- Vectorize(dCOMPO)
 #' @importFrom COMPoissonReg pcmp
 #' @export
 #' @rdname dCOMPO

@@ -18,10 +18,9 @@ in the \code{gamlss()} function.
 }
 \description{
 The function \code{COMPO2()} defines the
-Conway-Maxwell-Poisson distribution in the
-distribution, a two parameter
-distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
-using the function \code{gamlss()}.
+Conway-Maxwell-Poisson distribution #' - a two parameter distribution -
+as a gamlss.family object, allowing it to be used for model
+fitting with the \code{gamlss()} function in GAMLSS.
 This parameterization was
 proposed by Ribeiro et al. (2020) and the main
 characteristic is that \eqn{E(X)=\mu}.
@@ -43,8 +42,7 @@ the COMPoissonReg package.
 # Example 1
 # Generating some random values with
 # known mu and sigma
-set.seed(1234)
-y <- rCOMPO2(n=100, mu=10, sigma=-1)
+y <- rCOMPO2(n=50, mu=10, sigma=-1)
 
 # Fitting the model
 library(gamlss)

@@ -3,9 +3,11 @@
 #' @author Maria Camila Mena Romana, \email{mamenar@unal.edu.co}
 #'
 #' @description
-#' The function \code{DsPA()} defines the discrete power-Ailamujia distribution, a two parameter
-#' distribution, for a \code{gamlss.family} object to be used in GAMLSS fitting
-#' using the function \code{gamlss()}.
+#' The function \code{DsPA()} defines the
+#' discrete power-Ailamujia distribution
+#' - a two parameter distribution -
+#' as a gamlss.family object, allowing it to be used for model
+#' fitting with the \code{gamlss()} function in GAMLSS.
 #'
 #' @param mu.link defines the mu.link, with "log" link as the default for the mu parameter.
 #' @param sigma.link defines the sigma.link, with "logit" link as the default for the sigma parameter. Other links are "probit" and "cloglog"'(complementary log-log).
