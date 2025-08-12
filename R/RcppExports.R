@@ -12,6 +12,11 @@ z_cpp <- function(lambda, nu, max_terms = 1000L, tol = 1e-10) {
     .Call('_DiscreteDists_z_cpp', PACKAGE = 'DiscreteDists', lambda, nu, max_terms, tol)
 }
 
+#' Function to obtain Z vectorial for COMPO with C++.
+#' @param mu numeric vector.
+#' @param sigma numeric vector.
+#' @export
+#' @return returns the z value.
 z_vec_cpp <- function(mu, sigma) {
     .Call('_DiscreteDists_z_vec_cpp', PACKAGE = 'DiscreteDists', mu, sigma)
 }
@@ -27,6 +32,10 @@ d1_dldm_compo_cpp <- function(lambda, nu, max_terms = 1000L, tol = 1e-10) {
     .Call('_DiscreteDists_d1_dldm_compo_cpp', PACKAGE = 'DiscreteDists', lambda, nu, max_terms, tol)
 }
 
+#' Function to obtain d1 vectorial in the score for COMPO with C++.
+#' @param mu numeric vector.
+#' @param sigma numeric vector.
+#' @export
 d1_vec_dldm_compo_cpp <- function(mu, sigma) {
     .Call('_DiscreteDists_d1_vec_dldm_compo_cpp', PACKAGE = 'DiscreteDists', mu, sigma)
 }
@@ -42,6 +51,10 @@ d2_dldd_compo_cpp <- function(lambda, nu, max_terms = 1000L, tol = 1e-10) {
     .Call('_DiscreteDists_d2_dldd_compo_cpp', PACKAGE = 'DiscreteDists', lambda, nu, max_terms, tol)
 }
 
+#' Function to obtain d2 vectorial in the score for COMPO with C++.
+#' @param mu numeric vector.
+#' @param sigma numeric vector.
+#' @export
 d2_vec_dldd_compo_cpp <- function(mu, sigma) {
     .Call('_DiscreteDists_d2_vec_dldd_compo_cpp', PACKAGE = 'DiscreteDists', mu, sigma)
 }

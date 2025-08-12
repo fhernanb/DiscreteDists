@@ -32,6 +32,11 @@ double z_cpp(double lambda, double nu, int max_terms = 1000,
   return sum;
 }
 
+//' Function to obtain Z vectorial for COMPO with C++.
+//' @param mu numeric vector.
+//' @param sigma numeric vector.
+//' @export
+//' @return returns the z value.
 // [[Rcpp::export]]
 NumericVector z_vec_cpp(NumericVector mu, NumericVector sigma) {
 
@@ -77,6 +82,10 @@ NumericVector z_vec_cpp(NumericVector mu, NumericVector sigma) {
    return sum;
  }
 
+//' Function to obtain d1 vectorial in the score for COMPO with C++.
+//' @param mu numeric vector.
+//' @param sigma numeric vector.
+//' @export
 // [[Rcpp::export]]
 NumericVector d1_vec_dldm_compo_cpp(NumericVector mu, NumericVector sigma) {
 
@@ -123,6 +132,10 @@ NumericVector d1_vec_dldm_compo_cpp(NumericVector mu, NumericVector sigma) {
    return sum;
 }
 
+//' Function to obtain d2 vectorial in the score for COMPO with C++.
+//' @param mu numeric vector.
+//' @param sigma numeric vector.
+//' @export
 // [[Rcpp::export]]
 NumericVector d2_vec_dldd_compo_cpp(NumericVector mu, NumericVector sigma) {
 
