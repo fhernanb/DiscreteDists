@@ -48,12 +48,13 @@ dBerG <- function(x, mu, sigma, log = FALSE){
   x <- as.integer(x + .5)
   if (any(x < 0))
     stop("'x' must be non-negative")
-  # if (!any(sigma > abs(mu - 1)))
-  #   stop("'sigma' must be greater than 'abs(mu - 1)'")
   dBerG <- ifelse(x == 0,
                   (1 - mu + sigma)/(1 + mu + sigma),
                   4*mu*(mu + sigma - 1)^(x - 1)/
                     (mu + sigma + 1)^(x + 1))
+
+  no_cond <- sigma <= abs(mu-1)
+  dBerG[no_cond] <- 0
 
   if(log){
     dBerG <- ifelse(dBerG < 1e-323, 1e-323, dBerG)
@@ -68,13 +69,14 @@ pBerG <- function(q, mu, sigma, lower.tail = TRUE, log.p = FALSE){
     stop("mu must be finite and non-negative")
   if (any(!is.finite(sigma)) || any(sigma < 0))
     stop("sigma must be finite and non-negative")
-  if (!any(sigma > abs(mu - 1)))
-    stop("'sigma' must be greater than 'abs(mu - 1)'")
   pBerG <- ifelse(q < 0,
                   0,
                   (1 - mu + sigma)/(1 + mu + sigma) +
                     2*mu/(1 + mu + sigma)*(1 - ((mu + sigma - 1)/
                                                   (mu + sigma + 1))^q))
+  no_cond <- sigma <= abs(mu-1)
+  pBerG[no_cond] <- 0
+
   if (!lower.tail) pBerG <- 1 - pBerG
   if(log.p)
     log(pBerG)
@@ -100,13 +102,13 @@ qBerG <- function(p, mu, sigma, lower.tail = TRUE, log.p = FALSE){
     stop("mu must be finite and non-negative")
   if (any(!is.finite(sigma)) || any(sigma < 0))
     stop("sigma must be finite and non-negative")
-  if (!any(sigma > abs(mu - 1)))
-    stop("'sigma' must be greater than 'abs(mu - 1)'")
   if (log.p) p <- exp(p)
   if (!lower.tail) p <- 1 - p
   numq <- log(1 - p) + log(mu + sigma + 1) - log(2*mu)
   denq <- log(mu + sigma - 1) - log(mu + sigma + 1)
   qBerG <- ifelse(p >= (1 - mu + sigma)/(1 + mu + sigma),
                   ceiling(numq/denq), 0)
+  no_cond <- sigma <= abs(mu-1)
+  qBerG[no_cond] <- 0
   qBerG
 }

@@ -218,20 +218,11 @@ has a support 0, 1, 2, ... and mass function given by</p>
 <span class="r-in"><span>               sigma.fo<span class="op">=</span><span class="op">~</span><span class="fl">1</span>,</span></span>
 <span class="r-in"><span>               family<span class="op">=</span><span class="va">BerG</span>, data<span class="op">=</span><span class="va">grazing</span>,</span></span>
 <span class="r-in"><span>               control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.control.html" class="external-link">gamlss.control</a></span><span class="op">(</span>n.cyc<span class="op">=</span><span class="fl">500</span>, trace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 1: Global Deviance = 353.8748 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 2: Global Deviance = 353.179 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 3: Global Deviance = 352.7835 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 4: Global Deviance = 352.5643 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 5: Global Deviance = 352.4453 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 6: Global Deviance = 352.383 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 7: Global Deviance = 352.3507 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 8: Global Deviance = 352.3345 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 9: Global Deviance = 352.326 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 10: Global Deviance = 352.3218 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 11: Global Deviance = 352.3198 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 12: Global Deviance = 352.3188 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 13: Global Deviance = 352.3182 </span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 1: Global Deviance = 16648.84 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 2: Global Deviance = 16648.52 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 3: Global Deviance = 16648.37 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 4: Global Deviance = 16648.32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GAMLSS-RS iteration 5: Global Deviance = 16648.32 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ******************************************************************</span>
@@ -247,9 +238,9 @@ has a support 0, 1, 2, ... and mass function given by</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Mu link function:  log</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Mu Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   2.0974     0.1566  13.394  &lt; 2e-16 ***</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> whenAfter     0.7599     0.2508   3.030 0.003646 ** </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> grazedFeral  -0.9257     0.2444  -3.787 0.000364 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   2.1461     0.1698  12.642  &lt; 2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> whenAfter     0.7472     0.3174   2.354  0.02199 *  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> grazedFeral  -0.9188     0.3001  -3.062  0.00333 ** </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -257,7 +248,7 @@ has a support 0, 1, 2, ... and mass function given by</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sigma link function:  log</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sigma Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   2.0820     0.1558   13.36   &lt;2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   2.1263     0.1717   12.38   &lt;2e-16 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -265,11 +256,11 @@ has a support 0, 1, 2, ... and mass function given by</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of observations in the fit:  62 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom for the fit:  4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Residual Deg. of Freedom:  58 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       at cycle:  13 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       at cycle:  5 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Global Deviance:     352.3182 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             AIC:     360.3182 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             SBC:     368.8267 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Global Deviance:     16648.32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             AIC:     16656.32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             SBC:     16664.83 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ******************************************************************</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

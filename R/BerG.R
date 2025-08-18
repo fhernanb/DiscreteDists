@@ -63,58 +63,61 @@ BerG <- function (mu.link="log", sigma.link="log") {
 
                  # First derivates
                  dldm = function(y, mu, sigma){
-                   ifelse(y == 0,
-                          2*(sigma + 1)/((mu - sigma - 1)*(mu + sigma + 1)),
-                          1/mu + (y - 1)/(mu + sigma - 1) - (y + 1)/(mu + sigma + 1)
+                   res <- ifelse(y == 0,
+                                 2*(sigma + 1)/((mu - sigma - 1)*(mu + sigma + 1)),
+                                 1/mu + (y - 1)/(mu + sigma - 1) - (y + 1)/(mu + sigma + 1)
                    )
+                   res
                  },
 
                  dldd = function(y, mu, sigma){
-                   ifelse(y == 0,
-                          2*mu/((sigma - mu + 1)*(sigma + mu + 1)),
-                          (y - 1)/(mu + sigma - 1) - (y + 1)/(mu + sigma + 1)
+                   res <- ifelse(y == 0,
+                                 2*mu/((sigma - mu + 1)*(sigma + mu + 1)),
+                                 (y - 1)/(mu + sigma - 1) - (y + 1)/(mu + sigma + 1)
                    )
+                   res
                  },
 
                  # Second derivates
                  d2ldm2 = function(y, mu, sigma){
-                   ifelse(y == 0,
-                          -4*(sigma + 1)*mu/((mu - sigma - 1)^2*(mu + sigma + 1)^2),
-                          (y + 1)/(mu + sigma + 1)^2 + (1 - y)/(mu + sigma - 1)^2 - 1/mu^2
+                   res <- ifelse(y == 0,
+                                 -4*(sigma + 1)*mu/((mu - sigma - 1)^2*(mu + sigma + 1)^2),
+                                 (y + 1)/(mu + sigma + 1)^2 + (1 - y)/(mu + sigma - 1)^2 - 1/mu^2
                    )
+                   res
                  },
 
                  d2ldd2 = function(y, mu, sigma){
-                   ifelse(y == 0,
-                          -4*mu*(sigma + 1)/((sigma - mu + 1)^2 * (sigma + mu + 1)^2),
-                          (y + 1)/(mu + sigma + 1)^2 + (1 - y)/(mu + sigma - 1)^2
+                   res <- ifelse(y == 0,
+                                 -4*mu*(sigma + 1)/((sigma - mu + 1)^2 * (sigma + mu + 1)^2),
+                                 (y + 1)/(mu + sigma + 1)^2 + (1 - y)/(mu + sigma - 1)^2
                    )
+                   res
                  },
                  d2ldmdd = function(y, mu, sigma){
-                   ifelse(y == 0,
-                          2*((sigma + 1)^2 + mu^2)/((sigma - mu + 1)^2*(mu + sigma + 1)^2),
-                          2*((mu + sigma)*(mu + sigma - 2*y) + 1)/
-                            ((mu + sigma + 1)^2*(mu + sigma - 1)^2)
+                   res <- ifelse(y == 0,
+                                 2*((sigma + 1)^2 + mu^2)/((sigma - mu + 1)^2*(mu + sigma + 1)^2),
+                                 2*((mu + sigma)*(mu + sigma - 2*y) + 1)/
+                                   ((mu + sigma + 1)^2*(mu + sigma - 1)^2)
                    )
+                   res
                  },
 
-         G.dev.incr = function(y, mu, sigma, pw=1, ...) -2*dBerG(y, mu, sigma, log=TRUE),
+                 G.dev.incr = function(y, mu, sigma, pw=1, ...) -2*dBerG(y, mu, sigma, log=TRUE),
 
-         rqres = expression(rqres(pfun="pBerG", type="Discrete",
-                                  ymin=0, y=y, mu=mu, sigma=sigma)),
+                 rqres = expression(rqres(pfun="pBerG", type="Discrete",
+                                          ymin=0, y=y, mu=mu, sigma=sigma)),
 
-         mu.initial = expression({ mu <- mean(y) }),
-         sigma.initial = expression({ sigma <- var(y)/mean(y)} ),
+                 mu.initial = expression({ mu <- mean(y) }),
+                 sigma.initial = expression({ sigma <- var(y)/mean(y)} ),
 
-         mu.valid = function(mu) all(mu > 0),
-         sigma.valid = function(mu, sigma) {
-           all(sigma > mu-1 & sigma < 1-mu)
-         },
+                 mu.valid = function(mu) all(mu > 0),
+                 sigma.valid = function(sigma) all(sigma > 0),
 
-         y.valid = function(y)  all(y >= 0),
-         mean = function(mu, sigma) mu,
-         variance = function(mu, sigma) mu * sigma
-    ),
-    class = c("gamlss.family","family"))
+                 y.valid = function(y)  all(y >= 0),
+                 mean = function(mu, sigma) mu,
+                 variance = function(mu, sigma) mu * sigma
+  ),
+  class = c("gamlss.family","family"))
 }
 
