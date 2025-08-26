@@ -10,6 +10,7 @@ using namespace Rcpp;
 //' @param nu numeric value for sigma.
 //' @param max_terms numeric value.
 //' @param tol numeric value.
+//' @keywords internal
 //' @export
 //' @return returns the z value.
 // [[Rcpp::export]]
@@ -35,6 +36,7 @@ double z_cpp(double lambda, double nu, int max_terms = 1000,
 //' Function to obtain Z vectorial for COMPO with C++.
 //' @param mu numeric vector.
 //' @param sigma numeric vector.
+//' @keywords internal
 //' @export
 //' @return returns the z value.
 // [[Rcpp::export]]
@@ -59,6 +61,7 @@ NumericVector z_vec_cpp(NumericVector mu, NumericVector sigma) {
 //' @param nu numeric value for sigma.
 //' @param max_terms numeric value.
 //' @param tol numeric value.
+//' @keywords internal
 //' @export
 //' @return returns the z value.
 // [[Rcpp::export]]
@@ -85,6 +88,7 @@ NumericVector z_vec_cpp(NumericVector mu, NumericVector sigma) {
 //' Function to obtain d1 vectorial in the score for COMPO with C++.
 //' @param mu numeric vector.
 //' @param sigma numeric vector.
+//' @keywords internal
 //' @export
 // [[Rcpp::export]]
 NumericVector d1_vec_dldm_compo_cpp(NumericVector mu, NumericVector sigma) {
@@ -108,6 +112,7 @@ NumericVector d1_vec_dldm_compo_cpp(NumericVector mu, NumericVector sigma) {
 //' @param nu numeric value for sigma.
 //' @param max_terms numeric value.
 //' @param tol numeric value.
+//' @keywords internal
 //' @export
 //' @return returns the z value.
 // [[Rcpp::export]]
@@ -135,6 +140,7 @@ NumericVector d1_vec_dldm_compo_cpp(NumericVector mu, NumericVector sigma) {
 //' Function to obtain d2 vectorial in the score for COMPO with C++.
 //' @param mu numeric vector.
 //' @param sigma numeric vector.
+//' @keywords internal
 //' @export
 // [[Rcpp::export]]
 NumericVector d2_vec_dldd_compo_cpp(NumericVector mu, NumericVector sigma) {
@@ -158,6 +164,7 @@ NumericVector d2_vec_dldd_compo_cpp(NumericVector mu, NumericVector sigma) {
 //' @param mu numeric value for nu.
 //' @param sigma numeric value for sigma.
 //' @param log logical value for log.
+//' @keywords internal
 //' @export
 //' @return returns the pmf for a single value x.
 // [[Rcpp::export]]
@@ -189,6 +196,7 @@ NumericVector d2_vec_dldd_compo_cpp(NumericVector mu, NumericVector sigma) {
 //' @param mu numeric value for mu.
 //' @param sigma numeric value for sigma.
 //' @param log logical value for log.
+//' @keywords internal
 //' @export
 //' @return returns the pmf for a vector.
 // [[Rcpp::export]]

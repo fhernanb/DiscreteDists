@@ -21,3 +21,4 @@ returns the pmf for a single value x.
 \description{
 Function to obtain the dCOMPO for a single value x
 }
+\keyword{internal}

@@ -2,17 +2,17 @@
 % Please edit documentation in R/DsPA.R
 \name{estim_mu_sigma_DsPA}
 \alias{estim_mu_sigma_DsPA}
-\title{estim_mu_sigma_DsPA}
+\title{Initial values for DsPA}
 \usage{
 estim_mu_sigma_DsPA(y)
 }
 \arguments{
-\item{y}{vector with the random sample}
+\item{y}{vector with the response variable.}
+}
+\value{
+returns a vector with the MLE estimations.
 }
 \description{
-This function generates initial values for DsPA distribution
+This function generates initial values for the parameters.
 }
-\examples{
-y <- rDsPA(n=100, mu=0.5 , sigma=0.5)
-estim_mu_sigma_DsPA(y=y)
-}
+\keyword{internal}

@@ -21,3 +21,4 @@ returns the pmf for a vector.
 \description{
 Function to obtain the dHYPERPO for a vector x
 }
+\keyword{internal}

@@ -6,6 +6,7 @@
 #' @param nu numeric value for sigma.
 #' @param max_terms numeric value.
 #' @param tol numeric value.
+#' @keywords internal
 #' @export
 #' @return returns the z value.
 z_cpp <- function(lambda, nu, max_terms = 1000L, tol = 1e-10) {
@@ -15,6 +16,7 @@ z_cpp <- function(lambda, nu, max_terms = 1000L, tol = 1e-10) {
 #' Function to obtain Z vectorial for COMPO with C++.
 #' @param mu numeric vector.
 #' @param sigma numeric vector.
+#' @keywords internal
 #' @export
 #' @return returns the z value.
 z_vec_cpp <- function(mu, sigma) {
@@ -26,6 +28,7 @@ z_vec_cpp <- function(mu, sigma) {
 #' @param nu numeric value for sigma.
 #' @param max_terms numeric value.
 #' @param tol numeric value.
+#' @keywords internal
 #' @export
 #' @return returns the z value.
 d1_dldm_compo_cpp <- function(lambda, nu, max_terms = 1000L, tol = 1e-10) {
@@ -35,6 +38,7 @@ d1_dldm_compo_cpp <- function(lambda, nu, max_terms = 1000L, tol = 1e-10) {
 #' Function to obtain d1 vectorial in the score for COMPO with C++.
 #' @param mu numeric vector.
 #' @param sigma numeric vector.
+#' @keywords internal
 #' @export
 d1_vec_dldm_compo_cpp <- function(mu, sigma) {
     .Call('_DiscreteDists_d1_vec_dldm_compo_cpp', PACKAGE = 'DiscreteDists', mu, sigma)
@@ -45,6 +49,7 @@ d1_vec_dldm_compo_cpp <- function(mu, sigma) {
 #' @param nu numeric value for sigma.
 #' @param max_terms numeric value.
 #' @param tol numeric value.
+#' @keywords internal
 #' @export
 #' @return returns the z value.
 d2_dldd_compo_cpp <- function(lambda, nu, max_terms = 1000L, tol = 1e-10) {
@@ -54,6 +59,7 @@ d2_dldd_compo_cpp <- function(lambda, nu, max_terms = 1000L, tol = 1e-10) {
 #' Function to obtain d2 vectorial in the score for COMPO with C++.
 #' @param mu numeric vector.
 #' @param sigma numeric vector.
+#' @keywords internal
 #' @export
 d2_vec_dldd_compo_cpp <- function(mu, sigma) {
     .Call('_DiscreteDists_d2_vec_dldd_compo_cpp', PACKAGE = 'DiscreteDists', mu, sigma)
@@ -64,6 +70,7 @@ d2_vec_dldd_compo_cpp <- function(mu, sigma) {
 #' @param mu numeric value for nu.
 #' @param sigma numeric value for sigma.
 #' @param log logical value for log.
+#' @keywords internal
 #' @export
 #' @return returns the pmf for a single value x.
 dCOMPO_single <- function(x, mu = 1, sigma = 1, log = FALSE) {
@@ -75,6 +82,7 @@ dCOMPO_single <- function(x, mu = 1, sigma = 1, log = FALSE) {
 #' @param mu numeric value for mu.
 #' @param sigma numeric value for sigma.
 #' @param log logical value for log.
+#' @keywords internal
 #' @export
 #' @return returns the pmf for a vector.
 dCOMPO_vec <- function(x, mu, sigma, log) {
@@ -86,6 +94,7 @@ dCOMPO_vec <- function(x, mu, sigma, log) {
 #' @param lambda numeric value for lambda.
 #' @param maxiter_series numeric value.
 #' @param tol numeric value.
+#' @keywords internal
 #' @export
 #' @return returns the F11 value.
 f11_cpp <- function(gamma, lambda, maxiter_series = 10000L, tol = 1.0e-10) {
@@ -97,6 +106,7 @@ f11_cpp <- function(gamma, lambda, maxiter_series = 10000L, tol = 1.0e-10) {
 #' @param mu numeric value for nu.
 #' @param sigma numeric value for sigma.
 #' @param log logical value for log.
+#' @keywords internal
 #' @export
 #' @return returns the pmf for a single value x.
 dHYPERPO_single <- function(x, mu = 1, sigma = 1, log = FALSE) {
@@ -108,6 +118,7 @@ dHYPERPO_single <- function(x, mu = 1, sigma = 1, log = FALSE) {
 #' @param mu numeric value for mu.
 #' @param sigma numeric value for sigma.
 #' @param log logical value for log.
+#' @keywords internal
 #' @export
 #' @return returns the pmf for a vector.
 dHYPERPO_vec <- function(x, mu, sigma, log) {

@@ -21,3 +21,4 @@ returns the F11 value.
 \description{
 Function to obtain F11 with C++.
 }
+\keyword{internal}

@@ -21,3 +21,4 @@ returns the z value.
 \description{
 Function to obtain d2 in the score for COMPO with C++.
 }
+\keyword{internal}

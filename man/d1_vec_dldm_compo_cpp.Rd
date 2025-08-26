@@ -14,3 +14,4 @@ d1_vec_dldm_compo_cpp(mu, sigma)
 \description{
 Function to obtain d1 vectorial in the score for COMPO with C++.
 }
+\keyword{internal}

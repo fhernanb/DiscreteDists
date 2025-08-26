@@ -14,3 +14,4 @@ d2_vec_dldd_compo_cpp(mu, sigma)
 \description{
 Function to obtain d2 vectorial in the score for COMPO with C++.
 }
+\keyword{internal}

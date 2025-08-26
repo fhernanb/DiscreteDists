@@ -10,6 +10,7 @@ using namespace Rcpp;
 //' @param lambda numeric value for lambda.
 //' @param maxiter_series numeric value.
 //' @param tol numeric value.
+//' @keywords internal
 //' @export
 //' @return returns the F11 value.
 // [[Rcpp::export]]
@@ -42,6 +43,7 @@ using namespace Rcpp;
 //' @param mu numeric value for nu.
 //' @param sigma numeric value for sigma.
 //' @param log logical value for log.
+//' @keywords internal
 //' @export
 //' @return returns the pmf for a single value x.
 // [[Rcpp::export]]
@@ -74,6 +76,7 @@ using namespace Rcpp;
 //' @param mu numeric value for mu.
 //' @param sigma numeric value for sigma.
 //' @param log logical value for log.
+//' @keywords internal
 //' @export
 //' @return returns the pmf for a vector.
 // [[Rcpp::export]]

@@ -2,17 +2,17 @@
 % Please edit documentation in R/DPERKS.R
 \name{estim_mu_sigma_DPERKS}
 \alias{estim_mu_sigma_DPERKS}
-\title{estim_mu_sigma_DPERKS}
+\title{Initial values for DPERKS}
 \usage{
 estim_mu_sigma_DPERKS(y)
 }
 \arguments{
-\item{y}{vector with the random sample}
+\item{y}{vector with the response variable.}
+}
+\value{
+returns a vector with the MLE estimations.
 }
 \description{
-This function generates initial values for DPERKS distribution.
+This function generates initial values for the parameters.
 }
-\examples{
-y <- rDPERKS(n=100, mu=0.1, sigma=0.1)
-estim_mu_sigma_DPERKS(y=y)
-}
+\keyword{internal}

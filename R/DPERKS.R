@@ -110,16 +110,13 @@ DPERKS <- function(mu.link="log", sigma.link="log") {
   class=c("gamlss.family", "family"))
 }
 #'
-#' estim_mu_sigma_DPERKS
-#'
-#' This function generates initial values for DPERKS distribution.
-#'
-#' @param y vector with the random sample
-#' @examples
-#' y <- rDPERKS(n=100, mu=0.1, sigma=0.1)
-#' estim_mu_sigma_DPERKS(y=y)
-#' @importFrom stats optim
+#' Initial values for DPERKS
+#' @description This function generates initial values for the parameters.
+#' @param y vector with the response variable.
+#' @return returns a vector with the MLE estimations.
+#' @keywords internal
 #' @export
+#' @importFrom stats optim
 estim_mu_sigma_DPERKS <- function(y) {
   mod <- optim(par=c(0, 0),
                fn=logLik_DPERKS,
@@ -131,17 +128,12 @@ estim_mu_sigma_DPERKS <- function(y) {
   names(res) <- c("mu_hat", "sigma_hat")
   return(res)
 }
-#'
-#' logLik_DPERKS
-#'
-#' This is an auxiliar function to obtain the logLik for DPERKS.
-#'
-#' @param logparam vector with the values for mu sigma
-#' @param x vector with the data
-#' @examples
-#' y <- rDPERKS(n=100, mu=0.5, sigma=0.5)
-#' logLik_DPERKS(logparam=c(0, 0), x=y)
-#' @importFrom stats optim
+#' logLik function for DPERKS
+#' @description Calculates logLik for DPERKS distribution.
+#' @param logparam vector with parameters in log scale.
+#' @param x vector with the response variable.
+#' @return returns the loglikelihood given the parameters and random sample.
+#' @keywords internal
 #' @export
 logLik_DPERKS <- function(logparam=c(0, 0), x){
   return(sum(dDPERKS(x,

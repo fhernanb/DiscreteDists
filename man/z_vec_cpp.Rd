@@ -17,3 +17,4 @@ returns the z value.
 \description{
 Function to obtain Z vectorial for COMPO with C++.
 }
+\keyword{internal}

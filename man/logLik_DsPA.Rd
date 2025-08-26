@@ -2,21 +2,19 @@
 % Please edit documentation in R/DsPA.R
 \name{logLik_DsPA}
 \alias{logLik_DsPA}
-\title{logLik_DsPA
-This is an auxiliar function to obtain the logLik for DsPA}
+\title{logLik function for DsPA}
 \usage{
 logLik_DsPA(param = c(0, 0), x)
 }
 \arguments{
-\item{param}{vector with the values for mu and sigma}
+\item{x}{vector with the response variable.}
 
-\item{x}{vector with the data}
+\item{vector}{with parameters.}
+}
+\value{
+returns the loglikelihood given the parameters and random sample.
 }
 \description{
-logLik_DsPA
-This is an auxiliar function to obtain the logLik for DsPA
+Calculates logLik for DsPA distribution.
 }
-\examples{
-y <- rDsPA(n=100, mu=0.5 , sigma=0.5)
-logLik_DsPA(param=c(0, 0), x=y)
-}
+\keyword{internal}

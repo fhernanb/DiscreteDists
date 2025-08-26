@@ -21,3 +21,4 @@ returns the z value.
 \description{
 Function to obtain Z for COMPO with C++.
 }
+\keyword{internal}

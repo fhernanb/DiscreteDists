@@ -131,16 +131,13 @@ DsPA <- function (mu.link="log", sigma.link="logit") {
   class=c("gamlss.family", "family"))
 }
 #'
-#' estim_mu_sigma_DsPA
-#'
-#' This function generates initial values for DsPA distribution
-#'
-#' @param y vector with the random sample
-#' @examples
-#' y <- rDsPA(n=100, mu=0.5 , sigma=0.5)
-#' estim_mu_sigma_DsPA(y=y)
-#' @importFrom stats optim
+#' Initial values for DsPA
+#' @description This function generates initial values for the parameters.
+#' @param y vector with the response variable.
+#' @return returns a vector with the MLE estimations.
+#' @keywords internal
 #' @export
+#' @importFrom stats optim
 estim_mu_sigma_DsPA <- function(y){
   mod <- optim(par=c (0, 0),
                fn=logLik_DsPA,
@@ -155,16 +152,12 @@ estim_mu_sigma_DsPA <- function(y){
   names(res) <- c("mu_hat", "sigma_hat")
   return(res)
 }
-#'
-#' logLik_DsPA
-#' This is an auxiliar function to obtain the logLik for DsPA
-#'
-#' @param param  vector with the values for mu and sigma
-#' @param  x vector with the data
-#' @examples
-#' y <- rDsPA(n=100, mu=0.5 , sigma=0.5)
-#' logLik_DsPA(param=c(0, 0), x=y)
-#' @importFrom stats optim
+#' logLik function for DsPA
+#' @description Calculates logLik for DsPA distribution.
+#' @param vector with parameters.
+#' @param x vector with the response variable.
+#' @return returns the loglikelihood given the parameters and random sample.
+#' @keywords internal
 #' @export
 logLik_DsPA <- function(param=c (0, 0), x){
   logit_inv <- function(x) exp(x) / (exp(x) + 1)
