@@ -5,9 +5,9 @@
 #' @description
 #' The function \code{DPERKS()} defines the
 #' Discrete Perks distribution
-#' - a two parameter distribution -
-#' as a gamlss.family object, allowing it to be used for model
-#' fitting with the \code{gamlss()} function in GAMLSS.
+#' a two parameter distribution,
+#' for a \code{gamlss.family} object to be used in GAMLSS
+#' fitting using the function \code{gamlss()}.
 #'
 #' @param mu.link defines the mu.link, with "log" link as the default for the mu parameter.
 #' @param sigma.link defines the sigma.link, with "log" link as the default for the sigma.
@@ -71,41 +71,6 @@ DPERKS <- function(mu.link="log", sigma.link="log") {
                  },
 
                  # Segundas derivadas manuales
-
-                 # d2ldm2 = function(y, mu, sigma) {
-                 #   dm   <- gamlss::numeric.deriv(dDPERKS(y, mu, sigma, log=TRUE),
-                 #                                 theta="mu",
-                 #                                 delta=0.00001)
-                 #   dldm <- as.vector(attr(dm, "gradient"))
-                 #   d2ldm2 <- - dldm * dldm
-                 #   d2ldm2 <- ifelse(d2ldm2 < -1e-15, d2ldm2, -1e-15)
-                 #   d2ldm2
-                 # },
-                 #
-                 # d2ldmdd = function(y, mu, sigma) {
-                 #   dm   <- gamlss::numeric.deriv(dDPERKS(y, mu, sigma, log=TRUE),
-                 #                                 theta="mu",
-                 #                                 delta=0.00001)
-                 #   dldm <- as.vector(attr(dm, "gradient"))
-                 #   dd   <- gamlss::numeric.deriv(dDPERKS(y, mu, sigma, log=TRUE),
-                 #                                 theta="sigma",
-                 #                                 delta=0.00001)
-                 #   dldd <- as.vector(attr(dd, "gradient"))
-                 #
-                 #   d2ldmdd <- - dldm * dldd
-                 #   d2ldmdd <- ifelse(d2ldmdd < -1e-15, d2ldmdd, -1e-15)
-                 #   d2ldmdd
-                 # },
-                 #
-                 # d2ldd2  = function(y, mu, sigma) {
-                 #   dd   <- gamlss::numeric.deriv(dDPERKS(y, mu, sigma, log=TRUE),
-                 #                                 theta="sigma",
-                 #                                 delta=0.00001)
-                 #   dldd <- as.vector(attr(dd, "gradient"))
-                 #   d2ldd2 <- - dldd * dldd
-                 #   d2ldd2 <- ifelse(d2ldd2 < -1e-15, d2ldd2, -1e-15)
-                 #   d2ldd2
-                 # },
 
                  d2ldm2 = function(y, mu, sigma) {
                    dldm <- 1/mu + 1/(mu+1) - exp(sigma*y)/(1+mu*exp(sigma*y)) - exp(sigma*(y+1))/(1+mu*exp(sigma*(y+1)))

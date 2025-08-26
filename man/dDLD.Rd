@@ -128,7 +128,8 @@ plot(p, qxx, type="S", lwd=2, col="green3", ylab="quantiles",
 
 }
 \references{
-Bakouch, H. S., Jazi, M. A., & Nadarajah, S. (2014). A new discrete distribution. Statistics, 48(1), 200-240.
+Bakouch, H. S., Jazi, M. A., & Nadarajah, S. (2014). A new
+discrete distribution. Statistics, 48(1), 200-240.
 }
 \seealso{
 \link{DLD}.

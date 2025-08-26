@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{obtaining_lambda}
 \alias{obtaining_lambda}
-\title{Auxiliar function to obtain lambda from E(X)}
+\title{Auxiliar function to obtain lambda from E(X) in HYPERPO2}
 \usage{
 obtaining_lambda(media, gamma)
 }
@@ -15,6 +15,6 @@ obtaining_lambda(media, gamma)
 returns the value of lambda to ensure the mean and gamma.
 }
 \description{
-This function implements the procedure given in page 150.
+This function implements the procedure given in page 152.
 }
 \keyword{internal}

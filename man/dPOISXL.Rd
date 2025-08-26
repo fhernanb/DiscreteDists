@@ -113,7 +113,11 @@ plot(p, qxx, type="s", lwd=2, col="green3", ylab="quantiles",
      main="Quantiles for Poisson XLindley mu=0.3")
 }
 \references{
-Ahsan-ul-Haq, M., Al-Bossly, A., El-Morshedy, M., & Eliwa, M. S. (2022). Poisson XLindley distribution for count data: statistical and reliability properties with estimation techniques and inference. Computational Intelligence and neuroscience, 2022(1), 6503670.
+Ahsan-ul-Haq, M., Al-Bossly, A., El-Morshedy, M., & Eliwa,
+M. S. (2022). Poisson XLindley distribution for count data:
+statistical and reliability properties with estimation
+techniques and inference. Computational Intelligence and
+neuroscience, 2022(1), 6503670.
 }
 \seealso{
 \link{POISXL}.

@@ -124,8 +124,8 @@ estim_mu_sigma_HYPERPO2 <- function(y) {
   names(res) <- c("mu_hat", "sigma_hat")
   return(res)
 }
-#' Auxiliar function to obtain lambda from E(X)
-#' @description This function implements the procedure given in page 150.
+#' Auxiliar function to obtain lambda from E(X) in HYPERPO2
+#' @description This function implements the procedure given in page 152.
 #' @param media the value for the mean or E(X).
 #' @param gamma the value for the gamma parameter.
 #' @return returns the value of lambda to ensure the mean and gamma.
@@ -133,16 +133,20 @@ estim_mu_sigma_HYPERPO2 <- function(y) {
 #' @export
 obtaining_lambda <- function(media, gamma) {
   # Begin aux function
-  fun <- function(x) x-(gamma-1)*(1-1/f11_cpp(gamma, x))-media
+  fun <- function(x, media, gamma) x-(gamma-1)*(1-1/f11_cpp(gamma, x))-media
   fun <- Vectorize(fun)
   # End aux function
+  #if (gamma <= 1.05 | gamma >= 0.95)
   if (gamma == 1)
     result <- media
   else {
-    res <- uniroot(f=fun,
-                   lower=min(media, max(media+gamma-1, gamma*media)),
-                   upper=max(media, min(media+gamma-1, gamma*media)))
-    result <- res$root
+    #mini <- min(media, max(media+gamma-1, gamma*media))
+    mini <- 0.000001
+    maxi <- max(media, min(media+gamma-1, gamma*media))
+    res <- try(uniroot(f=fun,
+                       lower=mini, upper=maxi,
+                       media=media, gamma=gamma))
+    result <- ifelse(class(res)=="try-error", media, res$root)
   }
   result
 }

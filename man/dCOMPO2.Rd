@@ -5,7 +5,7 @@
 \alias{pCOMPO2}
 \alias{qCOMPO2}
 \alias{rCOMPO2}
-\title{The COMPO2 distribution}
+\title{The COMPO2 distribution (with mu as mean)}
 \usage{
 dCOMPO2(x, mu, sigma, log = FALSE)
 

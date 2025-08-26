@@ -15,7 +15,11 @@
 #' @param lower.tail logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \code{P[X > x]}.
 #'
 #' @references
-#' Ahsan-ul-Haq, M., Al-Bossly, A., El-Morshedy, M., & Eliwa, M. S. (2022). Poisson XLindley distribution for count data: statistical and reliability properties with estimation techniques and inference. Computational Intelligence and neuroscience, 2022(1), 6503670.
+#' Ahsan-ul-Haq, M., Al-Bossly, A., El-Morshedy, M., & Eliwa,
+#' M. S. (2022). Poisson XLindley distribution for count data:
+#' statistical and reliability properties with estimation
+#' techniques and inference. Computational Intelligence and
+#' neuroscience, 2022(1), 6503670.
 #'
 #' @seealso \link{POISXL}.
 #'

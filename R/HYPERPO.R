@@ -5,15 +5,17 @@
 #' @description
 #' The function \code{HYPERPO()} defines the
 #' hyper Poisson distribution
-#' - a two parameter distribution -
-#' as a gamlss.family object, allowing it to be used for model
-#' fitting with the \code{gamlss()} function in GAMLSS.
+#' a two parameter distribution,
+#' for a \code{gamlss.family} object to be used in GAMLSS
+#' fitting using the function \code{gamlss()}.
 #'
 #' @param mu.link defines the mu.link, with "log" link as the default for the mu parameter.
 #' @param sigma.link defines the sigma.link, with "log" link as the default for the sigma.
 #'
 #' @references
-#' Sáez-Castillo, A. J., & Conde-Sánchez, A. (2013). A hyper-Poisson regression model for overdispersed and underdispersed count data. Computational Statistics & Data Analysis, 61, 148-157.
+#' Sáez-Castillo, A. J., & Conde-Sánchez, A. (2013). A hyper-Poisson regression
+#' model for overdispersed and underdispersed count data.
+#' Computational Statistics & Data Analysis, 61, 148-157.
 #'
 #' @seealso \link{dHYPERPO}.
 #'
@@ -66,7 +68,7 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
                  mu.dr    = mstats$mu.eta,
                  sigma.dr = dstats$mu.eta,
 
-                 # First derivates
+                 # First derivatives
 
                  dldm = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE),
@@ -84,7 +86,7 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
                    dldd
                  },
 
-                 # Second derivates
+                 # Second derivatives
 
                  d2ldm2 = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE),

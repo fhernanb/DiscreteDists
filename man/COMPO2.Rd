@@ -2,7 +2,7 @@
 % Please edit documentation in R/COMPO2.R
 \name{COMPO2}
 \alias{COMPO2}
-\title{The COMPO2 family}
+\title{The COMPO2 family (with mu as mean)}
 \usage{
 COMPO2(mu.link = "log", sigma.link = "identity")
 }
@@ -18,9 +18,10 @@ in the \code{gamlss()} function.
 }
 \description{
 The function \code{COMPO2()} defines the
-Conway-Maxwell-Poisson distribution #' - a two parameter distribution -
-as a gamlss.family object, allowing it to be used for model
-fitting with the \code{gamlss()} function in GAMLSS.
+Conway-Maxwell-Poisson distribution
+a two parameter distribution,
+for a \code{gamlss.family} object to be used in GAMLSS
+fitting using the function \code{gamlss()}.
 This parameterization was
 proposed by Ribeiro et al. (2020) and the main
 characteristic is that \eqn{E(X)=\mu}.

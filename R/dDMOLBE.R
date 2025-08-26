@@ -17,7 +17,11 @@
 #' @param lower.tail logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.
 #'
 #' @references
-#' Aljohani, H. M., Ahsan-ul-Haq, M., Zafar, J., Almetwally, E. M., Alghamdi, A. S., Hussam, E., & Muse, A. H. (2023). Analysis of Covid-19 data using discrete Marshall–Olkinin length biased exponential: Bayesian and frequentist approach. Scientific Reports, 13(1), 12243.
+#' Aljohani, H. M., Ahsan-ul-Haq, M., Zafar, J., Almetwally,
+#' E. M., Alghamdi, A. S., Hussam, E., & Muse, A. H. (2023).
+#' Analysis of Covid-19 data using discrete Marshall–Olkinin
+#' length biased exponential: Bayesian and frequentist approach.
+#' Scientific Reports, 13(1), 12243.
 #'
 #' @seealso \link{DMOLBE}.
 #'

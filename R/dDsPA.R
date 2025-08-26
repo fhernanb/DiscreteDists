@@ -3,7 +3,10 @@
 #' @author Maria Camila Mena Romana, \email{mamenar@unal.edu.co}
 #'
 #' @description
-#' The function \code{DsPA()} defines the Discrete
+#' These functions define the density, distribution function, quantile
+#' function and random generation for the
+#' discrete power-Ailamujia distribution
+#' with parameters \eqn{\mu} and \eqn{\sigma}.
 #'
 #' @param x,q vector of (non-negative integer) quantiles.
 #' @param p vector of probabilities.
@@ -14,7 +17,10 @@
 #' @param lower.tail logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.
 #'
 #' @references
-#' Alghamdi, A. S., Ahsan-ul-Haq, M., Babar, A., Aljohani, H. M., Afify, A. Z., & Cell, Q. E. (2022). The discrete power-Ailamujia distribution: properties, inference, and applications. AIMS Math, 7(5), 8344-8360.
+#' Alghamdi, A. S., Ahsan-ul-Haq, M., Babar, A.,
+#' Aljohani, H. M., Afify, A. Z., & Cell, Q. E. (2022).
+#' The discrete power-Ailamujia distribution: properties,
+#' inference, and applications. AIMS Math, 7(5), 8344-8360.
 #'
 #' @seealso \link{DsPA}.
 #'

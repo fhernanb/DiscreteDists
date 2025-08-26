@@ -15,7 +15,8 @@
 #' @param lower.tail logical; if TRUE (default), probabilities are \eqn{P[X <= x]}, otherwise, \eqn{P[X > x]}.
 #'
 #' @references
-#' Bakouch, H. S., Jazi, M. A., & Nadarajah, S. (2014). A new discrete distribution. Statistics, 48(1), 200-240.
+#' Bakouch, H. S., Jazi, M. A., & Nadarajah, S. (2014). A new
+#' discrete distribution. Statistics, 48(1), 200-240.
 #'
 #' @seealso \link{DLD}.
 #'

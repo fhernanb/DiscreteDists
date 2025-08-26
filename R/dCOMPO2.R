@@ -1,4 +1,4 @@
-#' The COMPO2 distribution
+#' The COMPO2 distribution (with mu as mean)
 #'
 #' @author Freddy Hernandez, \email{fhernanb@unal.edu.co}
 #'

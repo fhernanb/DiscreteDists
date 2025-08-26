@@ -4,16 +4,18 @@
 #'
 #' @description
 #' The function \code{HYPERPO2()} defines the
-#' hyper Poisson distribution
-#' - a two parameter distribution -
-#' as a gamlss.family object, allowing it to be used for model
-#' fitting with the \code{gamlss()} function in GAMLSS.
+#' hyper Poisson distribution (with mu as mean)
+#' a two parameter distribution,
+#' for a \code{gamlss.family} object to be used in GAMLSS
+#' fitting using the function \code{gamlss()}.
 #'
 #' @param mu.link defines the mu.link, with "log" link as the default for the mu parameter.
 #' @param sigma.link defines the sigma.link, with "log" link as the default for the sigma.
 #'
 #' @references
-#' Sáez-Castillo, A. J., & Conde-Sánchez, A. (2013). A hyper-Poisson regression model for overdispersed and underdispersed count data. Computational Statistics & Data Analysis, 61, 148-157.
+#' Sáez-Castillo, A. J., & Conde-Sánchez, A. (2013). A hyper-Poisson regression
+#' model for overdispersed and underdispersed count data.
+#' Computational Statistics & Data Analysis, 61, 148-157.
 #'
 #' @seealso \link{dHYPERPO2}, \link{HYPERPO}.
 #'
@@ -61,7 +63,7 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                  mu.dr    = mstats$mu.eta,
                  sigma.dr = dstats$mu.eta,
 
-                 # Primeras derivadas, por ahora son computacionales
+                 # First derivatives
 
                  dldm = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dHYPERPO2(y, mu, sigma, log=TRUE),
@@ -79,7 +81,7 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                    dldd
                  },
 
-                 # Segundas derivadas, por ahora son computacionales
+                 # Second derivatives
 
                  d2ldm2 = function(y, mu, sigma) {
                    dm   <- gamlss::numeric.deriv(dHYPERPO2(y, mu, sigma, log=TRUE),
@@ -119,8 +121,8 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                  rqres      = expression(rqres(pfun="pHYPERPO2", type="Discrete",
                                                ymin = 0, y = y, mu = mu, sigma = sigma)),
 
-                 mu.initial    = expression(mu    <- rep(estim_mu_sigma_HYPERPO2(y)[1], length(y)) ),
-                 sigma.initial = expression(sigma <- rep(estim_mu_sigma_HYPERPO2(y)[2], length(y)) ),
+                 mu.initial    = expression(mu    <- rep(mean(y), length(y))),
+                 sigma.initial = expression(sigma <- rep(1, length(y))),
 
                  mu.valid    = function(mu)    all(mu > 0),
                  sigma.valid = function(sigma) all(sigma > 0),

@@ -18,12 +18,10 @@ in the \code{gamlss()} function.
 }
 \description{
 The function \code{HYPERPO2()} defines the
-hyper Poisson distribution
-\itemize{
-\item a two parameter distribution -
-as a gamlss.family object, allowing it to be used for model
-fitting with the \code{gamlss()} function in GAMLSS.
-}
+hyper Poisson distribution (with mu as mean)
+a two parameter distribution,
+for a \code{gamlss.family} object to be used in GAMLSS
+fitting using the function \code{gamlss()}.
 }
 \details{
 The hyper-Poisson distribution with parameters \eqn{\mu} and \eqn{\sigma}
@@ -40,17 +38,17 @@ to \eqn{\lambda} parameter.
 # Generating some random values with
 # known mu and sigma
 set.seed(1234)
-y <- rHYPERPO2(n=200, mu=3, sigma=0.5)
+y <- rHYPERPO2(n=200, mu=4, sigma=1.5)
 
 # Fitting the model
 library(gamlss)
 mod1 <- gamlss(y~1, sigma.fo=~1, family=HYPERPO2,
-               control=gamlss.control(n.cyc=500, trace=FALSE))
+               control=gamlss.control(n.cyc=500, trace=TRUE))
 
 # Extracting the fitted values for mu and sigma
 # using the inverse link function
-exp(coef(mod1, what='mu'))
-exp(coef(mod1, what='sigma'))
+exp(coef(mod1, what="mu"))
+exp(coef(mod1, what="sigma"))
 
 # Example 2
 # Generating random values under some model
@@ -66,18 +64,19 @@ gendat <- function(n) {
   data.frame(y=y, x1=x1, x2=x2)
 }
 
-set.seed(1234)
-datos <- gendat(n=500)
+set.seed(12345)
+dat <- gendat(n=100)
 
-mod2 <- NULL
-mod2 <- gamlss(y~x1, sigma.fo=~x2, family=HYPERPO2, data=datos,
-               control=gamlss.control(n.cyc=500, trace=FALSE))
+mod2 <- gamlss(y~x1, sigma.fo=~x2, family=HYPERPO2, data=dat,
+               control=gamlss.control(n.cyc=500, trace=TRUE))
 
 summary(mod2)
 }
 }
 \references{
-Sáez-Castillo, A. J., & Conde-Sánchez, A. (2013). A hyper-Poisson regression model for overdispersed and underdispersed count data. Computational Statistics & Data Analysis, 61, 148-157.
+Sáez-Castillo, A. J., & Conde-Sánchez, A. (2013). A hyper-Poisson regression
+model for overdispersed and underdispersed count data.
+Computational Statistics & Data Analysis, 61, 148-157.
 }
 \seealso{
 \link{dHYPERPO2}, \link{HYPERPO}.

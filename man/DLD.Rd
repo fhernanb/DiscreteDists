@@ -17,11 +17,9 @@ in the \code{gamlss()} function.
 \description{
 The function \code{DLD()} defines the
 Discrete Lindley distribution
-\itemize{
-\item a single parameter distribution -
-as a gamlss.family object, allowing it to be used for model
-fitting with the \code{gamlss()} function in GAMLSS.
-}
+a single parameter distribution,
+for a \code{gamlss.family} object to be used in GAMLSS
+fitting using the function \code{gamlss()}.
 }
 \details{
 The Discrete Lindley distribution with parameters \eqn{\mu > 0} has a support

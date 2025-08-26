@@ -19,11 +19,9 @@ in the \code{gamlss()} function.
 \description{
 The function \code{DMOLBE()} defines the
 Discrete Marshall-Olkin Length Biased Exponential distribution
-\itemize{
-\item a two parameter distribution -
-as a gamlss.family object, allowing it to be used for model
-fitting with the \code{gamlss()} function in GAMLSS.
-}
+a two parameter distribution,
+for a \code{gamlss.family} object to be used in GAMLSS
+fitting using the function \code{gamlss()}.
 }
 \details{
 The DMOLBE distribution with parameters \eqn{\mu} and \eqn{\sigma}

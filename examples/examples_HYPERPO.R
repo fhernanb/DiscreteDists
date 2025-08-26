@@ -7,7 +7,7 @@ y <- rHYPERPO(n=200, mu=10, sigma=1.5)
 # Fitting the model
 library(gamlss)
 mod1 <- gamlss(y~1, sigma.fo=~1, family=HYPERPO,
-               control=gamlss.control(n.cyc=500, trace=FALSE))
+               control=gamlss.control(n.cyc=500, trace=TRUE))
 
 # Extracting the fitted values for mu and sigma
 # using the inverse link function
@@ -27,11 +27,10 @@ gendat <- function(n) {
   data.frame(y=y, x1=x1, x2=x2)
 }
 
-set.seed(1235)
-datos <- gendat(n=150)
+set.seed(1234)
+dat <- gendat(n=100)
 
-mod2 <- NULL
-mod2 <- gamlss(y~x1, sigma.fo=~x2, family=HYPERPO, data=datos,
-                 control=gamlss.control(n.cyc=500, trace=FALSE))
+mod2 <- gamlss(y~x1, sigma.fo=~x2, family=HYPERPO, data=dat,
+                 control=gamlss.control(n.cyc=500, trace=TRUE))
 
 summary(mod2)
