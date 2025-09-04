@@ -7,9 +7,9 @@
 logLik_DsPA(param = c(0, 0), x)
 }
 \arguments{
-\item{x}{vector with the response variable.}
+\item{param}{a vector with parameters.}
 
-\item{vector}{with parameters.}
+\item{x}{vector with the response variable.}
 }
 \value{
 returns the loglikelihood given the parameters and random sample.

@@ -158,6 +158,85 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// d1_dldm_hyperpo_cpp
+double d1_dldm_hyperpo_cpp(double mu, double sigma, int max_terms, double tol);
+RcppExport SEXP _DiscreteDists_d1_dldm_hyperpo_cpp(SEXP muSEXP, SEXP sigmaSEXP, SEXP max_termsSEXP, SEXP tolSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< int >::type max_terms(max_termsSEXP);
+    Rcpp::traits::input_parameter< double >::type tol(tolSEXP);
+    rcpp_result_gen = Rcpp::wrap(d1_dldm_hyperpo_cpp(mu, sigma, max_terms, tol));
+    return rcpp_result_gen;
+END_RCPP
+}
+// dldm_hyperpo_cpp
+NumericVector dldm_hyperpo_cpp(NumericVector x, NumericVector mu, NumericVector sigma);
+RcppExport SEXP _DiscreteDists_dldm_hyperpo_cpp(SEXP xSEXP, SEXP muSEXP, SEXP sigmaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type sigma(sigmaSEXP);
+    rcpp_result_gen = Rcpp::wrap(dldm_hyperpo_cpp(x, mu, sigma));
+    return rcpp_result_gen;
+END_RCPP
+}
+// media_2_lambda_single_cpp
+double media_2_lambda_single_cpp(double x, double media, double gamma);
+RcppExport SEXP _DiscreteDists_media_2_lambda_single_cpp(SEXP xSEXP, SEXP mediaSEXP, SEXP gammaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type media(mediaSEXP);
+    Rcpp::traits::input_parameter< double >::type gamma(gammaSEXP);
+    rcpp_result_gen = Rcpp::wrap(media_2_lambda_single_cpp(x, media, gamma));
+    return rcpp_result_gen;
+END_RCPP
+}
+// media_2_lambda_vec_cpp
+NumericVector media_2_lambda_vec_cpp(NumericVector x, NumericVector media, NumericVector gamma);
+RcppExport SEXP _DiscreteDists_media_2_lambda_vec_cpp(SEXP xSEXP, SEXP mediaSEXP, SEXP gammaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type media(mediaSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type gamma(gammaSEXP);
+    rcpp_result_gen = Rcpp::wrap(media_2_lambda_vec_cpp(x, media, gamma));
+    return rcpp_result_gen;
+END_RCPP
+}
+// obtaining_lambda_single_cpp
+double obtaining_lambda_single_cpp(double media, double gamma, double tol, int max_iter);
+RcppExport SEXP _DiscreteDists_obtaining_lambda_single_cpp(SEXP mediaSEXP, SEXP gammaSEXP, SEXP tolSEXP, SEXP max_iterSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type media(mediaSEXP);
+    Rcpp::traits::input_parameter< double >::type gamma(gammaSEXP);
+    Rcpp::traits::input_parameter< double >::type tol(tolSEXP);
+    Rcpp::traits::input_parameter< int >::type max_iter(max_iterSEXP);
+    rcpp_result_gen = Rcpp::wrap(obtaining_lambda_single_cpp(media, gamma, tol, max_iter));
+    return rcpp_result_gen;
+END_RCPP
+}
+// obtaining_lambda_vec_cpp
+NumericVector obtaining_lambda_vec_cpp(NumericVector media, NumericVector gamma);
+RcppExport SEXP _DiscreteDists_obtaining_lambda_vec_cpp(SEXP mediaSEXP, SEXP gammaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type media(mediaSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type gamma(gammaSEXP);
+    rcpp_result_gen = Rcpp::wrap(obtaining_lambda_vec_cpp(media, gamma));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_DiscreteDists_z_cpp", (DL_FUNC) &_DiscreteDists_z_cpp, 4},
@@ -171,6 +250,12 @@ static const R_CallMethodDef CallEntries[] = {
     {"_DiscreteDists_f11_cpp", (DL_FUNC) &_DiscreteDists_f11_cpp, 4},
     {"_DiscreteDists_dHYPERPO_single", (DL_FUNC) &_DiscreteDists_dHYPERPO_single, 4},
     {"_DiscreteDists_dHYPERPO_vec", (DL_FUNC) &_DiscreteDists_dHYPERPO_vec, 4},
+    {"_DiscreteDists_d1_dldm_hyperpo_cpp", (DL_FUNC) &_DiscreteDists_d1_dldm_hyperpo_cpp, 4},
+    {"_DiscreteDists_dldm_hyperpo_cpp", (DL_FUNC) &_DiscreteDists_dldm_hyperpo_cpp, 3},
+    {"_DiscreteDists_media_2_lambda_single_cpp", (DL_FUNC) &_DiscreteDists_media_2_lambda_single_cpp, 3},
+    {"_DiscreteDists_media_2_lambda_vec_cpp", (DL_FUNC) &_DiscreteDists_media_2_lambda_vec_cpp, 3},
+    {"_DiscreteDists_obtaining_lambda_single_cpp", (DL_FUNC) &_DiscreteDists_obtaining_lambda_single_cpp, 4},
+    {"_DiscreteDists_obtaining_lambda_vec_cpp", (DL_FUNC) &_DiscreteDists_obtaining_lambda_vec_cpp, 2},
     {NULL, NULL, 0}
 };
 

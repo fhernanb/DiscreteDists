@@ -49,9 +49,10 @@ dHYPERPO2 <- function(x, mu=1, sigma=1, log=FALSE){
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
 
   # To obtain the mu in the older parameterization
-  mu <- obtaining_lambda(media=mu, gamma=sigma)
+  mu <- obtaining_lambda_vec_cpp(media=mu, gamma=sigma)
 
-  dHYPERPO(x=x, mu=mu, sigma=sigma, log=log)
+  temp <- cbind(x, mu, sigma, log)
+  dHYPERPO_vec(x=temp[, 1], mu=temp[, 2], sigma=temp[, 3], log=temp[,4])
 }
 #' @export
 #' @rdname dHYPERPO2
@@ -60,12 +61,12 @@ pHYPERPO2 <- function(q, mu=1, sigma=1, lower.tail = TRUE, log.p = FALSE){
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
 
   # To obtain the mu in the older parameterization
-  mu <- obtaining_lambda(media=mu, gamma=sigma)
+  mu <- obtaining_lambda_vec_cpp(media=mu, gamma=sigma)
 
-  ly <- max(length(q), length(mu), length(sigma))
-  q <- rep(q, length = ly)
-  mu <- rep(mu, length = ly)
-  sigma <- rep(sigma, length = ly)
+  # ly <- max(length(q), length(mu), length(sigma))
+  # q <- rep(q, length = ly)
+  # mu <- rep(mu, length = ly)
+  # sigma <- rep(sigma, length = ly)
 
   pHYPERPO(q=q, mu=mu, sigma=sigma, lower.tail=lower.tail, log.p=log.p)
 }
@@ -78,7 +79,7 @@ rHYPERPO2 <- function(n, mu=1, sigma=1) {
   if (any(n <= 0))      stop(paste("n must be a positive integer", "\n", ""))
 
   # To obtain the mu in the older parameterization
-  mu <- obtaining_lambda(media=mu, gamma=sigma)
+  mu <- obtaining_lambda_vec_cpp(media=mu, gamma=sigma)
 
   if (!is.numeric(n) || length(n) != 1 || n < 0)
     stop("invalid arguments")
@@ -112,7 +113,7 @@ qHYPERPO2 <- function(p, mu = 1, sigma = 1, lower.tail = TRUE,
     stop(paste("p must be between 0 and 1", "\n", ""))
 
   # To obtain the mu in the older parameterization
-  mu <- obtaining_lambda(media=mu, gamma=sigma)
+  mu <- obtaining_lambda_vec_cpp(media=mu, gamma=sigma)
 
   if (log.p == TRUE)
     p <- exp(p)

@@ -136,14 +136,13 @@ obtaining_lambda <- function(media, gamma) {
   fun <- function(x, media, gamma) x-(gamma-1)*(1-1/f11_cpp(gamma, x))-media
   fun <- Vectorize(fun)
   # End aux function
-  #if (gamma <= 1.05 | gamma >= 0.95)
+  #if (gamma <= 1.001 | gamma >= 0.999)
   if (gamma == 1)
     result <- media
   else {
-    #mini <- min(media, max(media+gamma-1, gamma*media))
-    mini <- 0.000001
+    mini <- min(media, max(media+gamma-1, gamma*media))
     maxi <- max(media, min(media+gamma-1, gamma*media))
-    res <- try(uniroot(f=fun,
+    res <- try(uniroot(f=media_2_lambda_vec,
                        lower=mini, upper=maxi,
                        media=media, gamma=gamma))
     result <- ifelse(class(res)=="try-error", media, res$root)

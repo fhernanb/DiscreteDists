@@ -65,7 +65,7 @@ gendat <- function(n) {
 }
 
 set.seed(12345)
-dat <- gendat(n=100)
+dat <- gendat(n=200)
 
 mod2 <- gamlss(y~x1, sigma.fo=~x2, family=HYPERPO2, data=dat,
                control=gamlss.control(n.cyc=500, trace=TRUE))

@@ -125,3 +125,27 @@ dHYPERPO_vec <- function(x, mu, sigma, log) {
     .Call('_DiscreteDists_dHYPERPO_vec', PACKAGE = 'DiscreteDists', x, mu, sigma, log)
 }
 
+d1_dldm_hyperpo_cpp <- function(mu, sigma, max_terms = 1000L, tol = 1e-10) {
+    .Call('_DiscreteDists_d1_dldm_hyperpo_cpp', PACKAGE = 'DiscreteDists', mu, sigma, max_terms, tol)
+}
+
+dldm_hyperpo_cpp <- function(x, mu, sigma) {
+    .Call('_DiscreteDists_dldm_hyperpo_cpp', PACKAGE = 'DiscreteDists', x, mu, sigma)
+}
+
+media_2_lambda_single_cpp <- function(x, media, gamma) {
+    .Call('_DiscreteDists_media_2_lambda_single_cpp', PACKAGE = 'DiscreteDists', x, media, gamma)
+}
+
+media_2_lambda_vec_cpp <- function(x, media, gamma) {
+    .Call('_DiscreteDists_media_2_lambda_vec_cpp', PACKAGE = 'DiscreteDists', x, media, gamma)
+}
+
+obtaining_lambda_single_cpp <- function(media, gamma, tol = 1e-8, max_iter = 1000L) {
+    .Call('_DiscreteDists_obtaining_lambda_single_cpp', PACKAGE = 'DiscreteDists', media, gamma, tol, max_iter)
+}
+
+obtaining_lambda_vec_cpp <- function(media, gamma) {
+    .Call('_DiscreteDists_obtaining_lambda_vec_cpp', PACKAGE = 'DiscreteDists', media, gamma)
+}
+

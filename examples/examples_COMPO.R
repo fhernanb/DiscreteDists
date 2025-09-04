@@ -2,8 +2,8 @@
 # Generating some random values with
 # known mu and sigma
 \dontrun{
-set.seed(12345)
-y <- rCOMPO(n=5000, mu=5, sigma=3)
+set.seed(12)
+y <- rCOMPO(n=100, mu=10, sigma=3)
 
 # Fitting the model
 library(gamlss)
@@ -52,11 +52,19 @@ freq <- c(514, 503, 457, 423, 326, 233, 195, 139, 101, 77, 56, 40,
 
 y <- rep(x=values, times=freq)
 
-mod3 <- gamlss(y~1, sigma.fo=~1, family=COMPO2,
+mod3 <- gamlss(y~1, sigma.fo=~1, family=COMPO,
                control=gamlss.control(n.cyc=500, trace=TRUE))
 
 exp(coef(mod3, what="mu"))
 exp(coef(mod3, what="sigma"))
+
+estim_mu_sigma_COMPO(y)
+
+library(COMPoissonReg)
+fit <- glm.cmp(y ~ 1)
+res <- exp(fit$opt.res$par)
+res
+
 }
 
 # Example 4
@@ -76,5 +84,12 @@ mod4 <- gamlss(y~1, sigma.fo=~1, family=COMPO,
 
 exp(coef(mod4, what="mu"))
 exp(coef(mod4, what="sigma"))
+
+estim_mu_sigma_COMPO(y)
+
+library(COMPoissonReg)
+fit <- glm.cmp(y ~ 1)
+res <- exp(fit$opt.res$par)
+res
 
 }

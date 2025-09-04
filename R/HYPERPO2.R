@@ -89,7 +89,7 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                                                  delta=0.00001)
                    dldm <- as.vector(attr(dm, "gradient"))
                    d2ldm2 <- - dldm * dldm
-                   d2ldm2 <- ifelse(d2ldm2 < -1e-15, d2ldm2, -1e-15)
+                   #d2ldm2 <- ifelse(d2ldm2 < -1e-15, d2ldm2, -1e-15)
                    d2ldm2
                  },
 
@@ -102,8 +102,9 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                                                  theta="sigma",
                                                  delta=0.00001)
                    dldd <- as.vector(attr(dd, "gradient"))
+
                    d2ldmdd <- - dldm * dldd
-                   d2ldmdd <- ifelse(d2ldmdd < -1e-15, d2ldmdd, -1e-15)
+                   #d2ldmdd <- ifelse(d2ldmdd < -1e-15, d2ldmdd, -1e-15)
                    d2ldmdd
                  },
 
@@ -113,7 +114,7 @@ HYPERPO2 <- function (mu.link="log", sigma.link="log") {
                                                  delta=0.00001)
                    dldd <- as.vector(attr(dd, "gradient"))
                    d2ldd2 <- - dldd * dldd
-                   d2ldd2 <- ifelse(d2ldd2 < -1e-15, d2ldd2, -1e-15)
+                   #d2ldd2 <- ifelse(d2ldd2 < -1e-15, d2ldd2, -1e-15)
                    d2ldd2
                  },
 

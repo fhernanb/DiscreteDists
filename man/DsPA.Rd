@@ -36,12 +36,12 @@ for \eqn{\mu} and \eqn{\sigma} respectively, we did it to implement this distrib
 # Example 1
 # Generating some random values with
 # known mu and sigma
-y <- rDsPA(n=500, mu=1.2, sigma=0.5)
+y <- rDsPA(n=100, mu=1.2, sigma=0.5)
 
 # Fitting the model
 library(gamlss)
 mod1 <- gamlss(y~1, family=DsPA,
-               control=gamlss.control(n.cyc=500, trace=FALSE))
+               control=gamlss.control(n.cyc=500, trace=TRUE))
 
 # Extracting the fitted values for mu and sigma
 # using the inverse link function
@@ -65,8 +65,8 @@ gendat <- function(n) {
   data.frame(y=y, x1=x1, x2=x2, x3=x3, x4=x4)
 }
 
-set.seed(16494786)
-datos <- gendat(n=500)
+set.seed(123)
+datos <- gendat(n=100)
 
 mod2 <- gamlss(y~x1+x2, sigma.fo=~x3+x4, family=DsPA, data=datos,
                control=gamlss.control(n.cyc=500, trace=TRUE))

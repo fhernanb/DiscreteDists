@@ -154,7 +154,7 @@ estim_mu_sigma_DsPA <- function(y){
 }
 #' logLik function for DsPA
 #' @description Calculates logLik for DsPA distribution.
-#' @param vector with parameters.
+#' @param param a vector with parameters.
 #' @param x vector with the response variable.
 #' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal

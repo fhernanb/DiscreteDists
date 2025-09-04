@@ -70,7 +70,13 @@ COMPO <- function (mu.link="log", sigma.link="log") {
                  # First derivatives
 
                  dldm = function(y, mu, sigma) {
+                   # dm   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
+                   #                               theta="mu",
+                   #                               delta=0.001)
+                   # dldm <- as.vector(attr(dm, "gradient"))
+
                    dldm <- y/mu - d1_vec_dldm_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
+
                    dldm
                  },
 
@@ -85,7 +91,7 @@ COMPO <- function (mu.link="log", sigma.link="log") {
                    # dm   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
                    #                               theta="mu",
                    #                               delta=0.001)
-                   #dldm <- as.vector(attr(dm, "gradient"))
+                   # dldm <- as.vector(attr(dm, "gradient"))
 
                    dldm <- y/mu - d1_vec_dldm_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
 
@@ -155,66 +161,65 @@ COMPO <- function (mu.link="log", sigma.link="log") {
 #' @keywords internal
 #' @export
 #' @importFrom nleqslv nleqslv
-#' @importFrom stats var
-estim_mu_sigma_COMPO <- function(y) {
-  # Star aux fun
-  fun <- function(theta, y) {
-    mu    <- theta[1]
-    sigma <- theta[2]
-    approx_mean <- mu^(1/sigma) - (sigma-1)/(2*sigma)
-    approx_var  <- mu^(1/sigma) / sigma
-    z <- numeric(2) # contiene las ecuaciones
-    z[1] <- approx_mean - mean(y)
-    z[2] <- approx_var  - var(y)
-    z
-  }
-  # End aux fun
-
-  #library(nleqslv)
-  res <- nleqslv(x=c(1, 1), fn=fun, method="Newton",
-                 control=list(btol=0.01), y=y)
-  res$x
-}
+#' @importFrom stats var lm coef
+# estim_mu_sigma_COMPO <- function(y) {
+#   # Star aux fun
+#   fun <- function(theta, y) {
+#     mu    <- theta[1]
+#     sigma <- theta[2]
+#     approx_mean <- mu^(1/sigma) - (sigma-1)/(2*sigma)
+#     approx_var  <- mu^(1/sigma) / sigma
+#     z <- numeric(2) # contiene las ecuaciones
+#     z[1] <- approx_mean - mean(y)
+#     z[2] <- approx_var  - var(y)
+#     z
+#   }
+#   # End aux fun
+#
+#   #library(nleqslv)
+#   res <- nleqslv(x=c(1, 1), fn=fun, method="Newton",
+#                  control=list(btol=0.01), y=y)
+#   res$x
+# }
 
 # estim_mu_sigma_COMPO <- function(y) {
 #   fit <- glm.cmp(y ~ 1)
 #   res <- exp(fit$opt.res$par)
 #   return(res)
 # }
+estim_mu_sigma_COMPO <- function(y) {
+  # Esta funcion obtiene valores inciales
+  # usando el metodo seccion 3.1 de Shmueli (2005) pag 132
 
-# estim_mu_sigma_COMPO <- function(y) {
-#   # Esta funcion obtiene valores inciales
-#   # usando el metodo seccion 3.1 de Shmueli (2005) pag 132
-#
-#   # Paso 0: crear la tabla de frecuencias
-#   t1 <- table(y)
-#   # Paso 1: Extraer los nombres de la t1 como enteros
-#   nombres <- as.integer(names(t1))
-#   # Paso 2: Identificar secuencias consecutivas
-#   # Calculamos diferencias entre elementos consecutivos
-#   difs <- c(Inf, diff(nombres))  # Inf al principio para marcar el inicio
-#   # Creamos grupos de consecutivos
-#   grupos <- cumsum(difs != 1)
-#   # Paso 3: Encontrar el grupo más largo (la secuencia más larga de consecutivos)
-#   longitudes <- table(grupos)
-#   grupo_mas_largo <- as.integer(names(longitudes)[which.max(longitudes)])
-#   # Paso 4: Filtrar los elementos del grupo más largo
-#   indices_consecutivos <- grupos == grupo_mas_largo
-#   nombres_validos <- nombres[indices_consecutivos]
-#   # Paso 5: Filtrar la t1 original
-#   t2 <- t1[as.character(nombres_validos)]
-#   # Paso 6: Crear la tabla de frecuencias relativas
-#   t2 <- prop.table(t2)
-#
-#   # Aplicando el metodo seccion 3.1 de Shmueli (2005) pag 132
-#   k <- length(t2)
-#   yy <- log(t2[1:(k-1)] / t2[2:k])
-#   xx <- log(as.numeric(names(t2[2:k])))
-#   mod_temp <- lm(yy ~ xx)
-#   mu_hat <- exp(-coef(mod_temp)[1])
-#   sigma_hat <- coef(mod_temp)[2]
-#   res <- c(mu_hat, sigma_hat)
-#   res
-# }
+  # Paso 0: crear la tabla de frecuencias
+  t1 <- table(y)
+  # Paso 1: Extraer los nombres de la t1 como enteros
+  nombres <- as.integer(names(t1))
+  # Paso 2: Identificar secuencias consecutivas
+  # Calculamos diferencias entre elementos consecutivos
+  difs <- c(Inf, diff(nombres))  # Inf al principio para marcar el inicio
+  # Creamos grupos de consecutivos
+  grupos <- cumsum(difs != 1)
+  # Paso 3: Encontrar el grupo más largo (la secuencia más larga de consecutivos)
+  longitudes <- table(grupos)
+  grupo_mas_largo <- as.integer(names(longitudes)[which.max(longitudes)])
+  # Paso 4: Filtrar los elementos del grupo más largo
+  indices_consecutivos <- grupos == grupo_mas_largo
+  nombres_validos <- nombres[indices_consecutivos]
+  # Paso 5: Filtrar la t1 original
+  t2 <- t1[as.character(nombres_validos)]
+  # Paso 6: Crear la tabla de frecuencias relativas
+  t2 <- prop.table(t2)
+
+  # Aplicando el metodo seccion 3.1 de Shmueli (2005) pag 132
+  k <- length(t2)
+  yy <- log(t2[1:(k-1)] / t2[2:k])
+  xx <- log(as.numeric(names(t2[2:k])))
+  mod_temp <- lm(yy ~ xx)
+  mu_hat <- exp(-coef(mod_temp)[1])
+  sigma_hat <- coef(mod_temp)[2]
+  res <- c(mu_hat, sigma_hat)
+  res
+}
 
 

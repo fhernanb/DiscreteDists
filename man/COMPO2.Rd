@@ -43,7 +43,7 @@ the COMPoissonReg package.
 # Example 1
 # Generating some random values with
 # known mu and sigma
-y <- rCOMPO2(n=50, mu=10, sigma=-1)
+y <- rCOMPO2(n=500, mu=10, sigma=-1)
 
 # Fitting the model
 library(gamlss)

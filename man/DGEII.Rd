@@ -46,7 +46,7 @@ y <- rDGEII(n=100, mu=0.75, sigma=0.5)
 # Fitting the model
 library(gamlss)
 mod1 <- gamlss(y~1, family=DGEII,
-               control=gamlss.control(n.cyc=500, trace=FALSE))
+               control=gamlss.control(n.cyc=500, trace=TRUE))
 
 # Extracting the fitted values for mu and sigma
 # using the inverse link function
@@ -71,7 +71,7 @@ gendat <- function(n) {
 datos <- gendat(n=100)
 
 mod2 <- gamlss(y~x1, sigma.fo=~x2, family=DGEII, data=datos,
-               control=gamlss.control(n.cyc=500, trace=FALSE))
+               control=gamlss.control(n.cyc=500, trace=TRUE))
 
 summary(mod2)
 
@@ -83,7 +83,7 @@ summary(mod2)
 y <- rep(x=0:5, times=c(447, 132, 42, 21, 3, 2))
 
 mod3 <- gamlss(y~1, family=DGEII,
-               control=gamlss.control(n.cyc=500, trace=FALSE))
+               control=gamlss.control(n.cyc=500, trace=TRUE))
 
 # Extracting the fitted values for mu and sigma
 # using the inverse link function
