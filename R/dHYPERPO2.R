@@ -63,11 +63,6 @@ pHYPERPO2 <- function(q, mu=1, sigma=1, lower.tail = TRUE, log.p = FALSE){
   # To obtain the mu in the older parameterization
   mu <- obtaining_lambda_vec_cpp(media=mu, gamma=sigma)
 
-  # ly <- max(length(q), length(mu), length(sigma))
-  # q <- rep(q, length = ly)
-  # mu <- rep(mu, length = ly)
-  # sigma <- rep(sigma, length = ly)
-
   pHYPERPO(q=q, mu=mu, sigma=sigma, lower.tail=lower.tail, log.p=log.p)
 }
 #' @importFrom stats runif

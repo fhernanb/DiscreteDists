@@ -132,17 +132,17 @@ estim_mu_sigma_HYPERPO2 <- function(y) {
 #' @keywords internal
 #' @export
 obtaining_lambda <- function(media, gamma) {
-  # Begin aux function
-  fun <- function(x, media, gamma) x-(gamma-1)*(1-1/f11_cpp(gamma, x))-media
-  fun <- Vectorize(fun)
+  # Begin aux function, based on expression 6 of Saez-Castillo (2013)
+  fun_exp_6 <- function(x, media, gamma) x-(gamma-1)*(1-1/f11_cpp(gamma, x))-media
+  fun_exp_6 <- Vectorize(fun_exp_6)
   # End aux function
-  #if (gamma <= 1.001 | gamma >= 0.999)
   if (gamma == 1)
     result <- media
   else {
     mini <- min(media, max(media+gamma-1, gamma*media))
     maxi <- max(media, min(media+gamma-1, gamma*media))
-    res <- try(uniroot(f=media_2_lambda_vec,
+    res <- try(uniroot(f=fun_exp_6_vec_cpp,
+                       #f=fun_exp_6,
                        lower=mini, upper=maxi,
                        media=media, gamma=gamma))
     result <- ifelse(class(res)=="try-error", media, res$root)

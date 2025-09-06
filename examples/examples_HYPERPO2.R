@@ -2,7 +2,7 @@
 # Generating some random values with
 # known mu and sigma
 set.seed(1234)
-y <- rHYPERPO2(n=200, mu=4, sigma=1.5)
+y <- rHYPERPO2(n=100, mu=4, sigma=1.5)
 
 # Fitting the model
 library(gamlss)

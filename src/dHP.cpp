@@ -136,14 +136,14 @@ NumericVector dldm_hyperpo_cpp(NumericVector x,
  }
 
 // [[Rcpp::export]]
-double media_2_lambda_single_cpp(double x, double media, double gamma) {
+double fun_exp_6_single_cpp(double x, double media, double gamma) {
   double res;
   res = x - (gamma-1) * (1-1/f11_cpp(gamma, x)) - media;
   return res;
 }
 
 // [[Rcpp::export]]
-NumericVector media_2_lambda_vec_cpp(NumericVector x,
+NumericVector fun_exp_6_vec_cpp(NumericVector x,
                                      NumericVector media,
                                      NumericVector gamma) {
 
@@ -151,7 +151,7 @@ NumericVector media_2_lambda_vec_cpp(NumericVector x,
   NumericVector out(n);
 
   for(int i = 0; i < n; ++i) {
-    out[i] = media_2_lambda_single_cpp(x[i], media[i], gamma[i]);
+    out[i] = fun_exp_6_single_cpp(x[i], media[i], gamma[i]);
   }
   return out;
 }
@@ -160,19 +160,16 @@ NumericVector media_2_lambda_vec_cpp(NumericVector x,
 // [[Rcpp::export]]
 double obtaining_lambda_single_cpp(double media,
                                    double gamma,
-                                   double tol = 1e-8, int max_iter = 1000) {
+                                   double tol = 1e-10, int max_iter = 1000) {
 
   double lower = std::min(media, std::max(media + gamma - 1, gamma * media));
   double upper = std::max(media, std::min(media + gamma - 1, gamma * media));
 
-  double f_lower = media_2_lambda_single_cpp(lower, media, gamma);
-  double f_upper = media_2_lambda_single_cpp(upper, media, gamma);
+  double f_lower = fun_exp_6_single_cpp(lower, media, gamma);
+  double f_upper = fun_exp_6_single_cpp(upper, media, gamma);
 
   if (f_lower * f_upper > 0.0) {
-    //throw std::invalid_argument("Function has the same sign at the endpoints.");
-    std::ostringstream oss;
-    oss << media << gamma;
-    return std::stod(oss.str());
+    throw std::invalid_argument("Function has the same sign at the endpoints.");
   }
 
   double mid, f_mid;
@@ -185,7 +182,7 @@ double obtaining_lambda_single_cpp(double media,
   else {
     for (int i = 0; i < max_iter; ++i) {
       mid = 0.5 * (lower + upper);
-      f_mid = media_2_lambda_single_cpp(mid, media, gamma);
+      f_mid = fun_exp_6_single_cpp(mid, media, gamma);
 
       if (std::fabs(f_mid) < tol || (upper - lower) / 2 < tol) {
         return mid;
@@ -200,6 +197,8 @@ double obtaining_lambda_single_cpp(double media,
       }
     }
   }
+
+  return(mid);
 
   throw std::runtime_error("Maximum iterations exceeded without convergence.");
 }
@@ -216,4 +215,3 @@ NumericVector obtaining_lambda_vec_cpp(NumericVector media,
   }
   return out;
 }
-

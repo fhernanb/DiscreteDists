@@ -42,19 +42,26 @@
 #'
 #' @export
 #'
+# dDMOLBE_pri <- function(x, mu=1, sigma=1, log=FALSE){
+#   if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
+#   if (any(mu <= 0))     stop("parameter mu has to be positive!")
+#   if (any(x < 0))       stop(paste("x must be >=0", "\n", ""))
+#   k1 <- (1+x/mu) * exp(-x/mu)
+#   k2 <- (1+(x+1)/mu) * exp(-(x+1)/mu)
+#   p1 <- log(sigma) + log(k1 - k2)
+#   p2 <- -log(1-(1-sigma)*k1) - log(1-(1-sigma)*k2)
+#   res <- p1 + p2
+#   if(log)
+#     return(res)
+#   else
+#     return(exp(res))
+# }
 dDMOLBE <- function(x, mu=1, sigma=1, log=FALSE){
   if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
-  if (any(x < 0))       stop(paste("x must be >=0", "\n", ""))
-  k1 <- (1+x/mu) * exp(-x/mu)
-  k2 <- (1+(x+1)/mu) * exp(-(x+1)/mu)
-  p1 <- log(sigma) + log(k1 - k2)
-  p2 <- -log(1-(1-sigma)*k1) - log(1-(1-sigma)*k2)
-  res <- p1 + p2
-  if(log)
-    return(res)
-  else
-    return(exp(res))
+
+  temp <- cbind(x, mu, sigma, log)
+  dDMOLBE_vec(x=temp[, 1], mu=temp[, 2], sigma=temp[, 3], log=temp[,4])
 }
 #' @export
 #' @rdname dDMOLBE

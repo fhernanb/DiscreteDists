@@ -89,6 +89,14 @@ dCOMPO_vec <- function(x, mu, sigma, log) {
     .Call('_DiscreteDists_dCOMPO_vec', PACKAGE = 'DiscreteDists', x, mu, sigma, log)
 }
 
+dDMOLBE_single <- function(x, mu = 1, sigma = 1, log = FALSE) {
+    .Call('_DiscreteDists_dDMOLBE_single', PACKAGE = 'DiscreteDists', x, mu, sigma, log)
+}
+
+dDMOLBE_vec <- function(x, mu, sigma, log) {
+    .Call('_DiscreteDists_dDMOLBE_vec', PACKAGE = 'DiscreteDists', x, mu, sigma, log)
+}
+
 #' Function to obtain F11 with C++.
 #' @param gamma numeric value for gamma.
 #' @param lambda numeric value for lambda.
@@ -133,19 +141,23 @@ dldm_hyperpo_cpp <- function(x, mu, sigma) {
     .Call('_DiscreteDists_dldm_hyperpo_cpp', PACKAGE = 'DiscreteDists', x, mu, sigma)
 }
 
-media_2_lambda_single_cpp <- function(x, media, gamma) {
-    .Call('_DiscreteDists_media_2_lambda_single_cpp', PACKAGE = 'DiscreteDists', x, media, gamma)
+fun_exp_6_single_cpp <- function(x, media, gamma) {
+    .Call('_DiscreteDists_fun_exp_6_single_cpp', PACKAGE = 'DiscreteDists', x, media, gamma)
 }
 
-media_2_lambda_vec_cpp <- function(x, media, gamma) {
-    .Call('_DiscreteDists_media_2_lambda_vec_cpp', PACKAGE = 'DiscreteDists', x, media, gamma)
+fun_exp_6_vec_cpp <- function(x, media, gamma) {
+    .Call('_DiscreteDists_fun_exp_6_vec_cpp', PACKAGE = 'DiscreteDists', x, media, gamma)
 }
 
-obtaining_lambda_single_cpp <- function(media, gamma, tol = 1e-8, max_iter = 1000L) {
+obtaining_lambda_single_cpp <- function(media, gamma, tol = 1e-10, max_iter = 1000L) {
     .Call('_DiscreteDists_obtaining_lambda_single_cpp', PACKAGE = 'DiscreteDists', media, gamma, tol, max_iter)
 }
 
 obtaining_lambda_vec_cpp <- function(media, gamma) {
     .Call('_DiscreteDists_obtaining_lambda_vec_cpp', PACKAGE = 'DiscreteDists', media, gamma)
+}
+
+mydpois <- function(x, lambda, log = FALSE) {
+    .Call('_DiscreteDists_mydpois', PACKAGE = 'DiscreteDists', x, lambda, log)
 }
 
