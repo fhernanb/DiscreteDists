@@ -265,19 +265,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// mydpois
-std::vector<double> mydpois(const std::vector<double>& x, const std::vector<double>& lambda, bool log);
-RcppExport SEXP _DiscreteDists_mydpois(SEXP xSEXP, SEXP lambdaSEXP, SEXP logSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const std::vector<double>& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< const std::vector<double>& >::type lambda(lambdaSEXP);
-    Rcpp::traits::input_parameter< bool >::type log(logSEXP);
-    rcpp_result_gen = Rcpp::wrap(mydpois(x, lambda, log));
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_DiscreteDists_z_cpp", (DL_FUNC) &_DiscreteDists_z_cpp, 4},
@@ -299,7 +286,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"_DiscreteDists_fun_exp_6_vec_cpp", (DL_FUNC) &_DiscreteDists_fun_exp_6_vec_cpp, 3},
     {"_DiscreteDists_obtaining_lambda_single_cpp", (DL_FUNC) &_DiscreteDists_obtaining_lambda_single_cpp, 4},
     {"_DiscreteDists_obtaining_lambda_vec_cpp", (DL_FUNC) &_DiscreteDists_obtaining_lambda_vec_cpp, 2},
-    {"_DiscreteDists_mydpois", (DL_FUNC) &_DiscreteDists_mydpois, 3},
     {NULL, NULL, 0}
 };
 

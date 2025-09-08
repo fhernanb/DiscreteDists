@@ -157,7 +157,3 @@ obtaining_lambda_vec_cpp <- function(media, gamma) {
     .Call('_DiscreteDists_obtaining_lambda_vec_cpp', PACKAGE = 'DiscreteDists', media, gamma)
 }
 
-mydpois <- function(x, lambda, log = FALSE) {
-    .Call('_DiscreteDists_mydpois', PACKAGE = 'DiscreteDists', x, lambda, log)
-}
-

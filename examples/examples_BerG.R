@@ -15,7 +15,7 @@ exp(coef(mod1, what="sigma"))
 # Example 2
 # Generating random values under some model
 
-# A function to simulate a data set with Y ~ GGEO
+# A function to simulate a data set with Y ~ BerG
 gendat <- function(n) {
   x1 <- runif(n)
   x2 <- runif(n)

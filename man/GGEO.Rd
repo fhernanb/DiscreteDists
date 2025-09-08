@@ -55,6 +55,7 @@ exp(coef(mod1, what="sigma"))
 # Generating random values under some model
 
 # A function to simulate a data set with Y ~ GGEO
+\dontrun{
 gendat <- function(n) {
   x1 <- runif(n)
   x2 <- runif(n)
@@ -71,6 +72,7 @@ mod2 <- gamlss(y~x1, sigma.fo=~x2, family=GGEO, data=datos,
                control=gamlss.control(n.cyc=500, trace=TRUE))
 
 summary(mod2)
+}
 
 # Example 3
 # Number of accidents to 647 women working on H. E. Shells

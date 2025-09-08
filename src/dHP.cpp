@@ -172,7 +172,8 @@ double obtaining_lambda_single_cpp(double media,
     throw std::invalid_argument("Function has the same sign at the endpoints.");
   }
 
-  double mid, f_mid;
+  double mid;
+  double f_mid;
 
   if (gamma == 1) {
     mid = media;
@@ -198,7 +199,7 @@ double obtaining_lambda_single_cpp(double media,
     }
   }
 
-  return(mid);
+  //return mid;
 
   throw std::runtime_error("Maximum iterations exceeded without convergence.");
 }
