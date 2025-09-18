@@ -18,3 +18,4 @@ returns a logical value if the tolerance level is met.
 This function is used inside F11 function.
 }
 \keyword{internal}
+\keyword{noRd}

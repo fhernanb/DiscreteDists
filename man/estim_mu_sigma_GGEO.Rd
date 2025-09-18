@@ -16,3 +16,4 @@ returns a vector with the MLE estimations.
 This function generates initial values for the parameters.
 }
 \keyword{internal}
+\keyword{noRd}

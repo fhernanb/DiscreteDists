@@ -62,55 +62,79 @@ DMOLBE <- function (mu.link="log", sigma.link="log") {
                  mu.dr    = mstats$mu.eta,
                  sigma.dr = dstats$mu.eta,
 
-                 # Primeras derivadas, por ahora son computacionales
+                 # First derivatives
 
                  dldm = function(y, mu, sigma) {
-                   dm   <- gamlss::numeric.deriv(dDMOLBE(y, mu, sigma, log=TRUE),
-                                                 theta="mu",
-                                                 delta=0.01)
-                   dldm <- as.vector(attr(dm, "gradient"))
+                   t1 <- (1 + y/mu) * exp(-y/mu)
+                   t2 <- (1 + (y+1)/mu) * exp(-(y+1)/mu)
+                   A  <- t1 - t2
+                   B1 <- 1 - (1 - sigma) * t1
+                   B2 <- 1 - (1 - sigma) * t2
+                   dA  <- (y^2 / mu^3) * exp(-y/mu) - ((y+1)^2 / mu^3) * exp(-(y+1)/mu)
+                   dB1 <- -(1 - sigma) * (y^2 / mu^3) * exp(-y/mu)
+                   dB2 <- -(1 - sigma) * ((y+1)^2 / mu^3) * exp(-(y+1)/mu)
+                   dldm <- (dA / A) - (dB1 / B1) - (dB2 / B2)
+
                    dldm
                  },
 
                  dldd = function(y, mu, sigma) {
-                   dd   <- gamlss::numeric.deriv(dDMOLBE(y, mu, sigma, log=TRUE),
-                                                 theta="sigma",
-                                                 delta=0.01)
-                   dldd <- as.vector(attr(dd, "gradient"))
+                   t1 <- (1 + y/mu) * exp(-y/mu)
+                   t2 <- (1 + (y+1)/mu) * exp(-(y+1)/mu)
+                   B1 <- 1 - (1 - sigma) * t1
+                   B2 <- 1 - (1 - sigma) * t2
+                   dldd <- (1 / sigma) - (t1 / B1) - (t2 / B2)
+
                    dldd
                  },
 
-                 # Segundas derivadas, por ahora son computacionales
+                 # Second derivatives
 
                  d2ldm2 = function(y, mu, sigma) {
-                   dm   <- gamlss::numeric.deriv(dDMOLBE(y, mu, sigma, log=TRUE),
-                                                 theta="mu",
-                                                 delta=0.01)
-                   dldm <- as.vector(attr(dm, "gradient"))
+                   t1 <- (1 + y/mu) * exp(-y/mu)
+                   t2 <- (1 + (y+1)/mu) * exp(-(y+1)/mu)
+                   A  <- t1 - t2
+                   B1 <- 1 - (1 - sigma) * t1
+                   B2 <- 1 - (1 - sigma) * t2
+                   dA  <- (y^2 / mu^3) * exp(-y/mu) - ((y+1)^2 / mu^3) * exp(-(y+1)/mu)
+                   dB1 <- -(1 - sigma) * (y^2 / mu^3) * exp(-y/mu)
+                   dB2 <- -(1 - sigma) * ((y+1)^2 / mu^3) * exp(-(y+1)/mu)
+                   dldm <- (dA / A) - (dB1 / B1) - (dB2 / B2)
+
                    d2ldm2 <- - dldm * dldm
                    d2ldm2 <- ifelse(d2ldm2 < -1e-15, d2ldm2, -1e-15)
                    d2ldm2
                  },
 
                  d2ldmdd = function(y, mu, sigma) {
-                   dm   <- gamlss::numeric.deriv(dDMOLBE(y, mu, sigma, log=TRUE),
-                                                 theta="mu",
-                                                 delta=0.01)
-                   dldm <- as.vector(attr(dm, "gradient"))
-                   dd   <- gamlss::numeric.deriv(dDMOLBE(y, mu, sigma, log=TRUE),
-                                                 theta="sigma",
-                                                 delta=0.01)
-                   dldd <- as.vector(attr(dd, "gradient"))
+                   t1 <- (1 + y/mu) * exp(-y/mu)
+                   t2 <- (1 + (y+1)/mu) * exp(-(y+1)/mu)
+                   A  <- t1 - t2
+                   B1 <- 1 - (1 - sigma) * t1
+                   B2 <- 1 - (1 - sigma) * t2
+                   dA  <- (y^2 / mu^3) * exp(-y/mu) - ((y+1)^2 / mu^3) * exp(-(y+1)/mu)
+                   dB1 <- -(1 - sigma) * (y^2 / mu^3) * exp(-y/mu)
+                   dB2 <- -(1 - sigma) * ((y+1)^2 / mu^3) * exp(-(y+1)/mu)
+                   dldm <- (dA / A) - (dB1 / B1) - (dB2 / B2)
+
+                   t1 <- (1 + y/mu) * exp(-y/mu)
+                   t2 <- (1 + (y+1)/mu) * exp(-(y+1)/mu)
+                   B1 <- 1 - (1 - sigma) * t1
+                   B2 <- 1 - (1 - sigma) * t2
+                   dldd <- (1 / sigma) - (t1 / B1) - (t2 / B2)
+
                    d2ldmdd <- - dldm * dldd
                    d2ldmdd <- ifelse(d2ldmdd < -1e-15, d2ldmdd, -1e-15)
                    d2ldmdd
                  },
 
                  d2ldd2  = function(y, mu, sigma) {
-                   dd   <- gamlss::numeric.deriv(dDMOLBE(y, mu, sigma, log=TRUE),
-                                                 theta="sigma",
-                                                 delta=0.01)
-                   dldd <- as.vector(attr(dd, "gradient"))
+                   t1 <- (1 + y/mu) * exp(-y/mu)
+                   t2 <- (1 + (y+1)/mu) * exp(-(y+1)/mu)
+                   B1 <- 1 - (1 - sigma) * t1
+                   B2 <- 1 - (1 - sigma) * t2
+                   dldd <- (1 / sigma) - (t1 / B1) - (t2 / B2)
+
                    d2ldd2 <- - dldd * dldd
                    d2ldd2 <- ifelse(d2ldd2 < -1e-15, d2ldd2, -1e-15)
                    d2ldd2
@@ -120,11 +144,8 @@ DMOLBE <- function (mu.link="log", sigma.link="log") {
                  rqres      = expression(rqres(pfun="pDMOLBE", type="Discrete",
                                                ymin = 0, y = y, mu = mu, sigma = sigma)),
 
-                 # mu.initial    = expression(mu    <- rep(estim_mu_sigma_DMOLBE(y)[1], length(y)) ),
-                 # sigma.initial = expression(sigma <- rep(estim_mu_sigma_DMOLBE(y)[2], length(y)) ),
-
-                 mu.initial    = expression(mu    <- rep(1, length(y)) ),
-                 sigma.initial = expression(sigma <- rep(1, length(y)) ),
+                 mu.initial    = expression(mu    <- rep(estim_mu_sigma_DMOLBE(y)[1], length(y)) ),
+                 sigma.initial = expression(sigma <- rep(estim_mu_sigma_DMOLBE(y)[2], length(y)) ),
 
                  mu.valid    = function(mu)    all(mu > 0),
                  sigma.valid = function(sigma) all(sigma > 0),

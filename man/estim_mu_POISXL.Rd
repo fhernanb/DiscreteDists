@@ -16,3 +16,4 @@ returns a scalar with the MLE estimation.
 This function generates initial values for the parameters.
 }
 \keyword{internal}
+\keyword{noRd}

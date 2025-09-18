@@ -18,3 +18,4 @@ returns the value for the a(r) function.
 This function is used to calculate (a)r.
 }
 \keyword{internal}
+\keyword{noRd}

@@ -18,3 +18,4 @@ returns the loglikelihood given the parameters and random sample.
 Calculates logLik for discrete Inverted Kumaraswamy distribution.
 }
 \keyword{internal}
+\keyword{noRd}

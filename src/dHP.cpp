@@ -5,14 +5,6 @@ using namespace Rcpp;
 #include <cmath>
 #include <complex>
 
-//' Function to obtain F11 with C++.
-//' @param gamma numeric value for gamma.
-//' @param lambda numeric value for lambda.
-//' @param maxiter_series numeric value.
-//' @param tol numeric value.
-//' @keywords internal
-//' @export
-//' @return returns the F11 value.
 // [[Rcpp::export]]
  double f11_cpp(double gamma, double lambda,
                 int maxiter_series = 10000,
@@ -40,14 +32,6 @@ using namespace Rcpp;
    return f11;
  }
 
-//' Function to obtain the dHYPERPO for a single value x
-//' @param x numeric value for x.
-//' @param mu numeric value for nu.
-//' @param sigma numeric value for sigma.
-//' @param log logical value for log.
-//' @keywords internal
-//' @export
-//' @return returns the pmf for a single value x.
 // [[Rcpp::export]]
  double dHYPERPO_single(double x, double mu=1, double sigma=1, bool log=false) {
    if (sigma <= 0 || mu <= 0) {
@@ -73,14 +57,6 @@ using namespace Rcpp;
    }
  }
 
-//' Function to obtain the dHYPERPO for a vector x
-//' @param x numeric value for x.
-//' @param mu numeric value for mu.
-//' @param sigma numeric value for sigma.
-//' @param log logical value for log.
-//' @keywords internal
-//' @export
-//' @return returns the pmf for a vector.
 // [[Rcpp::export]]
  NumericVector dHYPERPO_vec(NumericVector x, NumericVector mu,
                             NumericVector sigma, LogicalVector log) {
@@ -93,47 +69,6 @@ using namespace Rcpp;
    return out;
  }
 
-// [[Rcpp::export]]
-double d1_dldm_hyperpo_cpp(double mu, double sigma,
-                           int max_terms = 1000, double tol = 1e-10) {
-  double sum = 0.0;
-  double term;
-  int j = 1;
-
-  while (j < max_terms) {
-    double numer = std::tgamma(sigma) * j * std::pow(mu, j-1);
-    double denom = std::tgamma(sigma + j);
-    term = numer / denom;
-    sum += term;
-
-    if (term < tol) break;  // termina si el termino es muy pequeno
-
-    ++j;
-  }
-
-  double res;
-  res = sum/f11_cpp(sigma, mu);
-  return res;
-}
-
-// [[Rcpp::export]]
-NumericVector dldm_hyperpo_cpp(NumericVector x,
-                               NumericVector mu,
-                               NumericVector sigma) {
-
-   int n = mu.size();
-   NumericVector out(n);
-
-   if (mu.size() != sigma.size()) {
-     throw std::invalid_argument("Error: Vectors mu and sigma must be of the same length.\n");
-     return out;
-   }
-
-   for(int i = 0; i < n; ++i) {
-     out[i] = x[i] / mu[i] - d1_dldm_hyperpo_cpp(mu[i], sigma[i]);
-   }
-   return out;
- }
 
 // [[Rcpp::export]]
 double fun_exp_6_single_cpp(double x, double media, double gamma) {
@@ -199,7 +134,7 @@ double obtaining_lambda_single_cpp(double media,
     }
   }
 
-  //return mid;
+  return mid;
 
   throw std::runtime_error("Maximum iterations exceeded without convergence.");
 }

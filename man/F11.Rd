@@ -20,3 +20,4 @@ returns the value for the F11 function.
 This function is used inside density function of Hyper Poisson.
 }
 \keyword{internal}
+\keyword{noRd}

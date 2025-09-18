@@ -5,14 +5,6 @@ using namespace Rcpp;
 #include <cmath>
 #include <complex>
 
-//' Function to obtain Z for COMPO with C++.
-//' @param lambda numeric value for mu.
-//' @param nu numeric value for sigma.
-//' @param max_terms numeric value.
-//' @param tol numeric value.
-//' @keywords internal
-//' @export
-//' @return returns the z value.
 // [[Rcpp::export]]
 double z_cpp(double lambda, double nu, int max_terms = 1000,
              double tol = 1e-10) {
@@ -33,12 +25,6 @@ double z_cpp(double lambda, double nu, int max_terms = 1000,
   return sum;
 }
 
-//' Function to obtain Z vectorial for COMPO with C++.
-//' @param mu numeric vector.
-//' @param sigma numeric vector.
-//' @keywords internal
-//' @export
-//' @return returns the z value.
 // [[Rcpp::export]]
 NumericVector z_vec_cpp(NumericVector mu, NumericVector sigma) {
 
@@ -56,14 +42,6 @@ NumericVector z_vec_cpp(NumericVector mu, NumericVector sigma) {
   return out;
 }
 
-//' Function to obtain d1 in the score for COMPO with C++.
-//' @param lambda numeric value for mu.
-//' @param nu numeric value for sigma.
-//' @param max_terms numeric value.
-//' @param tol numeric value.
-//' @keywords internal
-//' @export
-//' @return returns the z value.
 // [[Rcpp::export]]
  double d1_dldm_compo_cpp(double lambda, double nu,
                           int max_terms = 1000, double tol = 1e-10) {
@@ -85,11 +63,7 @@ NumericVector z_vec_cpp(NumericVector mu, NumericVector sigma) {
    return sum;
  }
 
-//' Function to obtain d1 vectorial in the score for COMPO with C++.
-//' @param mu numeric vector.
-//' @param sigma numeric vector.
-//' @keywords internal
-//' @export
+
 // [[Rcpp::export]]
 NumericVector d1_vec_dldm_compo_cpp(NumericVector mu, NumericVector sigma) {
 
@@ -107,14 +81,6 @@ NumericVector d1_vec_dldm_compo_cpp(NumericVector mu, NumericVector sigma) {
   return out;
 }
 
-//' Function to obtain d2 in the score for COMPO with C++.
-//' @param lambda numeric value for mu.
-//' @param nu numeric value for sigma.
-//' @param max_terms numeric value.
-//' @param tol numeric value.
-//' @keywords internal
-//' @export
-//' @return returns the z value.
 // [[Rcpp::export]]
  double d2_dldd_compo_cpp(double lambda, double nu,
                           int max_terms = 1000, double tol = 1e-10) {
@@ -137,11 +103,6 @@ NumericVector d1_vec_dldm_compo_cpp(NumericVector mu, NumericVector sigma) {
    return sum;
 }
 
-//' Function to obtain d2 vectorial in the score for COMPO with C++.
-//' @param mu numeric vector.
-//' @param sigma numeric vector.
-//' @keywords internal
-//' @export
 // [[Rcpp::export]]
 NumericVector d2_vec_dldd_compo_cpp(NumericVector mu, NumericVector sigma) {
 
@@ -159,14 +120,6 @@ NumericVector d2_vec_dldd_compo_cpp(NumericVector mu, NumericVector sigma) {
   return out;
 }
 
-//' Function to obtain the dCOMPO for a single value x
-//' @param x numeric value for x.
-//' @param mu numeric value for nu.
-//' @param sigma numeric value for sigma.
-//' @param log logical value for log.
-//' @keywords internal
-//' @export
-//' @return returns the pmf for a single value x.
 // [[Rcpp::export]]
  double dCOMPO_single(double x, double mu=1, double sigma=1, bool log=false) {
    if (sigma <= 0 || mu <= 0) {
@@ -191,14 +144,6 @@ NumericVector d2_vec_dldd_compo_cpp(NumericVector mu, NumericVector sigma) {
    }
  }
 
-//' Function to obtain the dHYPERPO for a vector x
-//' @param x numeric value for x.
-//' @param mu numeric value for mu.
-//' @param sigma numeric value for sigma.
-//' @param log logical value for log.
-//' @keywords internal
-//' @export
-//' @return returns the pmf for a vector.
 // [[Rcpp::export]]
  NumericVector dCOMPO_vec(NumericVector x, NumericVector mu,
                             NumericVector sigma, LogicalVector log) {

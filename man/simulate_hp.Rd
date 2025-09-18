@@ -22,3 +22,4 @@ Auxiliar function to generate a single observation for HYPERPO.
 This function is used inside random function of Hyper Poisson.
 }
 \keyword{internal}
+\keyword{noRd}

@@ -4,6 +4,7 @@
 #' @param x vector with the response variable.
 #' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 logLik_HYPERPO <- function(logparam=c(0, 0), x){
   return(sum(dHYPERPO(x     = x,
@@ -16,6 +17,7 @@ logLik_HYPERPO <- function(logparam=c(0, 0), x){
 #' @param y vector with the response variable.
 #' @return returns a vector with the MLE estimations.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 #' @importFrom stats optim
 estim_mu_sigma_HYPERPO <- function(y) {
@@ -35,6 +37,7 @@ estim_mu_sigma_HYPERPO <- function(y) {
 #' @param tol this is the tolerance of the infinite sum.
 #' @return returns a logical value if the tolerance level is met.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 stopping <- function (x, tol) {
   all(abs(x) <= tol, na.rm = TRUE)
@@ -46,6 +49,7 @@ stopping <- function (x, tol) {
 #' @param tol this is the tolerance of the infinite sum.
 #' @return returns the value for the F11 function.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 F11 <- function(z, c, maxiter_series = 10000, tol = 1.0e-10) {
   fac  <- 1
@@ -70,6 +74,7 @@ F11 <- Vectorize(F11)
 #' @param r second value.
 #' @return returns the value for the a(r) function.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 AR <- function(a, r) {
   res <- gamma(a+r) / gamma(a)
@@ -80,6 +85,7 @@ AR <- function(a, r) {
 #' @param sigma value for sigma parameter.
 #' @param mu value for mu parameter.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 simulate_hp <- function(sigma, mu) {
   pochammer <- function(a, r) if (r == 0) 1 else prod(a:(a + r - 1))
@@ -99,6 +105,7 @@ simulate_hp <- function(sigma, mu) {
 #' @param x vector with the response variable.
 #' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 logLik_HYPERPO2 <- function(logparam=c(0, 0), x){
   return(sum(dHYPERPO2(x     = x,
@@ -111,6 +118,7 @@ logLik_HYPERPO2 <- function(logparam=c(0, 0), x){
 #' @param y vector with the response variable.
 #' @return returns a vector with the MLE estimations.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 #' @importFrom stats optim
 estim_mu_sigma_HYPERPO2 <- function(y) {
@@ -130,6 +138,7 @@ estim_mu_sigma_HYPERPO2 <- function(y) {
 #' @param gamma the value for the gamma parameter.
 #' @return returns the value of lambda to ensure the mean and gamma.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 obtaining_lambda <- function(media, gamma) {
   # Begin aux function, based on expression 6 of Saez-Castillo (2013)
@@ -156,6 +165,7 @@ obtaining_lambda <- Vectorize(obtaining_lambda)
 #' @param x vector with the response variable.
 #' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 logLik_DBH <- function(param=0.5, x){
   mu <- param
@@ -167,6 +177,7 @@ logLik_DBH <- function(param=0.5, x){
 #' @param y vector with the response variable.
 #' @return returns a scalar with the MLE estimation.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 #' @importFrom stats optimize
 estim_mu_DBH <- function(y){
@@ -180,6 +191,7 @@ estim_mu_DBH <- function(y){
 #' @param x vector with the response variable.
 #' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 logLik_DLD <- function(param=0.5, x){
   mu <- param
@@ -191,6 +203,7 @@ logLik_DLD <- function(param=0.5, x){
 #' @param y vector with the response variable.
 #' @return returns a scalar with the MLE estimation.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 #' @importFrom stats optim
 estim_mu_DLD <- function(y){
@@ -206,6 +219,7 @@ estim_mu_DLD <- function(y){
 #' @param x vector with the response variable.
 #' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 logLik_DIKUM <- function(param=c(0, 0), x){
   return(sum(dDIKUM(x = x,
@@ -218,6 +232,7 @@ logLik_DIKUM <- function(param=c(0, 0), x){
 #' @param y vector with the response variable.
 #' @return returns a vector with the MLE estimations.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 #' @importFrom stats optim
 estim_mu_sigma_DIKUM <- function(y) {
@@ -237,6 +252,7 @@ estim_mu_sigma_DIKUM <- function(y) {
 #' @param x vector with the response variable.
 #' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 logLik_POISXL <- function(param=0, x){
   return(sum(dPOISXL(x = x,
@@ -248,6 +264,7 @@ logLik_POISXL <- function(param=0, x){
 #' @param y vector with the response variable.
 #' @return returns a scalar with the MLE estimation.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 #' @importFrom stats optim
 estim_mu_POISXL <- function(y) {
@@ -267,6 +284,7 @@ estim_mu_POISXL <- function(y) {
 #' @param x vector with the response variable.
 #' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 logLik_GGEO <- function(param=c(0, 0), x){
   inv_logit <- function(x) 1/(1 + exp(-x))
@@ -280,6 +298,7 @@ logLik_GGEO <- function(param=c(0, 0), x){
 #' @param y vector with the response variable.
 #' @return returns a vector with the MLE estimations.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 #' @importFrom stats optim
 estim_mu_sigma_GGEO <- function(y) {
@@ -300,6 +319,7 @@ estim_mu_sigma_GGEO <- function(y) {
 #' @param x vector with the response variable.
 #' @return returns the loglikelihood given the parameters and random sample.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 logLik_DGEII <- function(transf_param=c(0, 0), x){
   inv_logit <- function(x) 1/(1 + exp(-x))
@@ -313,6 +333,7 @@ logLik_DGEII <- function(transf_param=c(0, 0), x){
 #' @param y vector with the response variable.
 #' @return returns a vector with the MLE estimations.
 #' @keywords internal
+#' @keywords noRd
 #' @export
 #' @importFrom stats optim
 estim_mu_sigma_DGEII <- function(y) {

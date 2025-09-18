@@ -18,3 +18,4 @@ returns the value of lambda to ensure the mean and gamma.
 This function implements the procedure given in page 152.
 }
 \keyword{internal}
+\keyword{noRd}

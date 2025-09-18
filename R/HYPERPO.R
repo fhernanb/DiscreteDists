@@ -75,6 +75,7 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
                                                  theta="mu",
                                                  delta=0.00001)
                    dldm <- as.vector(attr(dm, "gradient"))
+
                    dldm
                  },
 
@@ -83,6 +84,7 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
                                                  theta="sigma",
                                                  delta=0.00001)
                    dldd <- as.vector(attr(dd, "gradient"))
+
                    dldd
                  },
 
@@ -93,8 +95,8 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
                                                  theta="mu",
                                                  delta=0.00001)
                    dldm <- as.vector(attr(dm, "gradient"))
+
                    d2ldm2 <- - dldm * dldm
-                   d2ldm2 <- ifelse(d2ldm2 < -1e-15, d2ldm2, -1e-15)
                    d2ldm2
                  },
 
@@ -103,13 +105,13 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
                                                  theta="mu",
                                                  delta=0.00001)
                    dldm <- as.vector(attr(dm, "gradient"))
+
                    dd   <- gamlss::numeric.deriv(dHYPERPO(y, mu, sigma, log=TRUE),
                                                  theta="sigma",
                                                  delta=0.00001)
                    dldd <- as.vector(attr(dd, "gradient"))
 
                    d2ldmdd <- - dldm * dldd
-                   d2ldmdd <- ifelse(d2ldmdd < -1e-15, d2ldmdd, -1e-15)
                    d2ldmdd
                  },
 
@@ -118,8 +120,8 @@ HYPERPO <- function (mu.link="log", sigma.link="log") {
                                                  theta="sigma",
                                                  delta=0.00001)
                    dldd <- as.vector(attr(dd, "gradient"))
+
                    d2ldd2 <- - dldd * dldd
-                   d2ldd2 <- ifelse(d2ldd2 < -1e-15, d2ldd2, -1e-15)
                    d2ldd2
                  },
 
