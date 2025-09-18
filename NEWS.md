@@ -1,3 +1,5 @@
+# DiscreteDists 1.1.1
+
 # Version 1.0.0
 
 * New distributions: BerB, DsPA, COMPO, COMPO2, DPERKS.
