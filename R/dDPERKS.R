@@ -74,24 +74,10 @@ rDPERKS <- function(n, mu=0.5, sigma=0.5) {
   if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
   if (any(n <= 0))      stop(paste("n must be a positive integer", "\n", ""))
-  ## Begin auxiliar function
-  one_perks <- function(u, mu, sigma){
-    if (any(mu <= 0)) stop("parameter mu has to be positive!")
-    if (any(sigma <= 0)) stop("parameter sigma has to be positive!")
-    p = mu * (exp(sigma) - 1)/(1 + mu * exp(sigma)) #cumulative distribution function
-    acum = p
-    i = 0
-    while(u >= acum){
-      #i = i + 1
-      p = exp(sigma) * (1 + mu*exp(sigma*i))/(1+ mu*exp(sigma*(i+2))) * p #recurrence relation for probabilities
-      acum = acum + p
-      i = i + 1
-     }
-     return(i)
-    }
-  one_perks <- Vectorize(one_perks)
-  ## End auxiliar function
-  one_perks(runif(n), mu, sigma)
+
+  u <- runif(n=n)
+  x <- qDPERKS(p=u, mu=mu, sigma=sigma)
+  return(x)
 }
 #' @export
 #' @rdname dDPERKS
@@ -99,19 +85,14 @@ qDPERKS <- function(p, mu=0.5, sigma=0.5, lower.tail=TRUE, log.p=FALSE){
   if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
   if (any(p < 0) | any(p > 1.0001)) stop(paste("p must be between 0 and 1", "\n", ""))
+
   if (log.p == TRUE)
     p <- exp(p)
   else p <- p
   if (lower.tail == TRUE)
     p <- p
   else p <- 1 - p
-  # Begin aux fun
-  one_quantile <- function(p, mu, sigma){
-    quan <- ceiling(((1/sigma)*log((p + mu)/(mu*(1-p)))) - 1)
-    return(quan)
-  }
-  one_quantile <- Vectorize(one_quantile)
-  # End aux fun
-  one_quantile(p, mu, sigma)
-}
 
+  q <- ceiling(((1/sigma)*log((p + mu)/(mu*(1-p)))) - 1)
+  return(q)
+}
