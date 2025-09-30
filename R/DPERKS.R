@@ -58,7 +58,7 @@ DPERKS <- function(mu.link="log", sigma.link="log") {
                  mu.dr    = mstats$mu.eta,
                  sigma.dr = dstats$mu.eta,
 
-                 # Primeras derivadas manuales
+                 # First derivatives
 
                  dldm = function(y, mu, sigma) {
                    dldm <- 1/mu + 1/(mu+1) - exp(sigma*y)/(1+mu*exp(sigma*y)) - exp(sigma*(y+1))/(1+mu*exp(sigma*(y+1)))
@@ -70,7 +70,7 @@ DPERKS <- function(mu.link="log", sigma.link="log") {
                    dldd
                  },
 
-                 # Segundas derivadas manuales
+                 # Second derivatives
 
                  d2ldm2 = function(y, mu, sigma) {
                    dldm <- 1/mu + 1/(mu+1) - exp(sigma*y)/(1+mu*exp(sigma*y)) - exp(sigma*(y+1))/(1+mu*exp(sigma*(y+1)))

@@ -42,57 +42,121 @@
 #'
 #' @export
 #'
-dDPERKS <- function(x, mu=0.5, sigma=0.5, log=FALSE){
-  if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
+dDPERKS <- function(x, mu = 0.5, sigma = 0.5, log = FALSE) {
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
-  if (any(x < 0))       stop(paste("x must be >=0", "\n", ""))
-  p <- log(mu) + log(1+mu) + log(exp(sigma) - 1) + sigma*x - log(1+mu*exp(sigma*x)) - log(1 + mu*exp(sigma*(x+1)))
-  if(log){
-    return(p)}
-  else{
-    return(exp(p))}
+  if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
+
+  # Ensure same length vector
+  ly <- max(length(x), length(mu), length(sigma))
+  xx <- rep(x, length=ly)
+  mu <- rep(mu, length=ly)
+  sigma <- rep(sigma, length=ly)
+
+  # Temporal change for invalid x's
+  xx[x < 0] <- 0
+  xx[x == Inf] <- 1
+  xx[!is.na(x) & abs(x - round(x)) > .Machine$double.eps^0.5] <- 2 # No integers
+
+  # pdf in log-scale
+  part1 <- log(mu) + log(1+mu) + log(exp(sigma)-1)
+  part2 <- sigma*xx - log(1+mu*exp(sigma*xx)) - log(1 + mu*exp(sigma*(xx+1)))
+  p <- part1 + part2
+
+  # Assign values for invalid x's
+  p[x < 0] <- -Inf
+  p[x == Inf] <- -Inf
+  p[!is.na(x) & abs(x - round(x)) > .Machine$double.eps^0.5] <- -Inf
+
+  if (log == TRUE)
+    return(p)
+  else
+    return(exp(p))
 }
 #' @export
 #' @rdname dDPERKS
-pDPERKS <- function(q, mu=0.5, sigma=0.5, lower.tail=TRUE, log.p=FALSE){
-  if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
+pDPERKS <- function(q, mu = 0.5, sigma = 0.5, lower.tail = TRUE, log.p = FALSE) {
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
-  if (any(q < 0))       stop(paste("x must be >=0", "\n", ""))
-  cdf <- mu*(exp(sigma*(q+1))- 1)/(1+mu*exp(sigma*(q+1)))
+  if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
+
+  # Ensure same length vector
+  ly    <- max(length(q), length(mu), length(sigma))
+  qq    <- rep(q, length=ly)
+  mu    <- rep(mu, length=ly)
+  sigma <- rep(sigma, length=ly)
+
+  # Temporal change for invalid x's
+  qq[q < 0] <-  0
+  qq[q == Inf] <-  0
+
+  # For non-integer x's, the cumulative is the same as the lower integer
+  qq <- as.integer(qq)
+
+  # The cumulative
+  cdf <- mu*(exp(sigma*(qq+1))- 1)/(1+mu*exp(sigma*(qq+1)))
+
+  # Assign values for invalid x's
+  cdf[q < 0] <- 0
+  cdf[q == Inf] <- 1
+
   if (lower.tail == TRUE)
     cdf <- cdf
-  else cdf = 1 - cdf
+  else
+    cdf = 1 - cdf
   if (log.p == FALSE)
     cdf <- cdf
-  else cdf <- log(cdf)
-  cdf
+  else
+    cdf <- log(cdf)
+
+  return(cdf)
 }
 #' @importFrom stats runif
 #' @export
 #' @rdname dDPERKS
-rDPERKS <- function(n, mu=0.5, sigma=0.5) {
-  if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
+rDPERKS <- function(n, mu = 0.5, sigma = 0.5) {
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
+  if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
   if (any(n <= 0))      stop(paste("n must be a positive integer", "\n", ""))
 
+  n <- ceiling(n)
   u <- runif(n=n)
   x <- qDPERKS(p=u, mu=mu, sigma=sigma)
   return(x)
 }
 #' @export
 #' @rdname dDPERKS
-qDPERKS <- function(p, mu=0.5, sigma=0.5, lower.tail=TRUE, log.p=FALSE){
-  if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
+qDPERKS <- function(p, mu = 0.5, sigma = 0.5, lower.tail = TRUE, log.p = FALSE) {
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
-  if (any(p < 0) | any(p > 1.0001)) stop(paste("p must be between 0 and 1", "\n", ""))
+  if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
 
   if (log.p == TRUE)
     p <- exp(p)
-  else p <- p
+  else
+    p <- p
   if (lower.tail == TRUE)
     p <- p
-  else p <- 1 - p
+  else
+    p <- 1 - p
 
-  q <- ceiling(((1/sigma)*log((p + mu)/(mu*(1-p)))) - 1)
+  # Ensure same length vector
+  ly <- max(length(p), length(mu), length(sigma))
+  pp <- rep(p, length=ly)
+  mu <- rep(mu, length=ly)
+  sigma <- rep(sigma, length=ly)
+
+  # Temporal change for invalid p's
+  pp[p < 0]  <-  0.1
+  pp[p > 1]  <-  0.1
+  pp[p == 1] <-  0.1
+  pp[p == 0] <-  0.1
+
+  # The quantile
+  q <- ceiling(((1/sigma)*log((pp + mu)/(mu*(1-pp)))) - 1)
+
+  # To deal with invalid p's
+  q[p <  0] <- NaN
+  q[p >  1] <- NaN
+  q[p == 1] <- Inf
+  q[p == 0] <- 0
+
   return(q)
 }

@@ -7,12 +7,12 @@ probs2 <- dDPERKS(x=0:x_max, mu=0.001, sigma=0.85)
 probs3 <- dDPERKS(x=0:x_max, mu=0.001, sigma=1.5)
 
 # To plot the first k values
-plot(x=0:x_max, y=probs1, type="o", lwd=2, col="dodgerblue", las=1,
+plot(x=0:x_max, y=probs1, type="o", lwd=2, col="green4", las=1,
      ylab="P(X=x)", xlab="X", main="Probability for DPERKS",
      ylim=c(0, 0.40))
 points(x=0:x_max, y=probs2, type="o", lwd=2, col="tomato")
-points(x=0:x_max, y=probs3, type="o", lwd=2, col="green4")
-legend("topright", col=c("dodgerblue", "tomato", "green4"), lwd=3,
+points(x=0:x_max, y=probs3, type="o", lwd=2, col="black")
+legend("topright", col=c("green4", "tomato", "black"), lwd=3,
        legend=c("mu=0.001, sigma=0.52 ",
                 "mu=0.001, sigma=0.85",
                 "mu=0.001, sigma=1.5"))
@@ -25,13 +25,13 @@ cumulative_probs1 <- pDPERKS(q=0:x_max, mu=0.001, sigma=0.52)
 cumulative_probs2 <- pDPERKS(q=0:x_max, mu=0.001, sigma=0.85)
 cumulative_probs3 <- pDPERKS(q=0:x_max, mu=0.001, sigma=1.5)
 
-plot(x=0:x_max, y=cumulative_probs1, col="dodgerblue",
+plot(x=0:x_max, y=cumulative_probs1, col="green4",
      type="o", las=1, ylim=c(0, 1),
      main="Cumulative probability for DPERKS",
      xlab="X", ylab="Probability")
 points(x=0:x_max, y=cumulative_probs2, type="o", col="tomato")
-points(x=0:x_max, y=cumulative_probs3, type="o", col="green4")
-legend("bottomright", col=c("dodgerblue", "tomato", "green4"), lwd=3,
+points(x=0:x_max, y=cumulative_probs3, type="o", col="black")
+legend("bottomright", col=c("green4", "tomato", "black"), lwd=3,
        legend=c("mu=0.001, sigma=0.52 ",
                 "mu=0.001, sigma=0.85",
                 "mu=0.001, sigma=1.5"))
@@ -52,12 +52,12 @@ cn <- union(names(probs1), names(probs2))
 height <- rbind(probs1[cn], probs2[cn])
 nombres <- cn
 mp <- barplot(height, beside = TRUE, names.arg = nombres,
-              col=c('dodgerblue3','firebrick3'), las=1,
-              xlab='X', ylab='Proportion')
-legend('topright',
-       legend=c('Theoretical', 'Simulated'),
-       bty='n', lwd=3,
-       col=c('dodgerblue3','firebrick3'), lty=1)
+              col=c("dodgerblue3","firebrick3"), las=1,
+              xlab="X", ylab="Proportion")
+legend("topright",
+       legend=c("Theoretical", "Simulated"),
+       bty="n", lwd=3,
+       col=c("dodgerblue3","firebrick3"), lty=1)
 
 # Example 4
 # Checking the quantile function

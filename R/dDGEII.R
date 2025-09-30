@@ -47,32 +47,59 @@ dDGEII <- function(x, mu=0.5, sigma=1.5, log=FALSE){
   if (any(mu <= 0) | any(mu >= 1))  stop("parameter mu must be in (0, 1)")
   if (any(sigma <= 0))              stop("parameter sigma has to be positive!")
 
-  res <- ifelse(x < 0,
-                -Inf,
-                log((1-mu^(x+1))^sigma-(1-mu^x)^sigma))
+  # Ensure same length vector
+  ly <- max(length(x), length(mu), length(sigma))
+  xx <- rep(x, length=ly)
+  mu <- rep(mu, length=ly)
+  sigma <- rep(sigma, length=ly)
 
-  if(log){
-    return(res)}
-  else{
-    return(exp(res))}
+  # Temporal change for invalid x's
+  xx[x < 0] <- 0
+  xx[x == Inf] <- 1
+  xx[!is.na(x) & abs(x - round(x)) > .Machine$double.eps^0.5] <- 2 # No integers
+
+  # pdf in log-scale
+  p <- log((1-mu^(xx+1))^sigma - (1-mu^xx)^sigma)
+
+  # Assign -Inf for invalid x's
+  p[x < 0] <- -Inf
+  p[x == Inf] <- -Inf
+  p[!is.na(x) & abs(x - round(x)) > .Machine$double.eps^0.5] <- -Inf
+
+  if (log == TRUE)
+    return(p)
+  else
+    return(exp(p))
 }
-dDGEII <- Vectorize(dDGEII)
 #' @export
 #' @rdname dDGEII
 pDGEII <- function(q, mu=0.5, sigma=1.5, lower.tail = TRUE, log.p = FALSE){
   if (any(mu <= 0) | any(mu >= 1))  stop("parameter mu must be in (0, 1)")
   if (any(sigma <= 0))              stop("parameter sigma has to be positive!")
 
-  ly <- max(length(q), length(mu), length(sigma))
-  q     <- rep(q, length=ly)
-  mu    <- rep(mu, length= ly)
+  # Ensure same length vector
+  ly    <- max(length(q), length(mu), length(sigma))
+  qq    <- rep(q, length=ly)
+  mu    <- rep(mu, length=ly)
   sigma <- rep(sigma, length=ly)
 
+  # Temporal change for invalid x's
+  qq[q < 0] <-  0
+  qq[q == Inf] <-  0
+
+  # For non-integer x's, the cumulative is the same as the lower integer
+  qq <- as.integer(qq)
+
+  # Auxiliary function
   fn <- function(q, mu, sigma) sum(dDGEII(x=0:q, mu=mu, sigma=sigma))
   Vcdf <- Vectorize(fn)
 
-  cdf <- Vcdf(q=q, mu=mu, sigma=sigma)
-  cdf <- ifelse(q < 0, 0, cdf)
+  # The cumulative
+  cdf <- Vcdf(q=qq, mu=mu, sigma=sigma)
+
+  # Assign values for invalid x's
+  cdf[q < 0] <- 0
+  cdf[q == Inf] <- 1
 
   if (lower.tail == TRUE)
     cdf <- cdf
@@ -80,7 +107,8 @@ pDGEII <- function(q, mu=0.5, sigma=1.5, lower.tail = TRUE, log.p = FALSE){
   if (log.p == FALSE)
     cdf <- cdf
   else cdf <- log(cdf)
-  cdf
+
+  return(cdf)
 }
 #' @importFrom stats runif
 #' @export
@@ -90,40 +118,39 @@ rDGEII <- function(n, mu=0.5, sigma=1.5) {
   if (any(sigma <= 0))              stop("parameter sigma has to be positive!")
   if (any(n <= 0))                  stop(paste("n must be a positive integer", "\n", ""))
 
-  # Begin auxiliar function
-  one_random_DGEII <- function(u, mu, sigma) {
-    p <- dDGEII(x=0, mu=mu, sigma=sigma, log=FALSE)
-    F <- p
-    i <- 0
-    while (u >= F) {
-      i <- i + 1
-      p <- dDGEII(x=i, mu=mu, sigma=sigma, log=FALSE)
-      F <- F + p
-    }
-    return(i)
-  }
-  one_random_DGEII <- Vectorize(one_random_DGEII)
-  # End auxiliar function
-
-  one_random_DGEII(u=runif(n), mu, sigma)
+  n <- ceiling(n)
+  u <- runif(n=n)
+  x <- qDGEII(p=u, mu=mu, sigma=sigma)
+  return(x)
 }
 #' @export
 #' @rdname dDGEII
-qDGEII <- function(p, mu=0.5, sigma=1.5, lower.tail = TRUE,
-                   log.p = FALSE) {
+qDGEII <- function(p, mu=0.5, sigma=1.5, lower.tail = TRUE, log.p = FALSE) {
   if (any(mu <= 0) | any(mu >= 1))  stop("parameter mu must be in (0, 1)")
   if (any(sigma <= 0))              stop("parameter sigma has to be positive!")
-  if (any(p < 0) | any(p > 1.0001))
-    stop(paste("p must be between 0 and 1", "\n", ""))
 
   if (log.p == TRUE)
     p <- exp(p)
-  else p <- p
+  else
+    p <- p
   if (lower.tail == TRUE)
     p <- p
-  else p <- 1 - p
+  else
+    p <- 1 - p
 
-  # Begin auxiliar function
+  # Ensure same length vector
+  ly <- max(length(p), length(mu), length(sigma))
+  pp <- rep(p, length=ly)
+  mu <- rep(mu, length=ly)
+  sigma <- rep(sigma, length=ly)
+
+  # Temporal change for invalid p's
+  pp[p < 0]  <-  0.1
+  pp[p > 1]  <-  0.1
+  pp[p == 1] <-  0.1
+  pp[p == 0] <-  0.1
+
+  # Begin auxiliary function
   one_quantile_DGEII <- function(p, mu, sigma) {
     if (p + 1e-09 >= 1)
       i <- Inf
@@ -140,7 +167,16 @@ qDGEII <- function(p, mu=0.5, sigma=1.5, lower.tail = TRUE,
     return(i)
   }
   one_quantile_DGEII <- Vectorize(one_quantile_DGEII)
-  # End auxiliar function
+  # End auxiliary function
 
-  one_quantile_DGEII(p=p, mu=mu, sigma=sigma)
+  # The quantile
+  q <- one_quantile_DGEII(p=pp, mu=mu, sigma=sigma)
+
+  # To deal with invalid p's
+  q[p <  0] <- NaN
+  q[p >  1] <- NaN
+  q[p == 1] <- Inf
+  q[p == 0] <- 0
+
+  return(q)
 }
