@@ -1,5 +1,5 @@
 # Example 1
-# Plotting the mass function for diferent parameter values
+# Plotting the mass function for different parameter values
 
 x_max <- 25
 probs1 <- dDPERKS(x=0:x_max, mu=0.001, sigma=0.52)

@@ -48,14 +48,14 @@ dDGEII <- function(x, mu=0.5, sigma=1.5, log=FALSE){
   if (any(sigma <= 0))              stop("parameter sigma has to be positive!")
 
   # Ensure same length vector
-  ly <- max(length(x), length(mu), length(sigma))
-  xx <- rep(x, length=ly)
-  mu <- rep(mu, length=ly)
+  ly    <- max(length(x), length(mu), length(sigma))
+  xx    <- rep(x, length=ly)
+  mu    <- rep(mu, length=ly)
   sigma <- rep(sigma, length=ly)
 
   # Temporal change for invalid x's
   xx[x < 0] <- 0
-  xx[x == Inf] <- 1
+  xx[is.infinite(x)] <- 1
   xx[!is.na(x) & abs(x - round(x)) > .Machine$double.eps^0.5] <- 2 # No integers
 
   # pdf in log-scale
@@ -63,7 +63,7 @@ dDGEII <- function(x, mu=0.5, sigma=1.5, log=FALSE){
 
   # Assign -Inf for invalid x's
   p[x < 0] <- -Inf
-  p[x == Inf] <- -Inf
+  p[is.infinite(x)] <- -Inf
   p[!is.na(x) & abs(x - round(x)) > .Machine$double.eps^0.5] <- -Inf
 
   if (log == TRUE)
