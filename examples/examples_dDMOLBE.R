@@ -40,7 +40,7 @@ legend("bottomright", col=c("dodgerblue", "tomato", "green4"), lwd=3,
 # Comparing the random generator output with
 # the theoretical probabilities
 
-x_max <- 15
+x_max <- 50
 probs1 <- dDMOLBE(x=0:x_max, mu=5, sigma=0.5)
 names(probs1) <- 0:x_max
 

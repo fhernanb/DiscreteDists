@@ -36,12 +36,11 @@ with \eqn{\mu > 0} and \eqn{\sigma > 0}
 # Generating some random values with
 # known mu and sigma
 set.seed(1234)
-y <- rDMOLBE(n=100, mu=10, sigma=7)
+y <- rDMOLBE(n=200, mu=3, sigma=7)
 
 # Fitting the model
 library(gamlss)
-mod1 <- gamlss(y~1, sigma.fo=~1, family=DMOLBE,
-               control=gamlss.control(n.cyc=500, trace=FALSE))
+mod1 <- gamlss(y~1, sigma.fo=~1, family=DMOLBE)
 
 # Extracting the fitted values for mu and sigma
 # using the inverse link function

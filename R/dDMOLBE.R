@@ -49,14 +49,29 @@ dDMOLBE <- function(x, mu=1, sigma=1, log=FALSE){
 pDMOLBE <- function(q, mu=1, sigma=1, lower.tail = TRUE, log.p = FALSE){
   if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
-  if (any(q < 0))       stop(paste("q must be >=0", "\n", ""))
-  ly <- max(length(q), length(mu), length(sigma))
-  q <- rep(q, length = ly)
-  mu <- rep(mu, length = ly)
-  sigma <- rep(sigma, length = ly)
+
+  # Ensure same length vector
+  ly    <- max(length(q), length(mu), length(sigma))
+  qq    <- rep(q, length=ly)
+  mu    <- rep(mu, length=ly)
+  sigma <- rep(sigma, length=ly)
+
+  # Temporal change for invalid x's
+  qq[q < 0] <-  0
+  qq[q == Inf] <-  0
+
+  # For non-integer x's, the cumulative is the same as the lower integer
+  qq <- as.integer(qq)
+
+  # The cumulative
   num <- 1 - (1+(q+1)/mu) * exp(-(q+1)/mu)
   den <- 1 - (1-sigma) * (1 + (q+1)/mu) * exp(-(q+1)/mu)
   cdf <- num / den
+
+  # Assign values for invalid x's
+  cdf[q < 0] <- 0
+  cdf[q == Inf] <- 1
+
   if (lower.tail == TRUE)
     cdf <- cdf
   else cdf = 1 - cdf
@@ -72,37 +87,40 @@ rDMOLBE <- function(n, mu=1, sigma=1) {
   if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
   if (any(n <= 0))      stop(paste("n must be a positive integer", "\n", ""))
-  # Begin auxiliar function
-  one_random_DMOLBE <- function(u, mu, sigma) {
-    p <- dDMOLBE(x=0, mu=mu, sigma=sigma, log=FALSE)
-    F <- p
-    i <- 0
-    while (u >= F) {
-      i <- i + 1
-      p <- dDMOLBE(x=i, mu=mu, sigma=sigma, log=FALSE)
-      F <- F + p
-    }
-    return(i)
-  }
-  one_random_DMOLBE <- Vectorize(one_random_DMOLBE)
-  # End auxiliar function
-  one_random_DMOLBE(u=runif(n), mu, sigma)
+
+  n <- ceiling(n)
+  u <- runif(n=n)
+  x <- qDMOLBE(p=u, mu=mu, sigma=sigma)
+  return(x)
 }
 #' @export
 #' @rdname dDMOLBE
-qDMOLBE <- function(p, mu = 1, sigma = 1, lower.tail = TRUE,
-                     log.p = FALSE) {
+qDMOLBE <- function(p, mu = 1, sigma = 1, lower.tail = TRUE, log.p = FALSE) {
   if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
   if (any(mu <= 0))     stop("parameter mu has to be positive!")
-  if (any(p < 0) | any(p > 1.0001))
-    stop(paste("p must be between 0 and 1", "\n", ""))
+
   if (log.p == TRUE)
     p <- exp(p)
-  else p <- p
+  else
+    p <- p
   if (lower.tail == TRUE)
     p <- p
-  else p <- 1 - p
-  # Begin auxiliar function
+  else
+    p <- 1 - p
+
+  # Ensure same length vector
+  ly <- max(length(p), length(mu), length(sigma))
+  pp <- rep(p, length=ly)
+  mu <- rep(mu, length=ly)
+  sigma <- rep(sigma, length=ly)
+
+  # Temporal change for invalid p's
+  pp[p < 0]  <-  0.1
+  pp[p > 1]  <-  0.1
+  pp[p == 1] <-  0.1
+  pp[p == 0] <-  0.1
+
+  # Begin auxiliary function
   one_quantile_DMOLBE <- function(p, mu, sigma) {
     if (p + 1e-09 >= 1)
       i <- Inf
@@ -119,6 +137,16 @@ qDMOLBE <- function(p, mu = 1, sigma = 1, lower.tail = TRUE,
     return(i)
   }
   one_quantile_DMOLBE <- Vectorize(one_quantile_DMOLBE)
-  # End auxiliar function
-  one_quantile_DMOLBE(p=p, mu=mu, sigma=sigma)
+  # End auxiliary function
+
+  # The quantile
+  q <- one_quantile_DMOLBE(p=p, mu=mu, sigma=sigma)
+
+  # To deal with invalid p's
+  q[p <  0] <- NaN
+  q[p >  1] <- NaN
+  q[p == 1] <- Inf
+  q[p == 0] <- 0
+
+  return(q)
 }

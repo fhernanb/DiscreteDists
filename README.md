@@ -4,7 +4,7 @@
 [![](http://cranlogs.r-pkg.org/badges/grand-total/DiscreteDists?color=blue)](https://cran.r-project.org/package=DiscreteDists)
 <!-- badges: end -->
 
-# DiscreteDists <img src="man/figures/logo.png" align="right" alt="" width="120" />
+# DiscreteDists <img src="docs/logo.png" align="right" alt="" width="120" />
 
 In this package are available new Discrete statistical distributions. With this package it is possible to estimate parameters and fit regression models within GAMLSS framework.
 
