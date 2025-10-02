@@ -84,8 +84,8 @@ pDGEII <- function(q, mu=0.5, sigma=1.5, lower.tail = TRUE, log.p = FALSE){
   sigma <- rep(sigma, length=ly)
 
   # Temporal change for invalid x's
-  qq[q < 0] <-  0
-  qq[q == Inf] <-  0
+  qq[q < 0] <- 0
+  qq[q == Inf] <- 0
 
   # For non-integer x's, the cumulative is the same as the lower integer
   qq <- as.integer(qq)
@@ -101,13 +101,10 @@ pDGEII <- function(q, mu=0.5, sigma=1.5, lower.tail = TRUE, log.p = FALSE){
   cdf[q < 0] <- 0
   cdf[q == Inf] <- 1
 
-  if (lower.tail == TRUE)
-    cdf <- cdf
-  else cdf = 1 - cdf
-  if (log.p == FALSE)
-    cdf <- cdf
-  else cdf <- log(cdf)
-
+  if (lower.tail == FALSE)
+    cdf <- 1 - cdf
+  if (log.p == TRUE)
+    cdf <- log(cdf)
   return(cdf)
 }
 #' @importFrom stats runif
@@ -131,11 +128,7 @@ qDGEII <- function(p, mu=0.5, sigma=1.5, lower.tail = TRUE, log.p = FALSE) {
 
   if (log.p == TRUE)
     p <- exp(p)
-  else
-    p <- p
-  if (lower.tail == TRUE)
-    p <- p
-  else
+  if (lower.tail == FALSE)
     p <- 1 - p
 
   # Ensure same length vector
