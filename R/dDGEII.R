@@ -92,10 +92,10 @@ pDGEII <- function(q, mu=0.5, sigma=1.5, lower.tail = TRUE, log.p = FALSE){
 
   # Auxiliary function
   fn <- function(q, mu, sigma) sum(dDGEII(x=0:q, mu=mu, sigma=sigma))
-  Vcdf <- Vectorize(fn)
+  Vec_fn <- Vectorize(fn)
 
   # The cumulative
-  cdf <- Vcdf(q=qq, mu=mu, sigma=sigma)
+  cdf <- Vec_fn(q=qq, mu=mu, sigma=sigma)
 
   # Assign values for invalid x's
   cdf[q < 0] <- 0
@@ -148,9 +148,9 @@ qDGEII <- function(p, mu=0.5, sigma=1.5, lower.tail = TRUE, log.p = FALSE) {
     if (p + 1e-09 >= 1)
       i <- Inf
     else {
-      prob <- dDGEII(x=0, mu=mu, sigma=sigma, log=FALSE)
-      F <- prob
       i <- 0
+      prob <- dDGEII(x=i, mu=mu, sigma=sigma, log=FALSE)
+      F <- prob
       while (p >= F) {
         i <- i + 1
         prob <- dDGEII(x=i, mu=mu, sigma=sigma, log=FALSE)
