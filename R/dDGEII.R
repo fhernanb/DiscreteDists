@@ -66,16 +66,15 @@ dDGEII <- function(x, mu=0.5, sigma=1.5, log=FALSE){
   p[is.infinite(x)] <- -Inf
   p[!is.na(x) & abs(x - round(x)) > .Machine$double.eps^0.5] <- -Inf
 
-  if (log == TRUE)
-    return(p)
-  else
-    return(exp(p))
+  if (log == FALSE)
+    p <- exp(p)
+  return(p)
 }
 #' @export
 #' @rdname dDGEII
 pDGEII <- function(q, mu=0.5, sigma=1.5, lower.tail = TRUE, log.p = FALSE){
-  if (any(mu <= 0) | any(mu >= 1))  stop("parameter mu must be in (0, 1)")
-  if (any(sigma <= 0))              stop("parameter sigma has to be positive!")
+  if (any(mu <= 0) | any(mu >= 1)) stop("parameter mu must be in (0, 1)")
+  if (any(sigma <= 0))             stop("parameter sigma has to be positive!")
 
   # Ensure same length vector
   ly    <- max(length(q), length(mu), length(sigma))
@@ -105,6 +104,7 @@ pDGEII <- function(q, mu=0.5, sigma=1.5, lower.tail = TRUE, log.p = FALSE){
     cdf <- 1 - cdf
   if (log.p == TRUE)
     cdf <- log(cdf)
+
   return(cdf)
 }
 #' @importFrom stats runif

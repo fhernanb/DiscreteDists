@@ -43,8 +43,8 @@
 #' @export
 #'
 dDPERKS <- function(x, mu = 0.5, sigma = 0.5, log = FALSE) {
-  if (any(mu <= 0))     stop("parameter mu has to be positive!")
-  if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
+  if (any(mu <= 0))    stop("parameter mu has to be positive!")
+  if (any(sigma <= 0)) stop("parameter sigma has to be positive!")
 
   # Ensure same length vector
   ly    <- max(length(x), length(mu), length(sigma))
@@ -67,16 +67,15 @@ dDPERKS <- function(x, mu = 0.5, sigma = 0.5, log = FALSE) {
   p[is.infinite(x)] <- -Inf
   p[!is.na(x) & abs(x - round(x)) > .Machine$double.eps^0.5] <- -Inf
 
-  if (log == TRUE)
-    return(p)
-  else
-    return(exp(p))
+  if (log == FALSE)
+    p <- exp(p)
+  return(p)
 }
 #' @export
 #' @rdname dDPERKS
 pDPERKS <- function(q, mu = 0.5, sigma = 0.5, lower.tail = TRUE, log.p = FALSE) {
-  if (any(mu <= 0))     stop("parameter mu has to be positive!")
-  if (any(sigma <= 0))  stop("parameter sigma has to be positive!")
+  if (any(mu <= 0))    stop("parameter mu has to be positive!")
+  if (any(sigma <= 0)) stop("parameter sigma has to be positive!")
 
   # Ensure same length vector
   ly    <- max(length(q), length(mu), length(sigma))
@@ -102,6 +101,7 @@ pDPERKS <- function(q, mu = 0.5, sigma = 0.5, lower.tail = TRUE, log.p = FALSE) 
     cdf <- 1 - cdf
   if (log.p == TRUE)
     cdf <- log(cdf)
+
   return(cdf)
 }
 #' @importFrom stats runif
@@ -135,10 +135,10 @@ qDPERKS <- function(p, mu = 0.5, sigma = 0.5, lower.tail = TRUE, log.p = FALSE) 
   sigma <- rep(sigma, length=ly)
 
   # Temporal change for invalid p's
-  pp[p < 0]  <-  0.1
-  pp[p > 1]  <-  0.1
-  pp[p == 1] <-  0.1
-  pp[p == 0] <-  0.1
+  pp[p < 0]  <- 0.1
+  pp[p > 1]  <- 0.1
+  pp[p == 1] <- 0.1
+  pp[p == 0] <- 0.1
 
   # The quantile
   q <- ceiling(((1/sigma)*log((pp + mu)/(mu*(1-pp)))) - 1)
