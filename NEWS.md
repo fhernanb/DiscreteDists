@@ -1,8 +1,8 @@
 # DiscreteDists (development version)
 
-# Version 1.1.1.9000
+# Version 1.1.2
 
-* New examples.
+* New and improved examples.
 
 # Version 1.0.0
 

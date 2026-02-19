@@ -21,7 +21,7 @@ fitting using the function gamlss()."><!-- mathjax --><script src="https://cdnjs
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DiscreteDists</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.1.9000</span>
       </span>
     </div>
 
@@ -115,14 +115,14 @@ has a support 0, 1, 2, ... and mass function given by</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: splines</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: gamlss.data</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘gamlss.data’</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from ‘package:datasets’:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: 'gamlss.data'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from 'package:datasets':</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     sleep</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: gamlss.dist</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: nlme</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: parallel</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  **********   GAMLSS Version 5.5-0  ********** </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  **********   GAMLSS Version 5.4-22  ********** </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> For more on GAMLSS look at https://www.gamlss.com/</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Type gamlssNews() to see new features/changes/bug fixes.</span>
 <span class="r-in"><span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="fl">1</span>, family<span class="op">=</span><span class="va">BerG</span>,</span></span>
@@ -131,10 +131,10 @@ has a support 0, 1, 2, ... and mass function given by</p>
 <span class="r-in"><span><span class="co"># Extracting the fitted values for mu and sigma</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">"mu"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7759974 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7779973 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod1</span>, what<span class="op">=</span><span class="st">"sigma"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.5130897 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.5102395 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 2</span></span></span>
 <span class="r-in"><span><span class="co"># Generating random values under some model</span></span></span>
@@ -178,21 +178,21 @@ has a support 0, 1, 2, ... and mass function given by</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Mu link function:  log</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Mu Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   1.1370     0.2055   5.534 5.08e-08 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   1.1367     0.2055   5.533 5.11e-08 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> x1            1.0542     0.2804   3.759 0.000191 ***</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x2            0.2145     0.2490   0.861 0.389393    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x2            0.2146     0.2490   0.862 0.389329    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sigma link function:  log</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sigma Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   2.0247     0.1369  14.789  &lt; 2e-16 ***</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x3            1.2461     0.2034   6.127 1.83e-09 ***</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x4            1.7665     0.2113   8.361 6.30e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   2.0246     0.1369  14.789  &lt; 2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x3            1.2461     0.2034   6.127 1.82e-09 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x4            1.7665     0.2113   8.361 6.28e-16 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of observations in the fit:  500 </span>
@@ -244,7 +244,7 @@ has a support 0, 1, 2, ... and mass function given by</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> whenAfter     0.7472     0.3174   2.354  0.02199 *  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> grazedFeral  -0.9188     0.3001  -3.062  0.00333 ** </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sigma link function:  log</span>
@@ -252,7 +252,7 @@ has a support 0, 1, 2, ... and mass function given by</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value Pr(&gt;|t|)    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   2.1263     0.1717   12.38   &lt;2e-16 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of observations in the fit:  62 </span>
@@ -279,7 +279,7 @@ has a support 0, 1, 2, ... and mass function given by</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
 </div>
 
       </footer></div>

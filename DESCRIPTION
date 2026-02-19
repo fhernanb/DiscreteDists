@@ -1,6 +1,6 @@
 Package: DiscreteDists
 Title: Discrete Statistical Distributions
-Version: 1.1.1.9000
+Version: 1.1.2
 Authors@R: c(
     person("Freddy", "Hernandez-Barajas", , "fhernanb@unal.edu.co", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7459-3329")),
@@ -10,8 +10,7 @@ Authors@R: c(
            comment = c(ORCID = "0000-0003-3062-1820")),
     person("Jamiu", "Olumoh", , "jamiu.olumoh@aun.edu.ng", role = c("aut"),
            comment = c(ORCID = "0000-0002-7371-3920")), 
-    person("Osho", "Ajayi", , "osho.ajayi@aun.edu.ng", role = c("aut"),
-           comment = c(ORCID = "0000-0000-0000-0000"))
+    person("Osho", "Ajayi", , "osho.ajayi@aun.edu.ng", role = c("aut"))
            )
 Description: Implementation of new discrete statistical distributions. Each distribution includes the traditional functions as well as an additional function called the family function, which can be used to estimate parameters within the 'gamlss' framework.
 License: MIT + file LICENSE
