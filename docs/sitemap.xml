@@ -42,6 +42,7 @@
 <url><loc>/reference/DP.html</loc></url>
 <url><loc>/reference/DPERKS.html</loc></url>
 <url><loc>/reference/dPOISXL.html</loc></url>
+<url><loc>/reference/dPTRTE.html</loc></url>
 <url><loc>/reference/DsPA.html</loc></url>
 <url><loc>/reference/estim_mu_DBH.html</loc></url>
 <url><loc>/reference/estim_mu_DLD.html</loc></url>
@@ -56,6 +57,7 @@
 <url><loc>/reference/estim_mu_sigma_GGEO.html</loc></url>
 <url><loc>/reference/estim_mu_sigma_HYPERPO.html</loc></url>
 <url><loc>/reference/estim_mu_sigma_HYPERPO2.html</loc></url>
+<url><loc>/reference/estim_mu_sigma_PTRTE.html</loc></url>
 <url><loc>/reference/F11.html</loc></url>
 <url><loc>/reference/f11_cpp.html</loc></url>
 <url><loc>/reference/GGEO.html</loc></url>
@@ -79,6 +81,7 @@
 <url><loc>/reference/obtaining_lambda.html</loc></url>
 <url><loc>/reference/plot_discrete_cdf.html</loc></url>
 <url><loc>/reference/POISXL.html</loc></url>
+<url><loc>/reference/PTRTE.html</loc></url>
 <url><loc>/reference/simulate_hp.html</loc></url>
 <url><loc>/reference/stopping.html</loc></url>
 <url><loc>/reference/z_cpp.html</loc></url>
