@@ -1,4 +1,4 @@
-#' Poisson-generalised Lindley distribution
+#' New Poisson-generalised Lindley distribution
 #'
 #' @author Tomás Mesa, \email{tomas.mesaz@udea.edu.co}
 #'

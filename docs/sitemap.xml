@@ -23,6 +23,7 @@
 <url><loc>/reference/HYPERPO.html</loc></url>
 <url><loc>/reference/HYPERPO2.html</loc></url>
 <url><loc>/reference/NPGL.html</loc></url>
+<url><loc>/reference/NPGL2.html</loc></url>
 <url><loc>/reference/POISXL.html</loc></url>
 <url><loc>/reference/PTRTE.html</loc></url>
 <url><loc>/reference/add.html</loc></url>
@@ -50,6 +51,7 @@
 <url><loc>/reference/dHYPERPO_single.html</loc></url>
 <url><loc>/reference/dHYPERPO_vec.html</loc></url>
 <url><loc>/reference/dNPGL.html</loc></url>
+<url><loc>/reference/dNPGL2.html</loc></url>
 <url><loc>/reference/dPOISXL.html</loc></url>
 <url><loc>/reference/dPTRTE.html</loc></url>
 <url><loc>/reference/estim_mu_DBH.html</loc></url>
@@ -66,6 +68,7 @@
 <url><loc>/reference/estim_mu_sigma_HYPERPO.html</loc></url>
 <url><loc>/reference/estim_mu_sigma_HYPERPO2.html</loc></url>
 <url><loc>/reference/estim_mu_sigma_NPGL.html</loc></url>
+<url><loc>/reference/estim_mu_sigma_NPGL2.html</loc></url>
 <url><loc>/reference/estim_mu_sigma_NPGL_MM.html</loc></url>
 <url><loc>/reference/estim_mu_sigma_PTRTE.html</loc></url>
 <url><loc>/reference/f11_cpp.html</loc></url>
@@ -83,6 +86,7 @@
 <url><loc>/reference/logLik_HYPERPO.html</loc></url>
 <url><loc>/reference/logLik_HYPERPO2.html</loc></url>
 <url><loc>/reference/logLik_NPGL.html</loc></url>
+<url><loc>/reference/logLik_NPGL2.html</loc></url>
 <url><loc>/reference/logLik_POISXL.html</loc></url>
 <url><loc>/reference/mean_var_hp.html</loc></url>
 <url><loc>/reference/obtaining_lambda.html</loc></url>

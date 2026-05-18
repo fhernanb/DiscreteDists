@@ -2,7 +2,7 @@
 % Please edit documentation in R/NPGL.R
 \name{NPGL}
 \alias{NPGL}
-\title{Poisson-generalised Lindley distribution}
+\title{New Poisson-generalised Lindley distribution}
 \usage{
 NPGL(mu.link = "log", sigma.link = "log")
 }

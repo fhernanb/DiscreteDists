@@ -18,7 +18,6 @@ logit_inv(coef(mod1, what="sigma"))
 # Generating random values under some model
 # A function to simulate a data set with Y ~ PTRTE
 
-\dontrun{
 gendat <- function(n) {
   x1 <- runif(n)
   x2 <- runif(n)
@@ -34,10 +33,9 @@ dat <- gendat(n=2000)
 # Fitting the model
 mod2 <- NULL
 mod2 <- gamlss(y~x1, sigma.fo=~x2, family=PTRTE, data=dat,
-               control=gamlss.control(n.cyc=500, trace=TRUE))
+               control=gamlss.control(n.cyc=500, trace=FALSE))
 
 summary(mod2)
-}
 
 # Example 3 (Second data set of the article)
 # European corn-borer count data reported by McGuire et al. (1957).

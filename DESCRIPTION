@@ -20,7 +20,9 @@ Imports:
     pracma,
     Rcpp,
     COMPoissonReg,
-    nleqslv
+    nleqslv,
+    AER,
+    COUNT
 LinkingTo: 
     Rcpp
 Encoding: UTF-8
