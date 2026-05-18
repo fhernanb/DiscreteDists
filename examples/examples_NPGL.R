@@ -8,7 +8,7 @@ y <- rNPGL(n=100, mu=20, sigma=2)
 # Fitting the model
 library(gamlss)
 mod1 <- gamlss(y~1, family=NPGL,
-               control=gamlss.control(n.cyc=500, trace=TRUE))
+               control=gamlss.control(n.cyc=500, trace=FALSE))
 
 # Extracting the fitted values for mu and sigma
 exp(coef(mod1, what="mu"))
@@ -31,6 +31,6 @@ set.seed(1234)
 datos <- gendat(n=200)
 
 mod2 <- gamlss(y~x1, sigma.fo=~x2, family=NPGL, data=datos,
-               control=gamlss.control(n.cyc=800, trace=TRUE))
+               control=gamlss.control(n.cyc=800, trace=FALSE))
 
 summary(mod2)
