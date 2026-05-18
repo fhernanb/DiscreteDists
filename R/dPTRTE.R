@@ -35,7 +35,7 @@
 #' parameters \eqn{\mu} and \eqn{\sigma} has support
 #' \eqn{x = 0,1,2,\dots} and probability mass function given by
 #'
-#' \deqn{f(x | \mu, \sigma) = \frac{\mu(\sigma x\mu + 1 + \mu - \sigma)}{(1+\mu)^{x+2}}}
+#' \deqn{f(x | \mu, \sigma) = \frac{\mu}{(1+\mu)^{x+1}} \left(\frac{\sigma \mu (1+x)}{1+\mu} - (\sigma-1) \right)}
 #'
 #' with \eqn{\mu > 0} and \eqn{0 < \sigma < 1}.
 #'

@@ -2,7 +2,9 @@
 # Generating some random values with known mu and sigma
 # logit_inv function
 logit_inv <- function(x) exp(x) / (exp(x)+1)
-y <- rPTRTE(n=100, mu=0.2, sigma=0.5)
+
+set.seed(12345)
+y <- rPTRTE(n=200, mu=0.2, sigma=0.5)
 
 # Fitting the model
 library(gamlss)
@@ -16,6 +18,7 @@ logit_inv(coef(mod1, what="sigma"))
 # Generating random values under some model
 # A function to simulate a data set with Y ~ PTRTE
 
+\dontrun{
 gendat <- function(n) {
   x1 <- runif(n)
   x2 <- runif(n)
@@ -25,8 +28,8 @@ gendat <- function(n) {
   data.frame(y=y, x1=x1, x2=x2)
 }
 
-set.seed(1234)
-dat <- gendat(n=1000)
+set.seed(12345)
+dat <- gendat(n=2000)
 
 # Fitting the model
 mod2 <- NULL
@@ -34,6 +37,7 @@ mod2 <- gamlss(y~x1, sigma.fo=~x2, family=PTRTE, data=dat,
                control=gamlss.control(n.cyc=500, trace=TRUE))
 
 summary(mod2)
+}
 
 # Example 3 (Second data set of the article)
 # European corn-borer count data reported by McGuire et al. (1957).
