@@ -84,13 +84,11 @@ mean-parametrized NPGL distribution in the <code><a href="https://rdrr.io/pkg/ga
     <div id="details">
     <h2>Details</h2>
     <p>This family uses the mean-parametrized version of the NPGL distribution
-proposed in Section 6 of Altun (2021). The new parameters are:</p><ul><li><p>\(\mu &gt; 0\): the mean of the distribution, i.e. \(E[X] = \mu\).</p></li>
-<li><p>\(\sigma &gt; 0\): the shape parameter (equivalent to \(\alpha\)
-in the original NPGL parametrization).</p></li>
-</ul><p>The reparametrization links \(\mu\) (mean) and \(\sigma\) (\(\alpha\))
-to the original parameter \(\theta\) via the positive root of the mean
-equation \(E[X] = (\alpha + \theta) / (\theta (1 + \theta)) = \mu\):</p>
-<p>$$\theta = \frac{\sqrt{4\sigma\mu + \mu^2 - 2\mu + 1} - \mu + 1}{2\mu}$$</p>
+proposed in Section 6 of Altun (2021). The new parameters are:</p><ul><li><p>\(\mu &gt; 0\): the mean of the distribution, i.e. \(E[X]\).</p></li>
+<li><p>\(\sigma &gt; 0\)</p></li>
+</ul><p>The reparametrization links the mean and \(\sigma\)
+to the original parameter \(\mu\) via the mean
+equation \(E[X] = (\sigma + \mu) / (\mu (1 + \mu))\)</p>
     </div>
     <div id="references">
     <h2>References</h2>

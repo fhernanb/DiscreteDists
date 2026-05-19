@@ -25,16 +25,13 @@
 #' This family uses the mean-parametrized version of the NPGL distribution
 #' proposed in Section 6 of Altun (2021). The new parameters are:
 #' \itemize{
-#'   \item \eqn{\mu > 0}: the mean of the distribution, i.e. \eqn{E[X] = \mu}.
-#'   \item \eqn{\sigma > 0}: the shape parameter (equivalent to \eqn{\alpha}
-#'         in the original NPGL parametrization).
+#' \item \eqn{\mu > 0}: the mean of the distribution, i.e. \eqn{E[X]}.
+#' \item \eqn{\sigma > 0}
 #' }
 #'
-#' The reparametrization links \eqn{\mu} (mean) and \eqn{\sigma} (\eqn{\alpha})
-#' to the original parameter \eqn{\theta} via the positive root of the mean
-#' equation \eqn{E[X] = (\alpha + \theta) / (\theta (1 + \theta)) = \mu}:
-#'
-#' \deqn{\theta = \frac{\sqrt{4\sigma\mu + \mu^2 - 2\mu + 1} - \mu + 1}{2\mu}}
+#' The reparametrization links the mean and \eqn{\sigma}
+#' to the original parameter \eqn{\mu} via the mean
+#' equation \eqn{E[X] = (\sigma + \mu) / (\mu (1 + \mu))}
 #'
 #' @return
 #' Returns a \code{gamlss.family} object which can be used to fit a
