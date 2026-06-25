@@ -63,6 +63,13 @@ pDMOLBE <- function(q, mu=1, sigma=1, lower.tail = TRUE, log.p = FALSE){
   # For non-integer x's, the cumulative is the same as the lower integer
   qq <- as.integer(qq)
 
+  # Temporal change for mu or sigma invalid values
+  invalid_values <- mu <= 0 | sigma <= 0
+  copy_mu <- mu
+  copy_sigma <- sigma
+  mu[invalid_values]    <- 1 # Temporal change
+  sigma[invalid_values] <- 1 # Temporal change
+
   # The cumulative
   num <- 1 - (1+(q+1)/mu) * exp(-(q+1)/mu)
   den <- 1 - (1-sigma) * (1 + (q+1)/mu) * exp(-(q+1)/mu)
@@ -71,6 +78,8 @@ pDMOLBE <- function(q, mu=1, sigma=1, lower.tail = TRUE, log.p = FALSE){
   # Assign values for invalid x's
   cdf[q < 0] <- 0
   cdf[q == Inf] <- 1
+
+  cdf[invalid_values] <- NaN
 
   if (lower.tail == FALSE)
     cdf <- 1 - cdf
