@@ -116,7 +116,7 @@ pNPGL <- function(q, mu=0.1, sigma=2, lower.tail = TRUE, log.p = FALSE){
 
   return(cdf)
 }
-#' @importFrom stats runif
+#' @importFrom stats runif rexp rgamma rpois
 #' @export
 #' @rdname dNPGL
 rNPGL <- function(n, mu=0.1, sigma=2){

@@ -84,8 +84,6 @@ summary(mod2)
 # confirming over-dispersion.
 # Data available in the azpro dataset of the COUNT package.
 
-library(COUNT)
-data(azpro)
 mod3 <- gamlss(
   los ~ procedure + sex + admit + age75,
   sigma.fo = ~1,
@@ -115,10 +113,6 @@ coef(mod3, what="sigma")
 # The response variable has a dispersion index of 7.91,
 # confirming over-dispersion.
 # Data available in the NMES1988 dataset of the AER package.
-
-library(AER)
-data("NMES1988")
-
 # Set "average" as the reference category for health status,
 # so that healthexcellent and healthpoor are the two dummies,
 # matching x11 and x12 in Altun (2021).

@@ -123,24 +123,31 @@ export(rPOISXL)
 export(rPTRTE)
 export(simulate_hp)
 export(stopping)
-importFrom(COMPoissonReg,dcmp)
-importFrom(COMPoissonReg,pcmp)
-importFrom(COMPoissonReg,qcmp)
-importFrom(COMPoissonReg,rcmp)
+importFrom(COMPoissonReg,
+  dcmp,
+  pcmp,
+  qcmp,
+  rcmp
+)
 importFrom(Rcpp,sourceCpp)
 importFrom(gamlss,rqres.plot)
 importFrom(gamlss.dist,checklink)
 importFrom(graphics,grid)
 importFrom(nleqslv,nleqslv)
 importFrom(pracma,lambertWn)
-importFrom(stats,coef)
-importFrom(stats,dnorm)
-importFrom(stats,lm)
-importFrom(stats,optim)
-importFrom(stats,optimize)
-importFrom(stats,pnorm)
-importFrom(stats,runif)
-importFrom(stats,stepfun)
-importFrom(stats,var)
+importFrom(stats,
+  coef,
+  dnorm,
+  lm,
+  optim,
+  optimize,
+  pnorm,
+  rexp,
+  rgamma,
+  rpois,
+  runif,
+  stepfun,
+  var
+)
 importFrom(utils,tail)
 useDynLib(DiscreteDists)

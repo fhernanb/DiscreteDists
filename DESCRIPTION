@@ -20,9 +20,7 @@ Imports:
     pracma,
     Rcpp,
     COMPoissonReg,
-    nleqslv,
-    AER,
-    COUNT
+    nleqslv
 LinkingTo: 
     Rcpp
 Encoding: UTF-8
@@ -35,4 +33,4 @@ BugReports: https://github.com/fhernanb/DiscreteDists/issues
 Depends: 
     R (>= 4.1)
 LazyData: true
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
