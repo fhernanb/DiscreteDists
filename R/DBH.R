@@ -35,7 +35,6 @@
 #'
 #' @example  examples/examples_DBH.R
 #'
-#' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @export
 DBH <- function (mu.link="logit") {

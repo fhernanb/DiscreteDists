@@ -35,7 +35,6 @@
 #'
 #' @example examples/examples_DMOLBE.R
 #'
-#' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @export
 DMOLBE <- function (mu.link="log", sigma.link="log") {

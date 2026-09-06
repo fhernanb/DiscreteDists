@@ -16,7 +16,6 @@ Description: Implementation of new discrete statistical distributions. Each dist
 License: MIT + file LICENSE
 Imports: 
     gamlss,
-    gamlss.dist,
     pracma,
     Rcpp,
     COMPoissonReg,

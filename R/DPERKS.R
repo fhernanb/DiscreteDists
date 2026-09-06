@@ -31,7 +31,6 @@
 #'
 #' @example examples/examples_DPERKS.R
 #'
-#' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @export
 DPERKS <- function(mu.link="log", sigma.link="log") {

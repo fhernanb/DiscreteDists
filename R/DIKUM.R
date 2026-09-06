@@ -35,7 +35,6 @@
 #'
 #' @example examples/examples_DIKUM.R
 #'
-#' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @export
 DIKUM <- function (mu.link="log", sigma.link="log") {

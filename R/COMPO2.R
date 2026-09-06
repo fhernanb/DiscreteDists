@@ -42,7 +42,6 @@
 #'
 #' @example examples/examples_COMPO2.R
 #'
-#' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @export
 COMPO2 <- function (mu.link="log", sigma.link="identity") {

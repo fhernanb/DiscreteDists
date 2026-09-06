@@ -36,7 +36,6 @@
 #'
 #' @example examples/examples_PTRTE.R
 #'
-#' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @importFrom stats dnorm pnorm
 #' @export

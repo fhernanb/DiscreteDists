@@ -34,7 +34,6 @@
 #'
 #' @example examples/examples_BerG.R
 #'
-#' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @export
 BerG <- function (mu.link="log", sigma.link="log") {

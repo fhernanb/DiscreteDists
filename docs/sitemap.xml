@@ -29,6 +29,7 @@
 <url><loc>/reference/PTRTE.html</loc></url>
 <url><loc>/reference/add.html</loc></url>
 <url><loc>/reference/azpro.html</loc></url>
+<url><loc>/reference/checklink.html</loc></url>
 <url><loc>/reference/d1_dldm_compo_cpp.html</loc></url>
 <url><loc>/reference/d1_vec_dldm_compo_cpp.html</loc></url>
 <url><loc>/reference/d2_dldd_compo_cpp.html</loc></url>
@@ -90,6 +91,7 @@
 <url><loc>/reference/logLik_NPGL.html</loc></url>
 <url><loc>/reference/logLik_NPGL2.html</loc></url>
 <url><loc>/reference/logLik_POISXL.html</loc></url>
+<url><loc>/reference/make.link.gamlss.html</loc></url>
 <url><loc>/reference/mean_var_hp.html</loc></url>
 <url><loc>/reference/obtaining_lambda.html</loc></url>
 <url><loc>/reference/plot_discrete_cdf.html</loc></url>

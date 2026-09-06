@@ -42,7 +42,6 @@
 #'
 #' @example  examples/examples_DLD.R
 #'
-#' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @export
 DLD <- function (mu.link="log") {

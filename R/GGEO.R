@@ -33,7 +33,6 @@
 #'
 #' @example examples/examples_GGEO.R
 #'
-#' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @export
 GGEO <- function (mu.link="logit", sigma.link="log") {

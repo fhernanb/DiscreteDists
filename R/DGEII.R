@@ -37,7 +37,6 @@
 #'
 #' @example examples/examples_DGEII.R
 #'
-#' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @export
 DGEII <- function (mu.link="logit", sigma.link="log") {

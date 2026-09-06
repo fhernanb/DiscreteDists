@@ -32,7 +32,6 @@
 #'
 #' @example examples/examples_POISXL.R
 #'
-#' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @export
 POISXL <- function (mu.link="log") {

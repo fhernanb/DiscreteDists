@@ -33,7 +33,6 @@
 #'
 #' @example examples/examples_DsPA.R
 #'
-#' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @export
 DsPA <- function (mu.link="log", sigma.link="logit") {

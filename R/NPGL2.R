@@ -39,7 +39,6 @@
 #'
 #' @example examples/examples_NPGL2.R
 #'
-#' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @export
 NPGL2 <- function(mu.link = "log", sigma.link = "log") {

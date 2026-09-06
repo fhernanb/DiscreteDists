@@ -20,6 +20,7 @@ export(NPGL2)
 export(POISXL)
 export(PTRTE)
 export(add)
+export(checklink)
 export(dBerG)
 export(dCOMPO)
 export(dCOMPO2)
@@ -66,6 +67,7 @@ export(logLik_HYPERPO2)
 export(logLik_NPGL)
 export(logLik_NPGL2)
 export(logLik_POISXL)
+export(make.link.gamlss)
 export(mean_var_hp)
 export(mean_var_hp2)
 export(obtaining_lambda)
@@ -131,17 +133,24 @@ importFrom(COMPoissonReg,
 )
 importFrom(Rcpp,sourceCpp)
 importFrom(gamlss,rqres.plot)
-importFrom(gamlss.dist,checklink)
 importFrom(graphics,grid)
 importFrom(nleqslv,nleqslv)
 importFrom(pracma,lambertWn)
 importFrom(stats,
   coef,
+  dcauchy,
+  dlogis,
   dnorm,
   lm,
   optim,
   optimize,
+  pcauchy,
+  plogis,
   pnorm,
+  power,
+  qcauchy,
+  qlogis,
+  qnorm,
   rexp,
   rgamma,
   rpois,

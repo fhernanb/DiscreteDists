@@ -41,7 +41,6 @@
 #'
 #' @example examples/examples_HYPERPO.R
 #'
-#' @importFrom gamlss.dist checklink
 #' @importFrom gamlss rqres.plot
 #' @export
 HYPERPO <- function (mu.link="log", sigma.link="log") {
