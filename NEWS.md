@@ -1,4 +1,4 @@
-# DiscreteDists (development version)
+# DiscreteDists 1.1.3
 
 # Version 1.1.2
 
