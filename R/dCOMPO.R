@@ -48,9 +48,6 @@
 #' @importFrom COMPoissonReg dcmp
 #' @export
 dCOMPO <- function(x, mu, sigma, log=FALSE) {
-  if (any(mu <= 0))    stop("parameter mu has to be positive!")
-  if (any(sigma < 0))  stop("parameter sigma has to be no negative!")
-
   temp <- cbind(x, mu, sigma, log)
   dCOMPO_vec(x=temp[, 1], mu=temp[, 2], sigma=temp[, 3], log=temp[,4])
 }

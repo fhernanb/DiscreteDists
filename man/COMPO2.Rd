@@ -58,7 +58,6 @@ coef(mod1, what="sigma")
 # Example 2
 # Generating random values under some model
 
-\dontrun{
 # A function to simulate a data set with Y ~ COMPO2
 gendat <- function(n) {
   x1 <- runif(n)
@@ -77,7 +76,7 @@ mod2 <- NULL
 mod2 <- gamlss(y~x1, sigma.fo=~x2, family=COMPO2, data=dat)
 
 summary(mod2)
-}
+
 }
 \references{
 Ribeiro Jr, Eduardo E., et al. "Reparametrization of COM–Poisson regression

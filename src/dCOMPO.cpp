@@ -123,7 +123,7 @@ NumericVector d2_vec_dldd_compo_cpp(NumericVector mu, NumericVector sigma) {
 // [[Rcpp::export]]
  double dCOMPO_single(double x, double mu=1, double sigma=1, bool log=false) {
    if (sigma <= 0 || mu <= 0) {
-     throw std::runtime_error("parameter sigma and mu must be positive!");
+     return NAN;
    }
 
    double res;
