@@ -127,6 +127,7 @@ export(simulate_hp)
 export(stopping)
 importFrom(COMPoissonReg,
   dcmp,
+  glm.cmp,
   pcmp,
   qcmp,
   rcmp

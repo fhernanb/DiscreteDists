@@ -165,6 +165,7 @@ COMPO <- function (mu.link="log", sigma.link="log") {
 #' @export
 #' @importFrom nleqslv nleqslv
 #' @importFrom stats var lm coef
+#' @importFrom COMPoissonReg glm.cmp
 # estim_mu_sigma_COMPO <- function(y) {
 #   # Star aux fun
 #   fun <- function(theta, y) {
@@ -184,45 +185,43 @@ COMPO <- function (mu.link="log", sigma.link="log") {
 #                  control=list(btol=0.01), y=y)
 #   res$x
 # }
-
-# estim_mu_sigma_COMPO <- function(y) {
-#   fit <- glm.cmp(y ~ 1)
-#   res <- exp(fit$opt.res$par)
-#   return(res)
-# }
 estim_mu_sigma_COMPO <- function(y) {
-  # Esta funcion obtiene valores inciales
-  # usando el metodo seccion 3.1 de Shmueli (2005) pag 132
-
-  # Paso 0: crear la tabla de frecuencias
-  t1 <- table(y)
-  # Paso 1: Extraer los nombres de la t1 como enteros
-  nombres <- as.integer(names(t1))
-  # Paso 2: Identificar secuencias consecutivas
-  # Calculamos diferencias entre elementos consecutivos
-  difs <- c(Inf, diff(nombres))  # Inf al principio para marcar el inicio
-  # Creamos grupos de consecutivos
-  grupos <- cumsum(difs != 1)
-  # Paso 3: Encontrar el grupo más largo (la secuencia más larga de consecutivos)
-  longitudes <- table(grupos)
-  grupo_mas_largo <- as.integer(names(longitudes)[which.max(longitudes)])
-  # Paso 4: Filtrar los elementos del grupo más largo
-  indices_consecutivos <- grupos == grupo_mas_largo
-  nombres_validos <- nombres[indices_consecutivos]
-  # Paso 5: Filtrar la t1 original
-  t2 <- t1[as.character(nombres_validos)]
-  # Paso 6: Crear la tabla de frecuencias relativas
-  t2 <- prop.table(t2)
-
-  # Aplicando el metodo seccion 3.1 de Shmueli (2005) pag 132
-  k <- length(t2)
-  yy <- log(t2[1:(k-1)] / t2[2:k])
-  xx <- log(as.numeric(names(t2[2:k])))
-  mod_temp <- lm(yy ~ xx)
-  mu_hat <- exp(-coef(mod_temp)[1])
-  sigma_hat <- coef(mod_temp)[2]
-  res <- c(mu_hat, sigma_hat)
-  res
+  fit <- glm.cmp(y ~ 1)
+  res <- exp(fit$opt.res$par)
+  return(res)
 }
-
+# estim_mu_sigma_COMPO <- function(y) {
+#   # Esta funcion obtiene valores inciales
+#   # usando el metodo seccion 3.1 de Shmueli (2005) pag 132
+#
+#   # Paso 0: crear la tabla de frecuencias
+#   t1 <- table(y)
+#   # Paso 1: Extraer los nombres de la t1 como enteros
+#   nombres <- as.integer(names(t1))
+#   # Paso 2: Identificar secuencias consecutivas
+#   # Calculamos diferencias entre elementos consecutivos
+#   difs <- c(Inf, diff(nombres))  # Inf al principio para marcar el inicio
+#   # Creamos grupos de consecutivos
+#   grupos <- cumsum(difs != 1)
+#   # Paso 3: Encontrar el grupo más largo (la secuencia más larga de consecutivos)
+#   longitudes <- table(grupos)
+#   grupo_mas_largo <- as.integer(names(longitudes)[which.max(longitudes)])
+#   # Paso 4: Filtrar los elementos del grupo más largo
+#   indices_consecutivos <- grupos == grupo_mas_largo
+#   nombres_validos <- nombres[indices_consecutivos]
+#   # Paso 5: Filtrar la t1 original
+#   t2 <- t1[as.character(nombres_validos)]
+#   # Paso 6: Crear la tabla de frecuencias relativas
+#   t2 <- prop.table(t2)
+#
+#   # Aplicando el metodo seccion 3.1 de Shmueli (2005) pag 132
+#   k <- length(t2)
+#   yy <- log(t2[1:(k-1)] / t2[2:k])
+#   xx <- log(as.numeric(names(t2[2:k])))
+#   mod_temp <- lm(yy ~ xx)
+#   mu_hat <- exp(-coef(mod_temp)[1])
+#   sigma_hat <- coef(mod_temp)[2]
+#   res <- c(mu_hat, sigma_hat)
+#   res
+# }
 
