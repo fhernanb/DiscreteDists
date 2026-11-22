@@ -69,30 +69,34 @@ COMPO <- function (mu.link="log", sigma.link="log") {
                  # First derivatives
 
                  dldm = function(y, mu, sigma) {
-                   # dm   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
-                   #                               theta="mu",
-                   #                               delta=0.001)
-                   # dldm <- as.vector(attr(dm, "gradient"))
+                   dm   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
+                                                 theta="mu",
+                                                 delta=0.001)
+                   dldm <- as.vector(attr(dm, "gradient"))
 
-                   dldm <- y/mu - d1_vec_dldm_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
-
+                   #dldm <- y/mu - d1_vec_dldm_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
                    dldm
                  },
 
                  dldd = function(y, mu, sigma) {
-                   dldd <- -log(factorial(y)) + d2_vec_dldd_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
+                   dd   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
+                                                 theta="sigma",
+                                                 delta=0.01)
+                   dldd <- as.vector(attr(dd, "gradient"))
+
+                   #dldd <- -log(factorial(y)) + d2_vec_dldd_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
                    dldd
                  },
 
                  # Second derivatives
 
                  d2ldm2 = function(y, mu, sigma) {
-                   # dm   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
-                   #                               theta="mu",
-                   #                               delta=0.001)
-                   # dldm <- as.vector(attr(dm, "gradient"))
+                   dm   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
+                                                 theta="mu",
+                                                 delta=0.001)
+                   dldm <- as.vector(attr(dm, "gradient"))
 
-                   dldm <- y/mu - d1_vec_dldm_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
+                   #dldm <- y/mu - d1_vec_dldm_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
 
                    d2ldm2 <- - dldm * dldm
                    d2ldm2 <- ifelse(d2ldm2 < -1e-15, d2ldm2, -1e-15)
@@ -100,19 +104,19 @@ COMPO <- function (mu.link="log", sigma.link="log") {
                  },
 
                  d2ldmdd = function(y, mu, sigma) {
-                   # dm   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
-                   #                               theta="mu",
-                   #                               delta=0.001)
-                   # dldm <- as.vector(attr(dm, "gradient"))
+                   dm   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
+                                                 theta="mu",
+                                                 delta=0.001)
+                   dldm <- as.vector(attr(dm, "gradient"))
 
-                   dldm <- y/mu - d1_vec_dldm_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
+                   #dldm <- y/mu - d1_vec_dldm_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
 
-                   # dd   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
-                   #                               theta="sigma",
-                   #                               delta=0.001)
-                   # dldd <- as.vector(attr(dd, "gradient"))
+                   dd   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
+                                                 theta="sigma",
+                                                 delta=0.001)
+                   dldd <- as.vector(attr(dd, "gradient"))
 
-                   dldd <- -log(factorial(y)) + d2_vec_dldd_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
+                   #dldd <- -log(factorial(y)) + d2_vec_dldd_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
 
                    d2ldmdd <- - dldm * dldd
                    d2ldmdd <- ifelse(d2ldmdd < -1e-15, d2ldmdd, -1e-15)
@@ -120,12 +124,12 @@ COMPO <- function (mu.link="log", sigma.link="log") {
                  },
 
                  d2ldd2  = function(y, mu, sigma) {
-                   # dd   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
-                   #                               theta="sigma",
-                   #                               delta=0.001)
-                   # dldd <- as.vector(attr(dd, "gradient"))
+                   dd   <- gamlss::numeric.deriv(dCOMPO(y, mu, sigma, log=TRUE),
+                                                 theta="sigma",
+                                                 delta=0.001)
+                   dldd <- as.vector(attr(dd, "gradient"))
 
-                   dldd <- -log(factorial(y)) + d2_vec_dldd_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
+                   #dldd <- -log(factorial(y)) + d2_vec_dldd_compo_cpp(mu, sigma) / z_vec_cpp(mu, sigma)
 
                    d2ldd2 <- - dldd * dldd
                    d2ldd2 <- ifelse(d2ldd2 < -1e-15, d2ldd2, -1e-15)

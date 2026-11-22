@@ -47,8 +47,7 @@ y <- rCOMPO2(n=500, mu=10, sigma=-1)
 
 # Fitting the model
 library(gamlss)
-mod1 <- gamlss(y~1, sigma.fo=~1, family=COMPO2,
-               control=gamlss.control(n.cyc=500, trace=TRUE))
+mod1 <- gamlss(y~1, sigma.fo=~1, family=COMPO2)
 
 # Extracting the fitted values for mu and sigma
 # using the inverse link function
